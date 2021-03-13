@@ -1,0 +1,69 @@
+
+<!-- desktop ui -->
+<div fxLayout="column" class="desk-summary-body" *ngIf = "!isMobileDevice">
+  <section  class="own-upload-summary-section" fxLayout = "row">
+    <div style="border-radius:10px 0px 0px 0px " fxLayout = "row" fxLayoutAlign="center center" fxFlex = "18"></div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "18">single correct</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">numerical</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">matrix</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">reasoning</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "18">multiple correct</div>
+    <div style="border-radius:0px 10px 0px 00px " fxLayout = "row" fxLayoutAlign="center center" fxFlex = "18">comprehension</div>
+  </section>
+  <section class="own-upload-summary-section" fxLayout = "row">
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "18"></div>
+    <div class="zero-padding" fxLayout = "row"  fxFlex = "18">
+      <div class="center border-right-1px-gray"  fxFlex>single</div>
+      <div class="center" fxFlex>Theo..</div>
+    </div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">numerical</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">matrix</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">reasoning</div>
+    <div class="zero-padding" fxLayout = "row"  fxFlex = "18">
+      <div class="center border-right-1px-gray"  fxFlex>single</div>
+      <div class="center" fxFlex>Theo..</div>
+    </div>
+    <div class="zero-padding" fxLayout = "row"  fxFlex = "18">
+      <div class="center border-right-1px-gray"  fxFlex>single</div>
+      <div class="center" fxFlex>Theo..</div>
+    </div>
+  </section>
+  <app-question-paper-template [data]="allSubjects"></app-question-paper-template>
+</div>
+
+
+
+<!-- end desktop ui -->
+
+
+<!-- mobile ui -->
+<div *ngIf = "isMobileDevice" fxLayout="column" class="desk-summary-body" style="overflow:auto;">
+  <section class="own-upload-summary-section"  fxLayout = "row">
+    <div style="border-radius:10px 0px 0px 0px " fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px"></div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "200px">single correct</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">numerical</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">matrix</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">reasoning</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "200px">multiple correct</div>
+    <div style="border-radius:0px 10px 0px 00px " fxLayout = "row" fxLayoutAlign="center center" fxFlex = "200px">comprehension</div>
+  </section>
+  <section class="own-upload-summary-section" fxLayout = "row">
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px"></div>
+    <div class="zero-padding" fxLayout = "row"  fxFlex = "200px">
+      <div class="center border-right-1px-gray"  fxFlex>single</div>
+      <div class="center" fxFlex>Theo..</div>
+    </div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">numerical</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">matrix</div>
+    <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">reasoning</div>
+    <div class="zero-padding" fxLayout = "row"  fxFlex = "200px">
+      <div class="center border-right-1px-gray"  fxFlex>single</div>
+      <div class="center" fxFlex>Theo..</div>
+    </div>
+    <div class="zero-padding" fxLayout = "row"  fxFlex = "200px">
+      <div class="center border-right-1px-gray"  fxFlex>single</div>
+      <div class="center" fxFlex>Theo..</div>
+    </div>
+  </section>
+  <app-question-paper-template [data]="allSubjects"></app-question-paper-template>
+</div>

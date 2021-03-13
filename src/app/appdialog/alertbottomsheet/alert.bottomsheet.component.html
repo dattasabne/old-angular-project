@@ -1,0 +1,8 @@
+<div fxLayout = "column" class="app-bottom-sheet">
+    <div fxFlex = "15" fxLayout ="row" fxLayoutAlign = "flex-start center"  class="app-bottomsheet-header">{{bootomSheetData.title}}</div>
+    <div fxFlex= "70"   fxLayout ="row" fxLayoutAlign = "flex-start flex-start" class="app-bottomsheet-body">
+        {{bootomSheetData.messageBody}}</div>
+    <div fxFlex = "15" fxLayout ="row" fxLayoutAlign = "flex-start center" class="app-bottomsheet-footer">
+    <button (click) = "clickOnOkButton()" mat-button color="accent">{{bootomSheetData.alertButtonName}}</button>       
+    </div>
+ </div>

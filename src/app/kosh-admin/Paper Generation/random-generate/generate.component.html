@@ -1,0 +1,175 @@
+<div class="main-div">
+  <div class="main-container" fxLayout="column" fxflex fxLayoutGap="15px" fxLayoutAlign="start">
+    <div fxFlex fxLayout="row" fxLayoutAlign="center start" fxflex="50px" class="generation-header">
+      <mat-icon class="generation-icon" fxFlex="20px">trending_up</mat-icon>
+      <div fxFlex="300px">Random Generation</div>
+    </div>
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+      <mat-card class="select-option" fxFlex.gt-xs="250px">
+        <mat-form-field class="input-text full-width">
+          <mat-label>Select Exam Pattern</mat-label>
+          <mat-select [formControl]="patrnControl">
+            <mat-option *ngFor="let pattern of patterns" [value]="pattern">{{pattern.patternName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-text full-width">
+          <mat-label>Select Standard</mat-label>
+          <mat-select [formControl]="standardControl">
+            <mat-option [value]="11">11th</mat-option>
+            <mat-option [value]="12">12th</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-text full-width">
+          <mat-label>Test Type</mat-label>
+          <mat-select [formControl]="testTypeControl">
+            <mat-option value="Chapterwise">Chaperwise</mat-option>
+            <mat-option value="Syllabuswise">Syllabus wise</mat-option>
+            <mat-option value="FinalTest">Final Test</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-text full-width">
+          <mat-label>Select Subjects</mat-label>
+          <mat-select [formControl]="subjectControl">
+            <mat-option *ngFor="let subject of patternSubjects" [value]="subject">{{subject}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+      <mat-card fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+        <div class="question-type-selection" fxLayout="column" fxLayoutGap="10px" fxFlex.gt-xs="200px">
+          <div fxLayout="row" fxFlex="60px" fxLayoutGap="5px">
+            <h3>1</h3>
+            <span>Level of Question</span>
+          </div>
+          <div fxLayout="column" fxFlex="200px">
+            <mat-radio-button fxFlex="50px" color="primary" value="All">All</mat-radio-button>
+            <mat-radio-button fxFlex="50px" color="primary" value="Easy">Easy</mat-radio-button>
+            <mat-radio-button fxFlex="50px" color="primary" value="Medium">Medium</mat-radio-button>
+            <mat-radio-button fxFlex="50px" color="primary" value="Difficult">Difficult</mat-radio-button>
+          </div>
+        </div>
+        <div class="question-type-selection" fxLayout="column" fxLayoutGap="10px" fxFlex.gt-xs="270px">
+          <div fxLayout="row" fxFlex="60px" fxLayoutGap="5px">
+            <h3>2</h3>
+            <span>Percentage of Question Type</span>
+          </div>
+          <div fxLayout="column" fxFlex="200px">
+            <div fxLayout="row" fxFlex="40px">
+              <p fxFlex="150px">S-Skill</p>
+              <div fxFlex="50px">
+                <mat-form-field class="question-count">
+                  <input matInput placeholder="25">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxFlex="40px">
+              <p fxFlex="150px">U-Understanding</p>
+              <div fxFlex="50px">
+                <mat-form-field class="question-count">
+                  <input matInput placeholder="25">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxFlex="40px">
+              <p fxFlex="150px">K-Knowledge</p>
+              <div fxFlex="50px">
+                <mat-form-field class="question-count">
+                  <input matInput placeholder="25">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxFlex="40px">
+              <p fxFlex="150px">A-Application</p>
+              <div fxFlex="50px">
+                <mat-form-field class="question-count">
+                  <input matInput placeholder="25">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxFlex="40px">
+              <p fxFlex="150px"><strong>Total Percentage</strong></p>
+              <p fxFlex="150px"><strong>100</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="question-type-selection" fxLayout="column" fxLayoutGap="10px" fxFlex.gt-xs="250px">
+          <div fxLayout="row" fxFlex="60px" fxLayoutGap="5px">
+            <h3>3</h3>
+            <span>Question Selection Priority</span>
+          </div>
+          <div class="question-priority" fxLayout="column" fxLayoutAlign="start start" fxFlex="230px">
+            <mat-radio-button fxFlex="50px" color="primary" value="All" [checked]="true">All Questions</mat-radio-button>
+            <mat-radio-button fxFlex="50px" color="primary" value="Easy">Selected level of Questions</mat-radio-button>
+            <mat-radio-button fxFlex="50px" color="primary" value="Medium">Entered % of Question type</mat-radio-button>
+            <p class="note">This Selection is based on Selection 1 & 2</p>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px" fxFlex.lt-md="250px" fxFlex.md="250px" fxFlex.xs="300px">
+          <div fxLayout="row" fxFlex="60px" fxLayoutGap="5px">
+            <h3>4</h3>
+            <span>Select Test Type From which allow questions from previous questions(<strong>Allow Repeatation</strong>)</span>
+          </div>
+          <div fxLayout="column" fxFlex="200px">
+            <mat-checkbox  fxFlex="40px" color="primary" [checked]="true">All</mat-checkbox>
+            <mat-checkbox fxFlex="40px" class="test-type-selection" color="primary">Chapterwise</mat-checkbox>
+            <mat-checkbox fxFlex="40px" class="test-type-selection" color="primary">Subjectwise</mat-checkbox>
+            <mat-checkbox fxFlex="40px" class="test-type-selection" color="primary">Final Test</mat-checkbox>
+            <p class="note">Suggestion: Select all types excluding selected 'Test Type' to avoid reapetation</p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div fxFlex>
+      <mat-card class="record-container">
+        <div class="full" *ngFor="let header of allHeaders">
+          <div *ngIf="!chapterSelected" class="record">
+            <div class="field header colspan-2">{{header.chapterNames}}</div>
+            <div class="field header">{{header.availableQuestion}}</div>
+            <div class="field header">{{header.requiredQuestion}}</div>
+            <div class="field header">{{header.total}}</div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+        <div class="full" *ngFor="let chapter of allChapters">
+          <div *ngIf="!chapterSelected" class="record">
+            <mat-checkbox (change)="chapter.isChecked=$event.source.checked" [checked]="chapter.isChecked" type="checkbox"></mat-checkbox>
+            <div class="field colspan-2">{{chapter.chapterName}}</div>
+            <div class="field">{{chapter.availableQuestion}}</div>
+            <div class="field">
+              <input class="required-question" type="text" placeholder="200">
+            </div>
+            <div class="field">{{chapter.total}}</div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+        <div class="full" *ngFor="let header of allSubTopicHeaders">
+          <div *ngIf="chapterSelected" class="record">
+            <div class="field header colspan-2">{{header.chapterNames}}</div>
+            <div class="field header colspan-2">{{header.subTopic}}</div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+        <div class="full" *ngFor="let subtopic of chapterSubtopics">
+          <div *ngIf="chapterSelected" class="record">
+            <div class="field colspan-2">
+              <mat-checkbox class="sub-topic-selected" type="checkbox" [checked]="subtopic.isChecked"></mat-checkbox>
+              <div>{{selectedChapterName}}</div>
+            </div>
+            <div class="field colspan-2">{{subtopic.subTopicName}}</div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-card>
+    </div>
+    <div fxFlex.gt-xs="150px" fxLayout="row" fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutAlign="space-between center" class="action">
+      <div fxFlex>
+       <mat-checkbox (change)="getChapterSubTopics()" type="checkbox" color="primary">Filter Sub Topic</mat-checkbox>
+      </div>
+      <div fxFlex fxLayout="row" fxLayoutGap="30px" fxLayoutGap.xs="10px">
+        <button class="generate-button" fxFlex.xs="120px" fxFlex="150px" (click)="clickOnRecord(table)"  mat-raised-button>Generate Test</button>
+        <button class="load-button" fxFlex.xs="90px"  fxFlex="120px"   mat-raised-button>Load Test</button>
+        <button class="close-button" fxFlex  fxFlex="90px" mat-raised-button>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

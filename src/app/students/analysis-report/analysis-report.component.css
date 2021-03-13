@@ -1,0 +1,623 @@
+.ana-main {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  overflow: auto;
+  box-sizing: border-box;
+  position: absolute !important;
+  z-index: 200  !important;
+  background: #e7e4e4 !important;
+}
+
+
+
+.each-ana-menu{
+  border-right: 1px solid lightgray;
+}
+.ana-main-marks-container {
+  padding-right:3px !important;
+  box-sizing: border-box !important;
+}
+.ana-data-table{
+  width: 100% !important;
+}
+
+.ana-data-table tr ,.ana-data-table th {
+  text-transform: capitalize !important;
+}
+.ana-root-container{
+  margin: 8px 8px;
+  /* background: linear-gradient(to left, #EAEAEA, #EEE5DE); */
+  background: #87CEFF;
+  box-sizing: border-box;
+}
+[class*="row"] {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+[class*="col-*"] {
+  padding: 0px 5px;
+}
+* {
+  box-sizing: border-box;
+}
+.full-height {
+  height: 100%;
+}
+.ana-analysis-section{
+  height: 100%;
+  overflow: auto;
+  top: 0px;
+  padding: 0px 10px !important;
+  box-sizing: border-box;
+  z-index: 10;
+
+}
+.full-width {
+  width: 100%;
+}
+.ana-header {
+  height: 70px;
+  padding-top: 40px;
+  margin-bottom: 5px !important;
+}
+.ana-date-container{
+  margin: 8px 0px 0px 0px;
+  height: 50px;
+  padding: 0px 0px 0px 0px !important;
+
+}
+.mat-form-field-wrapper{
+  /* padding: 0px !important; */
+  margin-bottom: -20px !important;
+
+}
+.ana-header-control-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+}
+.ana-header-control {
+  /* height: 50px; */
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 5px;
+}
+.ana-radio-option {
+  margin: 0px 4px;
+}
+.ana-rank-section {
+  height: 200px;
+  background: linear-gradient(to left, #f2f2f2, #f0f8ff);
+  margin: 4px 0px;
+}
+.ana-border {
+  border: 3px solid green !important;
+}
+.ana-circle-container {
+  height: 80%;
+}
+
+.ana-rank-label {
+  width: 98% !important;
+  line-height: 90% !important;
+  background: skyblue;
+  color: white;
+}
+.ana-sub-division-rank {
+  width: 80%;
+  height: 90%;
+  background: skyblue;
+  color: white;
+}
+.ana-rank ,.ana-spend-time{
+  background: rgb(218, 159, 70);
+}
+.ana-center {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.ana-circle {
+  height: 120px;
+  width: 120px;
+  border: 2px solid lightgray;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+.ana-circle:hover {
+  background: rgb(40, 163, 96);
+  color: white;
+}
+.ana-main-circle:hover {
+  background: rgb(40, 163, 96);
+  color: white;
+}
+
+
+
+
+
+
+
+
+.ana-main-circle {
+  height: 90px;
+  width: 90px;
+  border: 2px solid lightgray;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+.ana-mark-section {
+  height: 15%;
+  margin-top: 0px;
+}
+.ana-vcenter {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.ana-analysis-lable {
+  height: 30px;
+  color: white;
+  background: rgb(39, 122, 231);
+  margin-top: 5px;
+}
+.ana-subject-container {
+  padding: 0px 8px !important;
+}
+.ana-each-analysis .ana-data {
+  display: flex !important;
+  place-content: end space-between !important;
+}
+.ana-analysis-data {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ana-banner {
+  height: 40px;
+  margin-top: 30px 0px;
+}
+.ana-each-analysis {
+  margin-top: 5px !important;
+  padding: 0px 2px !important;
+}
+.ana-no-padding {
+  padding: 0px !important;
+}
+.ana-banner-card {
+  border-radius: 0px !important;
+  /* background: skyblue; */
+  background: rgb(39, 122, 231);
+  color: white;
+}
+.ana-box-container:hover {
+  cursor: pointer;
+}
+
+
+
+.ana-box-container{
+  display: flex !important;
+  align-items: center  !important;
+  justify-content: center !important;
+  flex-direction: column;
+}
+/* .data-test {
+ background:  rgb(179, 204, 97);
+} */
+.ana-subject-container:hover,
+.ana-main-percent {
+  cursor: pointer;
+}
+/* .margin-5 {
+  padding-left: 5px !important;
+  box-sizing: border-box;
+} */
+.ana-test-id-container{
+  display: flex !important;
+  align-content: center !important;
+  align-items: center !important;
+}
+.ana-gap-7px{
+  margin: 0px 7px;
+}
+.ana-test-data {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  text-align: center;
+  padding: 3px 0px;
+}
+.ana-banner-height {
+  height: auto;
+}
+.ana-capitalize{
+  text-transform: capitalize !important;
+}
+.tr:hover {
+  background: #cad1d8;
+  cursor: pointer;
+}
+#test {
+  font-size: 13px;
+}
+.ana-test-id {
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+  font-size: 13px;
+  padding-top: 8px;
+}
+* {
+  text-transform: capitalize;
+}
+.ana-bold {
+  background: #a7caeb ;
+  font-size: 18rem;
+}
+.ana-bold:hover {
+  background: #9cafc0;
+  color: white;
+  font-size: 15px;
+}
+.ana-bar-top {
+  margin-top: 4px !important;
+}
+.ana-bar {
+  padding-top: 4px !important;
+}
+.icon-font {
+  font-size: 1em;
+}
+.mat-select-value {
+  color: black !important;
+}
+.ana-toppers{
+  width:100%;
+}
+.ana-rank-container{
+  width:100%;
+  height: 80%;
+}
+.ana-rank-footer{
+  width: 100%;
+  height: 20%;
+}
+.ana-main-analyis-container{
+  position: relative;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* analysis report navbar css */
+.ana-cust-container{
+  width:100%;
+  height: 60px;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  background: lightslategray;
+  border-radius: 0px;
+  padding:0px !important;
+}
+
+.analy-logo {
+  width:auto !important;
+  max-width:100% !important;
+  height:auto!important;
+  max-height: 100%;
+  object-fit: contain !important;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding:  0px !important;
+  margin: 0px !important;
+  border:1px solid black;
+}
+.ana-left-option,.ana-right-option{
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  height: 100%;
+  box-sizing: border-box;
+}
+.ana-right-option .ana-option-row{
+  width: 100%;
+  flex-direction: row-reverse;
+}
+.ana-option-row{
+  display: flex !important ;
+  flex-basis: 100% !important;
+}
+.ana-option-row{
+  display: flex;
+}
+.ana-right-option .ana-option{
+  border-left: 1px solid gray;
+}
+.ana-left-option .ana-option{
+  border-right: 1px solid gray;
+
+}
+.attempted-message{
+  padding: 4px;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+.ana-option{
+  flex-basis: 150px !important;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: capitalize;
+}
+.ana-branding{
+  height: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: capitalize;
+  background: #fff;
+  padding: 4px;
+
+}
+.ana-table-section{
+  width: 0%;
+  overflow: hidden;
+  height: 0%;
+  margin-bottom: 15px;
+}
+
+.ana-deactive-table{
+  width: 0% !important;
+  overflow: hidden !important;
+  height: 0%;
+}
+.ana-mobile-active-table{
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 0px !important;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  z-index: 99 !important;
+  transition: 0.5s ease;
+  overflow: auto;
+}
+
+.ana-desktop-active-table{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+.ana-toppers-analysis{
+  height: 100%;
+  padding:0px !important;
+  background-image: linear-gradient(to right , skyblue,black);
+  color: white;
+}
+.ana-table-headers{
+  font-size: 14px;
+  color: white;
+  text-transform: capitalize !important;
+}
+.ana-toggle-whole{
+  display: none !important;
+}
+/* ----------------End css------------------ */
+/* iphone media query */
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+  .ana-banner {
+    margin-top: 5px!important;
+    margin-bottom: 5px !important;
+  }
+  .ana-toggle-whole{
+    display: flex !important;
+  }
+  .ana-analysis-section{
+    padding: 0px !important;
+    margin-bottom: 8px !important;
+  }
+}
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+  .ana-date-select{
+    height: 35px !important;
+  }
+  .ana-circle-container {
+    height: 80%;
+  }
+  .ana-circle{
+    height: 80px !important;
+    width:80px !important;
+  }
+  .ana-rank-section{
+    height: 130px !important;
+  }
+  .ana-rank-label{
+    font-size: 11px !important;
+  }
+  .ana-main-circle{
+    height: 65px !important;
+    width: 65px !important;
+  }
+  .ana-analysis-radio{
+    font-size: 11px !important;
+  }
+  .ana-toppers{
+    padding: 0px !important;
+  }
+
+  .ana-header-control{
+    /* height: 80px !important; */
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .ana-topper-container {
+    margin: -2px 0px;
+  }
+  .ana-date-container{
+    margin-top: 4px !important;
+  }
+  .ana-analysis-radio{
+    font-size: 8px;
+  }
+  .ana-toggle-whole{
+    display: flex !important;
+
+  }
+  .ana-subject-header{
+    font-size: 0.7em;
+  }
+  .ana-analysis-section{
+    padding: 0px  !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .ana-analysis-radio{
+    font-size: 8px;
+  }
+  .ana-banner {
+    margin-top: 5px!important;
+    margin-bottom: 5px !important;
+  }
+  .ana-date-select{
+    height: 40px !important;
+  }
+  .ana-circle-container {
+    height: 80%;
+  }
+  .ana-circle{
+    height: 80px !important;
+    width:80px !important;
+  }
+  .ana-rank-section{
+    height: 130px !important;
+  }
+  .ana-rank-label{
+    font-size: 11px !important;
+    text-align: center;
+  }
+
+  .ana-main-circle{
+    height: 70px !important;
+    width: 70px !important;
+  }
+  .ana-header-control{
+    /* height: 80px  !important; */
+    margin: 0px;
+    padding: 0px !important;
+  }
+
+  .ana-topper-container {
+    margin: -2px 0px;
+  }
+  .ana-date-container{
+    margin-top: 4px !important;
+  }
+  .ana-toggle-whole{
+    display: flex !important;
+  }
+  .ana-subject-header{
+    font-size: 0.8em;
+  }
+  .ana-analysis-section{
+    padding: 0px !important;
+    margin-bottom: 8px !important;
+  }
+}
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+ }
+ /*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+}
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+
+}
+

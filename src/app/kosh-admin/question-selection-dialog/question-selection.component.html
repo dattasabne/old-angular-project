@@ -1,0 +1,30 @@
+<div class="main">
+  <div (click)="close()" class="close"><mat-icon class="close-icon">close</mat-icon></div>
+  <div fxLayout="column" class="main-content" fxLayoutGap="10px" fxLayoutAlign="start start">
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="start center" fxLayoutAlign.xs="start start">
+      <div fxFlex.gt-xs="100px">
+        <mat-label>Chapter Id</mat-label>
+      </div>
+      <div fxFlex.gt-xs="200px">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Chapter Id">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="start center" fxLayoutAlign.xs="start start">
+      <div fxFlex.gt.xs="100px">
+        <mat-label>Questions No's</mat-label>
+      </div>
+      <div fxLayout="row" fxFlex.gt-xs="380px">
+        <mat-form-field fxFlex.xs="330px" class="example-full-width">
+          <textarea matInput placeholder="Enter Questions No's"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="button-section" fxflex fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" fxLayoutAlign.xs="start start">
+     <div fxflex.gt-xs="60px">
+        <button (click)="upload()" class="button-save" mat-button>Upload</button>
+      </div>
+    </div>
+  </div>  
+</div>

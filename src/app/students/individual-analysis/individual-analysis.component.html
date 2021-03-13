@@ -1,0 +1,92 @@
+<!-- <div class="main border"> 
+  <mat-tab-group class="full-width" mat-align-tabs="center" animationDuration="1500ms">
+    <mat-tab label="Own Analysis"> 
+      <div style="padding-right: 0px !important; margin-right: 0px !important;" class="row date-panel border">
+          <div class="ana-header-control-container ana-date-container col-xs-12 col-sm-12 col-lg-12 col-md-12 col-xl-12">
+            <div style="height: 100%;padding:0px !important;" class="ana-header-control">
+              <mat-form-field  style="height: 100%; padding:0px !important;" class="ana-date-select full-width">
+                <mat-label style="color: white;">Select Exam Solved Date & Time</mat-label>
+                <mat-select [formControl]="solvedDates">
+                  <mat-option  *ngFor="let dates of examSolvedDates" [value]="dates">
+                    {{dates}}
+                  </mat-option> 
+                </mat-select>
+              </mat-form-field> 
+            </div>
+          </div>
+         </div>
+         <div style="padding-right: 0px !;margin-right: 0px !important;" class="row border">
+           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 padding-zero">
+             <div class="marks-analysis-header">
+                Marks Analysis
+             </div>
+             <div class="marks-div">
+               <section class="result-mark-section result-border result-full-height">
+                <div class="row result-full-height">
+                  <div class="col-12 result-full-height">
+                    <div class="row result-full-height">
+                      <div
+                        class="col-3 result-full-height result-center result-border"
+                        *ngFor="let subject of examResultData"
+                      >
+                        <mat-card   [style.background]="subject.background"  (click)="displayTestResults(subject)" class="result-main-percent result-full-height result-full-width result-no-padding result-vcenter">
+                          <div class="subject-header">{{subject.subName}}</div>
+                          <div class="result-main-circle result-percentages">{{subject.percentage}} %</div>
+                        </mat-card>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+             </div>
+           </div>
+           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 padding-zero">
+              <div class="question-analysis-header">
+                  Question Analysis
+               </div>
+           </div>
+         </div>
+    </mat-tab>
+    <mat-tab class="full-width" label="Topper Analysis"> 
+      <div class="row topper-analysis-container border">
+        <div class="col-12">santosh</div>
+      </div>
+     </mat-tab>
+  </mat-tab-group>
+</div>
+ -->
+ <div class="main-div">
+  <ball-loader *ngIf="isLoaded"></ball-loader>
+  <app-navbar class="someClass" [xsHideToggle]="hidetoggleButton"  #navbar  [isClassName]="false"></app-navbar>
+  <div class="body">
+    <!-- showcase start -->
+    <div fxLayout="column" class="student-content-container">
+      <div fxFlex="100" fxLayout="row">
+          <mat-card class="student-fixed-sidebar">
+            <div class="sidebar-content">
+                <div class="class-header">Analysis Type</div>
+                <div
+                  class="classes"
+                  (click)="clickOnClass(analysis)"
+                  *ngFor="let analysis of analysisType"
+                >
+                  <div class="class-profile-pic">
+                    <mat-icon>{{analysis.icon}}</mat-icon>
+                  </div>
+                  <div class="class-names">{{ analysis.type }}</div>
+                </div>
+                <div (click)="logOut()" class="logout" fxLayoutAlign="flex-end center" fxLayout="column">
+                    <div fxLayout="row"  fxFlexAlign=" center flex-end" class="class-names">
+                      logout <i class="material-icons">power_settings_new</i></div>
+                </div>
+              </div>
+          </mat-card>
+          <div  fxFlex="1 1 auto">
+            <div class="component-loader">
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+

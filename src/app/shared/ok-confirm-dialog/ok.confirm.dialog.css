@@ -1,0 +1,14 @@
+.ok-dialog{
+  height: 100%;
+  width: 100%;
+  margin:0px;
+  padding: 0px;
+}
+.message-body{
+  overflow: auto;
+  padding: 8px;
+  color: red;
+}
+*{
+  box-sizing: border-box;
+}

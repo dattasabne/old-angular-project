@@ -1,0 +1,45 @@
+.upload-main-div{
+    width: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding-bottom: 10px !important;
+}
+.upload-border{
+    box-sizing: border-box;
+}
+.upload-display-result-button{
+    text-transform: capitalize; 
+    font-size: 1em; 
+    background: skyblue;
+    color: white;
+    box-sizing: border-box;
+}
+
+.upload-line{
+    border-bottom: 1px solid lightgray;
+    box-sizing: border-box;
+}
+.upload-sidebar-container , .upload-sidebar-container2{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    padding-bottom: 10px !important;
+}
+.upload-sidebar-container2 {
+    border: 2px solid skyblue;
+}
+
+
+
+.upload-controls{
+    padding: 8px 3px;
+    box-sizing: border-box;
+}
+.upload-upload-file-label{
+    background: blue;
+    color: white;
+    padding: 8px;
+    box-sizing: border-box;
+}

@@ -1,0 +1,165 @@
+body ,html{
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.class-name{
+   font-size: 1.5em;
+   font-weight: bold;
+   letter-spacing: 1px;
+}
+.admin-panel-main {
+    height: 100%;
+    width: 100% !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    overflow: hidden;
+    background:#EAEAEA;
+    
+}
+.expansion-header {
+  background: #2d323e!important;
+  border-radius: 0mm;
+}
+.expansion-header:hover {
+  background: #039be5!important;
+}
+.mat-expansion-indicator {
+  color: white !important;
+}  
+.options:hover{
+  color: #2154e2;
+  cursor: pointer;
+}
+
+.options{
+ 
+  letter-spacing: 1px;
+}
+.options > *:nth-child(odd){
+  margin-right: 3px;
+}
+.options > *:nth-child(even){
+  margin-left: 3px;
+}
+.mat-expansion-indicator::after{
+  color: white !important;
+}
+.expansion-content {
+  cursor: pointer;
+  padding: 10px 10px;
+  border-bottom: 1px solid lightgray;
+  margin: 0px;
+ 
+}
+.expansion-content:hover{
+  background: skyblue;
+  color: white;
+  font-size: 16px;
+}
+.sidebar {
+  border-radius: 0px ; padding: 0px;
+  width: 300px;
+  overflow: hidden;
+  transition: 0.5s;
+  height: 100% !important;
+  background: #2d323e!important;
+}
+.menus:hover {
+    /* background:#039be5; */
+    color: white;
+    transition: 0.5s;
+}
+.mat-expansion-panel-body{
+  padding: 0px !important;
+}
+.expansion-panel {
+  width: 100% !important;
+  border-radius: 0px !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.menu-icon {
+height: 40px;
+width: 40px;
+padding-top: 15px;
+color: white;
+text-align: center;
+font-size: 1.2em;
+/* border: 1px solid lightgray; */
+border-radius: 50%;
+margin: 5px;
+} 
+.menu-names {
+font-size: 1.1em; 
+color: white;
+padding-left: 10px;
+text-transform: capitalize;
+}
+.sidebar-header {
+    height: 250px;
+    background: rgba(0,0,0,.87);
+}
+.menus {
+    display: flex;
+    align-items: center;
+}
+.menu-title {
+  display: flex;
+  color: white;
+  align-items: center;
+}
+.expansion-header:hover {
+  background: #039be5;
+}
+.admin-panel-content{
+  box-sizing: border-box;
+  overflow: auto;
+}
+.navbar {
+    /* background: rgb(219, 216, 216); */
+    background: #E5E5E5;
+   
+    width: 100%;
+    padding: 0px !important;
+}
+.openbtn {
+    font-size: 25px;
+    cursor: pointer;
+    color:black;
+    padding: 10px 15px;
+    border: none;
+  }
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 40px;
+    color: white;
+    text-decoration: none !important;
+  }
+  .closebtn:hover {
+    color: bisque;
+  }
+  .openbtn:hover {
+    background-color:rgb(177, 170, 170);
+  }
+  .profile-info {
+    padding: 10px !important;
+    margin-top: 45px !important;
+    width: 100% !important;
+  }
+  .profile-image {
+    border-radius: 50% !important;
+    box-sizing: border-box;
+  }
+  .prof-pic {
+    height: 95px !important;
+    margin: 3px !important;
+    box-sizing: border-box;
+    border-radius: 50% !important;
+    text-align: center;
+  }
+  .profile-name{
+    color: white;
+    font-size: 1.1em;
+  }

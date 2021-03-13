@@ -1,0 +1,66 @@
+<div class="root-div">
+<app-serach-assignment (close) = "searchAssignmentClose()" *ngIf="searchAssignmnetForm.isLoad" [allAssignmnetData]="searchAssignmnetForm.assignmnetData"></app-serach-assignment>
+<app-analysis-search   (close) = "searchAnalysisClose()"   *ngIf="searchAnalysisForm.isLoad"></app-analysis-search>
+<app-navbar [isHome] = "true"  [navType]="'dashboard'" [className]="instituteName" [logo]="logoImage" [homeName]="'Home'" [homeCallBack]="goToHome" [xsHideToggle]="true" (clickOnHomeButton)="close()"></app-navbar>
+  <mat-card fxLayout="row" fxLayoutAlign="center center" class="showcase">
+      <div class="banner-message">
+        <div class="message dash-message-big">{{ showcaseName }}</div>
+        <!-- <div class="message-small">{{ classSlogan }}</div> -->
+      </div>
+  </mat-card>
+  <ball-loader *ngIf="isLoaded"></ball-loader>
+  <div class="main-content">
+    <section class="dashboad">
+      <div class="dashboard-content">
+        <mat-card
+          (click)="clickOnMenu(studentMenu.SEARCH_EXAM)"
+          class="dashboard-menu"
+          >
+          <div>
+            <ul class="assignment-types">
+              <li>Assignments</li>
+              <ol>
+                 <li>Test</li>
+                 <li>Home Work</li>
+                 <li>Class Work</li>
+              </ol>
+            </ul>
+          </div>
+
+          <div *ngIf="testCounter!=0" class="dashboad-circle red-circle">{{ testCounter }}</div>
+        </mat-card>
+        <mat-card
+          (click)="clickOnMenu(studentMenu.ANALYSISANDREVIEW)"
+          class="dashboard-menu "
+        >
+        Analysis & Review
+          <!-- <div class="dashboad-circle red-circle">8</div> -->
+        </mat-card>
+        <!-- <mat-card class="dashboard-menu "
+          >tutorials / notes
+          <div class="dashboad-circle red-circle">8</div>
+        </mat-card> -->
+        <!-- <mat-card class="dashboard-menu "
+          >question papers
+          <div class="dashboad-circle red-circle">5</div>
+        </mat-card> -->
+        <!-- <mat-card class="dashboard-menu"
+          >lecturers videos
+          <div class="dashboad-circle red-circle">1</div>
+        </mat-card> -->
+        <!-- <mat-card class="dashboard-menu"
+          >news
+          <div class="dashboad-circle red-circle">20</div>
+        </mat-card> -->
+        <!-- <mat-card class="dashboard-menu"
+          >events
+          <div class="dashboad-circle red-circle">30</div>
+        </mat-card> -->
+        <!-- <mat-card class="dashboard-menu"> syllabus </mat-card>
+        <mat-card class="dashboard-menu">FAQ's & ask Questions</mat-card>
+        <mat-card class="dashboard-menu">help</mat-card> -->
+      </div>
+    </section>
+
+  </div>
+</div>

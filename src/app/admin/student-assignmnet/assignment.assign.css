@@ -1,0 +1,90 @@
+.assignment-root{
+  height: 100% !important;
+  width:100% !important;
+  margin:0px !important;
+  padding: 8px !important;
+  background: #778899;
+  position: absolute !important;
+  z-index: 99 !important;
+  overflow: auto !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+.action-card ,.branch-card{
+  height: 100% !important;
+  width: 100% !important;
+}
+.branch-card{
+  overflow: auto;
+}
+.head-card{
+  padding: 4px !important;
+  /* background: #00688B; */
+}
+.head-card > div{
+  background: #fff;
+}
+.description-box{
+  padding: 4px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid lightgray;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+.head-box{
+  padding: 4px;
+}
+.line{
+  border: 1px solid lightgray !important;
+  margin: 2px 0px;
+  width: 100%;
+}
+
+
+
+.common-less-bottom-margin{
+  margin-bottom: -20px !important;
+}
+
+.zero-marging-padding{
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.common-padding{
+  padding: 7px !important;
+}
+.branch-lable{
+  color: #fff;
+  background: #00688B;
+  font-size: 0.9em;
+
+}
+
+
+.branch-section{
+  overflow: auto;
+}
+.card-layout{
+  height: 100%;
+  width: 100%;
+  border: 1px solid lightgray;
+}
+.desktop-section{
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+.desktop-view{
+  padding: 7px 7px;
+}
+.mobile-view{
+  padding: 4px 4px;
+}
+.border{
+  border: 2px solid red !important;
+}
+*{
+  box-sizing: border-box !important;
+}

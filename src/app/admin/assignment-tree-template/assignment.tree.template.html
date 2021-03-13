@@ -1,0 +1,201 @@
+<div class="each-branch" *ngFor="let branch of allBranches">
+  <div fxLayoutGap = "4px" class="branch-head" fxLayoutAlign = "start center" fxLayout="row">
+    <div *ngIf="branch.children.length != 0" (click)="treeToggle(branch)" fxLayoutAlign = "start center" fxLayout="row">
+      <span  *ngIf = "branch.expand" class="material-icons">
+        keyboard_arrow_down
+      </span>
+      <span *ngIf = "!branch.expand" class="material-icons">
+        keyboard_arrow_right
+      </span>
+    </div>
+    <div *ngIf="branch.children.length == 0" style="padding: 12px;"></div>
+    <div fxLayoutAlign = "start center" fxLayout="row">
+      <mat-checkbox  [indeterminate] ="branch.partialSelect"  [checked]="branch.selected" style="margin-top:8px !important;" (change)="selectBranchCheckBox_Change(branch,$event)"></mat-checkbox>
+    </div>
+    <div class="branch-title" fxLayout="row" fxLayoutAlign="start center" (click)="clickOnBranch(branch)">{{branch.name}}</div>
+     <div *ngIf="branch.showChangeOption" fxLayoutAlign = "start center" fxLayout="row">
+      <mat-checkbox [checked] = "branch.doChange"  (change)="changesCheckBox_Change(branch,$event)" class="instruction">change schedule</mat-checkbox>
+    </div>
+
+    <!-- <mat-radio-group [(ngModel)]="branch.changeParentRadioValue" (change)="radioButtonChanges(branch,$event)" fxLayout="row" fxLayoutGap = "5px" aria-label="Select an option">
+      <mat-radio-button value="1">Change</mat-radio-button>
+      <mat-radio-button value="2">same as </mat-radio-button>
+    </mat-radio-group> -->
+    <!--<div fxLayoutAlign = "start center" fxLayout="row">
+      <mat-checkbox style="margin-top:8px !important;"  (change)="sameAsAboveCheckBoxChanges(branch,$event)">same as above</mat-checkbox>
+    </div> -->
+  </div>
+  <div>
+      <div *ngIf="branch.expandControls" fxLayout.gt-xs="row" fxLayout="column" class="common-padding  data-container">
+          <div fxLayout ="column" class="row-container" fxLayoutGap="4px"   fxFlex = "33" fxFlex.xs = "1 0 auto">
+              <fieldset class="fieldset-control">
+                  <legend>Course And Test Type</legend>
+                  <div fxLayout.gt-xs="row" fxLayout="column">
+                    <div fxFlex  class="common-padding">
+                      <mat-form-field class="full-width common-less-bottom-margin">
+                        <mat-label>course</mat-label>
+                        <mat-select [(ngModel)]="branch.course"  multiple>
+                          <mat-option  *ngFor="let course of branch.courses;let i = index" [value]="course">
+                            {{course}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div><mat-error class="error-message" *ngIf="!branch.controls.isValidCourse">{{branch.controls.errorCourse}}</mat-error></div>
+                    </div>
+                    <div fxFlex class="common-padding">
+                      <mat-form-field class="full-width common-less-bottom-margin">
+                        <mat-label>Test Type</mat-label>
+                        <mat-select (selectionChange)="testTypeSelect_Change($event)" [(ngModel)] = "branch.type">
+                          <mat-option *ngFor="let testType of dataservice.testType " [value]="testType">
+                            {{testType}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div><mat-error class="error-message" *ngIf="!branch.controls.isValidTestType">{{branch.controls.errorTestType}}</mat-error></div>
+                    </div>
+                  </div>
+              </fieldset>
+              <fieldset class="fieldset-control">
+                <legend>Test Nature</legend>
+                <div fxLayout.gt-xs="row" class="common-padding" fxLayout="column" >
+                    <div fxFlex fxLayout="row" fxLayoutAlign="start center" >
+                      <mat-checkbox [checked]="branch.isShuffle" (change)="shuffleCheckBoxChanges(branch,$event)">Shuffle</mat-checkbox>
+                    </div>
+                    <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+                      <mat-checkbox [checked]="branch.isReAttempt" (change)="reattempCheckBoxChanges(branch,$event)">Re-Attempt</mat-checkbox>
+                    </div>
+                </div>
+              </fieldset>
+
+          </div>
+          <div fxLayout ="column" fxLayoutGap="4px" class="row-container"  fxFlex = "33" fxFlex.xs = "1 0 auto">
+            <fieldset class="fieldset-control">
+              <legend>Test Date And Time</legend>
+              <div fxLayout.gt-xs="row" fxLayout="column">
+                <div  fxFlex.gt-xs="50" class="common-padding">
+                    <div fxLayout="column">
+                      <div fxLayout="row" fxFlex fxLayoutAlign="start center" >
+                        <mat-form-field  class="common-less-bottom-margin date-picker-input">
+                          <input (dateChange)="commonChangeDataChangeFunction(branch)" [readOnly]="true"  matInput [(ngModel)]="branch.assignmentDate" [matDatepicker]="myDatepicker">
+                          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                          <mat-datepicker #myDatepicker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                      <div><mat-error class="error-message" *ngIf="!branch.controls.isValidTestDate">{{branch.controls.errorTestDate}}</mat-error></div>
+                    </div>
+                  </div>
+                  <div fxFlex="50" class="common-padding">
+                    <div fxLayout="column">
+                      <mat-form-field class="full-width common-less-bottom-margin" >
+                        <mat-label>Time 24 Hr Format</mat-label>
+                        <input (blur)="lostFocusAssignmentTime(branch)" (keypress)="branch.assignmentTime = onlyNumber_KeyPressEventHandler(branch.assignmentTime, $event)" matInput [(ngModel)] = "branch.assignmentTime">
+                      </mat-form-field>
+                    </div>
+                    <div><mat-error class="error-message" *ngIf="!branch.controls.isValidTestTime">{{branch.controls.errorTestTime}}</mat-error></div>
+                  </div>
+              </div>
+            </fieldset>
+            <fieldset class="fieldset-control">
+              <legend>Test Auto Submit</legend>
+              <div fxLayout.gt-xs="row" fxLayout="column">
+                <div fxFlex="30" class="common-padding">
+                  <mat-form-field class="full-width common-less-bottom-margin" >
+                      <mat-select (selectionChange)="testAutoSubmitDurationSelect_Change(branch,$event)" [(ngModel)]="branch.autoSubmitTestDuration">
+                        <mat-option *ngFor="let autosubmit of dataservice.autoSubmitOption" [value]="autosubmit">{{autosubmit}}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                <div  fxFlex.gt-xs="40" class="common-padding">
+                    <div fxLayout="column" fxFlex fxLayoutAlign="start center" >
+                      <mat-form-field  class="common-less-bottom-margin" style="width: 78% !important;">
+                        <input [(ngModel)]="branch.autoSubmitTestDate" matInput [matDatepicker]="datepicker4">
+                        <mat-datepicker-toggle matSuffix [for]="datepicker4"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker4></mat-datepicker>
+                      </mat-form-field>
+                      <div><mat-error class="error-message" *ngIf="!branch.controls.isValidTestAutoSubmitDate">{{branch.controls.errorTestAutoSubmitDate}}</mat-error></div>
+                    </div>
+                  </div>
+                  <div fxFlex="30" class="common-padding">
+                    <div fxLayout="column">
+                      <mat-form-field class="full-width common-less-bottom-margin" >
+                        <mat-label>Time 24 Hr Format</mat-label>
+                        <input [readOnly]="branch.controls.isReadOnlyAutoSubmitTime" (blur)="lostFocusAutoSubmitTime(branch)" (keypress)="branch.autoSubmitTestTime =  onlyNumber_KeyPressEventHandler(branch.autoSubmitTestTime, $event)" matInput [(ngModel)]="branch.autoSubmitTestTime">
+                      </mat-form-field>
+                    </div>
+                    <div><mat-error class="error-message" *ngIf="!branch.controls.isValidTestAutoSubmitTime">{{branch.controls.errorTestAutoSubmitTime}}</mat-error></div>
+                  </div>
+              </div>
+            </fieldset>
+        </div>
+        <div fxLayout ="column" fxLayoutGap="4px" class="row-container"  fxFlex = "33" fxFlex.xs = "1 0 auto">
+          <fieldset class="fieldset-control">
+            <legend>Available Till</legend>
+            <div fxLayout.gt-xs="row" fxLayout="column">
+              <div fxFlex="30" class="common-padding">
+                <mat-form-field class="full-width common-less-bottom-margin" >
+                    <mat-select (selectionChange)=" testAvailableTillDurationSelect_Change(branch ,$event)" [(ngModel)]="branch.availabaleTillDuration">
+                      <mat-option *ngFor="let availableTill of dataservice.testAvailableTill" [value]="availableTill">{{availableTill}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </div>
+              <div  fxFlex.gt-xs="40" class="common-padding">
+
+                  <div fxLayout="column" fxFlex fxLayoutAlign="start center" >
+                    <mat-form-field  class="common-less-bottom-margin" style="width: 78%;">
+                      <input  [(ngModel)]="branch.availableTillDate" matInput [matDatepicker]="datepicker3">
+                      <mat-datepicker-toggle matSuffix [for]="datepicker3"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker3></mat-datepicker>
+                    </mat-form-field>
+                    <div><mat-error class="error-message" *ngIf="!branch.controls.isValidAvailableTillDate">{{branch.controls.errorAvailableTillDate}}</mat-error></div>
+                  </div>
+                </div>
+                <div fxFlex="30" class="common-padding">
+                  <div fxLayout="column">
+                    <mat-form-field class="full-width common-less-bottom-margin" >
+                      <mat-label>Time 24 Hr Format</mat-label>
+                      <input [readOnly]="branch.controls.isReadOnlyAvailableStillTime" (blur)="lostFocusAvailableTillTime(branch)" (keypress)="branch.availableTillTime =  onlyNumber_KeyPressEventHandler(branch.availableTillTime, $event)" matInput [(ngModel)]="branch.availableTillTime">
+                    </mat-form-field>
+                    <div><mat-error class="error-message" *ngIf="!branch.controls.isValidAvailableTillTime">{{branch.controls.errorAvailableTillTime}}</mat-error></div>
+                  </div>
+                </div>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset-control">
+            <legend>Solution Release Date And Time</legend>
+            <div fxLayout.gt-xs="row" fxLayout="column">
+              <div fxFlex="30" class="common-padding">
+                <mat-form-field class="full-width common-less-bottom-margin" >
+                      <mat-select (selectionChange)="testSolutionReleaseDurationSelect_Change(branch, $event)" [(ngModel)]="branch.solutionReleaseDuration">
+                      <mat-option *ngFor="let release of dataservice.testReleaseDate" [value]="release">{{release}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </div>
+              <div  fxFlex.gt-xs="40" class="common-padding">
+                  <div fxLayout="column" fxFlex fxLayoutAlign="start center" >
+                    <mat-form-field  class="common-less-bottom-margin" style="width: 78% !important;">
+                      <input  [(ngModel)]="branch.solutionReleaseDate" matInput [matDatepicker]="datepicker2">
+                      <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker2></mat-datepicker>
+                    </mat-form-field>
+                    <div><mat-error class="error-message" *ngIf="!branch.controls.isValidSolutionReleaseDate">{{branch.controls.errorSolutionReleaseDate}}</mat-error></div>
+                  </div>
+                </div>
+                <div fxFlex="30" class="common-padding">
+                  <div fxLayout="column">
+                    <mat-form-field class="full-width common-less-bottom-margin" >
+                      <mat-label>Time 24 Hr Format</mat-label>
+                      <input [readOnly]="branch.controls.isReadOnlySolutionReleaseTime" (blur)="lostFocusSolutionReleaseTime(branch)" (keypress)="branch.solutionReleaseTime = onlyNumber_KeyPressEventHandler(branch.solutionReleaseTime, $event)" matInput [(ngModel)]="branch.solutionReleaseTime">
+                    </mat-form-field>
+                    <div><mat-error class="error-message" *ngIf="!branch.controls.isValidSolutionReleaseTime">{{branch.controls.errorSolutionReleaseTime}}</mat-error></div>
+                  </div>
+                </div>
+            </div>
+          </fieldset>
+         </div>
+      </div>
+      <!-- <div *ngIf="branch.doChange" class="line"></div> -->
+      <div *ngIf = "(branch.expand)"  class="sub-branch-body" fxLayout = "column" [ngClass]="branch.expand?'active-branch':'inactive-branch'"    class="children-container common-padding">
+        <assignment-tree-template [childern] = "branch.children"></assignment-tree-template>
+      </div>
+  </div>
+</div>

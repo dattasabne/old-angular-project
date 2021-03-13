@@ -1,0 +1,151 @@
+.cust-container{
+    width:100%;
+    height: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: lightslategray;
+    padding: 0px !important;
+    border-radius: 0px !important;
+    margin-bottom: 8px;
+
+}
+.toggle-bar{
+    display: none !important;
+}
+.left-option,.right-option{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+.right-option .option-row{
+    width: 100%;
+    flex-direction: row-reverse;
+}
+.option-row{
+    display: flex;
+    flex-basis: 100%;
+}
+.option-row{
+    display: flex;
+}
+.right-option .option{
+    border-left: 1px solid gray;
+}
+.left-option .option{
+    border-right: 1px solid gray;
+
+}
+.logo {
+    height: 55px;
+    width: 100%;
+    border: 1px solid black;
+}
+.exam-branding{
+    padding: 0px;
+    background: #fff;
+    border: 2px solid white;
+    padding: 2px;
+    flex-basis: 168px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: capitalize;
+}
+.option , .class-name{
+    flex-basis: 150px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: capitalize;
+}
+.class-name{
+    flex: 1;
+}
+.option:hover , .class-name:hover{
+    background-color: burlywood;
+}
+
+@media only screen and (max-width:900px){
+    /* .hide-small{
+        display: none;
+    } */
+    .toogle-option{
+        flex-basis: 50px;
+        padding: 5px;
+    }
+    .left-option{
+        flex: 0;
+    }
+}
+
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+    .toggle-bar{
+        display: flex !important;
+    }
+  }
+
+
+
+  /*
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    .toggle-bar{
+        display: flex !important;
+    }
+  }
+  /*
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+
+
+  }
+  /*
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+   }
+   /*
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+  }
+  /*
+    ##Device = Desktops
+    ##Screen = 1281px to higher resolution desktops
+  */
+
+  @media (min-width: 1281px) {
+  }

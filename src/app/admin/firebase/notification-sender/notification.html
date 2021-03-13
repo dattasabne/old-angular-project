@@ -1,0 +1,45 @@
+<div class="main-container">
+  <app-loader *ngIf="httpLoader"></app-loader>
+  <div class="row">
+    <div
+      class="padding-l-r-5px  heading-container col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+    >
+      <div class="heading">Choose Template</div>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="padding-l-r-5px  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+    >
+      <mat-form-field>
+        <mat-label>select sms templates</mat-label>
+        <mat-select [formControl]="templateNameControl">
+          <mat-option *ngFor="let template of allTemplate" [value]="template">
+            {{ template.templateName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="padding-l-r-5px col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"
+    >
+      <textarea readonly="true" class="preview-text">{{
+        previewText
+      }}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="padding-l-r-5px col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <button class="send-button" mat-raised-button (click)="send()">
+        send
+      </button>
+    </div>
+    <div class="padding-l-r-5px col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <button class="cancel-button" mat-raised-button (click)="cancel()">
+        cancel
+      </button>
+    </div>
+  </div>
+</div>

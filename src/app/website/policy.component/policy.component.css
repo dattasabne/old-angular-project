@@ -1,0 +1,76 @@
+.root-policy{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    /* background: #BCD2EE; */
+    background: lightgray;
+    position: relative;
+}
+.policy-banner{
+    position: relative;
+    height: 20%;
+    width: 100%;
+    background: #292929;
+}
+.policy-content{
+    width: 60%;
+    position: absolute !important;
+    z-index: 99;
+    top: 5%;
+    left: calc(100% - 80%);
+    padding: 8px !important;
+}
+.plicy-logo-banner{
+    width: 100%;
+    background: #5D478B;
+    color: white;
+   
+}
+.privacy-policy{
+    height: 40%;
+    text-transform: capitalize;
+    font-size: 1.6em;
+}
+.line{
+    border-bottom: 1px solid white;
+}
+li{
+    list-style: square;
+    margin-top: 5px;
+    /* border-bottom: 1px solid gray; */
+}
+ul {
+    margin-left: 30px;
+}
+fieldset{
+    border: 2px solid #27408B;
+    padding: 7px;
+    margin-top: 8px;
+}
+legend{
+    font-size: 1em;
+    padding: 3px 8px;
+    width: auto;
+    margin-left: 7px;
+    background: #27408B;
+    color: white;
+    font-weight: normal !important;
+}
+.privacy-policy{
+    background: #27408B !important;
+}
+@media only screen and (max-width:900px){
+    .policy-content{
+        width: 100%;
+        left: 0 !important;
+    }
+    .plicy-logo-banner{
+        height: auto !important;
+    }
+}
+
+
+*{
+    box-sizing: border-box;
+}
+

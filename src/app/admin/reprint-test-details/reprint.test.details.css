@@ -1,0 +1,228 @@
+.reprint-main-div{
+    height: 100%;
+    width:100%;
+    box-sizing: border-box;
+    position: relative;
+}
+.file-not-exist-message{
+    font-size: 0.7em !important;
+    color: red;
+}
+.file-exist-message{
+    font-size: 0.7em !important;
+    color: green
+}
+
+.word-icon{
+    background: url(./../../../assets/icon/word.svg);
+    margin-top: 5px;
+    margin-left: 8px;
+}
+.pdf-icon{
+    background: url(./../../../assets/icon/pdf.png);
+}
+.file-icon , .pdf-icon , .word-icon{
+    min-width:40px !important;
+    min-height:40px !important;
+   
+    
+}
+.side-tag{
+    background: #4682B4;
+    height: 100%;
+   
+}
+.circle{
+    /* height: 120px;
+    width:120px;
+    border-radius: 50%;
+    background: #483D8B;
+    color: #fff; */
+     height: 100px;
+    width:200px;
+    padding: 0px !important;
+    background: tomato;
+    color: #fff;
+    
+}
+.no-round{
+    border-radius: 0px !important;
+}
+.solution-paper{
+    overflow:  auto !important;
+    margin:4px 0px;
+}
+.label{
+    /* background: #6495ED; */
+    background:#4682B4;
+    color: white;
+    font-size: 1.2em;
+    height: 30px;
+    margin: 4px 0px;
+}
+.small-message{
+    font-size: 0.7em;
+}
+
+
+.line{
+    border-bottom: 1px solid #EDEDED  ;
+    width: 100% !important;
+}
+.body{
+    position: relative;
+}
+.body table {
+    width: 100%;
+}
+
+.body table th ,.body table td  {
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: capitalize;
+}
+.set-column{
+    width:70px !important;
+}
+.capitalize{
+    text-transform: capitalize !important;
+}
+.body table th , .solution-paper table th{
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+.printing-questionpaper .body{
+    overflow: auto;
+}
+.solution-paper tr:hover td{
+    background: #4682B4;
+    color: #fff !important;
+    cursor: pointer;
+}
+.close {
+    position: absolute;
+    top: 2px !important;
+    right: 2px !important;
+    height: 25px;  
+    width: 25px;
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 99;
+    background: black;
+}
+.close-button{
+   font-size: 18px;
+   color: white;
+   font-weight: bold;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close:hover {
+    color: rgb(26, 29, 219);
+}
+
+@media only screen and (min-width:551px) and (max-width:750px){
+    .circle{
+        height:70px ;
+        width:70px;
+        font-size: 0.6em;
+    }
+    .label{
+        font-size: 0.8em;
+    }
+}
+.reprint-button , .create{
+    line-height: 20px;
+    font-size: 0.8em;
+    color: white;
+    width: 100px;
+}
+.reprint-button{
+    background: green;
+    
+}
+.create{
+    background: tomato;
+}
+.body table tr:hover td {
+    background: #4682B4;
+    color: white !important;
+    cursor: pointer;
+}
+.body table tr:hover td .file-message{
+    color:  white !important;
+}
+.assignment-info{
+    position: relative;
+}
+
+
+.solution-paper table{
+    width:100%;
+}
+@media only screen and (min-width:751px) and (max-width:1700px){
+    .circle{
+        height:90px ;
+        width:90px;
+        font-size: 0.8em;
+    }
+    .label{
+        font-size: 0.8em;
+    }
+}
+
+
+@media only screen and (max-width:550px){
+    .label{
+        font-size: 0.8em;
+    }
+    .circle{
+        height:50px ;
+        width:50px;
+        font-size: 0.5em;
+    }
+    .reprint-main-div{
+        padding: 2px;
+    }
+}
+/* ----------- Non-Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    .label{
+        font-size: 0.9em;
+    }
+    .circle{
+        height:100px ;
+        width:100px;
+        font-size: 0.8em;
+    }
+    .reprint-main-div{
+        padding: 2px;
+    }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+    .label{
+        font-size: 0.9em;
+    }
+    .circle{
+        height:100px ;
+        width:100px;
+        font-size: 0.8em;
+    }
+    .reprint-main-div{
+        padding: 2px;
+    }
+}

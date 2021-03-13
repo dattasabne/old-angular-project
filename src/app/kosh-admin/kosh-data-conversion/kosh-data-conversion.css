@@ -1,0 +1,25 @@
+.conversion-section{
+  padding:8px;
+}
+.conversion-body{
+  height:calc(100% - 50px);
+
+}
+.border{
+  border: 2px solid red !important;
+}
+.conversion-header{
+  height:50px;
+  background:skyblue;
+}
+.conversion-common-padding{
+  padding:8px;
+}
+.conversion-common-control-height{
+  height: 50px !important;
+}
+.conversion-select-file{
+  display:inline-block;
+  cursor:pointer
+}
+

@@ -1,0 +1,359 @@
+.search-assi-main-content-div ,.search-assi-date-search-button , .search-assi-chapterwise-search-button{
+  text-transform: capitalize !important;
+}
+.search-assi-no-margin {
+  margin: 0px !important;
+}
+.search-assi-no-padding {
+  padding: 0px !important;
+}
+.search-assi-main-div{
+  overflow: hidden;
+  position: absolute;
+  z-index: 99 !important;
+  top:0 !important;
+  left: 0 !important;
+  height: 100%;
+  width: 100%;
+  background: #e7e4e4 !important;
+}
+.search-assi-search-section {
+ padding: 5px 7px !important;
+}
+
+.search-assi-search-heading {
+  background: #104e8b !important;
+  color: white;
+}
+
+.search-assi-start-test .search-assi-id {
+  font-size: 0.8em;
+}
+.search-assi-test-panel {
+  overflow: auto;
+  height: 100%;
+}
+.search-assi-start-test > div {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px;
+}
+.search-assi-filter-label {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-assi-filter {
+  flex-basis: 50%;
+}
+.search-assi-line{
+  border-bottom: 1px solid white;
+  width: 100%;
+}
+.search-assi-filter-background {
+  background: linear-gradient(to left, black, skyblue);
+}
+.search-assi-search-label {
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: capitalize;
+}
+.search-assi-start-exam-button{
+  width: 100%;
+  background: #009ACD;
+  line-height: 25px;
+  margin: 3px 0px;
+  box-sizing: border-box;
+  color: white;
+  text-transform: capitalize;
+
+}
+.search-assi-result-panel {
+  padding: 5px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto !important;
+}
+
+.search-assi-chapterwise-search-assignment-button{
+  background: skyblue;
+  width: 100%;
+  color: #ffffff;
+  text-transform: capitalize;
+  font-size: 0.9em;
+}
+.search-assi-date-search-button{
+  background: skyblue;
+  width: 100%;
+}
+.search-assi-search-button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+
+}
+.search-assi-justify-left{
+  justify-self: left;
+}
+.search-assi-chapterwise-search-button{
+  background: skyblue;
+  width: 50%;
+}
+.search-assi-serach-result {
+  height: auto;
+  width: 180px;
+  border: 1px solid lightgray;
+  position: relative;
+  transition: 0.4s;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 5px 10px 3px;
+  padding: 0px !important;
+  overflow: auto;
+}
+.search-assi-serach-result .search-assi-header {
+  flex-basis: 25%;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+
+  background: #104e8b;
+  color: white;
+  padding: 10px;
+  text-transform: capitalize;
+}
+.search-assi-serach-result .search-assi-header > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.search-assi-serach-result .search-assi-header > div:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+.search-assi-serach-result .search-assi-body {
+  flex-basis: 55%;
+}
+.search-assi-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-assi-serach-result .search-assi-footer {
+  flex-basis: 20%;
+  border-top: 1px solid lightgray;
+
+  color: blue;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+.search-assi-serach-result:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+.search-assi-serach-result:hover .search-assi-header {
+  background: red;
+}
+
+.search-assi-test-data {
+  position: absolute;
+}
+.search-assi-test-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search-assi-test-details .search-assi-subject {
+  text-transform: uppercase;
+}
+.search-assi-gap {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+.search-assi-search-panel {
+  flex: 2;
+  padding: 0px !important;
+}
+
+.search-assi-border {
+  border: 2px solid red;
+}
+
+.search-assi-divider {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid gray;
+}
+.search-assi-marks,
+.search-assi-time {
+  display: flex;
+  align-items: flex-start !important;
+  flex-direction: column;
+}
+.search-assi-start-time{
+  align-self: flex-end;
+}
+.search-assi-duration {
+  border: 1px solid lightgray;
+  height: 35px;
+  width: 35px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  font-size: 0.7em;
+}
+.search-assi-start-exam {
+  bottom: 0;
+  left: 0;
+  background: black;
+  color: white;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  padding: 0px;
+  margin: 0px;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+.search-assi-full-height,
+.search-assi-full-both {
+  height: 100%;
+}
+.search-assi-full-width,
+.search-assi-full-both {
+  width: 100%;
+}
+[class*="row"] {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.search-assi-border {
+  border: 2px solid red !important;
+}
+.search-assi-no-padding {
+  padding: 0px !important;
+}
+.search-assi-each-controls {
+  padding: 0px 4px !important;
+}
+.search-assi-input-height{
+  height: 50px !important;
+}
+.search-assi-time {
+  font-size: 0.7em;
+}
+.search-assi-testType {
+  font-size: 0.8em;
+}
+.search-assi-test-id {
+  color: red;
+}
+.search-assi-analysis-section {
+  height: 50px;
+  background: rgb(39, 122, 231);
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .search-assi-result-panel {
+    padding: 5px 0px;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-assi-date-search-button{
+    width: 100%;
+  }
+  .search-assi-chapterwise-search-button{
+    width: 100%;
+  }
+  .search-assi-serach-result{
+    width: 145px;
+  }
+
+
+}
+
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .search-assi-result-panel {
+    padding: 5px 0px;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-assi-date-search-button{
+    width: 100%;
+  }
+  .search-assi-chapterwise-search-button{
+    width: 100%;
+  }
+  .search-assi-serach-result{
+    width: 149px;
+  }
+
+}
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+
+
+}
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+ }
+ /*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+}
+
+
+
+
+

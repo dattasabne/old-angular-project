@@ -1,0 +1,170 @@
+
+<div class="main-div position-relative">
+   <navbar-menu></navbar-menu>
+  <app-loader *ngIf="isLoaded"></app-loader>
+    <fieldset class="panel">
+      <legend>Analysis Report</legend>
+      <div class=" row serach-panel">
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+          <mat-card>
+            <app-loader *ngIf="httpLoader"></app-loader>
+            <fieldset class="option-wraper background-white border-blue">
+              <legend>search criteria</legend>
+              <div class="menu-option">
+                  <mat-form-field class="select-option">
+                      <mat-select [formControl]="uniqueClassControl"  placeholder="Class Names">
+                        <mat-option [value]="'ALL'">{{'ALL'}}</mat-option>
+                        <mat-option
+                          *ngFor="let $class of allUniqueClasses;let i = index"
+                          [value]="$class"
+                        >
+                          {{(i+1)+'] '+ getNotNullClasess($class)}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                <mat-form-field class="select-option">
+                  <mat-select [formControl]="batchControl"  placeholder="Batch">
+                    <mat-option [value]="'ALL'">{{'ALL'}}</mat-option>
+                    <mat-option
+                      *ngFor="let batch of allBatches"
+                      [value]="batch"
+                    >
+                      {{ batch.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="menu-option">
+                <mat-form-field class="select-option">
+                  <mat-select [formControl]="courseControl" placeholder="Course">
+                    <mat-option [value]="'ALL'">{{'ALL'}}</mat-option>
+                    <mat-option
+                      *ngFor="let course of allCourses"
+                      [value]="course"
+                    >
+                      {{ course.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="menu-option">
+                <mat-form-field class="select-option">
+                  <mat-select [formControl]="branchControl" placeholder="Branch">
+                    <mat-option [value]="'ALL'">{{'ALL'}}</mat-option>
+                    <mat-option
+                      *ngFor="let branch of allBranches"
+                      [value]="branch"
+                    >
+                      {{ branch.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="menu-option">
+                <mat-form-field class="select-option">
+                  <mat-select [formControl]="divisionControl" placeholder="Division">
+                    <mat-option [value]="'ALL'">{{'ALL'}}</mat-option>
+                    <mat-option
+                      *ngFor="let division of divisions"
+                      [value]="division"
+                    >
+                      {{ division.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="menu-option">
+                <mat-form-field class="select-option">
+                  <mat-select [formControl]="subDivisionControl" placeholder="Sub Division">
+                    <mat-option [value]="'ALL'">{{'ALL'}}</mat-option>
+                    <mat-option
+                      *ngFor="let sdivision of subDivisions"
+                      [value]="sdivision"
+                    >
+                      {{ sdivision.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            <!-- <div>
+              <button (click)="searchStudentName()" class="background-skyblue color-white resposive-full-width full-width"  mat-raised-button mat-button>Search</button>
+            </div> -->
+            </fieldset>
+          </mat-card>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10" >
+          <mat-card class="date-criteria position-relative">
+            <!-- <app-loader *ngIf="isNameLoaded"></app-loader> -->
+            <fieldset class="border-blue" >
+              <legend>date criteria</legend>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                  <mat-form-field class="full-width">
+                    <input [formControl]="fromDateControl" matInput [matDatepicker]="fromDate" placeholder=" From Date">
+                    <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                    <mat-datepicker #fromDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                  <mat-form-field class="full-width">
+                    <input [formControl]="toDateControl" matInput [matDatepicker]="toDate" placeholder="To Date">
+                    <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                    <mat-datepicker #toDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+              <div class="remove-paddin-responsive col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 paddin-l-r-10px">
+                <button (click)="search()" class="background-skyblue color-white full-width"  mat-raised-button mat-button>Search</button>
+              </div>
+              </div>
+            </fieldset>
+          </mat-card>
+          <mat-divider></mat-divider>
+
+         <!-- <div class="option-wraper position-relative ">
+              <div class="row">
+                <div class="col-12">
+                  <mat-card>
+                    <div class="display-staudent-area border-blue padding-all-7px margin-top-7px">
+                        <table class="table table-sm report-table individual-table">
+                          <tbody>
+                            <tr>
+                                <td>{{tableHeader.studentName}}</td>
+                                <td>{{tableHeader.username}}</td>
+                                <td>{{tableHeader.password}}</td>
+                                <td>{{tableHeader.mobileNo}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{studentInfoData.studentName}}</td>
+                                <td>{{studentInfoData.userName}}</td>
+                                <td>{{studentInfoData.password}}</td>
+                                <td>{{studentInfoData.mobileNo}}</td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                    </div>
+                  </mat-card>
+                </div>
+              </div>
+          </div> -->
+           <!-- sms sender pallete -->
+          <!-- <sms-component [data]="allRecords" [header]="tableHeader" [studentData]="studentInfoData" *ngIf="allRecords.length > 0" ></sms-component> -->
+          <div class="option-wraper position-relative ">
+            <app-loader *ngIf="isRecordLoaded"></app-loader>
+            <div class="row">
+              <div class="col-12">
+                <mat-card>
+                    <!-- <div class="display-staudent-area border-blue padding-all-7px margin-top-7px">
+
+                    </div> -->
+                    <app-fixed-table></app-fixed-table>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>

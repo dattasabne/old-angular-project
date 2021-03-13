@@ -1,0 +1,56 @@
+<div class="admin-panel-main">
+    <mat-card class="navbar" fxLayout="row">
+      <div   fxFlex="50px"><button class="openbtn" (click)="openNav()"> ☰ </button> </div>
+      <div fxHide.xs class="class-name" fxFlex  fxLayout="row" fxLayoutAlign="center center">{{className}}</div>
+      <div fxLayout="row" fxLayoutAlign="end center" fxFlex="0 1 auto">
+          <div fxLayout="row" class="options" fxLayoutAlign="start center" fxFlex.gt-xs="150px" fxFlex>
+              <mat-icon>account_circle</mat-icon>
+              <div>Profile</div>
+          </div>
+          <div class="options" fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-xs="150px" fxFlex>
+              <mat-icon>mail</mat-icon>
+              <div>Messages</div>
+          </div>
+          <div class="options" fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-xs="150px" fxFlex>
+              <mat-icon>power_settings_new</mat-icon>
+              <div>Logout</div>
+          </div>
+          
+      </div>
+    </mat-card>
+  
+    <div class="sidebar">
+      <!-- <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a> -->
+      <div class="sidebar-header">
+          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+        <div fxFlex fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="start center" class="profile-info">
+          <div fxFlex="100px" class="profile-image">
+            <img class="prof-pic" src="assets/bg2.jpg" alt="">
+          </div>
+          <div fxFlex="50px" class="profile-name">
+            Kosh Edutech Pvt.Ltd.
+          </div>
+        </div>
+      </div>
+      <div
+        class="menus"
+        *ngFor="let menu of menus"
+      >
+        <mat-expansion-panel class="expansion-panel">
+          <mat-expansion-panel-header class="expansion-header">
+            <mat-panel-title class="menu-title">
+            <div class="menu-icon">
+              <mat-icon>{{menu.icon}}</mat-icon>
+            </div>
+            <div class="menu-names">{{menu.heading}}</div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div (click)="loadComponent(subMenu.component)" class="expansion-content" *ngFor="let subMenu of menu.subMenu">{{ subMenu.name }}</div>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class="admin-panel-content">
+        <div #templates></div>
+    </div>
+  </div>
+  

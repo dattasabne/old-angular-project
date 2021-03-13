@@ -1,0 +1,138 @@
+.main-div {
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.toggle-button {
+  display: none;
+}
+
+.logo-div {
+  background-color: skyblue;
+}
+.header {
+  height: 50px;
+  background: skyblue;
+  display: flex;
+  align-items: center;
+}
+.online-list > mat-list-item:hover {
+  background: skyblue;
+}
+.online-list > mat-list-item {
+  cursor: pointer;
+  text-transform: capitalize;
+  margin-bottom: 5px !important;
+  margin-top: 5px !important;
+}
+.padding-l-r-none {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.active-panel {
+  width: 100% !important;
+}
+.deactive-panel {
+  width: 0px;
+  /* top:30px; */
+  left: 0px;
+}
+.online-toggle {
+  display: none;
+}
+.online-list .photo {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  border: 2px solid white;
+  margin: 5px;
+}
+.online-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+}
+.online {
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  background: #66cd00;
+  border: 1px solid green;
+}
+.green-point {
+  position: absolute !important;
+  right: 0;
+}
+.online-card {
+  background: #4682b4;
+}
+.online-card {
+  max-height: 500px !important;
+  overflow: auto;
+}
+.test-info {
+  display: block;
+  margin: 10px;
+  font-size: 15px;
+}
+.button-toggle {
+  cursor: pointer !important;
+}
+.student-profile {
+  max-height: 200px;
+  width: 100%;
+  overflow: auto;
+  background-color: aquamarine;
+}
+.inline {
+  display: inline-block;
+}
+.logo {
+  align-self: flex-start;
+  height: 100%;
+  width: 150px;
+}
+.logo-height {
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .logo {
+    align-self: flex-end;
+  }
+  .sidebar-panel {
+    position: absolute;
+    width: 0px;
+    left: 0;
+    top: 50px;
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 99;
+  }
+  .button-toggle {
+    cursor: pointer !important;
+  }
+  .online-toggle {
+    display: inline-block;
+  }
+  .toggle-button {
+    display: block;
+    height: 3px;
+    margin: 5px;
+    width: 25px;
+    background: white;
+  }
+  .logo-div {
+    position: absolute;
+    top: -5px;
+  }
+}

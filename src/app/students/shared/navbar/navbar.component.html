@@ -1,0 +1,197 @@
+<mat-card fxHide.xs="true" fxHide.sm="true" *ngIf="navBarType == 'main-page'" fxLayout="row" class="new-navbar">
+  <div  fxFlex.xs="148px"   fxFlex="168px" class="branding-log-container">
+      <img class="branding-logo" [src]="kosBrandingLogo" alt="">
+  </div>
+  <div [hidden]="hideToggle" (click)="clickOnToggleButton($event)" fxFlexOrder.xs="1" fxFlexOrder.sm="1" fxFlex="60px" fxLayout="row" fxLayoutAlign="center center"  class="new-option toggle-whole">
+      <!-- <div class="toggle">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div> -->
+      <span class="material-icons pallete-icon">view_comfy</span>
+  </div>
+  <div fxLayout="row" fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">account_balance</i>
+      <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{className}}</span>
+    </div>
+  </div>
+  <div  fxLayout="row"   fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">perm_identity</i>
+      <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{studentName}}</span>
+    </div>
+  </div>
+  <div *ngIf="isDisplayClassName" fxFlex="1 1 auto "   fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option no-hover">
+      <div fxFlex fxLayout="row" fxLayoutAlign="center center" >
+          <i fxFlex fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center flex-end" class="material-icons">account_balance</i>
+          <span fxFlexOffset="15px"    fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center flex-start " fxFlex>{{className}}</span>
+      </div>
+  </div>
+  <div  fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end  center " fxFlex.xs="1 1 20" fxFlex.sm="1 1 20"  class="new-option2">
+      <div class="new-logout" fxFlex="150px" (click)="logOut()" fxLayout="row" fxLayoutAlign="flex-end center " >
+          <span     fxFlex.xs="70" fxLayout="row" fxLayoutAlign="center flex-start " fxFlex>Logout</span>
+          <i fxFlex fxFlex.xs="30" fxLayout="row" fxLayoutAlign="center flex-end" class="material-icons">power_settings_new</i>
+      </div>
+  </div>
+</mat-card>
+
+ <mat-card fxHide.gt-xs *ngIf="navBarType == 'main-page'" fxLayout="row" class="new-navbar">
+    <div  fxFlex.xs="148px"  fxFlex="168px"  class="branding-log-container">
+        <img class="branding-logo" [src]="kosBrandingLogo" alt="">
+    </div>
+    <!-- <div fxLayout="row"  fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+      <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+        <i  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">account_balance</i>
+        <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{className}}</span>
+      </div>
+    </div> -->
+    <div  fxLayout="row"  fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+      <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+        <i  fxLayout="column" fxLayoutAlign="center center"  class="material-icons">perm_identity</i>
+        <span fxLayout="column" fxLayoutAlign="center center">{{studentName}}</span>
+      </div>
+    </div>
+    <div  fxFlex  fxLayout="row" fxLayoutAlign="flex-end  center "   class="new-option2">
+      <div class="new-logout" fxFlex="1 auto" (click)="logOut()" fxLayout="row" fxLayoutAlign="flex-end center " >
+          <!-- <span  fxLayout="row" fxLayoutAlign="center flex-start " >Logout</span> -->
+          <i     fxLayout="row" fxLayoutAlign="center flex-end" class="material-icons">power_settings_new</i>
+      </div>
+  </div>
+</mat-card>
+
+<mat-card fxHide.sm="true" fxHide.xs = "true" *ngIf="navBarType == 'dashboard'" fxLayout="row" class="new-navbar">
+  <div fxFlexOrder.xs="2" fxFlexOrder.sm="2" fxFlex.xs="148px"  fxFlex="168px" class="branding-log-container">
+      <img class="branding-logo" [src]="kosBrandingLogo" alt="">
+  </div>
+  <div [hidden]="hideToggle" (click)="clickOnToggleButton($event)" fxFlexOrder.xs="1" fxFlexOrder.sm="1" fxFlex="60px" fxLayout="row" fxLayoutAlign="center center"  class="new-option toggle-whole">
+      <!-- <div class="toggle">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div> -->
+      <span class="material-icons pallete-icon">view_comfy</span>
+
+
+
+  </div>
+  <div (click)="home_click($event)" fxFlexOrder.xs="3" fxFlexOrder.sm="3" fxFlex="150px" fxLayout="row" fxLayoutAlign="center center"  fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+      <div fxFlex fxLayout="row" fxLayoutAlign="center center" >
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <i *ngIf="homeName.trim().toUpperCase() == 'home'.trim().toUpperCase()" fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center flex-end" class="material-icons">home</i>
+            <i *ngIf="homeName.trim().toUpperCase() == 'dashboard'.trim().toUpperCase()" fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center flex-end" class="material-icons">dashboard</i>
+
+
+          <span     fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center flex-start " fxFlex>{{homeName}}</span>
+          </div>
+      </div>
+  </div>
+  <div fxLayout="row"  fxFlexOrder.xs="4" fxFlexOrder.sm="4" fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">account_balance</i>
+      <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{className}}</span>
+    </div>
+  </div>
+  <div fxHide.xs="true" fxHide.sm="true" fxLayout="row"  fxFlexOrder.xs="4" fxFlexOrder.sm="4" fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">perm_identity</i>
+      <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{studentName}}</span>
+    </div>
+  </div>
+  <div *ngIf="isDisplayClassName" fxFlexOrder.xs="4" fxFlexOrder.sm="4" fxFlex="1 1 auto "   fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option no-hover">
+      <div fxFlex fxLayout="row" fxLayoutAlign="center center" >
+          <i fxFlex fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center flex-end" class="material-icons">account_balance</i>
+          <span fxFlexOffset="15px"    fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center flex-start " fxFlex>{{className}}</span>
+      </div>
+  </div>
+  <div  fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end  center " fxFlex.xs="1 1 20" fxFlex.sm="1 1 20"  class="new-option2">
+      <div class="new-logout" fxFlex="150px" (click)="logOut()" fxLayout="row" fxLayoutAlign="flex-end center " >
+          <span     fxFlex.xs="70" fxLayout="row" fxLayoutAlign="center flex-start " fxFlex>Logout</span>
+          <i fxFlex fxFlex.xs="30" fxLayout="row" fxLayoutAlign="center flex-end" class="material-icons">power_settings_new</i>
+      </div>
+  </div>
+</mat-card>
+
+<mat-card fxHide.gt-xs *ngIf="navBarType == 'dashboard'" fxLayout="row" class="new-navbar">
+  <div  fxFlex.xs="148px"  fxFlex="168px"  class="branding-log-container">
+      <img class="branding-logo" [src]="kosBrandingLogo" alt="">
+  </div>
+  <div (click)="home_click($event)" fxLayout="row"  fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i *ngIf = "!showHomeIcon"  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">dashboard</i>
+      <i *ngIf="showHomeIcon" fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">home</i>
+      <!-- <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{className}}</span> -->
+    </div>
+  </div>
+  <div fxLayout="row"  fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i     fxLayout="column" fxLayoutAlign="center center"  class="material-icons">perm_identity</i>
+      <span  fxLayout="column" fxLayoutAlign="center center">{{studentName}}</span>
+    </div>
+  </div>
+  <div  fxFlex  fxLayout="row" fxLayoutAlign="flex-end  center "   class="new-option2">
+    <div class="new-logout" fxFlex="1 auto" (click)="logOut()" fxLayout="row" fxLayoutAlign="flex-end center " >
+        <!-- <span  fxLayout="row" fxLayoutAlign="center flex-start " >Logout</span> -->
+        <i     fxLayout="row" fxLayoutAlign="center flex-end" class="material-icons">power_settings_new</i>
+    </div>
+</div>
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-card fxHide.xs="true" fxHide.sm="true" *ngIf="navBarType == 'main-pagesd'" fxLayout="row" class="new-navbar">
+  <div  fxFlex.xs="148px"  fxFlex="168px" style="border:2px solid white;background: #fff;" class="new-option">
+      <img class="logo" [src]="kosBrandingLogo" alt="">
+  </div>
+  <div [hidden]="hideToggle" (click)="clickOnToggleButton($event)" fxFlexOrder.xs="1" fxFlexOrder.sm="1" fxFlex="60px" fxLayout="row" fxLayoutAlign="center center"  class="new-option toggle-whole">
+      <div class="toggle">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+      <span class="material-icons pallete-icon">view_comfy</span>
+  </div>
+  <div (click)="home_click($event)"  fxFlex="150px" fxLayout="row" fxLayoutAlign="center center"  fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+      <div fxFlex fxLayout="row" fxLayoutAlign="center center" >
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <i fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center flex-end" class="material-icons">home</i>
+          <span     fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center flex-start " fxFlex>{{homeName}}</span>
+          </div>
+      </div>
+  </div>
+  <div fxLayout="row" fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">account_balance</i>
+      <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{className}}</span>
+    </div>
+  </div>
+  <div  fxLayout="row"   fxFlex="1 auto"    fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option">
+    <div fxLayout="row" fxFlex  fxLayoutAlign="center center">
+      <i  fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center center" class="material-icons">perm_identity</i>
+      <span fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">{{studentName}}</span>
+    </div>
+  </div>
+  <div *ngIf="isDisplayClassName" fxFlex="1 1 auto "   fxFlex.xs="1 1" fxFlex.sm="1 1"  class="new-option no-hover">
+      <div fxFlex fxLayout="row" fxLayoutAlign="center center" >
+          <i fxFlex fxFlex.xs="30" fxLayout="column" fxLayoutAlign="center flex-end" class="material-icons">account_balance</i>
+          <span fxFlexOffset="15px"    fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center flex-start " fxFlex>{{className}}</span>
+      </div>
+  </div>
+  <div  fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end  center " fxFlex.xs="1 1 20" fxFlex.sm="1 1 20"  class="new-option2">
+      <div class="new-logout" fxFlex="150px" (click)="logOut()" fxLayout="row" fxLayoutAlign="flex-end center " >
+          <span     fxFlex.xs="70" fxLayout="row" fxLayoutAlign="center flex-start " fxFlex>Logout</span>
+          <i fxFlex fxFlex.xs="30" fxLayout="row" fxLayoutAlign="center flex-end" class="material-icons">power_settings_new</i>
+      </div>
+  </div>
+</mat-card> -->

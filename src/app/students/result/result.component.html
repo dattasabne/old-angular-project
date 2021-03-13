@@ -1,0 +1,183 @@
+<div class="result-main">
+<app-navbar [navType]="'dashboard'" [homeName]="'Dashboard'" [logo]="logoImage" [homeCallBack]="homeCallBack" (clickOnHomeButton)="close()" [isClassName]="false" [className]="className" [xsHideToggle]="isHideToggleButton" (toggleClick)="togglePallte()" ></app-navbar>
+<ball-loader *ngIf="isLoaded"></ball-loader>
+<div class="row result-full-height result-view-port">
+  <div class="result-analysis-section col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+  <mat-divider></mat-divider>
+    <section class="result-banner">
+
+      <mat-card fxHide.xs fxHide.sm fxLayout="row" fxLayoutAlign="center center" class=" result-center result-banner-card result-no-padding result-full-height result-full-width result-banner-card">
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center" >{{assignmentType}} Id : {{testId}} Result</div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center">{{patternName}}</div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center">{{testSubmittedDateTime}}</div>
+      </mat-card>
+      <mat-card fxHide.md fxHide.lg fxHide.fxFlex.xl  fxLayout="column" style="height: auto !important;margin-bottom: 15px !important;"  class="result-banner-card result-no-padding  result-full-width">
+        <div fxFlex fxLayout="row">
+          <div fxFlex  fxLayout="row" fxLayoutAlign="center center">{{assignmentType}} Id : {{testId}} Result</div>
+          <div fxFlex  fxLayout="row" fxLayoutAlign="center center">{{testSubmittedDateTime}}</div>
+        </div>
+        <div class="line"></div>
+        <div fxFlex fxLayout="row">
+          <div fxFlex  fxLayout="row" fxLayoutAlign="center center">{{patternName}}</div>
+          <div fxFlex  fxLayout="row" fxLayoutAlign="center center">{{attemptedStatus}}</div>
+        </div>
+      </mat-card>
+    </section>
+    <div fxHide.md fxHide.lg fxHide.xl style="margin-bottom: 15px;"></div>
+    <section class="result-mark-section result-border">
+      <div class="row result-full-height">
+        <div class="col-12 result-full-height">
+          <div class="row result-full-height">
+            <div
+              class="col-3 result-full-height result-center result-border"
+              *ngFor="let subject of examResultData"
+            >
+              <mat-card   [style.background]="subject.background"  (click)="displayTestResults(subject)" class="result-main-percent result-full-height result-full-width result-no-padding result-vcenter">
+                <div class="subject-header">{{subject.subName}}</div>
+                <div class="result-main-circle result-percentages">{{subject.percentage}} %</div>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="result-analysis-lable" fxLayout = "row">
+      <div  fxFlex fxFlayout = "row"  fxLayoutAlign = "center center">Detailed Records</div>
+      <div fxHide.xs fxHide.sm fxFlex fxLayout = "row" fxLayoutAlign = "center center">{{attemptedStatus}}</div>
+      <div class="online-status" fxFlex fxFlayout = "row"  fxLayoutAlign = "end center">{{resultType}}</div>
+    </section>
+    <section class="result-analysis-data">
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="totalMarksOutOfMarksProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">total marks : {{printResult.totalMarks}}</div>
+          <div class="result-left">outouf marks : {{printResult.outOfMarks}}</div>
+        </div>
+      </mat-card>
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="positiveNegativeMarksProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">positive marks : {{printResult.totalPositiveMarks}}</div>
+          <div class="result-left">negative marks : {{printResult.totalNegativeMarks}}</div>
+        </div>
+      </mat-card>
+      <!-- <mat-card class="each-analysis">
+          <div class="bar">
+            <mat-progress-bar class="bar-top" mode="determinate" [value]="percentageProgress"></mat-progress-bar>
+          </div>
+          <div class="data">
+            <div class="right">obtained percentage : {{obtainedPercentages}}</div>
+            <div class="left">out of percentage : {{outOfPercentages}}</div>
+          </div>
+        </mat-card> -->
+      <mat-card class="result-each-analysis" style="background: rgb(218, 159, 70);">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="spendTimeTotalTimeProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">spend time : {{spendTime}}</div>
+          <div class="result-left">total time : {{totalTime}}</div>
+        </div>
+      </mat-card>
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="correctWrongProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">correct : {{printResult.rightQuestion}}</div>
+          <div class="result-left">wrong : {{printResult.wrongQuestion}}</div>
+        </div>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="attemptedNotAttemptedProgrss"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">attempted : {{printResult.totalAttemptedQuestion}}</div>
+          <div class="result-left">not attempted :{{printResult.notAttemptedQuestion}}</div>
+        </div>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <mat-card class="result-each-analysis">
+          <div class="result-bar">
+            <mat-progress-bar class="result-bar-top" mode="determinate" [value]="visitedNotVisitedProgress"></mat-progress-bar>
+          </div>
+          <div class="result-data">
+            <div class="result-right">visited : {{printResult.totalVisitedQuestion}}</div>
+            <div class="result-left">not visited : {{printResult.notVistedQuestion}}</div>
+          </div>
+        </mat-card>
+      <mat-divider></mat-divider>
+    </section>
+  </div>
+  <div class="result-table-section col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <section class="result-rank-section result-border ">
+      <div class="result-mat-elevation-z8 result-result-table-data">
+        <table style="width: 100%;" mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="index">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>QNo.</th>
+            <td mat-cell *matCellDef="let element">{{ element.index }}</td>
+          </ng-container>
+          <ng-container matColumnDef="mark">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>Mark</th>
+            <td mat-cell *matCellDef="let element">
+              <span [style.color] = "getMarksColor(element)">{{ element.obtainedQuestionMarks }}</span>
+            </td>
+          </ng-container>
+          <!-- <ng-container  matColumnDef="correctQuestion">
+            <th mat-header-cell *matHeaderCellDef>RightOrWrong</th>
+            <td mat-cell *matCellDef="let element">
+              <i class="fa fa-check" *ngIf="displayAnswerIcons(element)== 1" style="color:black;" aria-hidden="true"></i
+              >
+              <i class="fa fa-close" *ngIf="displayAnswerIcons(element)== 0" style="color:black;" aria-hidden="true"></i
+                >
+              <span style="text-transform: capitalize;" *ngIf="displayAnswerIcons(element)==2" >not attempted</span>
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="timeTaken">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>Time Taken<small>(Sec)</small></th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.timeTaken }}
+            </td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="chapterId">
+            <th mat-header-cell *matHeaderCellDef>Chapter Id</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.chapterId }}
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="noOfVisit">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>Visit Count</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.noOfVisit }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="subjectName">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>Subject</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.subjectName }}
+            </td>
+          </ng-container>
+
+          <tr class="result-tr-heading table-th-background-color" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr class="result-tr-data table-td-color" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5,10,15,20]"
+          [pageSize]="10"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </section>
+  </div>
+</div>
+  <!-- <app-footer></app-footer> -->
+</div>
+
+

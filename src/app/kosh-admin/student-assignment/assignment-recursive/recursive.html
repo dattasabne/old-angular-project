@@ -1,0 +1,19 @@
+  
+  <div style="margin-left: 25px;"  *ngFor="let branch of branches">
+    <div fxLayout="row" style="height: 50px;" >
+      <div  fxFlex="200px" fxLayout="row" fxLayoutAlign="center center" fxFlex-gt-xs="1 0 auto">
+        <mat-checkbox (change)="changeOnCheckBox(branch)" [checked]="branch.isChecked" style="margin-top: 8px;margin-left: 35px;" color="primary" type="checkbox">
+          <span *ngIf="branch.branches.length>0" class="sign">{{branch.sign}}</span>
+          <span *ngIf="branch.branches.length==0" class="sign">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </mat-checkbox>
+      </div>
+      <div fxFlex.xs="200px" fxLayout fxLayoutAlign="center center" fxFlex="0" *ngFor="let value of getKeyValue(branch)">{{value}}</div>
+    </div>
+    <div class="line"></div>
+    <div [style.height]="branch.height" [style.overflow]="branch.overflow">
+      <assignmnet-recursive  [branches]="branch.branches" *ngIf="branch.branches.length>0"></assignmnet-recursive>
+    </div>
+    
+</div>
+
+

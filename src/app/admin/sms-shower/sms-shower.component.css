@@ -1,0 +1,67 @@
+.main-container {
+  padding: 8px !important;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 2px solid skyblue;
+}
+[class*="row"] {
+  margin-left: 0;
+  margin-right: 0;
+}
+.header {
+  width: 100%;
+  background: skyblue;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  height: 25px;
+}
+.padding-left {
+  padding-left: 3px !important;
+}
+.padding-right {
+  padding-right: 3px !important;
+}
+.confirm-button,
+.cancel-button {
+  width: 100%;
+}
+.confirm-button {
+  background: skyblue;
+  color: white;
+}
+.cancel-button {
+  background: pink;
+  color: white;
+}
+.messages {
+  max-height: 410px;
+  overflow: auto;
+}
+.bottom-buttons {
+  margin-top: 8px;
+}
+mat-list-item {
+  font-size: 0.8em !important;
+  height: auto !important;
+}
+mat-list-item:nth-child(even) {
+  background: #ecf1ef;
+  color: black;
+}
+mat-list-item:nth-child(odd) {
+  background: #f8f8ff;
+  color: black;
+}
+.status {
+  width: 100%;
+  line-height: 20px;
+  background: red;
+  color: white;
+  box-sizing: border-box;
+  padding: 2px;
+  font-size: 0.9em;
+}

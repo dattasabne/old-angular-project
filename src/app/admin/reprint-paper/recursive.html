@@ -1,0 +1,6 @@
+<div  *ngFor="let node of nodes">
+    <div  (click)="click(node)" >{{node.name}}</div>
+    <div  [style.height]="node.height" [style.border]="node.border">
+        <recursive *ngIf="node.child.length>0" [data]="node"></recursive>
+    </div> 
+</div>

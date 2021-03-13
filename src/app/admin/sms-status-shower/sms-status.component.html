@@ -1,0 +1,48 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-12">
+      <div class="header">
+        Notification Log
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="messages">
+        <div
+          class="mat-list-item"
+          *ngFor="let firebase of allFireBaseResponse; let i = index"
+        >
+          <div class="row">
+            <div class="col-8">
+              {{ i + 1 }}] {{ firebase.studentName }} {{ firebase.userName }}
+            </div>
+            <div class="col-4">
+              <div
+                class="success"
+                *ngIf="fireBaseResponseStatus(firebase.response)"
+              >
+                status : success !
+              </div>
+              <div
+                class="failed"
+                *ngIf="!fireBaseResponseStatus(firebase.response)"
+              >
+                status : failed ! =>
+                {{ fireBaseResponseFailureReason(firebase.response) }}
+              </div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row bottom-buttons">
+    <div class="col-6 padding-right">
+      <button (click)="ok()" class="confirm-button" mat-raised-button>
+        Ok
+      </button>
+    </div>
+  </div>
+</div>

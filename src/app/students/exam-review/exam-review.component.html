@@ -1,0 +1,300 @@
+<div class="full review-main-container">
+<ball-loader *ngIf="isLoaded"></ball-loader>
+  <div class="component-section no-gutter">
+        <!-- <mat-card class="cust-container-1">
+            <div class="left-option">
+                  <div fxLayout="row" >
+                       <div fxFlex class="option toggle-bar" (click)="togglePallete()">
+                          <span class="material-icons pallete-icon">view_comfy</span>
+                       </div>
+                       <div fxHide.xs="true" fxHide.sm="true" fxFlex.xs="0 0 148px"  fxFlex="0 0 168px"  class="branding-log-container">
+                          <img class="branding-logo" [src]="koshBrandLogo" alt="">
+                        </div>
+                       <div fxFlex fxFlex.xs="1 1 auto" class="solved-date-container search-option">
+                            <mat-form-field class="solved-exam-dates full-width">
+                                <mat-label style="color:white !important;">Select Exam Solved Dates</mat-label>
+                                <mat-select [formControl]="solvedDatesControl">
+                                    <mat-option *ngFor="let test of allSolvedTest " [value]="test">
+                                        {{getFormatedDate(test.solveDate)}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                       </div>
+                       <div fxHide.xs="true" fxHide.sm="true" style="height: 100%;" fxFlexOffset.gt-xs="20px" fxLayout fxLayoutAlign="center center"  fxFlex="66" fxFlex.xs="1 1 auto" fxFlex.sm="1 1 auto"  class="class-name">
+                            <i style="margin-right:5px;" class="material-icons">account_balance</i>  {{className}}
+                       </div>
+                       <div style="height: 100%;" fxFlexOffset.gt-xs="20px" fxLayout fxLayoutAlign="center center"  fxFlex="66" fxFlex.xs="1 1 auto" fxFlex.sm="1 1 auto"  class="class-name">
+                          <i style="margin-right:5px;" class="material-icons">perm_identity</i>  {{studentName}}
+                      </div>
+                       <div (click)="close()" fxFlexOffset.gt-xs="20px" fxLayout fxLayoutAlign="center center" fxLayoutAlign.gt-xs="flex-start center" fxFlex.gt-xs="150px" fxFlex.xs="1 1 auto" fxFlex.sm="1 1 auto"  class="class-name">
+                            <i class="material-icons">
+                                arrow_back_ios
+                            </i>back
+                      </div>
+                   </div>
+               </div>
+        </mat-card> -->
+        <mat-card fxLayout="row" style="margin-bottom: 8px;" class="logo-container">
+          <div fxFlex class="option toggle-bar" (click)="togglePallete()">
+            <span class="material-icons pallete-icon">view_comfy</span>
+         </div>
+          <div fxFlex="0 0 148px" fxFlex.gt-xs="0 0 168px"  class="each-ana-menu branding-log-container">
+              <img [src]="koshBrandLogo" class="branding-logo" alt="">
+          </div>
+          <div fxFlex fxFlex.xs="1 1 auto" class="solved-date-container search-option each-ana-menu">
+            <mat-form-field class="solved-exam-dates full-width">
+                <mat-label style="color:white !important;">Select Solved Dates</mat-label>
+                <mat-select [formControl]="solvedDatesControl">
+                    <mat-option *ngFor="let test of allSolvedTest " [value]="test">
+                        {{getFormatedDate(test.solveDate)}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxHide.xs="true" fxHide.sm="true" style="height: 100%;" fxFlexOffset.gt-xs="20px" fxLayout fxLayoutAlign="center center"  fxFlex="66" fxFlex.xs="1 1 auto" fxFlex.sm="1 1 auto"  class="class-name">
+        <i style="margin-right:5px;" class="material-icons">account_balance</i>  {{className}}
+      </div>
+      <div fxHide.xs="true" fxHide.sm="true"  style="height: 100%;" fxFlexOffset.gt-xs="20px" fxLayout fxLayoutAlign="center center"  fxFlex="66" fxFlex.xs="1 1 auto" fxFlex.sm="1 1 auto"  class="class-name">
+        <i style="margin-right:5px;" class="material-icons">perm_identity</i>  {{studentName}}
+      </div>
+      <div (click)="close()" fxFlexOffset.gt-xs="20px" fxLayout fxLayoutAlign="center center" fxLayoutAlign.gt-xs="flex-start center" fxFlex.gt-xs="150px" fxFlex.xs="1 1 auto" fxFlex.sm="1 1 auto"  class="class-name">
+            <i class="material-icons">
+                arrow_back_ios
+            </i>
+            <span fxHide.xs>back</span>
+      </div>
+      </mat-card>
+      <div class="row exam-section">
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 no-gutter" style="height: 100%;box-sizing: border-box">
+            <div class="pdf-section" >
+                <div #parent   style="position: relative;" class="center pdf-container">
+                  <!-- class="pdf-viewer" -->
+                <!-- <pdf-viewer  style="z-index: 200 !important;" *ngIf="isQuestionPaper" style="margin-left:-20px !important; height: 100%;"
+                    [src]="reviewPdf"
+                    [render-text]="true"
+                    style="display: block;"
+                    [page]="pageNo"
+                    [show-all]="false"
+                    [zoom]="zoomLevel"
+                    [original-size]="true"
+                ></pdf-viewer>
+                 <pdf-viewer *ngIf="!isQuestionPaper"   style="margin-left:-20px !important; height: 100%;"
+                    [src]="testPdf"
+                    [render-text]="true"
+                    style="display: block;"
+                    [page]="pageNo"
+                    [show-all]="false"
+                    [zoom]="zoomLevel"
+                ></pdf-viewer> -->
+                <app-custom-pdfviewer (onLoad) ="isLoaded = $event" [parentNode]="parent" [hide] ="!isQuestionPaper"  [src] ="reviewPdf"
+                  [pageNo] ="pageNo"
+                  (pdfLoaded) ="PdfLoad_SuccessHandler($event)"
+                  (error) ="PdfLoad_FailedHandler($event)"
+                ></app-custom-pdfviewer>
+
+                <app-custom-pdfviewer (onLoad) ="isLoaded = $event" [parentNode]="parent" [hide] ="isQuestionPaper"  [src] ="testPdf"
+                  [pageNo] ="pageNo"
+                  (pdfLoaded) ="PdfLoad_SuccessHandler($event)"
+                  (error) ="PdfLoad_FailedHandler($event)"
+                ></app-custom-pdfviewer>
+
+
+
+
+
+            </div>
+            </div>
+              <mat-divider></mat-divider>
+              <div class="action-section">
+                    <mat-card fxLayout="column"   class="pallete-bottom-container" >
+                        <div fxFlex fxLayout="row" >
+                          <div fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+                            <div  class="no-count" style="color:white;margin-right: 100px !important;">
+                              {{pageNo}} / {{totalQuestion}}
+                            </div>
+                          </div>
+                          <div fxFlex="70" fxLayout="row" fxLayoutAlign="center center">
+                            <div  *ngIf="questionType == 1 || questionType == 4 ||   questionType== 3 || questionType == 5 || questionType == 6" class="option-panel">
+                              <div class="right-answer">
+                                  <div fxLayout="row" fxLayoutAlign="center center" class="right-answer-option answer answer-circle">{{correctAnswer}}</div>
+                                  <div class="symbol">
+                                      <mat-icon class="right">done</mat-icon>
+                                  </div>
+                              </div>
+                              <div  *ngIf="rightOrWrongSymbolIndicator!= 2" class="wrong-answer ">
+                                  <div fxLayout="row" fxLayoutAlign="center center" [ngClass]="rightOrWrongSymbolIndicator == 1?'right-answer-option':'wrong-answer-option'"  class="answer answer-circle">{{givenAnswer}}</div>
+                                  <div *ngIf="rightOrWrongSymbolIndicator == 1" class="symbol">
+                                      <mat-icon class="right">done</mat-icon>
+                                  </div>
+                                  <div *ngIf="rightOrWrongSymbolIndicator == 0" class="symbol">
+                                      <mat-icon class="wrong">clear</mat-icon>
+                                  </div>
+                              </div>
+                          </div>
+                          <div  *ngIf="questionType == 2" class="option-panel">
+                              <div class="right-answer">
+                                  <div fxLayout="row" fxLayoutAlign="center center" class="right-answer-option answer multi-answer-circle">{{correctAnswer}}</div>
+                                  <div class="symbol">
+                                      <mat-icon class="right">done</mat-icon>
+                                  </div>
+                              </div>
+                              <div  *ngIf="rightOrWrongSymbolIndicator!= 2" class="wrong-answer ">
+                                  <div fxLayout="row" fxLayoutAlign="center center" [ngClass]="rightOrWrongSymbolIndicator == 1?'right-answer-option':'wrong-answer-option'"  class="answer multi-answer-circle">{{multipleAnswer}}</div>
+                                  <div *ngIf="rightOrWrongSymbolIndicator == 1" class="symbol">
+                                      <mat-icon class="right">done</mat-icon>
+                                  </div>
+                                  <div *ngIf="rightOrWrongSymbolIndicator == 0" class="symbol">
+                                      <mat-icon class="wrong">clear</mat-icon>
+                                  </div>
+                              </div>
+                          </div>
+                          <div *ngIf="questionType==4" class="option-panel">
+                              <div class="right-answer">
+                                  <div fxLayout="row" fxLayoutAlign="center center" class="right-answer-option answer multi-answer-circle">{{matrixOrigenalAnswerText}}</div>
+                                  <div class="symbol">
+                                      <mat-icon class="right">done</mat-icon>
+                                  </div>
+                              </div>
+                              <div  *ngIf="displayRightWrongSymbol()!= 2" class="wrong-answer ">
+                                  <div fxLayout="row" fxLayoutAlign="center center" [ngClass]="displayRightWrongSymbol() == 1?'right-answer-option':'wrong-answer-option'"  class="answer multi-answer-circle">{{matrixGivenAnswers}}</div>
+                                  <div *ngIf="displayRightWrongSymbol() == 1" class="symbol">
+                                      <mat-icon class="right">done</mat-icon>
+                                  </div>
+                                  <div *ngIf="displayRightWrongSymbol() == 0" class="symbol">
+                                      <mat-icon class="wrong">clear</mat-icon>
+                                  </div>
+                              </div>
+                          </div>
+                          </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div fxFlex fxLayout="row" fxLayoutGap="3px" >
+                            <button fxFlex class="custom-button previous-button"  (click)="previousQuestion()" mat-raised-button >previous</button>
+                            <button fxFlex   class="custom-button question-paper-button " (click)="displayQuestionPaper()" mat-raised-button>{{displayQuestionPaperText}}</button>
+                            <button fxFlex  class="custom-button next-button" (click)="nextQuestion()" mat-raised-button>next</button>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 no-gutter pallete">
+            <div class="pallete-question">
+                  <div class="row subjects">
+                      <div (click)="clickOnEachSubject(sub)" *ngFor="let sub of allSubjects" class="sub-option col-3 no-gutter horizontal">
+                          <button [style.background]="sub.background"  mat-raised-button class="subjects-buttons full-width">{{sub.subName}}</button>
+                      </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="center center" class="pallete-note">
+                      <div fxFlex fxLayout="row"  fxLayoutAlign="start center" >{{assignmentType }} ID : {{allBranchId}}   <span class="current-subject"> {{patternName}} </span></div>
+                      <div fxFlex ="25" fxLayout="row"  fxLayoutAlign="center center" >{{testSolveStatus}}</div>
+                      <div fxFlex fxLayout="row"  fxLayoutAlign="end center">
+                        <div fxFlex fxLayout="row" fxLayoutAlign="end center" class="current-subject"> {{currentSubjectName}}</div>
+                        <div fxFlex>question  pallete</div>
+                      </div>
+                  </div>
+                  <div class="button-pallete">
+                        <table class="question-table" style="width:100%;margin-bottom: 55px !important;" mat-table [dataSource]="questionDataSource">
+                            <!-- index Column -->
+                            <ng-container matColumnDef="nSquence">
+                                <th class="reiview-header-class" (click)="sortByNsequence()"mat-header-cell *matHeaderCellDef> Q.No.
+                                    <i *ngIf="ascQuestionNo" class="fa fa-sort-alpha-asc"></i>
+                                    <i *ngIf="!ascQuestionNo" class="fa fa-sort-alpha-desc"></i>
+                                </th>
+                                <td [style.color]="question.color"  mat-cell *matCellDef="let question"> {{question.nSquence}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="mark">
+                              <th class="reiview-header-class" mat-header-cell *matHeaderCellDef> Mark </th>
+                              <td [style.color]="question.color"  mat-cell *matCellDef="let question"> <span [style.color] = "question.color" > {{question.obtainedQuestionMarks}}</span> </td>
+                            </ng-container>
+                            <!-- correctQuestion Column -->
+
+                            <ng-container matColumnDef="correctQuestion">
+                                <th class="reiview-header-class" (click)="sortByRightOrWrong()" mat-header-cell *matHeaderCellDef> Right / Wrong
+                                    <i *ngIf="ascRightOrWrong"  class="fa fa-sort-alpha-asc"></i>
+                                    <i *ngIf="!ascRightOrWrong" class="fa fa-sort-alpha-desc"></i>
+                                </th>
+                                <td  [style.color]="question.color" mat-cell *matCellDef="let question ">
+                                <span *ngIf ="question.questionStatus == 0" [style.color]="question.color">
+                                    <mat-icon>done</mat-icon>
+                                </span>
+                                <span *ngIf ="question.questionStatus == 1" [style.color]="question.color">
+                                    <mat-icon>clear</mat-icon>
+                                </span>
+
+                                </td>
+                            </ng-container>
+
+
+
+                            <!-- timeTaken Column -->
+                            <ng-container matColumnDef="timeTaken">
+                                <th class="reiview-header-class" (click)="sortByTimeTaken()" mat-header-cell *matHeaderCellDef>Time Taken(sec)
+                                    <i *ngIf="ascTimeTaken"  class="fa fa-sort-alpha-asc"></i>
+                                    <i *ngIf="!ascTimeTaken" class="fa fa-sort-alpha-desc"></i>
+                                </th>
+                                <td [style.color]="question.color" mat-cell *matCellDef="let question"> {{question.timeTaken}} </td>
+                            </ng-container>
+
+                            <!-- noOfVisit Column -->
+                            <ng-container matColumnDef="noOfVisit">
+                                <th class="reiview-header-class" (click)="sortByNoOfVisit()" mat-header-cell *matHeaderCellDef>Visit Count
+                                    <i *ngIf="ascVisitCount" class="fa fa-sort-alpha-asc"></i>
+                                    <i *ngIf="!ascVisitCount" class="fa fa-sort-alpha-desc"></i>
+                                </th>
+                                <td [style.color]="question.color" mat-cell *matCellDef="let question"> {{question.noOfVisit}} </td>
+                            </ng-container>
+                                <!-- subjectName Column -->
+                                <ng-container matColumnDef="subjectName">
+                                <th class="reiview-header-class" mat-header-cell *matHeaderCellDef>Subject
+                                </th>
+                                <td [style.color]="question.color" mat-cell *matCellDef="let question"> {{question.subjectName}} </td>
+                            </ng-container>
+                            <tr class="tr bold review-table-headers" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr class="tr" (click)="clickOnTableRow(row)" mat-row *matRowDef="let row; columns: displayedColumns;"     [style.background]="row.background"></tr>
+                            </table>
+                            <!-- <mat-paginator  style="margin-bottom: 15px !important;" #paginator
+                                    [pageSizeOptions]="[5, 10,15, 20]"
+                                    [pageSize]="10"
+                                    showFirstLastButtons>
+                            </mat-paginator> -->
+                          </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="action-section-2">
+                  <mat-card class="pallete-bottom-container2">
+                      <div class="color-marker">
+                          <div class="marker-container">
+                              <mat-card class="marker answered"></mat-card>
+                              <span>Right</span>
+                          </div>
+
+                          <div class="marker-container">
+                              <mat-card class="marker not-answered"></mat-card>
+                              <span>Wrong</span>
+                          </div>
+                          <div class="marker-container">
+                              <mat-card class="marker marked horizontal" >
+                                  <!-- <mat-icon style="color:white;" svgIcon="check"></mat-icon> -->
+                              </mat-card>
+                              <span>Not Attempted</span>
+                          </div>
+                          <div class="marker-container">
+                              <mat-card class="marker not-visited"></mat-card>
+                              <span>Not Visited</span>
+                          </div>
+                      </div>
+                      <!-- <mat-divider></mat-divider>
+                      <div class="pallete-options">
+                         <button  mat-raised-button class="submit-button">Submit</button>
+                         <button  (click)="displayQuestionPaper()" mat-raised-button class="question-paper">{{displayQuestionPaperText}}</button>
+                      </div> -->
+                  </mat-card>
+              </div>
+          </div>
+      </div>
+
+     <!-- <app-footer></app-footer>  -->
+  </div>
+</div>
+
+
+

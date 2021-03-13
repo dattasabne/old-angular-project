@@ -1,0 +1,206 @@
+<div class="result-main">
+<ball-loader *ngIf="isLoaded"></ball-loader>
+<div class="row  result-view-port">
+  <div  class="result-analysis-section col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+  <mat-divider></mat-divider>
+    <section class="result-banner">
+      <mat-card class=" result-center result-no-padding result-full-height result-full-width result-banner-card">
+        <div>Test Result</div>
+      </mat-card>
+    </section>
+    <section class="result-mark-section result-border">
+      <div class="row result-full-height">
+        <div class="col-12 result-full-height">
+          <div class="row result-full-height">
+            <div
+              class="col-3 result-full-height result-center result-border"
+              *ngFor="let subject of examResultData"
+            >
+              <mat-card   [style.background]="subject.background"  (click)="displayTestResults(subject)" class="result-main-percent result-full-height result-full-width result-no-padding result-vcenter">
+                <div class="subject-header">{{subject.subName}}</div>
+                <div class="result-main-circle result-percentages">{{ displayNumber(subject.percentage)}} %</div>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="result-analysis-lable result-center">
+      Detailed Records
+    </section>
+    <section class="result-analysis-data">
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="totalMarksOutOfMarksProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">total marks : {{printResult.totalMarks}}</div>
+          <div class="result-left">outouf marks : {{printResult.outOfMarks}}</div>
+        </div>
+      </mat-card>
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="positiveNegativeMarksProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">positive marks : {{printResult.totalPositiveMarks}}</div>
+          <div class="result-left">negative marks : {{printResult.totalNegativeMarks}}</div>
+        </div>
+      </mat-card>
+      <mat-card class="result-each-analysis" style="background: rgb(218, 159, 70);">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="spendTimeTotalTimeProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">spend time : {{spendTime}}</div>
+          <div class="result-left">total time : {{totalTime}}</div>
+        </div>
+      </mat-card>
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="correctWrongProgress"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">correct : {{printResult.rightQuestion}}</div>
+          <div class="result-left">wrong : {{printResult.wrongQuestion}}</div>
+        </div>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <mat-card class="result-each-analysis">
+        <div class="result-bar">
+          <mat-progress-bar class="result-bar-top" mode="determinate" [value]="attemptedNotAttemptedProgrss"></mat-progress-bar>
+        </div>
+        <div class="result-data">
+          <div class="result-right">attempted : {{printResult.totalAttemptedQuestion}}</div>
+          <div class="result-left">not attempted :{{printResult.notAttemptedQuestion}}</div>
+        </div>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <mat-card class="result-each-analysis">
+          <div class="result-bar">
+            <mat-progress-bar class="result-bar-top" mode="determinate" [value]="visitedNotVisitedProgress"></mat-progress-bar>
+          </div>
+          <div class="result-data">
+            <div class="result-right">visited : {{printResult.totalVisitedQuestion}}</div>
+            <div class="result-left">not visited : {{printResult.notVistedQuestion}}</div>
+          </div>
+        </mat-card>
+      <mat-divider></mat-divider>
+    </section>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+    <div fxLayout="column">
+        <mat-card fxLayout fxLayoutAlign="center center" class="result-banner result-banner-card ">Student Details</mat-card>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Name</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{studentName}}</div>
+        </div>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Username</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{userName}}</div>
+        </div>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Class Name</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{className}}</div>
+        </div>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Academic Year</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{academicYear}}</div>
+        </div>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Course</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{course}}</div>
+        </div>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Test Id</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{testId}}</div>
+        </div>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Pattern</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{patternName}}</div>
+        </div>
+        <div class="result-line"></div>
+        <div class="result-student-data" fxLayout="row">
+          <div fxFlex="30">Subject</div>
+          <div fxFlex="5">:</div>
+          <div fxFlex="65">{{subjectName}}</div>
+        </div>
+
+        <div class="result-line"></div>
+    </div>
+  </div>
+  <!-- <div class="result-table-section col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <section class="result-rank-section result-border ">
+      <div class="result-mat-elevation-z8 result-result-table-data">
+        <table style="width: 100%;" mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="index">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>QNo.</th>
+            <td mat-cell *matCellDef="let element">{{ element.index }}</td>
+          </ng-container>
+          <ng-container  matColumnDef="correctQuestion">
+            <th mat-header-cell *matHeaderCellDef>RightOrWrong</th>
+            <td mat-cell *matCellDef="let element">
+              <i class="fa fa-check" *ngIf="displayAnswerIcons(element)== 1" style="color:black;" aria-hidden="true"></i
+              >
+              <i class="fa fa-close" *ngIf="displayAnswerIcons(element)== 0" style="color:black;" aria-hidden="true"></i
+                >
+              <span style="text-transform: capitalize;" *ngIf="displayAnswerIcons(element)==2" >not attempted</span>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="timeTaken">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>Time Taken<small>(Sec)</small></th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.timeTaken }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="chapterId">
+            <th mat-header-cell *matHeaderCellDef>Chapter Id</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.chapterId }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="noOfVisit">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>Visit Count</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.noOfVisit }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="subjectName">
+            <th class="table-td-font" mat-header-cell *matHeaderCellDef>Subject</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.subjectName }}
+            </td>
+          </ng-container>
+          <tr class="result-tr-heading table-th-background-color" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr class="result-tr-data table-td-color" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5,10,15,20]"
+          [pageSize]="10"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </section>
+  </div> -->
+
+
+</div>
+  <!-- <app-footer></app-footer> -->
+</div>
+
+

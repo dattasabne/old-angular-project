@@ -1,0 +1,80 @@
+
+import { StudentAssignmentDataBaseModel } from 'src/app/website/model/student.assignmnet.database.model';
+export interface TestCenterAssignmentModel{
+ studentDetails :StudentDetailsOnlyModel
+ studentAssignment : StudentAssignmentDataBaseModel
+ assigned:boolean;
+ courses:string[];
+}
+
+export interface StudentDetailsOnlyModel{
+  pkId:string;
+  id:number;
+  userName:string;
+  subName:string;
+  chapName:string;
+  date:string;
+  startTime:string;
+  endTime:string;
+  totalTime:string;
+  averageTime:string;
+  rightQuestion:string;
+  wrongQuestion:string;
+  totalQuestion:number;
+  percentage:string;
+  type:string;
+  questions:string;
+  isManualTest:string;
+  academicYear:string;
+  isUpload:string;
+  testIdAliase:string;
+  newAverageTime:string;
+  outOfQuestion:string;
+  totalPositiveMarks:string;
+  totalNegativeMarks:string;
+  totalMarks:number;
+  outOfMarks:string;
+  patternName:string;
+  $class:string;
+  isResolve:string;
+  questionType:string;
+  stage:string;
+  chapId:string;
+  subjectGroup:string;
+  classRoom:string;
+  allChapId:string;
+  course:string;
+  promoteToNextLevel:string;
+  allBranchRank:string;
+  branchRank:string;
+  divisionRank:string;
+  subDivisionRank:string;
+  branchId:string;
+  branch:string;
+  allBranchId:string;
+  strVisitCount:string;
+  physicsTotalMarks:string;
+  chemistryTotalMarks:string;
+  mathemeticsTotalMarks:string;
+  biologyTotalMarks:string;
+  physicsRank:string;
+  chemistryRank:string;
+  biologyRank:string;
+  mathemeticsRank:string;
+  testFile:string;
+  reviewFile:string;
+  uniqueClassName:string;
+  printTestbal:string;
+  mobileTestbal:string;
+  dateTimeStamp:string;
+  visitCount:string;
+  totalVisitedQuestion:string;
+  notVistedQuestion:string;
+  totalAttemptedQuestion:string;
+  notAttemptedQuestion:string;
+  assignmentType:string;
+  testDescription:string;
+  printQuestionOnlyFourOption:string;
+  testUploadedType:string;
+  testSolveStatus:string;
+}

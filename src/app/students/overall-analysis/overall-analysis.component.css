@@ -1,0 +1,130 @@
+body,html {
+    margin: 0px;
+    padding: 0px;
+}
+.main {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    
+}  
+.chart-content {
+    background: #81a1be !important;
+}
+[class*="row"]{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+table {
+    width: 100%;
+  }
+.table-heading {
+    background-image: linear-gradient(to right,#97bdd1,#6fb2be);
+}
+.table-heading:hover {
+    background: #81c3e2;
+    background-image: linear-gradient(to right,#7dc4d1,#94bdd4);
+}
+.my-table td {
+    color:black !important;
+}
+
+.my-table th {
+    color:black;
+}
+.table-data {
+    cursor: pointer;
+    color: black !important;
+    
+}
+.table-data:hover {
+    background-image: linear-gradient(to right,#7dc4d1,#94bdd4);
+}
+.header {
+    width: 100%;
+    height:50px;
+    font-size: 1.8em;
+    text-align: center;
+    color: white;
+    background:rgb(39, 122, 231);
+}
+.padding-bottom {
+    padding-bottom: 0px !important;
+}
+.zero-padding {
+    padding: 0px !important;
+    margin:  0px !important;
+}
+.border {
+    border: 1px solid red !important;
+}
+.full-width {
+    width: 100%;
+    padding: 0px !important;
+}
+.options {
+    padding: 0px 10px 5px 10px !important;
+    box-sizing: border-box;
+}
+.option-div {
+    padding: 0px 8px !important;
+}
+.option {
+    /* border: 1px solid green; */
+    height: 40px;
+}
+* {
+    box-sizing: border-box !important;
+}
+.table-container {
+    overflow: auto;
+}
+.chart-container {
+    /* background: #a592b4 !important; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}  
+.chart {
+    height: 100% !important;
+}  
+.panel {
+    display: flex;
+    justify-content: center;
+}
+.panel > div > button {
+    text-align: center;
+    margin: 10px;
+    width: 150px;
+    color: white;
+    font-size: 0.8em;
+    background: #3273dd !important; 
+    cursor: pointer;
+}
+.panel > div > button:hover {
+   background: #4c88e9 !important;
+}
+mat-label,mat-select {
+    color: black;
+}
+.content {
+    background-image: linear-gradient(to right,#8fa79f,#8fa79f);   
+}
+.option-panel {
+    /* background-image: linear-gradient(to right,#86b0ec,#3080c2); */
+    overflow: auto;
+}
+/* .buttons:hover {
+    background: #1961d4 !important;
+} */
+/* .next-button:hover {
+    background: #1961d4 !important;
+} */
+@media(max-width:900px) {
+    .chart-container {
+        height: 400px !important;
+        overflow: auto;
+    }
+}

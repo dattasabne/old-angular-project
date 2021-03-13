@@ -1,0 +1,19 @@
+
+*{
+  box-shadow: border-box;
+
+}
+.desk-search-criteria ,
+.desk-search-data ,
+.desk-upload-dropdown ,
+.desk-file-upload-drag,
+.common-radius{
+  border-radius: 20px;
+}
+.own-upload-summary-section > div{
+  text-transform: capitalize;
+  border: 1px solid lightgray;
+  padding: 7px;
+}
+
+

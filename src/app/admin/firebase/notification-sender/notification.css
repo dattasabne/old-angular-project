@@ -1,0 +1,38 @@
+.preview-text {
+  width: 100%;
+  height: 250px;
+}
+.heading-container {
+  height: 25px;
+}
+.heading {
+  background: skyblue;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.main-container {
+  border: 2px solid skyblue;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.padding-l-r-5px {
+  padding-right: 2px;
+  padding-left: 2px;
+}
+.send-button,
+.cancel-button {
+  width: 100%;
+}
+.send-button {
+  background: skyblue;
+}
+.cancel-button {
+  background: pink;
+}

@@ -1,0 +1,60 @@
+
+<!-- desktop ui -->
+<section *ngIf="!isMobileDevice"  class="own-upload-summary-section" fxLayout = "column">
+  <section *ngFor ="let subject of allSubjects">
+    <section  class="own-upload-summary-section" fxLayout = "row">
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "18">{{subject.topicName}}</div>
+      <div class="zero-padding" fxLayout = "row"  fxFlex = "18">
+        <div class="center border-right-1px-gray"  fxFlex>{{subject.singleCorrect.singleTheory}}</div>
+        <div class="center" fxFlex>{{subject.singleCorrect.singleNumber}}</div>
+      </div>
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">{{subject.numerical.singleNumber}}</div>
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">{{subject.matrix.singleNumber}}</div>
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "9.3">{{subject.reasoning.singleNumber}}</div>
+      <div class="zero-padding" fxLayout = "row"  fxFlex = "18">
+        <div class="center border-right-1px-gray"  fxFlex>{{subject.multipleCorrect.multipleNumber}}</div>
+        <div class="center" fxFlex>{{subject.multipleCorrect.multipleTheory}}</div>
+      </div>
+      <div class="zero-padding" fxLayout = "row"  fxFlex = "18">
+        <div class="center border-right-1px-gray"  fxFlex>{{subject.comprehension.paragraph}}</div>
+        <div class="center" fxFlex>{{subject.comprehension.questions}}</div>
+      </div>
+    </section>
+    <app-question-paper-template *ngIf="subject.subTopics.length > 0" [data]="subject.subTopics"></app-question-paper-template>
+  </section>
+
+</section>
+
+<!-- end desktop ui -->
+
+
+
+
+<!-- mobile ui  -->
+
+<section *ngIf="isMobileDevice"  class="own-upload-summary-section" fxLayout = "column">
+  <section *ngFor ="let subject of allSubjects">
+    <section  class="own-upload-summary-section" fxLayout = "row">
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">{{subject.topicName}}</div>
+      <div class="zero-padding" fxLayout = "row"  fxFlex = "200px">
+        <div class="center border-right-1px-gray"  fxFlex>{{subject.singleCorrect.singleTheory}}</div>
+        <div class="center" fxFlex>{{subject.singleCorrect.singleNumber}}</div>
+      </div>
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">{{subject.numerical.singleNumber}}</div>
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">{{subject.matrix.singleNumber}}</div>
+      <div fxLayout = "row" fxLayoutAlign="center center" fxFlex = "100px">{{subject.reasoning.singleNumber}}</div>
+      <div class="zero-padding" fxLayout = "row"  fxFlex = "200px">
+        <div class="center border-right-1px-gray"  fxFlex>{{subject.multipleCorrect.multipleNumber}}</div>
+        <div class="center" fxFlex>{{subject.multipleCorrect.multipleTheory}}</div>
+      </div>
+      <div class="zero-padding" fxLayout = "row"  fxFlex = "200px">
+        <div class="center border-right-1px-gray"  fxFlex>{{subject.comprehension.paragraph}}</div>
+        <div class="center" fxFlex>{{subject.comprehension.questions}}</div>
+      </div>
+    </section>
+    <app-question-paper-template *ngIf="subject.subTopics.length > 0" [data]="subject.subTopics"></app-question-paper-template>
+  </section>
+
+</section>
+
+

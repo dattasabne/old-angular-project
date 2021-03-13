@@ -1,0 +1,237 @@
+/* students styles */
+
+[class*="row"] {
+  margin: 0px !important;
+}
+.kosh-label{
+background:#191970 !important;
+  color: white;
+}
+
+.border {
+  border: 1px solid red;
+}
+.footer {
+  display: none;
+}
+.body {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.responsive-powerdby{
+  position: absolute !important;
+  bottom: 0px !important;
+  width: 100%;
+}
+.powered-by{
+  height: 100%;
+  padding: 4px;
+  background: #fff;
+  margin-right: 60px;
+}
+.powered-by > img{
+  width: auto;
+  max-width: 100%;
+  height:100%;
+
+
+}
+.homepage-footer{
+  margin-top:7px !important;
+  height:45px;
+  background:#fff;
+  border-radius: 0px !important;
+  padding: 0px !important;
+  box-sizing: border-box !important;
+}
+
+
+
+
+.student-fixed-sidebar{
+    border-radius: 0px ; padding: 0px;
+  width: 0px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.institute_list{
+  height: 100% !important;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+
+}
+
+.institute-container{
+  height: auto;
+  width:500px;
+  box-sizing: border-box;
+  padding:7px !important;
+}
+.institute-item-footer{
+  color: white;
+  background: blue;
+}
+.institute_item  { /** need to make responsive */
+  width:100%;
+  height: 150px !important;
+  box-sizing: border-box;
+  padding: 0px !important;
+  /* background: #F0F0F0; */
+  transition: outline 0.6s linear;
+}
+.othet-institute-label {
+  background:#00BFFF;
+  color: black;
+}
+.kosh-label {
+  background: blueviolet;
+}
+.othet-institute-label , .kosh-label  {
+  height: 100%;
+  width: 100%;
+  color: white;
+
+}
+
+.institute_item:hover{
+  cursor: pointer !important;
+  /* box-shadow: 0 8px 6px -6px black; */
+  box-shadow: 0 0 5px 5px #969696;
+}
+.image-container{
+  height: 100%;
+  width: 100%;
+  padding: 5PX;
+}
+.institute-item-footer:hover{
+  background: skyblue !important;
+}
+.kosh-label:hover{
+  background: skyblue !important;
+}
+.image-container > img{
+  width:auto !important;
+	max-width:100% !important;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain !important;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+
+.student-content-container{
+  overflow: auto;
+  width: 100% !important;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 8px;
+
+}
+
+.message-small {
+  font-size: 1em;
+}
+.message-big {
+  font-size: 3em;
+}
+.center {
+  text-align: center;
+}
+.main-div {
+  width: 100% !important;
+  position: relative;
+  z-index: 1;
+
+
+
+}
+
+.main {
+  height: 97vh;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+
+.class-header {
+  background: linear-gradient(to right, black, lightseagreen);
+  flex-basis: 40px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  text-transform: capitalize;
+  font-size: 1em;
+}
+.classes:hover {
+  background: lightslategray;
+  color: white;
+}
+.classes,.logout {
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  border-bottom: 1px solid gray;
+  transition: 0.5s;
+}
+.logout:hover{
+  background: tomato !important;
+  color: white;
+}
+
+
+.class-profile-pic {
+  height: 40px;
+  width: 40px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  margin: 5px;
+}
+.class-names {
+  font-weight: bold;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+
+body,
+html {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.no-gutter {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.full-height-width {
+  height: 100% !important;
+  width: 100% !important;
+}
+.full-height {
+  height: 100% !important;
+}
+
+@media only screen and (max-width:900px){
+  .institute_item{
+    height: 150 !important;
+    width: 100% !important;
+  }.institute-container{
+    width: 100%;
+  }
+  .powered-by{
+    margin-right: 8px !important;
+  }
+}
+
+/* end students styles */

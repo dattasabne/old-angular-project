@@ -1,0 +1,37 @@
+<div class="main">
+  <app-loader *ngIf="isAppLoaded"></app-loader>
+  <mat-card class="header">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 co-xl-4">
+        <div class="row">
+          <div class="col-12 class-profile">
+            <div>
+              <span>Class Name : </span>
+              <span>{{ classProfile && classProfile.className }}</span>
+            </div>
+            <!-- <div>
+              <span>User Name : </span>
+              <span>{{ classProfile.username }} </span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 co-xl-8">
+        <div class="row">
+          <div
+            *ngFor="let option of options"
+            class="col-sm-12 col-lg-3 col-md-3 padding-all-5px"
+          >
+            <mat-card
+              (click)="loadComponent(option.index)"
+              [style.background]="option.background"
+              class="menu"
+              >{{ option.name }}</mat-card
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<ng-template #template></ng-template>

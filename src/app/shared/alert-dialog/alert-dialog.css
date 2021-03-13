@@ -1,0 +1,26 @@
+.alert-bottom-sheet {
+  position: absolute;
+  bottom: 20px !important;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.alert-main-dialog {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid skyblue;
+}
+.alert-message-container {
+  height: 100%;
+  width: 100%;
+}
+.alert-message{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  font-size: 1.2em;
+  margin-top: 25px;
+}

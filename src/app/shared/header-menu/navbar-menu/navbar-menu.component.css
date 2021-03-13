@@ -1,0 +1,116 @@
+.header {
+    width: 100%;
+    background-color: skyblue;
+    height: 100px;
+   
+}
+.logo-wraper{
+ height: 50px;
+ width: 50% !important;
+ border: 2px solid gray;
+ margin-left: 15px;
+}
+img{
+ height: 100%;
+ width:100%;
+}
+.menu-wraper{
+  width:100%;
+  display: flex;
+  align-items: center;
+  height: 20px;
+  height: 100%;
+}
+.menu-wraper >div{
+  width:100%;
+}
+.each-option{
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    text-transform: capitalize;
+  }
+  ul li{
+    width: 20%;
+    line-height: 20px;
+    margin: 2px;
+    display: inline-block;
+    box-sizing: border-box !important;
+
+
+  }
+  ul{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+    box-sizing: border-box !important;
+    list-style: none;
+    list-style-position: inside;
+  }
+  
+  @media only screen and (max-width: 700px) {
+    
+    .demo{
+      justify-content: center;
+      box-sizing: border-box !important;
+      padding: 4px 0px !important;
+    }
+    ul{
+      flex-direction: column;
+      box-sizing: border-box !important;
+      justify-content: space-around;
+      margin-left: 15px !important;
+    }
+    ul li{
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    mat-card {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        
+      }
+      .header{
+        height: auto !important;
+
+      }
+}
+.badge-container{
+  margin: 0px !important;padding:
+  0px !important;
+  box-sizing: border-box;
+  height: 100%;width: 100%;
+}
+.sub-menu{
+  position: absolute;
+  width: 400px;
+  
+  top: 200%;
+  left: -15px;
+  z-index: 99;
+  background:#fff;
+  transition: 0.5s;
+}
+.active-notification{
+  height: 300px;
+  overflow: auto !important;
+  border: 2px solid gray;
+
+}
+.deactive-notification{
+  height: 0px;
+  overflow: hidden !important;
+  border: none;
+}
+.list {
+  height: auto;
+  font-size: 0.7em;
+  padding:5px 5px !important;
+  margin-bottom:  5px  !important;
+  
+  text-align: justify;
+
+}

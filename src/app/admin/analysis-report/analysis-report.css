@@ -1,0 +1,241 @@
+.main-div {
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  position: relative;
+}
+.mat-form-field-wrapper {
+  padding-bottom: 0.9em !important;
+}
+.record-tr{
+  cursor: pointer;
+}
+.panel {
+  border: 2px solid black;
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  background: skyblue;
+}
+.radio-group .radio-button {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.radio-group {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.display-staudent-area {
+  overflow: auto;
+  max-height: 400px auto;
+  width: 100%;
+}
+
+.margin-top-7px {
+  margin-top: 7px !important;
+}
+.color-white {
+  color: white !important;
+}
+.date-criteria {
+  margin-left: 7px !important;
+  margin-right: 7px !important;
+}
+.option-wraper {
+  padding: 5px;
+  margin: 2px;
+}
+
+/* .mat-select-value {
+  color: white !important;
+} */
+.border-blue {
+  border: 2px solid skyblue !important;
+}
+
+.background-white {
+  background: white !important;
+}
+.background-green {
+  background-color: #008b45 !important;
+}
+
+.option-wraper-noborder {
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+legend {
+  width: auto;
+  font-size: 1em;
+  font-weight: bold;
+  margin-left: 15px;
+  text-transform: capitalize;
+  background: white !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  border: 2px solid green;
+}
+
+.middle-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.description-textarea {
+  width: 100%;
+  height: 70px;
+}
+.serach-panel {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0px;
+}
+.menu-option {
+  margin-left: 10px;
+}
+.select-option {
+  width: 100%;
+}
+.divider {
+  margin-bottom: 5px;
+}
+.week-head {
+  padding: 6px;
+  margin-left: 10px;
+}
+[class*="row"] {
+  margin: 0;
+}
+.full-width-with-margin {
+  width: 100%;
+  margin: 10px;
+}
+
+.padding-left-10px {
+  padding-left: 10px !important;
+}
+.padding-all-20px {
+  padding: 20px !important;
+}
+.padding-all-10px {
+  padding: 10px !important;
+}
+.padding-all-5px {
+  padding: 5px !important;
+}
+.padding-all-7px {
+  padding: 7px !important;
+}
+.radio-line-height-72px {
+  line-height: 72px;
+}
+.button-auto {
+  width: auto !important;
+}
+[mat-checkbox] {
+  margin: 0 !important;
+}
+.padding-l-r-5px {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.template-area {
+  width: 100%;
+  height: 150px;
+}
+.table-container {
+  margin-top: -5px;
+}
+@media only screen and (max-width: 900px) {
+  mat-card {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .table-container {
+    margin-top: 5px;
+  }
+  .date-criteria {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 5px;
+  }
+  .panel-label {
+    top: calc(0.5%);
+    left: calc(7%);
+    position: absolute;
+  }
+  .week-head {
+    margin-left: 0px;
+  }
+  .menu-option,
+  .option-wraper,
+  .option-wraper-noborder,
+  .panel,
+  .padding-left-10px {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none;
+  }
+  .option-wraper {
+    padding: 5px;
+  }
+  .resposive-full-width {
+    width: 100% !important;
+  }
+  .radio-line-height-72px {
+    line-height: 25px;
+  }
+}
+
+.report-table td {
+  border: 2px solid black !important;
+  text-align: center;
+  min-width: 200px !important;
+}
+.report-table.td-header {
+  position: relative;
+}
+.report-table.td-header span {
+  /* position: absolute;
+  top: calc(50% - 23%);
+  left: calc(50% - 23%); */
+  text-align: left;
+}
+
+.num-colum {
+  min-width: 80px !important;
+}
+.name-column {
+  min-width: 300px !important;
+}
+.font-6px {
+  font-size: 9px !important;
+}
+.class-green {
+  color: green !important;
+}
+.class-red {
+  color: red !important;
+}
+.class-blue {
+  color: blue !important;
+}
+/* ----------- Non-Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  .main-div {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}

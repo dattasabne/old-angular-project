@@ -1,0 +1,159 @@
+<section class="assignment-root" fxLayout="column" fxLayoutGap = "4px">
+  <ball-loader  *ngIf="isLoader"></ball-loader>
+  <mat-accordion fxHide.md fxHide.lg fxHide.xl>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Test Data
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="expansion-panel-body">
+        <section   fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="4px"  class="desktop-section">
+          <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+            <div  fxLayout="column" class="card-layout">
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Online Exam Id  </div>
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.onlineExamId}}</div>
+                </div>
+                <div class="line"></div>
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Duration  </div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.hourFormat}}</div>
+                </div>
+            </div>
+          </mat-card>
+          <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+            <div  fxLayout="column" class="card-layout">
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Batch  </div>
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.batch }}</div>
+                </div>
+                <div class="line"></div>
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Question Id  </div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.questionPaperId}}</div>
+                </div>
+            </div>
+          </mat-card>
+          <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+            <div  fxLayout="column" class="card-layout">
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Pattern </div>
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.patternName }}</div>
+                </div>
+                <div class="line"></div>
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60">Subject</div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.subjectName}}</div>
+                </div>
+            </div>
+          </mat-card>
+          <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+            <div  fxLayout="column" class="card-layout">
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Total Question </div>
+                    <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.totalQuestion}}</div>
+                </div>
+                <div class="line"></div>
+                <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60">Total Marks</div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.totalMarks}}</div>
+                </div>
+            </div>
+          </mat-card>
+          <mat-card class = "head-card" fxLayoutAlign="center center" fxLayout="row" fxFlex.gt-xs = "20" fxFlex>
+              <div class="description-box">
+               {{assignmentDataModel.description}}
+              </div>
+          </mat-card>
+        </section>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-card fxHide.xs fxHide.sm class="criteria-section common-padding">
+      <section   fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="4px"  class="desktop-section">
+        <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+          <div  fxLayout="column" class="card-layout">
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Online Id  </div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.onlineExamId}}</div>
+              </div>
+              <div class="line"></div>
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Duration  </div>
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.hourFormat}}</div>
+              </div>
+          </div>
+        </mat-card>
+        <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+          <div  fxLayout="column" class="card-layout">
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Batch  </div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.batch }}</div>
+              </div>
+              <div class="line"></div>
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Question Paper Id  </div>
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.questionPaperId}}</div>
+              </div>
+          </div>
+        </mat-card>
+        <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+          <div  fxLayout="column" class="card-layout">
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Pattern </div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> :  {{assignmentDataModel.patternName }}</div>
+              </div>
+              <div class="line"></div>
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60">Subject</div>
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> :  {{assignmentDataModel.subjectName }}</div>
+              </div>
+          </div>
+        </mat-card>
+        <mat-card class = "head-card" fxLayoutAlign="center center" fxFlex.gt-xs = "20"  fxFlex>
+          <div  fxLayout="column" class="card-layout">
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60"> Total Question </div>
+                  <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.totalQuestion}}</div>
+              </div>
+              <div class="line"></div>
+              <div fxFlex class="head-box" fxLayoutAlign="start center" fxLayout="row">
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "60">Total Marks</div>
+                <div  fxLayoutAlign="start center" fxLayout="row" fxFlex = "40"> : {{assignmentDataModel.totalMarks}}</div>
+              </div>
+          </div>
+        </mat-card>
+        <mat-card class = "head-card" fxLayoutAlign="center center" fxLayout="row" fxFlex.gt-xs = "20" fxFlex>
+            <div class="description-box">
+              {{assignmentDataModel.description}}
+            </div>
+        </mat-card>
+      </section>
+      </mat-card>
+    <mat-card fxLayout="column" fxLayoutGap ="4px"  class="branch-section common-padding">
+        <mat-card fxLayout="row" fxLayoutAlign = "start center" class="common-padding branch-lable"> Schedule Test To Any Branch, Division, SubDivision.</mat-card>
+        <mat-card class="common-padding branch-card" >
+          <assignment-tree-template [functionReff] = "functionRefModel" [branchReff]="allBranches" [assignmentData]="assignmentDataModel"  [childern] = "allBranches"></assignment-tree-template>
+        </mat-card>
+    </mat-card>
+    <mat-card class="action-section common-padding"  fxLayout = "row" fxLayoutGap = "7px" fxLayoutAlign = "center center">
+      <div *ngIf="assignmentDataModel.doCreate">
+        <button  mat-raised-button color="primary" (click)="saveTest()">Save</button>
+      </div>
+      <div *ngIf="!assignmentDataModel.doCreate">
+        <button mat-raised-button color="primary" (click)="saveTest()">Update</button>
+      </div>
+      <div>
+        <button mat-raised-button color="accent"  (click)="reset()">Reset</button>
+      </div>
+      <div *ngIf="!assignmentDataModel.doCreate">
+        <button mat-raised-button color="warn"    (click)="deleteAssignment()">Delete</button>
+      </div>
+
+      <div>
+        <button mat-raised-button color="accent"  (click)="closeCurrentForm()">Close</button>
+      </div>
+    </mat-card>
+</section>

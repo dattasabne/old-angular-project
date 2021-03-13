@@ -1,0 +1,20 @@
+
+.image-popup-container{
+    height: 100%;
+    width: 100%;
+    padding: 8px;
+    margin: 0px;
+}
+.checkbox-option{
+    padding: 8px !important;
+}
+.image-popup-container img{
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+}
+.border{
+    border: 2px solid red !important;
+}
+

@@ -1,0 +1,68 @@
+.search-criteria{
+  width: 100%;
+  position: relative;
+}
+.column-center{
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+.border{
+  border: 2px solid red !important;
+}
+.desk-control-legend , .desk-academic-section{
+  border-radius: 8px;
+}
+.desk-control-section{
+  position: relative;
+}
+.desk-control-legend{
+  margin: 7px 2px;
+}
+/* change accordance mat expansion arrow color */
+::ng-deep .accordance-arraow-color-blue > .mat-expansion-indicator:after {
+  color: #008DD2;
+}
+/*  this css used for to change mat select arrow */
+.mat-select:focus:not(.mat-select-disabled).mat-primary ,
+.mat-select-arrow , .mat-select-underline , .mat-select-trigger{
+    color: #008DD2 !important;
+}
+/* to change selected item color in the select list */
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #008DD2 !important;
+}
+.desk-control-legend > legend{
+  width: auto !important;
+  padding: 1px 8px;
+  margin-left: 16px;
+  font-size: 16px;
+}
+.desk-academic-section{
+  height:50px;
+  font-size: 1.6em;
+  color: white;
+}
+.border-2px-skyblue{
+  border: 2px solid skyblue;
+}
+.question-paper-mat-select-border{
+  border: 1px solid #008DD2;
+  border-radius: 10px;
+}
+.mat-form-field-underline{ /** thi is for remove select box underline **/
+ width: 0% !important;
+}
+.mat-form-field{
+  margin: -10px 7px !important;
+}
+.desk-control-container{
+  padding:0px 12px !important;
+}
+.small-select{
+  line-height:0px !important;
+}
+
+
+
+

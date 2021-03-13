@@ -1,0 +1,40 @@
+
+<section class = "conversion-section full">
+  <mat-card style="background:lightgray;" fxLayout = "column" fxLayoutGap = "4px" class="full">
+    <mat-card class = "conversion-header capitalize center color-white">xml data conversion</mat-card>
+    <div fxLayout = "row" fxLayoutGap = "4px" class = "conversion-body">
+      <mat-card fxLayout="column" fxLayoutGap = "4px" fxFlex ="30" class = "conversion-sidebar conversion-common-padding">
+        <div class ="background-purple conversion-search-haeder conversion-common-control-height center color-white capitalize"> search criteria </div>
+        <div class ="conversion-search-haeder conversion-common-control-height">
+          <mat-form-field class = "full-width">
+            <mat-label class = "capitalize">Select subject</mat-label>
+            <mat-select (selectionChange)="subject_changeHandler($event)"  [(ngModel)] ="subjectName" class = "capitalize" disableRipple>
+              <mat-option value="physics" class = "capitalize">physics</mat-option>
+              <mat-option value="chemistry" class = "capitalize">chemistry</mat-option>
+              <mat-option value="mathematics" class = "capitalize">mathematics</mat-option>
+              <mat-option value="biology" class = "capitalize">biology</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class ="conversion-search-haeder conversion-common-control-height">
+          <mat-form-field class = "full-width">
+            <mat-label class = "capitalize">Select chapter id</mat-label>
+            <mat-select [(ngModel)]="chapterId" class = "capitalize" disableRipple>
+              <mat-option  *ngFor = "let chapId of allChapterIds" [value]="chapId" class = "capitalize">{{chapId}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout = "row" class ="conversion-search-haeder conversion-common-control-height">
+            <label   for ="xml-to-json-file" class ="conversion-select-file full capitalize center background-skyblue color-white">select file </label>
+            <input (change)="fileChange_Handler($event)" style="display:none;" type="file" id = "xml-to-json-file" />
+        </div>
+        <div fxLayout = "row" class ="conversion-search-haeder conversion-common-control-height">
+          <mat-progress-bar *ngIf = "lineLoader" mode="indeterminate"></mat-progress-bar>
+        </div>
+      </mat-card>
+      <mat-card fxFlex ="70" class = "conversion-sidebar-sidebody  conversion-common-padding"></mat-card>
+    </div>
+  </mat-card>
+</section>
+
+

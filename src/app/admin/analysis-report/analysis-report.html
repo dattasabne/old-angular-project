@@ -1,0 +1,720 @@
+<div class="main-div">
+  <fieldset class="panel">
+    <legend>Analysis Report</legend>
+    <div class=" row serach-panel">
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <mat-card>
+          <fieldset class="option-wraper background-white border-blue">
+            <legend>search criteria</legend>
+            <div class="menu-option">
+              <mat-form-field class="select-option">
+                <mat-select  [formControl]="batchControl"  placeholder="Batch">
+                  <mat-option [value]="'ALL'" >{{'ALL'}}</mat-option>
+                  <mat-option
+                    *ngFor="let batch of batches"
+                    [value]="batch"
+                  >
+                    {{ batch.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="menu-option">
+              <mat-form-field class="select-option">
+                <mat-select [formControl]="courseControl" placeholder="Course">
+                  <mat-option [value]="'ALL'" >{{'ALL'}}</mat-option>
+                  <mat-option
+                    *ngFor="let course of courses"
+                    [value]="course"
+                  >
+                    {{ course.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="menu-option">
+              <mat-form-field class="select-option">
+                <mat-select [formControl]="branchControl" placeholder="Branch">
+                  <mat-option [value]="'ALL'"  >{{'ALL'}}</mat-option>
+                  <mat-option
+                    *ngFor="let branch of branches"
+                    [value]="branch"
+                  >
+                    {{ branch.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="menu-option">
+              <mat-form-field class="select-option">
+                <mat-select [formControl]="divisionControl" placeholder="Division">
+                  <mat-option [value]="'ALL'" >{{'ALL'}}</mat-option>
+                  <mat-option
+                    *ngFor="let division of divisions"
+                    [value]="division"
+                  >
+                    {{ division.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="menu-option">
+              <mat-form-field class="select-option">
+                <mat-select [formControl]="subDivisionControl" placeholder="Sub Division">
+                  <mat-option [value]="'ALL'" >{{'ALL'}}</mat-option>
+                  <mat-option
+                    *ngFor="let sdivision of subDivisions"
+                    [value]="sdivision"
+                  >
+                    {{ sdivision.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+                <button (click)="searchCriteria()" class="background-skyblue color-white resposive-full-width full-width"  mat-raised-button mat-button>Search</button>
+            </div>
+          </fieldset>
+        </mat-card>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10" >
+        <mat-card class="date-criteria" style="position: relative;">
+          <app-loader *ngIf="isDateCriteriaLoader"></app-loader>
+          <fieldset class="border-blue" >
+            <legend>date criteria</legend>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <div class="menu-option ">
+                  <mat-form-field class="select-option">
+                    <mat-select [formControl]="examDatesControl" placeholder="List Of Exam Dates">
+                      <mat-option  [value]="ALL">{{ALL}}</mat-option>
+                      <mat-option
+                        *ngFor="let date of dateList"
+                        [value]="date"
+                      >
+                        <!-- {{ date |date_and_time:allsearchedCriterialData}} -->
+                        {{date | date:'dd MMM yyyy'}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                <div class="menu-option">
+                  <mat-form-field class="select-option">
+                    <mat-select [formControl]="assignmentTypeControl" placeholder="Assignment Type's">
+                      <mat-option  [value]="ALL">{{ALL}}</mat-option>
+                      <mat-option
+                        *ngFor="let type of allsearchedCriterialData | assignmentType : examDatesControl.value"
+                        [value]="type"
+                      >
+                        {{ type.assignmentType }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                  <div class="menu-option">
+                    <mat-form-field class="select-option">
+                      <mat-select [formControl]="assignmentIdControl" placeholder="Test Id's">
+                        <mat-option  [value]="ALL">{{ALL}}</mat-option>
+                        <mat-option
+                          *ngFor="let testId of allsearchedCriterialData | assignmentIdsPipe : examDatesControl.value"
+                          [value]="testId"
+                        >
+                        <!-- <mat-option
+                          *ngFor="let testId of allTestIds"
+                          [value]="testId"
+                        > -->
+                        {{ testId.allBranchId}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 ">
+                  <div class="menu-option  radio-group" >
+                      <mat-radio-group [formControl]="radioControl" class="radio-group">
+                          <mat-radio-button class="radio-button" value="attempted">Attempted</mat-radio-button>
+                          <mat-radio-button class="radio-button" value="not-attempted">Not-Attempted</mat-radio-button>
+                        </mat-radio-group>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                  <div class="menu-option">
+                    <button (click)="searchAssignmentStudentDetaild()" class="background-skyblue color-white resposive-full-width full-width"  mat-raised-button mat-button>Get Details</button>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12  col-lg-9 col-xl-9 ">
+                <div class="menu-option">
+                  <textarea readonly style="height: 100%; width: 100%;">{{assignmentIdControl.value.testDescription}}</textarea>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12  col-lg-2 col-xl-2 ">
+                <div class="menu-option">
+                  <button (click)="updateRanks()" class="background-skyblue color-white resposive-full-width full-width"  mat-raised-button mat-button>Update Rank</button>
+                </div>
+              </div>
+            </div>
+        </fieldset>
+        </mat-card>
+        <div class="option-wraper" *ngIf="displayRecordiv()">
+          <mat-card>
+            <div class="row border-blue">
+                <div class="margin-top-bottom-5px-r2px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
+                    <button (click)="export_to_excel()" class="resposive-full-width full-width"  mat-raised-button mat-button>Export To Excel</button>
+                </div>
+                <div class="margin-top-bottom-5px-r2px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
+                  <button (click)="sendFireBaseNotification()" class=" resposive-full-width full-width"  mat-raised-button mat-button>Send Notification</button>
+                </div>
+                <div class="margin-top-bottom-5px-r2px margin-top-bottom-5px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
+                  <button class="resposive-full-width full-width"  mat-raised-button mat-button>Send SMS</button>
+                </div>
+                <div class="margin-top-bottom-5px-r2px margin-top-bottom-5px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
+                  <button class="resposive-full-width full-width"  mat-raised-button mat-button>Send Email</button>
+                </div>
+            </div>
+          </mat-card>
+        </div>
+
+
+
+
+
+
+      <div class="option-wraper ">
+          <!-- <div class="row">
+            <div class="col-12">
+              <mat-card>
+                <mat-tab-group class="border-blue">
+                  <mat-tab label="Assignment Details">
+                    <div class="option-wraper">
+                      <div class="row">
+                        <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5 col-xl-5">
+                          <mat-card>
+                          <div class="row">
+                              <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                  <div class="menu-option">
+                                    <mat-form-field class="select-option">
+                                      <mat-select placeholder="Assignment Type">
+                                        <mat-option
+                                          *ngFor="let food of ['datta', 'sabne', 'parli']"
+                                          [value]="food"
+                                        >
+                                          {{ food }}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </div>
+
+                              </div>
+                              <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                  <div class="menu-option">
+                                      <mat-form-field class="select-option">
+                                        <mat-select placeholder="Assignment Id's">
+                                          <mat-option
+                                            *ngFor="let food of ['101', '55', '103']"
+                                            [value]="food"
+                                          >
+                                            {{ food }}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                    </div>
+                              </div>
+                            </div>
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="menu-option">
+                                <textarea  class="description-textarea " ></textarea>
+                                </div>
+                            </div>
+
+                          </div>
+                        </mat-card>
+                        </div>
+                        <div class="col-sm-12 col-xs-12 col-md-7 col-lg-7 col-xl-7">
+                          <div class="option-wraper">
+                            <mat-card>
+                              <mat-tab-group>
+                                <mat-tab label="Notification">
+                                  <div class="option-wraper-noborder">
+                                    <div class="row">
+                                      <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4 middle-center">
+                                          <div style="padding: 5px;">Notification</div>
+                                      </div>
+                                      <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4">
+                                        <mat-form-field class="select-option">
+                                            <mat-select placeholder="Assignment Id's">
+                                              <mat-option
+                                                *ngFor="let food of ['101', '55', '103']"
+                                                [value]="food"
+                                              >
+                                                {{ food }}
+                                              </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                        </div>
+                                        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-4 col-xl-12">
+                                            <button  style="width: 90% !important;" class="full-width-with-margin " mat-raised-button mat-button>Send Notification</button>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </mat-tab>
+                                <mat-tab label="SMS">
+                                  <div class="option-wraper-noborder">
+                                        <div class="row">
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="select-option">
+                                                  <mat-select placeholder="SMS Template">
+                                                    <mat-option
+                                                      *ngFor="let food of ['101', '55', '103']"
+                                                      [value]="food"
+                                                    >
+                                                      {{ food }}
+                                                    </mat-option>
+                                                  </mat-select>
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="select-option">
+                                                  <mat-select placeholder="SMS Provider">
+                                                    <mat-option
+                                                      *ngFor="let food of ['101', '55', '103']"
+                                                      [value]="food"
+                                                    >
+                                                      {{ food }}
+                                                    </mat-option>
+                                                  </mat-select>
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field  class="example-full-width full-width">
+                                                  <input matInput placeholder="User Name">
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="example-full-width full-width">
+                                                  <input matInput type="password" placeholder="Password">
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="example-full-width full-width">
+                                                  <input matInput placeholder="API Key">
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="example-full-width full-width">
+                                                  <input matInput placeholder="Sender Id">
+                                                </mat-form-field>
+                                          </div>
+                                        </div>
+                                      <div>
+                                        <button class="resposive-full-width"  mat-raised-button mat-button>Send SMS</button>
+                                    </div>
+                                  </div>
+                                </mat-tab>
+                                <mat-tab label="Email">
+                                    <div class="option-wraper-noborder">
+                                        <div class="row">
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="select-option">
+                                                  <mat-select placeholder="Email Template">
+                                                    <mat-option
+                                                      *ngFor="let food of ['101', '55', '103']"
+                                                      [value]="food"
+                                                    >
+                                                      {{ food }}
+                                                    </mat-option>
+                                                  </mat-select>
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field  class="example-full-width full-width">
+                                                  <input matInput placeholder="Email Sender">
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field  class="example-full-width full-width">
+                                                  <input matInput placeholder="User Name">
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="example-full-width full-width">
+                                                  <input matInput type="password" placeholder="Password">
+                                                </mat-form-field>
+                                          </div>
+                                          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                                              <mat-form-field class="example-full-width full-width">
+                                                  <input matInput placeholder="Service Name">
+                                                </mat-form-field>
+                                          </div>
+                                        </div>
+                                      <div>
+                                        <button class="resposive-full-width"  mat-raised-button mat-button>Send Email</button>
+                                    </div>
+                                  </div>
+
+                                </mat-tab>
+                              </mat-tab-group>
+                            </mat-card>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="SMS & Email Template">
+                      <div class="option-wraper">
+                        <div class="row">
+                            <div class="col-sm-6 padding-all-7px">
+                              <div class="row">
+                                <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 col-xl-3  padding-l-r-5px">
+                                    <mat-form-field class="select-option">
+                                        <mat-select placeholder="Template Type">
+                                          <mat-option
+                                            *ngFor="let food of ['101', '55', '103']"
+                                            [value]="food"
+                                          >
+                                            {{ food }}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 col-xl-3  padding-l-r-5px">
+                                    <mat-form-field class="select-option">
+                                        <mat-select placeholder="Report Name">
+                                          <mat-option
+                                            *ngFor="let food of ['101', '55', '103']"
+                                            [value]="food"
+                                          >
+                                            {{ food }}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                </div>
+                                <div  class=" col-sm-12 col-xs-12 col-md-3 col-lg-3 col-xl-3 padding-l-r-5px">
+                                    <mat-form-field class="select-option">
+                                        <mat-select placeholder="Template Name">
+                                          <mat-option
+                                            *ngFor="let food of ['101', '55', '103']"
+                                            [value]="food"
+                                          >
+                                            {{ food }}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 col-xl-3 ">
+                                  <div class="radio-line-height-72px padding-l-r-5px">
+                                      <mat-checkbox color="primary">Default</mat-checkbox>
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="">
+                                  <textarea class="template-area"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6">
+                              <div class="padding-all-7px">
+                                  <mat-form-field class="example-full-width full-width">
+                                    <input matInput type="text" placeholder="Email Subject">
+                                  </mat-form-field>
+                              </div>
+                              <div style="margin-top:5px;">
+                                  <textarea class="template-area"></textarea>
+                              </div>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div class="row  padding-all-7px">
+                          <div class="col-sm-2 padding-l-r-5px">
+                              <button class="resposive-full-width full-width"  mat-raised-button mat-button>Add New Template</button>
+                          </div>
+                          <div class="col-sm-2 padding-l-r-5px">
+                              <button class="resposive-full-width full-width"  mat-raised-button mat-button>Delete Template</button>
+                          </div>
+                          <div class="col-sm-2 padding-l-r-5px">
+                              <button class="resposive-full-width full-width"  mat-raised-button mat-button>Update Template</button>
+                          </div>
+                          <div class="col-sm-2 padding-l-r-5px">
+                              <button class="resposive-full-width full-width"  mat-raised-button mat-button>Preview Message</button>
+                          </div>
+                          <div class="col-sm-2 padding-l-r-5px">
+                              <button class="resposive-full-width full-width"  mat-raised-button mat-button>Previous</button>
+                          </div>
+                          <div class="col-sm-2 padding-l-r-5px">
+                              <button class="resposive-full-width full-width"  mat-raised-button mat-button>Next</button>
+                          </div>
+                        </div>
+
+                      </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </mat-card>
+            </div>
+          </div> -->
+          <div class="row table-container">
+            <div class="col-12">
+              <mat-card style="position: relative;">
+                <app-loader *ngIf="isLoaded"></app-loader>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="row">
+                        <div class="col-4 paddin-l-r-10px">
+                            <mat-form-field class="example-full-width full-width">
+                              <input [(ngModel)]="searchName" matInput placeholder="Search By Any">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-8">
+                            <mat-paginator (page)="emit($event)"  [length]="100"
+                              [pageSize]="10"
+                              [pageSizeOptions]="[5, 10, 25, 100]">
+                          </mat-paginator>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-12" *ngIf="radioControl.value==radioOption.attempted">
+                    <div class="display-staudent-area border-blue padding-all-7px margin-top-7px">
+
+                      <table class="table table-sm report-table">
+                        <tbody>
+                          <tr >
+                            <td class="td-header num-colum "><span>{{tableHeader.srNo}}</span></td>
+                            <td class="td-header name-column">
+                              <span>{{tableHeader.studentName}}</span>
+                            </td>
+                            <td class="td-header">
+                              <span>
+                                  {{tableHeader.username}}
+                              </span>
+                             </td>
+                            <td class="td-header">
+                              <span>
+                                {{tableHeader.password}}
+                              </span>
+                            </td>
+                            <td class="td-header">
+                              <span>
+                                  {{tableHeader. mobileNo}}
+                              </span>
+                            </td>
+                            <td class="td-header">
+                                <span>
+                                    {{tableHeader.dateTime}}
+                                </span>
+                              </td>
+                            <td colspan="2" style="padding-left:0px !important;padding-right:0px !important;"  *ngFor="let subject of tableHeader.subjects">
+                                <div style="margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{subject.name}}</div>
+                                <div class="row">
+                                  <div class="col-6 font-6px class-green" style="text-align:center;" >{{subject.correctQuestion}}</div>
+                                  <div class="col-6 font-6px class-red" style="text-align:center;" >{{subject.wrongQuestion}}</div>
+                                </div>
+                              </td>
+                              <td colspan="3" style=" min-width:200px !important; padding-left:0px !important;padding-right:0px !important;">
+                                <div style="margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{ tableHeader.marks.name}}</div>
+                                <div class="row">
+                                  <div class="col-4 font-6px class-blue" style="text-align:center;" >{{tableHeader.groups.totalQuestion}}</div>
+                                  <div class="col-4 font-6px class-green" style="text-align:center;" >{{tableHeader.groups.correctQuestion}}</div>
+                                  <div class="col-4 font-6px class-red" style="text-align:center;" >{{tableHeader.groups.wronQuestion}}</div>
+                                </div>
+                              </td>
+                              <td colspan="3" style="width:200px !important;  padding-left:0px !important;padding-right:0px !important;">
+                                  <div style="margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{tableHeader.groups.name}}</div>
+                                  <div class="row">
+                                    <div class="col-6 font-6px class-green" style="text-align:center" >{{tableHeader.marks.correctQuestion}}</div>
+                                    <div class="col-6 font-6px class-red" style="text-align:center" >{{tableHeader.marks.wrongQuestion}}</div>
+                                  </div>
+                                </td>
+                              <!-- <td class="td-header"><span>Time Taken</span></td> -->
+                              <!-- <td class="td-header">
+                              <span>
+                                  {{tableHeader. avrageTime}}
+                              </span>
+                            </td> -->
+                            <td class="td-header">
+                              <span>{{tableHeader. totalPercentage}}</span>
+                              </td>
+                            <td class="td-header">
+                              <span>
+                                  {{tableHeader.totalPositiveMarks}}
+                              </span>
+                            </td>
+                            <td class="td-header">
+                              <span>
+                                  {{tableHeader.totalNegativeMarks}}
+                              </span>
+                              </td>
+                            <td class="td-header">
+                              <span>
+                                  {{tableHeader.totalMarks}}
+                              </span>
+                              </td>
+                            <td class="td-header">
+                              <span>{{tableHeader.outOfMarks}}</span>
+                            </td>
+
+                            <td class="td-header">
+                              <span>{{tableHeader.allBranchRank}}</span>
+                            </td>
+                            <td class="td-header">
+                              <span>{{tableHeader.branch}}</span>
+                            </td>
+                            <td class="td-header">
+                              <span>{{tableHeader.branchRank}}</span>
+                            </td>
+                            <td class="td-header">
+                              <span>{{tableHeader.division}}</span>
+                            </td>
+
+                            <td class="td-header">
+                              <span>{{tableHeader.divisionRank}}</span>
+                            </td>
+                            <td class="td-header">
+                              <span>{{tableHeader.subDivision}}</span>
+                            </td>
+                            <td class="td-header">
+                              <span>{{tableHeader.subDivisionRank}}</span>
+                            </td>
+                          </tr>
+                           <tr class="record-tr" (click)="highlight($event)"   *ngFor=" let records of allRecords;let i = index">
+                              <td class="num-colum">{{(i+1)}}</td>
+                              <td class="align-left">{{records.studentName}}</td>
+                              <td >{{records.username}}</td>
+                              <td>{{records.password}}</td>
+                              <td>{{records. mobileNo}}</td>
+                              <td>{{records.dateTime | dateTimePipe}}</td>
+                              <td colspan="2" style="padding-left:0px !important;padding-right:0px !important;"  *ngFor="let subject of records.subjects">
+                                  <div class="row">
+                                    <div class="col-6" style="text-align:center;" >{{subject.correctQuestion}}</div>
+                                    <div class="col-6" style="text-align:center;" >{{subject.wrongQuestion}}</div>
+                                  </div>
+                                </td>
+                                <td colspan="3" style="padding-left:0px !important;padding-right:0px !important;">
+                                  <div class="row">
+                                    <div class="col-4" style="text-align:center;" >{{records.groups.totalQuestion}}</div>
+                                    <div class="col-4" style="text-align:center;" >{{records.groups.correctQuestion}}</div>
+                                    <div class="col-4" style="text-align:center;" >{{records.groups.wronQuestion}}</div>
+                                  </div>
+                                </td>
+                                <td colspan="3" style="padding-left:0px !important;padding-right:0px !important;">
+                                   <div class="row">
+                                      <div class="col-6" style="text-align:center" >{{records.marks.correctQuestion}}</div>
+                                      <div class="col-6" style="text-align:center" >{{records.marks.wrongQuestion}}</div>
+                                    </div>
+                                  </td>
+                              <!-- <td>{{records.time}}</td>
+                              <td>{{records. avrageTime}}</td> -->
+                              <td>{{records. totalPercentage}}</td>
+                              <td>{{records.  totalPositiveMarks}}</td>
+                              <td>{{records.totalNegativeMarks}}</td>
+                              <td>{{records.totalMarks}}</td>
+                              <td>{{records.outOfMarks}}</td>
+                              <td>{{records.allBranchRank}}</td>
+                              <td>{{records.branch}}</td>
+                              <td>{{records.branchRank}}</td>
+                              <td>{{records.division}}</td>
+                              <td>{{records.divisionRank}}</td>
+                              <td>{{records.subDivision}}</td>
+                              <td>{{records.subDivisionRank}}</td>
+                          </tr>
+                          <!-- <tr *ngFor="let student of students | student:searchName">
+                            <th scope="row">{{student.index + 1}}</th>
+                            <td>{{student.name}}</td>
+                            <td>{{student.class}}</td>
+                            <td>{{student.pattern}}</td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                <div class="col-12" *ngIf="radioControl.value==radioOption.notAttempted">
+                    <div class="display-staudent-area border-blue padding-all-7px margin-top-7px">
+                      <table class="table table-sm report-table">
+                        <tbody>
+                          <tr>
+                            <td class="td-header num-colum "><span>SrNo.</span></td>
+                            <td class="td-header name-column">
+                              <span>Student Id</span>
+                            </td>
+                            <td class="td-header name-column">
+                              <span>Student Name</span>
+                            </td>
+                            <td class="td-header">
+                              <span>
+                                  User Name
+                              </span>
+                             </td>
+                            <td class="td-header">
+                              <span>
+                                Password
+                              </span>
+                            </td>
+                            <td class="td-header">
+                              <span>
+                                  Mobile No.
+                              </span>
+                            </td>
+                            <td class="td-header">
+                                <span>
+                                   Email Id
+                                </span>
+                              </td>
+                              <td class="td-header">
+                                <span>
+                                   Batch
+                                </span>
+                              </td>
+                              <td class="td-header">
+                                <span>
+                                   Course
+                                </span>
+                              </td>
+                              <td class="td-header">
+                                <span>
+                                   Branch
+                                </span>
+                              </td>
+                              <td class="td-header">
+                                <span>
+                                   Division
+                                </span>
+                              </td>
+                              <td class="td-header">
+                                <span>
+                                   Sub-Division
+                                </span>
+                              </td>
+                          </tr>
+                           <tr *ngFor=" let records of notAttemptedRecords; let i = index">
+                              <td class="num-colum">{{i+1}}</td>
+                              <td class="num-colum">{{records.studentId}}</td>
+                              <td class="align-left">{{records.studentName}}</td>
+                              <td >{{records.userName}}</td>
+                              <td>{{records.password}}</td>
+                              <td>{{records.mobileNo}}</td>
+                              <td>{{records.emailId}}</td>
+                              <td>{{records.batch}}</td>
+                              <td>{{records.course}}</td>
+                              <td>{{records.branch}}</td>
+                              <td>{{records.division}}</td>
+                              <td>{{records.subDivision}}</td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>

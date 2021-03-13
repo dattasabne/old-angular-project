@@ -1,0 +1,77 @@
+<div class="main-div">
+<<<<<<< HEAD
+  <div class="row">
+    <div class="header col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div (click)="toggleButton()" class="border inline button-toggle">
+        <div class="toggle-button-wrapper">
+          <span class="toggle-button"></span>
+          <span class="toggle-button"></span>
+          <span class="toggle-button"></span>
+        </div>
+      </div>
+      <div class="logo inline">
+        <img class="logo-height" src="assets/kosh-logo.png" alt="" />
+      </div>
+=======
+    <div class="row">
+      <div class="header col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div (click)="toggleButton()" class="border">
+          <div class="toggle-button-wrapper">
+              <span class="toggle-button"></span>
+              <span class="toggle-button"></span>
+              <span class="toggle-button"></span>
+          </div>
+        </div>
+      </div>  
+>>>>>>> 8b98aa7941b41742e5e4d4fbf924b9804f1961af
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="test-panel border">
+        <mat-card>
+          <mat-form-field>
+            <mat-label>Select Test Id</mat-label>
+            <mat-select>
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let state of states" [value]="state">{{
+                state
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      [ngClass]="active ? 'active-panel' : 'deactive-panel'"
+      class=" border sidebar-panel col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"
+    >
+      <mat-card class="padding-l-r-none online-card">
+        <mat-list class="online-list" role="list">
+          <mat-list-item
+            *ngFor="let student of students"
+            (click)="loadComponents(student)"
+            role="listitem"
+            class="online-list"
+          >
+            <div class="online-item">
+              <div class="photo"></div>
+              <div>{{ student.name }}</div>
+              <div class="green-point">
+                <div class="online"></div>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+    <div
+      class="border detail-panel col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9"
+    >
+      <ng-template #studentProfile></ng-template>
+    </div>
+  </div>
+</div>

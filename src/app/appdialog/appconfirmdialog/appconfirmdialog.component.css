@@ -1,0 +1,18 @@
+.app-dialog-body{
+  overflow:auto !important;
+  padding:8px 3px !important;
+}
+.app-dialog-header{
+  position: relative;
+  height:15% !important;
+}
+.border{
+  border:2px solid red !important;
+}
+.alert-dialog{
+  height: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  position:relative !important;
+}
+

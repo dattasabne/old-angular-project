@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": ["hammerjs"],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+  },
+  "files": [
+    "./main.ts",
+    "./polyfills.ts"
+],
+"include": [
+  "src/**/*"
+],
+  "exclude": ["test.ts", "**/*.spec.ts"],
+}
+

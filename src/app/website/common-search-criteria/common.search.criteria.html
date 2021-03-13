@@ -1,0 +1,57 @@
+
+<mat-card fxLayout="column" class = "search-criteria">
+  <section  class="center desk-academic-section question-paper-theam capitalize common-padding">Academic Section</section>
+  <section fxLayout="column" class = "desk-control-section">
+
+    <fieldset class="question-paper-mat-select-border desk-control-legend">
+      <legend class = "capitalize question-paper-theme-color">Academic Year : </legend>
+      <div fxLayout="column" class="desk-control-container ">
+        <mat-form-field class = "small-select " >
+          <mat-select (selectionChange) = "changeAcademicYear_Handler($event)"  class = "mat-form-field">
+            <mat-option *ngFor = "let academicYear of academicYearData" [value] ="academicYear">{{academicYear}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </fieldset>
+    <fieldset class="question-paper-mat-select-border  desk-control-legend">
+      <legend class = "capitalize question-paper-theme-color">Pattern : </legend>
+      <div fxLayout="column" class="desk-control-container">
+        <mat-form-field class = "small-select" >
+          <mat-select (selectionChange) ="changePattern_Handler($event)" class = "mat-form-field">
+            <mat-option *ngFor = "let pattern of patternData" [value] ="pattern">{{pattern}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </fieldset>
+    <fieldset class="question-paper-mat-select-border  desk-control-legend">
+      <legend class = "capitalize question-paper-theme-color">Class : </legend>
+      <div fxLayout="column" class="desk-control-container">
+        <mat-form-field class = "small-select">
+          <mat-select  (selectionChange) ="changeClassName_Handler($event)" class = "mat-form-field" >
+            <mat-option *ngFor = "let className of classData" [value] = "className">{{className}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </fieldset>
+    <fieldset class="question-paper-mat-select-border  desk-control-legend">
+      <legend class = "capitalize question-paper-theme-color">Test Type : </legend>
+      <div fxLayout="column" class="desk-control-container">
+        <mat-form-field class = "small-select" >
+          <mat-select (selectionChange) = "changeTestType_Handler($event)" class = "mat-form-field">
+            <mat-option *ngFor = "let testType of testTypeData" [value] = "testType" >{{testType}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </fieldset>
+    <fieldset class="question-paper-mat-select-border  desk-control-legend">
+      <legend class = "capitalize question-paper-theme-color">Subject : </legend>
+      <div fxLayout="column" class="desk-control-container">
+        <mat-form-field class = "small-select">
+          <mat-select (selectionChange) ="changeSubjects_Handler($event)" class = "mat-form-field" multiple>
+            <mat-option *ngFor = "let subject of subjectData" [value]="subject">{{subject}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </fieldset>
+  </section>
+</mat-card>

@@ -1,0 +1,208 @@
+
+.main-div {
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .mat-form-field-wrapper {
+    padding-bottom: 0.9em !important;
+  }
+  .panel {
+    border: 2px solid skyblue;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+    background: skyblue;
+  }
+  .color-white {
+    color: white !important;
+  }
+  .date-criteria {
+    margin-left: 7px !important;
+    margin-right: 7px !important;
+  }
+  .option-wraper {
+    padding: 5px;
+    margin: 2px;
+  }
+  
+  /* .mat-select-value {
+    color: white !important;
+  } */
+  .border-blue {
+    border: 2px solid skyblue !important;
+  }
+  
+  .background-white {
+    background: white !important;
+  }
+  .background-green {
+    background-color: #008b45 !important;
+  }
+  
+  .option-wraper-noborder {
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+  legend {
+    width: auto;
+    font-size: 1em;
+    font-weight: bold;
+    margin-left: 15px;
+    text-transform: capitalize;
+    background: white !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    border: 2px solid green;
+  }
+  .middle-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .individual-table .td {
+    text-align: left !important;
+  }
+  .align-center {
+    text-align: center !important;
+  }
+  .description-textarea {
+    width: 100%;
+    height: 70px;
+  }
+  .serach-panel {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0px;
+  }
+  .menu-option {
+    margin-left: 10px;
+  }
+  .num-colum {
+    min-width: 80px !important;
+  }
+  
+  .select-option {
+    width: 100%;
+  }
+  .divider {
+    margin-bottom: 5px;
+  }
+  .week-head {
+    padding: 6px;
+    margin-left: 10px;
+  }
+  [class*="row"] {
+    margin: 0;
+  }
+  .full-width-with-margin {
+    width: 100%;
+    margin: 10px;
+  }
+  .full-width {
+    width: 100% !important;
+  }
+  .padding-left-10px {
+    padding-left: 10px !important;
+  }
+  .padding-all-20px {
+    padding: 20px !important;
+  }
+  .padding-all-10px {
+    padding: 10px !important;
+  }
+  .padding-all-5px {
+    padding: 5px !important;
+  }
+  .padding-all-7px {
+    padding: 7px !important;
+  }
+  .radio-line-height-72px {
+    line-height: 72px;
+  }
+  .button-auto {
+    width: auto !important;
+  }
+  [mat-checkbox] {
+    margin: 0 !important;
+  }
+  .padding-l-r-5px {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  .template-area {
+    width: 100%;
+    height: 150px;
+  }
+  @media only screen and (max-width: 900px) {
+    mat-card {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+    .date-criteria {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+      margin-top: 5px;
+    }
+    .panel-label {
+      top: calc(0.5%);
+      left: calc(7%);
+      position: absolute;
+    }
+    .week-head {
+      margin-left: 0px;
+    }
+    .menu-option,
+    .option-wraper,
+    .option-wraper-noborder,
+    .panel,
+    .padding-left-10px {
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none;
+    }
+    .option-wraper {
+      padding: 5px;
+    }
+    .resposive-full-width {
+      width: 100% !important;
+    }
+    .radio-line-height-72px {
+      line-height: 25px;
+    }
+  }
+  /* ----------- Non-Retina Screens ----------- */
+  @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+    .main-div {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+  
+  /* ----------- Retina Screens ----------- */
+  @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  }
+  
+  
+  /* ----------- Non-Retina Screens ----------- */
+  @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+    .main-div {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+  
+  /* ----------- Retina Screens ----------- */
+  @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  }
+  mat-form-field{
+    margin-top:-5px;
+    
+  }
+  
+ 

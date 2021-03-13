@@ -1,0 +1,313 @@
+.main {
+    height: 100% !important;
+    width: 100% !important;
+    padding: 10px !important;
+}
+.generation-header {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    padding-top: 10px !important;
+    box-sizing: border-box;
+    font-size: 1.6em;
+    color: rgb(38, 97, 233);
+}
+.generation-icon {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: rgb(38, 97, 233);  
+}
+.record-container{
+    height: 50%;
+    display: flex;
+    background: rgb(69, 77, 85);
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    width:100%;
+}
+.full{
+    height: 100% !important;
+    width:100% !important;
+}
+.record{
+    height: 50px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    margin:4px 0px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.record > .field{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+}
+.record:hover{
+    background: rgb(102, 100, 100);
+}
+.record > .field:first-child{
+    width:100px;
+}
+.record > .field:last-child{
+    width: 50px;
+}
+.record > .field:not(:first-child){
+    width:300px;
+}
+.header {
+    color: white;
+    font-size: 1.0em;
+}
+.header:hover {
+    color: black;
+}
+mat-card {
+    border: 1px solid rgb(206, 201, 201);
+    padding: 5px !important;
+}
+.checkbox {
+    padding: 0px !important;
+}
+/* @media(max-width:600px) {
+    .record-container {
+        overflow: none;
+    }
+} */
+/* 
+.main-div{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.full-width{
+    width:100%;
+}
+.full-height{
+    height: 100% !important;
+}
+.top-20 {
+    top: -20px !important;
+}
+.mat-radio-button {
+    margin-left: 16px;
+  }
+.full{
+    height: 100% !important;
+    width:100% !important;
+}
+
+.each-step{
+    width:100%;
+    height: 100%;
+}
+.photo{
+    height: 100px;
+    width: 100px;
+    border:1px solid lightgray;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.input-file , .upload-button{
+    height: 40px;
+    width:252px;
+    cursor: pointer;
+}
+.header {
+    font-weight: bold !important;
+}
+.input-file{
+    opacity: 0; 
+    position: relative; 
+    z-index:500 !important;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upload-button{
+    position: absolute;
+    top:0px;
+    right:0px;
+    color: black !important;
+    border-radius: 5px;
+    background-color: lightblue;
+    z-index: 0 !important;
+    text-transform: capitalize;
+    
+}
+.print-button{
+    width:90%;
+    border-radius: 5px;
+    margin-top: 10px !important;
+    font-size: 18px;
+    background-color: #CDC5BF;
+}
+.upload-photo{
+    display: flex;
+    align-items: center;
+    place-content: end space-between;
+
+}
+.photo > img{
+    height: 100%;
+    width:100%;
+    max-height: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    border: 1px solid lightgray;
+}
+.checkbox-section {
+    margin-top: -70px !important;
+    margin-bottom: 10px !important;
+}
+.input-text{
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+    height: 50px !important;
+}
+.mat-input-wrapper{
+    height: 30px !important;
+}
+.step-container{
+    height:100% !important;
+    width:50%;
+    margin-bottom: 10px;
+   
+}
+.stepper{
+    display: flex;
+    align-items: center !important;
+    flex-direction: column;
+    align-content: flex-start;
+    overflow: auto !important;
+    height: 100% !important;
+   
+}
+.mat-stepper{
+    overflow: auto;
+    height: 100% !important;
+}
+.form-background{
+    background: #f5f5f5 !important;
+}
+
+.class-list{
+    height: 100% !important;
+    padding: 15px;
+    
+}
+.record{
+    height: 50px;
+    width:100%;
+    display: flex;
+    align-items: baseline;
+
+    margin:4px 0px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.select-fields {
+    max-height: 50% !important;
+    margin-bottom: 30px !important;
+}
+
+.record-container{
+    max-height: 72% !important;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+.record:hover{
+    background: #EAEAEA;
+}
+.dot{
+    height: 2px;
+    width: 2px;
+    border-radius: 50px;
+    border: 2px solid gray;
+    margin: 2px;
+}
+.record > .field{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.record-popup > div{
+    padding: 3px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+.record-popup div:hover{
+    background: tomato !important;
+    color:white !important;
+}
+.record-popup{
+    position: absolute;
+    top: 85%;
+    right: 0px;
+    height:auto;
+    width:150px;
+    border: 1px solid lightgray;
+}
+.record > .field:first-child{
+    width:100px;
+}
+.checkbox{
+    margin-top: 15px;
+}
+md-icon{
+    font-family: 'Material Icons' !important;
+  }
+.record > .field:not(:first-child){
+    width:300px;
+}
+.record > .field:last-child{
+    width: 50px;
+
+}
+.action
+{
+    height:10%;
+    width:100%;
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.border{
+    border: 1px solid red !important;
+}
+.action button {
+    width:150px;
+    margin:0px;
+    box-sizing: border-box;
+}
+.action button:nth-child(2){
+    margin: 0px 2px;
+}
+.custom-height {
+    max-height: 50% !important;
+    box-sizing: border-box;
+}
+table {
+    width: 100%;
+  } */

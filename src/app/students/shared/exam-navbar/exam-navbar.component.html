@@ -1,0 +1,31 @@
+<mat-card class="cust-container">
+  <div class="left-option">
+    <div class="option-row">
+        <div class="exam-branding" fxHide.xs fxHide.sm >
+          <img class="logo" [src]="koshBrandingLogo" alt="Powered By Kosh Edutech Pvt. Ltd. Pune">
+        </div>
+      <div class="option toggle-bar toogle-option">
+        <div (click)="clickOnToggleButton()" class="toggle">
+          <!-- <div></div>
+          <div></div>
+          <div></div> -->
+          <span class="material-icons pallete-icon">view_comfy</span>
+        </div>
+      </div>
+      <div fxHide.xs class="class-name no-hover ">
+        <i class="material-icons" style="margin-right: 10px !important;"> account_balance</i>
+        {{ classDetails.className }}</div>
+    </div>
+  </div>
+  <div class="right-option">
+    <div class="option-row">
+      <div class="option">{{ hour }} : {{ minutes }} : {{ seconds }}</div>
+      <div class="option">{{subject}}</div>
+      <div class="option hide-small">
+        {{userName}}
+        <!-- <div class="round-circle green-circle">12</div> -->
+      </div>
+      <div class="option" style="text-transform: none;">{{ questionNo }} / {{ totalQuestion }}</div>
+    </div>
+  </div>
+</mat-card>

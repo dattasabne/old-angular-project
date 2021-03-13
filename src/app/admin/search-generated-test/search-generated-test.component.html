@@ -1,0 +1,259 @@
+<div class="main-div">
+    <ball-loader *ngIf="loaderActivate"></ball-loader>
+    <assignment-assign  (save) = "searchTest()"  (closeSelf) = "closeAssignTestForm()" *ngIf = "showAssignTestForm" [assignmentData]="assignmentAssignedDataModel"></assignment-assign>
+    <div class="main-container" fxLayout="column" fxLayout.gt-xs="row"  fxLayoutGap="15px" fxLayoutAlign="start">
+      <mat-accordion fxFlex.gt-xs="25" fxFlex="1 1 auto"  style="width: 100% !important;">
+        <mat-expansion-panel #searchExpansion [disabled]="disableExpansion">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Select Search Test Criteria
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-card fxLayout="column" fxLayoutAlign="center center" class="full-width search-common-padding seratch-test-select-option select-option">
+            <mat-form-field fxflex class="input-text full-width">
+              <mat-label>Select Academic Year</mat-label>
+              <mat-select [formControl]="academicYearControl">
+                <mat-option *ngFor="let academic of academicList" [value]="academic">{{academic}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+              <mat-form-field fxflex class="input-text full-width">
+                <mat-label>Select Exam Pattern</mat-label>
+                <mat-select [formControl]="patternControl">
+                  <mat-option *ngFor="let pattern of patternList" [value]="pattern">{{pattern}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field fxflex class="input-text full-width">
+                <mat-label>Select Standard</mat-label>
+                <mat-select [formControl]="standaredControl">
+                  <mat-option *ngFor="let standared of standaredList" [value]="standared">{{standared}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field fxflex class="input-text full-width">
+                <mat-label>Test Type</mat-label>
+                <mat-select [formControl]="testTypeControl">
+                  <mat-option *ngFor="let testType of testTypeList" [value]="testType">{{testType}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field fxflex class="input-text full-width">
+                <mat-label>Select Subjects</mat-label>
+                <mat-select [formControl]="subjectControl">
+                  <mat-option  *ngFor="let subject of subjectList" [value]="subject">{{subject}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field fxflex class="input-text full-width">
+                <mat-label>Generated Type</mat-label>
+                <mat-select>
+                  <mat-option  *ngFor="let type of ['Own Upload ','Mannual','Random'] " [value]="type">{{type}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div fxflex class="search-button">
+                <button (click)="searchTest()" mat-raised-button class="delete-records">
+                  Search Tests
+                </button>
+              </div>
+          </mat-card>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-card fxFlex.gt-xs="75" fxLayout="column" class="record-container search-common-padding">
+        <!-- <div fxLayout="row"  fxLayoutGap.xs="10px" class="record"> -->
+          <!-- <div fxFlex="100px" fxFlex.xs="80px" class="header">{{tableHeader.testId}}</div>
+          <div fxFlex="120px" fxFlex.xs="80px" class="header">{{tableHeader.pattern}}</div>
+          <div fxFlex="120px" fxFlex.xs="100px" class="header">{{tableHeader.standard}}</div>
+          <div fxFlex="130px" fxFlex.xs="100px" class="header">{{tableHeader.testType}}</div>
+          <div fxFlex="100px" fxFlex.xs="80px"  class="header">{{tableHeader.subject}}</div> -->
+          <!-- <div fxFlex="100px" fxFlex.xs="80px"  class="header">{{tableHeader.totQues}}</div> -->
+          <!-- <div fxFlex="100px" fxFlex.xs="80px" class="header">{{tableHeader.totalMarksOfTest}}</div> -->
+          <!-- <div fxFlex="150px" fxFlex.xs="100px" class="header">{{tableHeader.testGenerationType}}</div> -->
+          <!-- <div fxFlex="150px" fxFlex.xs="100px" class="header">{{tableHeader.onlineStatus}}</div> -->
+          <!-- <mat-divider></mat-divider> -->
+        <!-- </div> -->
+        <div  fxLayout="column" class="full">
+          <mat-accordion class="zero-padding full-width" >
+            <mat-expansion-panel fxLayout="column"  class="search-mat-expansion-panel search-common-padding full-width" *ngFor="let test of allTests">
+              <mat-expansion-panel-header fxLayout="row"   fxFlex class="zero-padding full-width">
+                <mat-panel-description fxFlex  fxLayoutGap="1px" fxLayout= "row"  class="test-row search-common-padding full-width" >
+                    <div class = "search-common-padding" fxFlex fxLayout="row" fxLayoutAlign = "center center" fxFlex.gt-xs = "9">Q.Paper Id : {{test.testId}}</div>
+                    <div class = "search-common-padding" fxFlex fxLayout="row" fxLayoutAlign = "center center"  fxFlex.gt-xs = "7">Online Id : {{test.onlineId}}</div>
+                    <div fxFlex ="10" fxLayout="row" fxLayoutAlign="center center"  fxHide.lg fxHide.xl fxHide.md >
+                      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu" >
+
+                        <button mat-menu-item (click) = "clickOnRecord(test)" >Question Paper</button>
+                        <button mat-menu-item (click) = "assignTest_Click(test)">Schedule</button>
+                        <button mat-menu-item (click) = "viewAssignedTest_Click(test)"  *ngIf = "test.assigned">View Assigned Test</button>
+
+                      </mat-menu>
+                    </div>
+
+                    <div class="search-common-padding" fxLayout="row" fxLayoutAlign = "center center"  fxFlex  fxHide.xs fxHide.sm>{{test.batch}}</div>
+                    <div class="search-common-padding" fxLayout="row" fxLayoutAlign = "center center"  fxFlex  fxHide.xs fxHide.sm>
+
+                      <span *ngIf = "test.courses.length == 1">{{test.course}}</span>
+                      <span *ngIf = "test.courses.length > 1">
+                        <span matTooltip = "{{test.courses.toString()}}">{{test.courses[0]}}...</span>
+                      </span>
+
+
+
+                    </div>
+
+                    <div class="search-common-padding" fxLayout="row" fxLayoutAlign = "center center"  fxFlex  fxHide.xs fxHide.sm fxHide.md selected>{{test.subject}}</div>
+                    <div class="search-common-padding" fxLayout="row" fxLayoutAlign = "center center"  fxFlex  fxHide.xs fxHide.sm fxHide.md selected>{{test.patternName}}</div>
+
+                    <div fxHide.xs class="search-common-padding" fxLayout="row" fxLayoutAlign = "center center" fxFlex.gt-xs="10" fxLayout="row">
+                      <button mat-raised-button (click)="clickOnRecord(test)" >Question Paper</button>
+                    </div>
+                    <div fxHide.xs class="search-common-padding" fxLayout="row" fxLayoutAlign = "center center" fxFlex.gt-xs="12" fxLayout="row">
+                      <button mat-raised-button (click)="assignTest_Click(test)">Schedule</button>
+                    </div>
+                    <div fxHide.xs class="search-common-padding" fxLayout="row" fxLayoutAlign = "center center" fxFlex.gt-xs="12" fxLayout="row">
+                      <button mat-raised-button (click) = "viewAssignedTest_Click(test)" *ngIf = "test.assigned">View Assigned Test</button>
+                    </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <section  fxLayout = "column" fxLayoutGap.gt-xs="7px" fxLayout.gt-xs="row" class="search-common-padding expansion-body">
+                <mat-card fxFlex fxLayout = "column" class="expansion-test-info search-common-padding">
+                  <div fxHide fxLayout ="row"  class="search-test-control control-padding">
+                      <div  fxFlex>Question Paper Id</div>
+                      <div fxFlex>: {{test.testId}}</div>
+                  </div>
+                  <div class="line" fxHide></div>
+                  <div fxHide fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex fxHide >Online Id</div>
+                    <div fxFlex>: {{test.onlineId}}</div>
+                  </div>
+                  <div class="line" fxHide.md fxHide.lg fxHide.xl></div>
+                  <div fxHide.md fxHide.lg fxHide.xl fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Batch</div>
+                    <div fxFlex>: {{test.batch}}</div>
+                  </div>
+                  <div class="line" fxHide.md fxHide.lg fxHide.xl></div>
+                  <div fxHide.md fxHide.lg fxHide.xl fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Course</div>
+                    <div fxFlex>:
+                      <span *ngIf = "test.courses.length == 1">{{test.course}}</span>
+                      <span *ngIf = "test.courses.length > 1">
+                        <span matTooltip = "test.course.toString()">{{test.courses[1]}}...</span>
+                      </span>
+                     </div>
+                  </div>
+                  <div class="line" fxHide.md fxHide.lg fxHide.xl></div>
+                  <div fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Type</div>
+                    <div fxFlex>: {{test.testType}}</div>
+                  </div>
+                  <div class="line"></div>
+                  <div fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Generation</div>
+                    <div fxFlex>: {{test.testUploadedType}}</div>
+                  </div>
+                  <div class="line"></div>
+                  <div fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Status</div>
+                    <div fxFlex>: {{test.status}}</div>
+                  </div>
+                </mat-card>
+                <div class="line"></div>
+                <mat-card fxFlex fxLayout = "column" class="expansion-test-info search-common-padding">
+                  <div fxHide.md fxHide.lg fxHide.xl fxLayout ="row"  class="search-test-control control-padding">
+                      <div fxFlex>Subject</div>
+                      <div fxFlex>: {{test.subject}}</div>
+                  </div>
+                  <div class="line" fxHide.md fxHide.lg fxHide.xl></div>
+                  <div fxHide.md fxHide.lg fxHide.xl fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Pattern</div>
+                    <div fxFlex>: {{test.patternName}}</div>
+                  </div>
+                  <div class="line" fxHide.md fxHide.lg fxHide.xl></div>
+                  <div fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Duration</div>
+                    <div fxFlex>: {{test.timeFormat}}</div>
+                  </div>
+                  <div class="line"></div>
+                  <div fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Marks</div>
+                    <div fxFlex>: {{test.totalMarksOfTest}}</div>
+                  </div>
+                  <div class="line"></div>
+                  <div fxLayout ="row"  class="search-test-control control-padding">
+                    <div fxFlex>Questions</div>
+                    <div fxFlex>: {{test.noOfQuestions}}</div>
+                  </div>
+
+                </mat-card>
+              </section>
+              </mat-expansion-panel>
+            <mat-divider></mat-divider>
+          </mat-accordion>
+          <!-- <div (click)="clickOnRecord(test)" *ngFor="let test of allTests" fxLayout="row" fxLayoutGap.xs="10px" class="record"> -->
+            <!-- <div fxFlex="100px" fxFlex.xs="80px" class="header">{{test.testId}}</div>
+            <div fxFlex="120px" fxFlex.xs="80px" class="header">{{test.patternName}}</div>
+            <div fxFlex="120px" fxFlex.xs="100px" class="header">{{test.standard}}</div>
+            <div fxFlex="130px" fxFlex.xs="100px" class="header">{{test.testType}}</div>
+            <div fxFlex="100px" fxFlex.xs="80px" class="header">{{test.subject}}</div> -->
+
+            <!-- <div fxFlex="100px" fxFlex.xs="80px" class="header">{{test.noOfQuestions}}</div> -->
+            <!-- <div fxFlex="100px" fxFlex.xs="80px" class="header">{{test.totalMarksOfTest}}</div> -->
+
+            <!-- <div fxFlex="150px" fxFlex.xs="100px" class="header">{{test.testGenerationType}}</div> -->
+            <!-- <div fxFlex="150px" fxFlex.xs="100px" class="header">{{test.onlineStatus}}</div> -->
+            <!-- <mat-divider></mat-divider> -->
+          <!-- </div> -->
+        </div>
+      </mat-card>
+
+
+
+
+
+
+
+        <!-- <div  fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="10px"> -->
+            <!-- <mat-card fxLayout="column" fxLayoutAlign="center center" class="seratch-test-select-option select-option" fxFlex="100" fxFlex.gt-xs="280px">
+              <mat-form-field fxflex class="input-text full-width">
+                <mat-label>Select Academic Year</mat-label>
+                <mat-select [formControl]="academicYearControl">
+                  <mat-option *ngFor="let academic of academicList" [value]="academic">{{academic}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+                <mat-form-field fxflex class="input-text full-width">
+                  <mat-label>Select Exam Pattern</mat-label>
+                  <mat-select [formControl]="patternControl">
+                    <mat-option *ngFor="let pattern of patternList" [value]="pattern">{{pattern}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxflex class="input-text full-width">
+                  <mat-label>Select Standard</mat-label>
+                  <mat-select [formControl]="standaredControl">
+                    <mat-option *ngFor="let standared of standaredList" [value]="standared">{{standared}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxflex class="input-text full-width">
+                  <mat-label>Test Type</mat-label>
+                  <mat-select [formControl]="testTypeControl">
+                    <mat-option *ngFor="let testType of testTypeList" [value]="testType">{{testType}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxflex class="input-text full-width">
+                  <mat-label>Select Subjects</mat-label>
+                  <mat-select [formControl]="subjectControl">
+                    <mat-option  *ngFor="let subject of subjectList" [value]="subject">{{subject}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxflex class="input-text full-width">
+                  <mat-label>Generated Type</mat-label>
+                  <mat-select>
+                    <mat-option  *ngFor="let type of ['Own Upload ','Mannual','Random'] " [value]="type">{{type}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div fxflex class="search-button">
+                  <button (click)="searchTest()" mat-raised-button class="delete-records">
+                    Search Tests
+                  </button>
+                </div>
+            </mat-card> -->
+        <!-- </div> -->
+    </div>
+</div>

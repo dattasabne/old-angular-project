@@ -1,0 +1,10 @@
+<div fxLayout ="column" class ="alert-dialog">
+  <div fxFlex ="20" fxLayout ="row" fxLayoutAlign = "flex-start center" class ="app-dialog-header">{{data.title}}</div>
+  <div fxFlex ="65" fxLayout ="row" fxLayoutAlign = "flex-start flex-start" class ="app-dialog-body" >
+    {{data.messageBody}}
+  </div>
+  <div fxFlex ="15" fxLayout ="row" fxLayoutAlign = "flex-start center" class ="app-dialog-footer">
+      <button mat-button mat-dialog-close type = "button"> {{ data.alertButtonName}}</button>
+  </div>
+</div>
+

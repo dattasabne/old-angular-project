@@ -1,0 +1,19 @@
+.app-bottom-sheet{
+    height: 200px !important;
+    width:100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.app-bottomsheet-header{
+    padding: 0px 8px;
+    background: #00688B;
+    color:white;
+    font-size: 1.3em;
+}
+.app-bottomsheet-body{
+    padding: 10px 8px;
+    font-size: 1em;
+}
+.app-bottomsheet-body{
+    overflow: auto !important;
+}

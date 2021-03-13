@@ -1,0 +1,45 @@
+<div style="position: relative;" class="admin-panel-main">
+  <ball-loader *ngIf="shouldLoaderOn"></ball-loader>
+  <mat-card class="navbar" fxLayout="row">
+    <div   fxFlex="50px"><button class="openbtn" (click)="openNav()"> ☰ </button> </div>
+    <div fxHide.xs class="class-name" fxFlex  fxLayout="row" fxLayoutAlign="center center">{{className}}</div>
+    <div fxLayout="row" fxLayoutAlign="end center" fxFlex="0 1 auto">
+        <div fxLayout="row" class="options" fxLayoutAlign="start center" fxFlex.gt-xs="150px" fxFlex>
+            <mat-icon>account_circle</mat-icon>
+            <div>Profile</div>
+        </div>
+        <div class="options" fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-xs="150px" fxFlex>
+            <mat-icon>mail</mat-icon>
+            <div>Messages</div>
+        </div>
+        <div (click)="logOut()" class="options" fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-xs="150px" fxFlex>
+            <mat-icon>power_settings_new</mat-icon>
+            <div>Logout</div>
+        </div>
+    </div>
+  </mat-card>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+    </div>
+    <div
+      class="menus"
+      *ngFor="let menu of menus"
+    >
+      <mat-expansion-panel class="expansion-panel">
+        <mat-expansion-panel-header class="expansion-header">
+          <mat-panel-title class="menu-title">
+          <div class="menu-icon">
+            <mat-icon>{{menu.icon}}</mat-icon>
+          </div>
+          <div class="menu-names">{{menu.heading}}</div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div (click)="loadComponent(subMenu.component)" class="expansion-content" *ngFor="let subMenu of menu.subMenu">{{ subMenu.name }}</div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+  <div  class="admin-panel-content">
+      <div #templates></div>
+  </div>
+</div>

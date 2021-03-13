@@ -1,0 +1,225 @@
+.section-format{
+  padding: 4px !important;
+  overflow: auto !important;
+}
+.outer-main-section{
+    background: lightgray !important;
+    margin: 0px !important;
+    padding: 0px 7px !important;
+    position: relative;
+    overflow: auto !important;
+    border: 2px solid lightgray ;
+}
+*{
+    text-transform: capitalize;
+    box-sizing: border-box !important;
+}
+.own-downlod-excel{
+    cursor: pointer;
+    margin-left:15px;
+    font-size: 13px;
+    color:black !important;
+}
+.own-tooltips-css-class{
+    font-size: 18px !important;
+    background: green !important;
+}
+.own-excel-td{
+    padding: 5px;
+    text-transform: capitalize;
+}
+.own-excel-head{
+    padding: 2px;
+    height: 50px;
+    background: #4682B4;
+    color: white;
+    text-transform: capitalize;
+    box-sizing: border-box;
+}
+.download-options{
+    padding: 4px 5px;
+}
+.border{
+  border: 2px solid red !important;
+}
+.paper-options{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 2px;
+    color: #fff;
+    cursor: pointer;
+}
+.download-excel{
+    border-radius: 5px !important;
+    padding: 2px;
+    border: 1px solid lightgray;
+}
+.download-excel div:nth-child(1){
+    background: #36648B;
+    color: white;
+    width: 100%;
+    padding: 5px;
+}
+.simple-line{
+    border-bottom: 1px solid white;
+}
+.download-excel div:nth-child(3){
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px !important;
+    cursor: pointer;
+}
+.download-pattern{
+    /* background: #4682B4; */
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px !important;
+    cursor: pointer;
+}
+.download-link{
+  background: #fff;
+  text-decoration: underline;
+  color: blue !important;
+}
+
+
+.paper-width{
+    background: #36648B;
+}
+.compulsory{
+    font-size: 1.2em;
+    color:  red;
+}
+body,html{
+    box-sizing: border-box !important;
+    background: lightgray !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.own-excel-tbody > tr{
+    border-bottom: 1px solid #4682B4;
+}
+.own-main-section{
+    box-sizing: border-box !important;
+    margin:5px 0px !important;
+    overflow: auto;
+}
+.own-no-padding{
+    padding: 0px !important;
+}
+.own-line{
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
+}
+.own-selection-label{
+    height: 40px;
+    background:#4682B4;
+    color: white;
+
+
+}
+.bottom-sheet{
+    height: 40px;
+    box-sizing: border-box !important;
+    background: #4682B4;
+    position: relative;
+}
+.pdf-container{
+    position: relative;
+    width: 100%;
+    height: 100% !important;
+    overflow: hidden;
+}
+.upload-messanger{
+    position: relative;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+}
+.own-border{
+    border: 2px solid red;
+}
+.own-submit-section{
+  height: 100% !important;
+  box-sizing: border-box;
+}
+.own-control-section{
+    position: relative;
+    padding: 8px 5px !important;
+}
+.pdf-viewer{
+    width: 100%;
+}
+.upload-test-button{
+    width: 100%;
+    color: white;
+    background: blue;
+    font-weight: bold;
+    font-size: 1em;
+    width: 150px ;
+    height: 70% !important;
+    line-height: 70% !important;
+
+}
+.own-drag-file{
+    opacity: 0;
+    position: absolute;
+    margin: 10px 0px;
+    cursor: pointer;
+    height: 70px;
+    width: 60%;
+    border-radius: 12px;
+}
+.own-xml-uplod{
+    height: 70px;
+    border: 2px dotted lightgray;
+    border-radius: 15px;
+    background:#4682B4;
+    color: white;
+}
+.xl-drag-button {
+    border: none !important;
+}
+.own-drag-button , .xl-drag-button{
+    position: relative;
+    margin: 10px 0px;
+    cursor: pointer;
+    border: 2px dotted lightgray;
+    height: 70px;
+    width: 60%;
+    border-radius: 12px;
+}
+.own-review-section .own-question-section{
+    position: relative;
+    height: 100%;
+}
+
+.own-corner-upload-button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 160px;
+}
+.file , .button-uplod{
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 155px;
+    height: 32px;
+    line-height: 32px;
+    right: 4px;
+
+}
+.file{
+    opacity: 0;
+}
+.pdf-wraper{
+    overflow: auto;
+    box-sizing: border-box !important;
+}
+.own-excel-viewer{
+    position: relative;
+    box-sizing: border-box !important;
+    margin-top: 8px;
+}

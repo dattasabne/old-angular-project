@@ -1,0 +1,302 @@
+<div class="main-div">
+  <div>
+
+    <app-loader *ngIf="httpLoader"></app-loader>
+    <mat-tab-group>
+      <mat-tab label="New Template">
+        <div class="row">
+          <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+            <div class="row">
+              <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-6">
+                <mat-form-field class="example-full-width full-width">
+                  <input
+                    [formControl]="templateNameControl"
+                    matInput
+                    placeholder="Enter Template Name"
+                  />
+                </mat-form-field>
+              </div>
+              <div
+                class=" paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-6"
+              >
+                <!-- <button
+                      style="background:skyblue !important;"
+                      class="full-width"
+                      mat-button
+                      (click)="templatePreview()"
+                    >
+                      save
+                    </button> -->
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <mat-form-field class="example-full-width full-width">
+                  <textarea
+                    (click)="pastTemplateKey($event)"
+                    [formControl]="templateDataControl"
+                    style="height:200px;"
+                    matInput
+                    placeholder="Enter Your Template Data"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+              <div
+                class="paddin-l-r-10px col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"
+              >
+                <div>
+                  <mat-form-field class="example-full-width full-width">
+                    <input
+                      [formControl]="searchKeyControl"
+                      matInput
+                      placeholder="Search Tempalte Options"
+                    />
+                  </mat-form-field>
+                </div>
+                <div style="height: 150px;overflow: auto;">
+                  <div
+                    class="key-option-list"
+                    (click)="keyClick(key.name, $event)"
+                    *ngFor="
+                      let key of (smstemplateNames
+                        | searchKey: searchKeyControl.value)
+                    "
+                  >
+                    {{ key.name }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row margin-t-b-8px">
+              <div
+                class="responsive-margin-top-bottom  paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              >
+                <button
+                  style="background:skyblue !important;"
+                  class="full-width"
+                  mat-button
+                  (click)="saveConfirmTemplate()"
+                >
+                  save
+                </button>
+              </div>
+              <div
+                class="responsive-margin-top-bottom  paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              >
+                <button
+                  style="background:skyblue !important;"
+                  class="full-width"
+                  mat-button
+                  (click)="templatePreview()"
+                >
+                  Preview
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+            <mat-form-field class="example-full-width full-width">
+              <textarea
+                [formControl]="templatePreviewControl"
+                style="height:100px;"
+                matInput
+                [readonly]="true"
+              ></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Edit Template">
+          <div class="row">
+              <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                <div class="row">
+                  <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-6">
+                    <mat-form-field class="example-full-width full-width">
+                      <input
+                        [formControl]="editTemplateNameControl"
+                        matInput
+                        placeholder="Enter Template Name"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div
+                    class=" paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-6"
+                  >
+                  <mat-form-field class="example-full-width full-width">
+                    <input type="text" placeholder="Select Template" aria-label="Numberr" matInput [formControl]="selectTemplateControl" [matAutocomplete]="aut">
+                    <mat-autocomplete [displayWith]="displayOption" autoActiveFirstOption #aut="matAutocomplete">
+                      <mat-option *ngFor="let option of allTemplates;let i =index" [value]="option">
+                        {{option.templateName}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                  </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="row">
+                  <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                    <mat-form-field class="example-full-width full-width">
+                      <textarea
+                        (click)="editPastTemplateKey($event)"
+                        [formControl]="editTemplateTextControl"
+                        style="height:200px;"
+                        matInput
+                        placeholder="Enter Your Template Data"
+                      ></textarea>
+                    </mat-form-field>
+                  </div>
+                  <div
+                    class="paddin-l-r-10px col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"
+                  >
+                    <div>
+                      <mat-form-field class="example-full-width full-width">
+                        <input
+                          [formControl]="editSearchKeyControl"
+                          matInput
+                          placeholder="Search Tempalte Options"
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div style="height: 150px;overflow: auto;">
+                      <div
+                        class="key-option-list"
+                        (click)="keyClick(key.name, $event)"
+                        *ngFor="
+                          let key of (smstemplateNames
+                            | searchKey: editSearchKeyControl.value)
+                        "
+                      >
+                        {{ key.name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-t-b-8px">
+                  <div
+                    class="responsive-margin-top-bottom  paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+                  >
+                    <button
+                      style="background:skyblue !important;"
+                      class="full-width"
+                      mat-button
+                      (click)="editSaveConfirmTemplate()"
+                    >
+                      save
+                    </button>
+                  </div>
+                  <div
+                    class="responsive-margin-top-bottom  paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+                  >
+                    <button
+                      style="background:skyblue !important;"
+                      class="full-width"
+                      mat-button
+                      (click)="editTemplatePreview()"
+                    >
+                      Preview
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                <mat-form-field class="example-full-width full-width">
+                  <textarea
+                    [formControl]="editTemplatePreviewControl"
+                    style="height:100px;"
+                    matInput
+                    [readonly]="true"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+          </div>
+      </mat-tab>
+      <mat-tab label="Delete Template">
+        <div class="row">
+          <div class=" col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+            <div class="row">
+              <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-6">
+                <mat-form-field class="example-full-width full-width">
+                  <input
+                    [formControl]="deleteTemplateNameControl"
+                    matInput
+                    placeholder="Enter Template Name"
+                    [readonly]="true"
+                  />
+                </mat-form-field>
+              </div>
+              <div
+                class=" paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-8 col-xl-6"
+              >
+              <mat-form-field class="example-full-width full-width">
+                <input type="text" placeholder="Select Template" aria-label="Number" matInput [formControl]="deleteSelectControl" [matAutocomplete]="auto">
+                <mat-autocomplete [displayWith]="deleteDisplayOption" autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of allTemplates;let i =index" [value]="option">
+                    {{option.templateName}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                <mat-form-field class="example-full-width full-width">
+                  <textarea [readonly]="true"
+                    (click)="editPastTemplateKey($event)"
+                    [formControl]="deleteTemplateTextControl"
+                    style="height:200px;"
+                    matInput
+                    placeholder="Enter Your Template Data"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+              <div
+                class="paddin-l-r-10px col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"
+              >
+                
+                
+              </div>
+            </div>
+            <div class="row margin-t-b-8px">
+              <div
+                class="responsive-margin-top-bottom  paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              >
+                <button
+                  style="background:skyblue !important;"
+                  class="full-width"
+                  mat-button
+                  (click)="deleteConfirmTemplate()"
+                >
+                  Delete
+                </button>
+              </div>
+              <div
+                class="responsive-margin-top-bottom  paddin-l-r-10px col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              >
+                <button
+                  style="background:skyblue !important;"
+                  class="full-width"
+                  mat-button
+                  (click)="editTemplatePreview()"
+                >
+                  Preview
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+            <mat-form-field class="example-full-width full-width">
+              <textarea
+                [formControl]="deleteTemplatePreviewControl"
+                style="height:100px;"
+                matInput
+                [readonly]="true"
+              ></textarea>
+            </mat-form-field>
+          </div>
+      </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

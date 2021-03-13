@@ -1,0 +1,119 @@
+<div class="main-div">
+    <div (click)="close()" class="close center ">
+        <mat-icon class="close-icon close-button center">close</mat-icon>
+    </div>
+    <div fxLayout="column" fxLayoutGap="20px">
+        <div fxFlex>
+            <mat-card class="record-container">
+                <div class="full">
+                    <div fxLayout="row" fxLayoutGap.xs="10px" class="record">
+                        <div fxFlex="100px" fxFlex.xs="80px" class="header">{{tableHeader.testId}}</div>
+                        <div fxFlex="120px" fxFlex.xs="80px" class="header">{{tableHeader.pattern}}</div>
+                        <div fxFlex="120px" fxFlex.xs="100px" class="header">{{tableHeader.standard}}</div>
+                        <div fxFlex="130px" fxFlex.xs="100px" class="header">{{tableHeader.testType}}</div>
+                        <div fxFlex="100px" fxFlex.xs="80px"  class="header">{{tableHeader.subject}}</div>
+                        <div fxFlex="100px" fxFlex.xs="80px"  class="header">{{tableHeader.totQues}}</div>
+                        <div fxFlex="100px" fxFlex.xs="80px" class="header">{{tableHeader.totalMarksOfTest}}</div>
+                        <div fxFlex="150px" fxFlex.xs="100px" class="header">{{tableHeader.testGenerationType}}</div>
+                        <div fxFlex="150px" fxFlex.xs="100px" class="header">{{tableHeader.onlineStatus}}</div>
+                    </div>
+                </div>
+                <div class="full">
+                    <div fxLayout="row" fxLayoutGap.xs="10px" class="record">
+                        <div fxFlex="100px" fxFlex.xs="80px" class="header">{{tableHeaderData.testId}}</div>
+                        <div fxFlex="120px" fxFlex.xs="80px" class="header">{{tableHeaderData.pattern}}</div>
+                        <div fxFlex="120px" fxFlex.xs="100px" class="header">{{tableHeaderData.standard}}</div>
+                        <div fxFlex="130px" fxFlex.xs="100px" class="header">{{tableHeaderData.testType}}</div>
+                        <div fxFlex="100px" fxFlex.xs="80px"  class="header">{{tableHeaderData.subject}}</div>
+                        <div fxFlex="100px" fxFlex.xs="80px"  class="header">{{tableHeaderData.totQues}}</div>
+                        <div fxFlex="100px" fxFlex.xs="80px" class="header">{{tableHeaderData.totalMarksOfTest}}</div>
+                        <div fxFlex="150px" fxFlex.xs="100px" class="header">{{tableHeaderData.testGenerationType}}</div>
+                        <div fxFlex="150px" fxFlex.xs="100px" class="header">{{tableHeaderData.onlineStatus}}</div>
+                    </div>
+                </div>
+            </mat-card> 
+        </div>
+        <mat-divider></mat-divider>
+        <div  class="full-width" fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="center center" fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                    Questions Pdf File
+                </button>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                    Solution Pdf File
+                </button>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                   Answered File
+                </button>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                   Teacher's Copy
+                </button>
+            </div>
+            <div  fxLayoutAlign="center center" fxLayout="row" fxflex.gt-xs="290px">
+                <mat-form-field  fxflex class="input-text">
+                    <mat-label>Print Version</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let subject of ['No-Version','W','X','Y','Z']" [value]="subject">{{subject}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button style="color: white; background: tomato !important;" mat-raised-button class="pdf-file-button ques-Pdf-file">
+                    Print
+                </button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div  class="full-width" fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="start center">
+            <div   fxLayout="row" fxLayoutAlign="center center" fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                    Multicast
+                </button>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                    Modify Test
+                </button>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                   Resolve Test
+                </button>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button mat-raised-button class="pdf-file-button ques-Pdf-file">
+                   Print Report
+                </button>
+            </div>
+            <div fxflex.gt-xs="290px">
+                <button  mat-raised-button class="pdf-file-button ques-Pdf-file">
+                    Export File
+                </button>
+            </div>
+            <div fxflex.gt-xs="150px">
+                <button style="color: white; background: tomato !important;" mat-raised-button class="pdf-file-button ques-Pdf-file">
+                   Delete 
+                </button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxFlex class="full-width" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start start">
+            <div fxFlex class="bulk-upload">Question Paper For Printing</div>
+            <div fxFlex class="full-width" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+                <div fxflex fxLayout="row" class="border full-width" fxflex.gt-xs="500px">
+                    <button fxflex mat-raised-button class="ques-Pdf-file">
+                        Question Paper
+                    </button>
+                </div>
+                <div fxflex fxLayout="row" class="border full-width" fxflex.gt-xs="500px"></div>
+            </div>
+        </div>
+    </div>
+</div>

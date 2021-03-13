@@ -1,0 +1,191 @@
+<div class="main">
+  <div class="heading">
+    Add Link and Image Utility
+  </div>
+  <div>
+    <mat-button-toggle-group 
+      #backgroundColorToggle="matButtonToggleGroup"
+      value="primary"
+      aria-label="Change color">
+      <mat-button-toggle value="primary"></mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <mat-tab-group [backgroundColor]="backgroundColorToggle.value" mat-align-tabs="center" animationDuration="1500ms">
+    <mat-tab label="ADD LINK">
+      <div class="link-tab">
+        <mat-card class="link-panel">
+          <app-loader *ngIf="isLoaded"></app-loader>
+          <div class="row link-content padding-zero">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <input type="text" placeholder="Select Class" aria-label="Number" matInput [formControl]="addLinkControl" [matAutocomplete]="addLink">
+                    <mat-autocomplete [displayWith]="displayName" #addLink="matAutocomplete">
+                      <mat-option *ngFor="let $class of printAddClassess" [value]="$class">
+                        {{$class.className}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <mat-form-field class="example-full-width example-form">
+                    <input #linkName matInput placeholder="Enter Your link">
+                    <mat-error class="error-message" *ngIf="true">
+                      {{validation.message}}
+                    </mat-error>
+                  </mat-form-field>
+              </div>
+          </div>
+          <div class="save-button">
+            <button (click)="add()" type="button" mat-raised-button>Save</button>
+          </div>
+        </mat-card>
+      </div>
+    </mat-tab>
+    <mat-tab label="DELETE LINK">
+      <div class="link-tab">
+          <mat-card class="link-panel">
+            <div class="row link-content padding-zero">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <form class="example-form">
+                      <mat-form-field class="example-full-width">
+                        <input type="text" placeholder="Select Class" aria-label="Number" matInput [formControl]="deleteLinkControl" [matAutocomplete]="deleteLink">
+                        <mat-autocomplete [displayWith]="displayName" #deleteLink="matAutocomplete">
+                          <mat-option *ngFor="let $class of deletelinkClasses" [value]="$class">
+                              {{$class.className}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <div style="height:60px;width:100%" class="class-link">
+                    <p style="font-size:1.0em;">{{classLink}}</p>
+                  </div>
+                </div>
+            </div>
+            <div class="save-button">
+              <button (click)="delete()" type="button" mat-raised-button>Delete</button>
+            </div>
+          </mat-card>
+      </div>
+    </mat-tab>
+    <mat-tab label="MODIFY LINK">
+      <div class="link-tab">
+        <mat-card class="link-panel">
+          <div class="row link-content padding-zero">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input type="text" placeholder="Select Class" aria-label="Number" matInput [formControl]="modifyLinkControl" [matAutocomplete]="modifyLink">
+                  <mat-autocomplete [displayWith]="displayName" #modifyLink="matAutocomplete">
+                    <mat-option *ngFor="let $class of modifylinkClasses" [value]="$class">
+                        {{$class.className}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <mat-form-field class="example-full-width example-form">
+                <input #updatedLink [(ngModel)]="classLink" matInput>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="save-button">
+            <button (click)="udpate()" type="button" mat-raised-button>Modify</button>
+          </div>
+        </mat-card>
+      </div>
+    </mat-tab>
+    <mat-tab label="ADD IMAGES">
+      <div class="link-tab">
+        <mat-card class="link-panel">
+          <div class="row link-content padding-zero">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input type="text" placeholder="Select Class" aria-label="Number" matInput [formControl]="addImageControl" [matAutocomplete]="addImages">
+                  <mat-autocomplete [displayWith]="displayName" #addImages="matAutocomplete">
+                    <mat-option *ngFor="let $class of addImagesClasses" [value]="$class">
+                        {{$class.className}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 link-div">
+              <!-- <div style="height:60px;width:100%" class="class-link">
+                <p style="font-size:1.0em;">{{classLink}}</p> -->
+              <!-- </div> -->
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column wrap" fxflex fxLayoutAlign="start center" fxLayoutGap="30px" fxLayoutGap.xs="80px">
+            <div fxFlex fxFlex="40%">
+              <div class="upload-button">
+                <div class="overlay-button">
+                  Upload Image
+                </div>
+                <input (change)="uploadImage()" type="file" class="input-file">
+              </div>
+            </div>
+            <div fxFlex fxFlex="50%" class="upload-img">
+             <div class="image-upload"> 
+                <div class="img-div">
+                  <img #imageUrl class="img" src="" alt="" height="200px" width="200px">
+                </div> 
+              </div>
+            </div>
+          </div>
+          <div class="save-button">
+            <button (click)="saveImage()" type="button" mat-raised-button>Save</button>
+          </div>
+        </mat-card>
+      </div>
+    </mat-tab>
+    <mat-tab label="DELETE IMAGES">
+      <div class="link-tab">
+        <mat-card class="link-panel">
+          <div class="row link-content padding-zero">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input type="text" placeholder="Select Class" aria-label="Number" matInput [formControl]="deleteImageControl" [matAutocomplete]="deleteImages">
+                  <mat-autocomplete [displayWith]="displayName" #deleteImages="matAutocomplete">
+                    <mat-option *ngFor="let $class of deleteImagesClasses" [value]="$class">
+                        {{$class.className}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div style="height:60px;width:100%" class="class-link">
+                <p style="font-size:1.0em;">{{classLink}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="select-images">
+            <div class="select-all">
+              <mat-checkbox type="checkbox" [checked]="checkFlag" (change)="doCheck()" class="select-all-checkbox" color="primary">{{checkOption}}</mat-checkbox>
+            </div>
+            <div class="delete-img-button">
+              <button (click)="deleteImg()" type="button" mat-raised-button>Delete</button>
+            </div>
+          </div>
+          <div class="image-container">
+            <div *ngFor="let img of sliderImages" class="single-image">
+                <div *ngIf="img.display" class="single-image-container">
+                  <div *ngIf="img.display" class="select-box">
+                      <mat-checkbox (change)="img.isChecked =$event.source.checked" [checked]="img.isChecked" type="checkbox" class="checkbox" color="primary"></mat-checkbox>
+                  </div>
+                  <img class="image" [src]="img.sliderImage" alt="" height="100px" width="100px">
+                </div>
+              </div>
+          </div>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

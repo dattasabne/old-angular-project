@@ -1,0 +1,33 @@
+<div class="root-area margin-all-10px background-theme-color padding-all-5px">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+      <mat-card class="margin-all-5px">
+        <fieldset class="border-skyblue-2px" disabled="disabled">
+          <legend>setting options</legend>
+          <div class="row">
+            <div class="col-12">
+              <mat-list>
+                <mat-list-item
+                  [style.background]="option.background"
+                  *ngFor="let option of settingMenu"
+                  (click)="optionClick(option)"
+                  class="capitalize"
+                  >{{ option.name }}
+                  <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </fieldset>
+      </mat-card>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+      <mat-card class="margin-all-5px">
+        <fieldset class=" border-skyblue-2px">
+          <legend>{{ currentOption }}</legend>
+          <ng-template #template></ng-template>
+        </fieldset>
+      </mat-card>
+    </div>
+  </div>
+</div>

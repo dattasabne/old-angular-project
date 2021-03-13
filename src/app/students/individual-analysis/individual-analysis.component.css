@@ -1,0 +1,313 @@
+/* body,html {
+    margin: 0px;
+    padding: 0px;
+}
+.main {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 199;
+    background: linear-gradient(to left, #11b68c, #72ade0);
+}
+[class*="row"]{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.date-panel {
+    padding: 0px;
+    margin: 0px;
+    width: 100% !important;
+}
+.full-width {
+    width: 100%;
+}
+.full-height {
+    height: 100%;
+  }
+.ana-rank-section{
+    height: 130px !important;
+  }
+  .ana-center {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .marks-analysis-header {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    color: white;
+    font-size: 1.0em;
+    background-image: linear-gradient(to right, rgb(118, 120, 128), rgb(6, 1, 15));
+  }
+  .question-analysis-header {
+    height: 40px;
+    text-align: center;
+    color: white;
+    font-size: 1.0em;
+    background-image: linear-gradient(to right,  rgb(118, 120, 128), rgb(6, 1, 15));
+  }
+  .ana-circle-container {
+    height: 80%;
+  }
+  .ana-circle{
+    height: 80px !important;
+    width:80px !important;
+  }
+.border {
+    border: 1px solid red !important;
+}   
+.topper-analysis-container {
+    height: 80px !important;
+    width: 100%;
+    background: green;
+}
+.ana-header-control-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+  }
+  .ana-date-container{
+    margin-top: 4px !important;
+  }
+  .result-mark-section {
+    height: 15%;
+  }
+  .result-border {
+    border: 1px solid lightgray;
+  }
+  .result-full-height {
+    height: 100%;
+  }
+  .result-main-percent {
+    cursor: pointer;
+  }
+  .result-full-width {
+    width: 100%;
+  }
+  .result-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .result-no-padding {
+    padding: 0px !important;
+  }
+  .result-vcenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ana-header-control{
+    margin: 0px;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: 30%;
+    background-image: linear-gradient(to right,  rgb(118, 120, 128), rgb(136, 153, 163));
+  }
+  .analysis-section {
+    width: 100% !important;
+  }
+  .padding-zero {
+      padding: 0px !important;
+      margin: 0px !important;
+  }
+  .section {
+    text-align: center;
+  }
+  .marks-div {
+    display: flex;
+    justify-items: center;
+  }
+  .ana-date-select{
+    height: 35px !important;
+  }
+  .result-main-circle:hover {
+    background: rgb(40, 163, 96);
+    color: white;
+  }
+  .result-main-circle {
+    height: 100px;
+    width: 100px;
+    border: 2px solid lightgray;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    font-weight: bold;
+  }
+@media (max-width:900px) {
+    .ana-header-control{
+        margin: 0px;
+        padding: 0px !important;
+        width: 100%;
+      }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+  .result-main-circle{
+    height: 70px;
+    width:70px;
+  }
+  .result-subject-header{
+    font-size: 0.7em;
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .result-main-circle{
+    height: 65px;
+    width:65px;
+  }
+  .result-subject-header{
+    font-size: 0.7em;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .result-main-circle{
+    height: 70px;
+    width:70px;
+  }
+  .result-subject-header{
+    font-size: 0.7em;
+  }
+} */
+
+/* students styles */
+
+[class*="row"] {
+  margin: 0px !important;
+}
+:host .someClass {
+  background-color: red !important;
+}
+.border {
+  border: 1px solid red;
+}
+.footer {
+  display: none;
+}
+.component-loader {
+  /* padding: 20px 0px; */
+  /* height: 100%; */
+  overflow: auto;
+  box-sizing: border-box;
+}
+.body {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+.student-fixed-sidebar{
+  border-radius: 0px ; padding: 0px;
+  width: 0px;
+  overflow: hidden;
+  transition: 0.5s;
+  height: 100% !important;
+  background: #2d323e!important;
+
+}
+.student-content-container{
+  height: 100% !important;
+}
+
+.message-small {
+  font-size: 1em;
+}
+.message-big {
+  font-size: 3em;
+}
+.center {
+  text-align: center;
+}
+.main-div {
+  width: 100% !important;
+  position: relative;
+  z-index: 1;
+}
+
+.main {
+  height: 97vh;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+.class-header {
+  /* background: linear-gradient(to right, rgb(19, 17, 17), lightseagreen); */
+  flex-basis: 60px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2em !important;
+  color: white;
+  text-transform: capitalize;
+  font-size: 1em;
+  background: rgba(0,0,0,.87);
+}
+.classes:hover {
+  background:#039be5;
+  color: white;
+  transition: 0.5s;
+}
+.classes,.logout {
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  /* border-bottom: 1px solid gray; */
+  transition: 0.5s;
+}
+.logout:hover{
+  background:#039be5;
+  color: white;
+  transition: 0.5s;
+}
+.class-profile-pic {
+  height: 40px;
+  width: 40px;
+  padding-top: 7px;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  /* border: 1px solid lightgray; */
+  border-radius: 50%;
+  margin: 5px;
+}  
+.class-names {
+  font-size: 1.1em;
+  color: white;
+  padding-left: 10px;
+  text-transform: capitalize;
+}
+
+body,
+html {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.no-gutter {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.full-height-width {
+  height: 100% !important;
+  width: 100% !important;
+}
+.full-height {
+  height: 100% !important;
+}
+
+
+/* end students styles */

@@ -1,0 +1,197 @@
+<div *ngIf="showLogin == false">
+    <ball-loader *ngIf="isLoaded"></ball-loader>
+</div>
+<div *ngIf="showLogin"  #mainDiv fxLayout="column" class="login2-main-div2">
+    <div   #header fxLayout="column" class="header2">
+        <mat-card fxLayout="column"   fxFlex class="login-nav-bar2">
+            <div fxLayout="row" fxFlex class="nav-bar-header2">
+                <div fxHide.xs fxFlex="30px" class="sides2"></div>
+                <mat-card fxLayout  class="banner-head2" fxLayoutAlign="center center" fxFlex.xs="0 1 auto">
+                   <div fxLayout="row" fxLayoutAlign="center center" fxFlex="150px" class="login2-border login2-class-logo">
+                       <img class="login2-class-logo-image" [src]="classLogo" alt="" />
+                   </div>
+                   <div class="login2-class-name" fxLayout="row" fxLayoutAlign="center center" fxFlex="100%">
+                       {{className}}
+                   </div>
+                    <!-- <div fxLayout="row">
+                        <div fxFlex>
+                            logo
+                        </div>
+                        <div fxFlex>
+                            Welcome in Rathi Classes
+                        </div>
+                    </div> -->
+                    <!-- <marquee class="marqui-items">
+                        IIT-JEE , NEET , MHT-CET .
+                    </marquee> -->
+
+                </mat-card>
+                <div  fxHide.xs fxFlex="30px" class="sides2"></div>
+            </div>
+
+
+            <ul  fxFlex fxLayout="row" fxLayoutAlign="center center" class="menu-bar2">
+                <li fxLayout="column" fxLayoutAlign="center center" fxFlex class="menu-item22">
+                    <!-- <span class="menu-text2">home</span>
+                    <mat-card class="mega-menu2">
+                        hi this HomePage
+
+                    </mat-card> -->
+                </li>
+                <li fxLayout="column" fxLayoutAlign="center center" fxFlex class="menu-item22">
+                    <!-- <span class="menu-text2">about</span>
+                    <mat-card class="mega-menu2">
+                        hi this About
+                    </mat-card> -->
+                </li>
+                <li fxLayout="column" fxLayoutAlign="center center" fxFlex class="menu-item22">
+                    <!-- <span class="menu-text2">contact us</span>
+                    <mat-card class="mega-menu2">
+                        hi this Contact
+                    </mat-card> -->
+                </li>
+                <li fxLayout="column" fxLayoutAlign="center center" fxFlex class="menu-item22">
+                    <!-- <span class="menu-text2">Gallery</span>
+                    <mat-card class="mega-menu2">
+                        hi this Gallery
+                    </mat-card> -->
+                </li>
+                <li fxLayout="column" fxLayoutAlign="center center" fxFlex class="menu-item22">
+                    <!-- <span class="menu-text2">Gallery</span>
+                    <mat-card class="mega-menu2">
+                        hi this Gallery
+                    </mat-card> -->
+                </li>
+                <li fxLayout="column" fxLayoutAlign="center center" fxFlex class="menu-item22">
+                   <!-- <span class="menu-text2"> News</span>
+                    <mat-card fxLayout class="mega-menu2">
+                        <div fxFlex class="news-sections2"></div>
+                        <div fxFlex  class="news-sections2">
+                            <marquee #marquee class="news-marquee2" height="100%" scrollamount="4" direction="up">
+                                <div>The narendra Modi Has Been Failed in Neet Exam 2018</div>
+                                <div>The Dattatray Sabne Has Been passed in Neet Exam 2018</div>
+                                <div>The Amit Shaha become PA of Dattatray Sabne</div>
+                                <div>this is the demo news</div>
+                                <div>now all neet exam paper solved online.</div>
+                                <div>kosh edutech has conducted  world NEET & JEE Exam.</div>
+                                <div>kosh edutech got first Prize from Colambia Univercity.</div>
+                            </marquee>
+                        </div>
+
+                        <div fxFlex class="news-sections2"></div>
+                    </mat-card> -->
+                </li>
+                <li #megaMenu fxLayout="column" (click)="clickOnLoginMenu($event)" fxLayoutAlign="center center" fxFlex class="menu-item2">
+                    <span class="login-name menu-text2">Login</span>
+                    <mat-card  [class.active-menu]="isLoginClicked" fxLayout="row"  fxLayout.xs="column" class="mega-menu2">
+                       <div fxFlex.gt-xs="33.3" fxHide.xs></div>
+                       <div fxFlex.gt-xs="33.3" fxHide.xs></div>
+                       <mat-card [style.height]="'300px'" fxLayout="row" fxFlex.gt-xs="33.3" class="nav-login-panel2">
+                            <ball-loader *ngIf="isLoaded"></ball-loader>
+                            <div fxLayout="column" fxFlex="33" class="login2-border">
+                                <div fxLayout="column" fxLayoutAlign="center center" fxFlex="20" class="login2-border login-type2">
+                                    Select Login Type
+                                </div>
+                                <div fxLayoutAlign="center center" fxLayout="row" fxFlex="80" class="login2-border">
+                                    <div fxLayout="column" fxLayoutAlign="center center" fxFlex>
+                                        <mat-radio-group [formControl]="loginTypeControl" fxLayout="column" aria-label="Select an option">
+                                            <mat-radio-button class="login-type-options"  [value]="studentModal">Student</mat-radio-button>
+                                            <mat-radio-button class="login-type-options" [value]="instituteModal">Institute</mat-radio-button>
+                                            <!-- <mat-radio-button [value]="parentModal">Parent</mat-radio-button> -->
+                                        </mat-radio-group>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxLayout="column" class="login2-border" fxLayoutAlign="center center" fxFlex="66.99">
+                                <div fxLayout="row" style="background: #00688B;color: white;font-weight: bold; letter-spacing: 2px;" class="login2-border nav-login-controls2" fxLayoutAlign="center center" fxFlex>
+                                   {{loginTypeMessage}}
+                                </div>
+                                <div class="nav-login-controls2" fxFlex fxLayout="column">
+                                    <mat-form-field   class="login-full-width2">
+                                        <input  [formControl]="userNameControl" matInput placeholder="Username" >
+                                        <mat-error class="capitalize">Please Enter Username.</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="nav-login-controls2" fxFlex fxLayout="column">
+                                    <mat-form-field  class="login-full-width2">
+                                        <input  [formControl]="passwordControl" type="password" matInput placeholder="Password" >
+                                        <mat-error class="capitalize">Please Enter Password.</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="column" fxLayout.gt-xs="row"   class="nav-login-controls2" fxFlex>
+                                    <div fxFlex fxLayout="row" fxLayoutAlign.gt-xs="flext-start">
+                                        <mat-checkbox [formControl]="rememberMe"> Remember Me..!</mat-checkbox>
+                                    </div>
+                                    <div fxFlex fxLayout="row" class="forgot-password2" fxLayoutAlign.xs="flex-start" fxLayoutAlign.gt-xs="flex-end">
+                                       <div fxFlex> Forgot Password</div>
+                                    </div>
+                                </div>
+                                <div class="nav-login-controls2"  fxFlex>
+                                    <button (click)="decideLogin()" mat-raised-button class="login-button2 login-full-width2">Login</button>
+                                </div>
+                                <div [style.color]="result.color" class="error-message2" fxLayout="row" fxLayoutAlign=" center center" fxFlex>
+                                    {{result.message}}
+                                </div>
+                            </div>
+                        </mat-card>
+                    </mat-card>
+                </li>
+            </ul>
+        </mat-card>
+    </div>
+    <div fxFlex="0 0 80" fxFlex.xs="0 0 55" fxLayout="column"  #content class="content2">
+        <div class="slider2"fxFlex.xs="100%" >
+            <div class="slider-content2 slide1" *ngFor="let img of this.loginPageData.images">
+               <img class="slider-image2" [src]="img.sliderImage" alt="">
+            </div>
+            <div (click)="prev()" class="angle2">
+                <i class="material-icons left-arrow2"> keyboard_arrow_left</i>
+            </div>
+            <div (click)="next()"class="angle2">
+                <i class="material-icons right-arrow2"> keyboard_arrow_right</i>
+            </div>
+            <mat-card fxLayout="column" class="login-panel2">
+                <div fxLayout="column"  fxLayoutAlign="center center" fxFlex fxFlex.gt-xs="400px" fxFlex.xs="420px">
+                   <div class="logo2">
+                       <img src="assets/login/admin.png" alt="">
+                   </div>
+                   <div fxFlex fxLayout="column" class="user-name2 login-component2">
+                        <mat-form-field  class="login-full-width2">
+                            <input  matInput placeholder="User Name" >
+                        </mat-form-field>
+                   </div>
+                   <div fxFlex class="password2 login-component2">
+                        <mat-form-field class="login-full-width2">
+                            <input type="password" matInput placeholder="Password" >
+                        </mat-form-field>
+                   </div>
+                   <div fxLayoutAlign="flex-start center" fxLayout="row" fxFlex class="remember-me2 login-component2">
+                        <mat-checkbox> Remember Me..!</mat-checkbox>
+
+                   </div>
+                   <div fxFlex class="login-component2">
+                        <button mat-raised-button class="login-button2 login-full-width2">Login</button>
+                   </div>
+                   <div fxFlex class="forgot-password2 login-component2">
+                       <a href="#">Forgot Password</a></div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxLayout="column" class="dot-container2" fxLayoutAlign="center center">
+            <div fxFlex fxLayout="row">
+                <div *ngFor="let img of this.loginPageData.images; let i = index" (click)="changeSlideByIndex(i)" class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <div  fxLayoutGap.gt-xs="10px"  fxLayout="column" fxLayout.gt-xs="row"  class="product-container2">
+        <div fxFlex class="product2">
+
+        </div>
+        <div fxFlex class="product2">asdfd</div>
+        <div fxFlex class="product2">dfvsd</div>
+    </div> -->
+   <!-- <div  #footer class="footer2">
+        <button (click)="next()">next</button>
+        <button (click)="prev()">prev</button>
+    </div> -->
+</div>

@@ -1,0 +1,333 @@
+  <div class="no-padding ana-main">
+         <!-- <mat-card class="ana-cust-container">
+            <div class="ana-left-option">
+              <div class="ana-option-row">
+                    <div fxFlex="10"  (click)="toggleTable_click($event)" fxFlayout="row" fxLayoutAlign="center center" class="ana-option ana-toggle-whole">
+                        <span class="material-icons pallete-icon">view_comfy</span>
+                    </div>
+                    <div fxFlex.xs="148px" fxFlex="168px"  class="ana-branding">
+                        <img class="analy-logo" [src]="koshBrandLogo" alt="">
+                    </div>
+
+                    <div fxHide.xs="true" fxHide.sm="true" fxFlex class="ana-option" fxFlayout="row" fxLayoutAlign="center center">
+                        <div style="position: relative;height: 100%;" fxFlex fxLayout="row" fxLayoutAlign="center center">
+                            <i class="material-icons">account_balance</i>
+                            <label  style="margin-top:10px;" fxFlexOffset="5px">{{className}}</label>
+                        </div>
+                    </div>
+                      <div fxFlex class="ana-option" fxFlayout="row" fxLayoutAlign="center center" >
+                          <div style="position: relative;height: 100%;" fxFlex fxLayout="row" fxLayoutAlign="center center">
+                              <i class="material-icons">perm_identity</i>
+                              <label  style="margin-top:10px;" fxFlexOffset="5px">{{studentName}}</label>
+                          </div>
+                      </div>
+                      <div  fxHide.gt-xs="true" (click)="close()" fxFlayout="row" fxLayoutAlign="center center" style="color: white;;">
+                          <i class="material-icons">
+                              arrow_back_ios
+                          </i>
+                      </div>
+                      <div fxHide.sm="true" fxHide.xs="true" fxFlex="1 auto" (click)="close()" fxFlayout="row" fxLayoutAlign="center center" class="ana-option">
+                        <i class="material-icons">
+                            arrow_back_ios
+                        </i>
+                        back
+                    </div>
+              </div>
+            </div>
+               <div class="right-option">
+                   <div class="option-row">
+                       <div class="option">Logout</div>
+
+                   </div>
+               </div>
+        </mat-card> -->
+      <!-- <app-navbar></app-navbar> -->
+        <mat-card fxLayout="row" class="logo-container">
+          <div fxFlex="0 0 12"  (click)="toggleTable_click($event)" fxFlayout="row" fxLayoutAlign="center center" style="padding: 4px !important;" class="ana-option ana-toggle-whole">
+              <span class="material-icons pallete-icon">view_comfy</span>
+          </div>
+            <div fxFlex="0 0 148px" fxFlex.gt-xs="0 0 168px"  class="each-ana-menu branding-log-container">
+                <img [src]="koshBrandLogo" class="branding-logo" alt="">
+            </div>
+            <div fxHide.xs="true" fxHide.sm="true" fxFlex class="ana-option" fxFlayout="row" fxLayoutAlign="center center">
+              <div style="position: relative;height: 100%;" fxFlex fxLayout="row" fxLayoutAlign="center center">
+                  <i class="material-icons">account_balance</i>
+                  <label  style="margin-top:10px;" fxFlexOffset="5px">{{className}}</label>
+              </div>
+          </div>
+            <div fxFlex class="ana-option" fxFlayout="row" fxLayoutAlign="center center" >
+                <div style="position: relative;height: 100%;" fxFlex fxLayout="row" fxLayoutAlign="center center">
+                    <i class="material-icons">perm_identity</i>
+                    <label  style="margin-top:10px;" fxFlexOffset="5px">{{studentName}}</label>
+                </div>
+            </div>
+            <div  fxHide.gt-xs="true" (click)="close()" fxFlayout="row" fxLayoutAlign="center center" style="color: white;;">
+                <i class="material-icons">
+                    arrow_back_ios
+                </i>
+            </div>
+            <div fxHide.sm="true" fxHide.xs="true" fxFlex="1 auto" (click)="close()" fxFlayout="row" fxLayoutAlign="center center" class="ana-option">
+              <i class="material-icons">
+                  arrow_back_ios
+              </i>
+              back
+          </div>
+        </mat-card>
+
+
+
+
+
+
+
+
+
+      <ball-loader *ngIf="isLoaded"></ball-loader>
+      <mat-card class="ana-no-padding ana-root-container ">
+          <div class="ana-main-analyis-container row full-height">
+              <div class="ana-analysis-section col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <section class="ana-banner">
+                    <mat-card  class="ana-banner-card ana-no-padding full-height full-width ana-data-test ana-banner-height">
+                      <div class="row">
+                        <div class="col-4 ana-test-data">
+                          <div>{{examPattern}}</div>
+                        </div>
+                        <div class="col-4 ana-test-data">
+                          <div class="ana-test-id-container">
+                              <div class="ana-test-id ana-gap-7px">{{testId}}</div>
+                              <div id="ana-test ana-gap-7px">Test Id</div>
+                          </div>
+                        </div>
+                        <div *ngIf="isChapterWiseTest" class="col-4 ana-test-data">
+                          <div>Chapterwise</div>
+                          <div>{{testDescription}}</div>
+                        </div>
+                      </div>
+                    </mat-card>
+                </section>
+                <div class="row">
+                  <div class="ana-header-control-container ana-date-container col-xs-12 col-sm-12 col-lg-6 col-md-6 col-xl-6 ">
+                    <mat-card style="height: 100%; padding:0px !important;" class="ana-header-control">
+                        <mat-form-field  style="height: 100%; padding:0px !important;" class="ana-date-select full-width">
+                          <mat-label style="color: #525252;">Select Exam Solved Date & Time</mat-label>
+                          <mat-select  [formControl]="examDates">
+                            <mat-option  *ngFor="let test of testData.ownAnalysis" [value]="test">
+                              {{ getFormatedDate(test.date)}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </mat-card>
+                  </div>
+                  <div style="height: 50px;" class="ana-header-control-container ana-date-container col-xs-12 col-sm-12 col-lg-6 col-md-6 col-xl-6 ">
+                    <mat-card  class="ana-toppers-analysis ana-header-control">
+                        <mat-radio-group (change)="showAnalysis($event)"  [formControl]="analysisOption" class="ana-center full-height" style="z-index: inherit;" aria-label="Select an option">
+                          <mat-radio-button class="ana-analysis-radio ana-radio-option "  value="own"
+                            >Own Analysis
+                          </mat-radio-button>
+                          <mat-radio-button  class="ana-analysis-radio ana-radio-option "  value="topper"
+                            >Toppers Analysis
+                          </mat-radio-button>
+                        </mat-radio-group>
+                    </mat-card>
+                  </div>
+                </div>
+                <mat-card class="no-padding ana-rank-section">
+                  <div class="row full-height">
+                    <div class="ana-box-container full-height col-3">
+                      <div class="ana-center ana-rank-container">
+                        <div class="ana-circle">{{allBranchRank}}</div>
+                      </div>
+                      <div class="ana-center ana-rank-footer">
+                          <div class="ana-rank-label full-height ana-center ana-rank">All Branch Rank</div>
+                      </div>
+                    </div>
+                    <div class="ana-box-container full-height col-3 ">
+                        <div class="ana-center ana-rank-container" >
+                            <div class="ana-circle">{{branchRank}}</div>
+                        </div>
+                        <div class="ana-center ana-rank-footer">
+                            <div class="ana-rank-label full-height ana-center ana-rank">Branch Rank</div>
+                        </div>
+                    </div>
+                    <div class="ana-box-container full-height col-3 ">
+                        <div class="ana-center ana-rank-container">
+                            <div class="ana-circle">{{divisionRank}}</div>
+                        </div>
+                        <div class="ana-center ana-rank-footer">
+                            <div class="ana-rank-label full-height ana-center ana-rank">Division Rank</div>
+                        </div>
+                    </div>
+                    <div class="ana-box-container full-height col-3 ">
+                        <div class="ana-center ana-rank-container" >
+                            <div class="ana-circle">{{subDivisionRank}}</div>
+                        </div>
+                        <div class="ana-center ana-rank-footer">
+                            <div class="ana-rank-label full-height ana-center ana-rank">Sub Division Rank</div>
+                        </div>
+                    </div>
+                  </div>
+                </mat-card>
+                <mat-divider></mat-divider>
+                <section class="ana-banner">
+                  <mat-card fxLayout="row" class=" ana-banner-card ana-no-padding full-height full-width ana-banner-card">
+                    <div fxFlex fxLayout = "row" fxLayoutAlign = "center center"> subject wise analysis</div>
+                    <div fxLayout="row" class="attempted-message" fxLayoutAlign = "center center " >{{testSolveStatus}}</div>
+                  </mat-card>
+                </section>
+                <section class="ana-mark-section">
+                  <div class="row full-height">
+                    <div class="col-3 full-height ana-center ana-main-marks-container ">
+
+                      <mat-card *ngIf="analysisOption.value == 'own'" (click)="displayTestDetails(examDates.value.subjects[0])" class="ana-main-percent full-height full-width ana-no-padding ana-vcenter">
+                        <div class="ana-subject-header">{{currentSubject}}</div>
+                        <div class="ana-main-circle ana-percentages">{{displayNumber(currentPercentages)}} %</div>
+                      </mat-card>
+                      <mat-card *ngIf="analysisOption.value == 'topper'" (click)="displayTestDetails(topperRecord[0].subjects[0])" class="ana-main-percent full-height full-width ana-no-padding ana-vcenter">
+                        <div class="ana-subject-header">{{currentSubject}}</div>
+                        <div class="ana-main-circle ana-percentages">{{currentPercentages}} %</div>
+                      </mat-card>
+
+
+
+
+                    </div>
+                    <div class="col-9 full-height">
+                      <div class="row full-height">
+                        <div style="padding: 0px 3px !important; box-sizing: border-box !important;"
+                          class=" col-4 full-height ana-center"
+                          *ngFor="let subject of testSubjects"
+                        >
+                          <mat-card (click)="displayTestDetails(subject)" class="ana-main-percent full-height full-width ana-no-padding ana-vcenter">
+                            <div class="ana-subject-header">{{subject.subName}}</div>
+                            <div class="ana-main-circle percentages">{{displayNumber(subject.percentage)}} %</div>
+                          </mat-card>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="ana-analysis-lable ana-center">
+                  Detailed Records
+                </section>
+                <section class="ana-analysis-data">
+                  <mat-card class="ana-each-analysis">
+                    <div class="ana-bar">
+                      <mat-progress-bar class="ana-bar-top" mode="determinate" [value]="totalMarksOutOfMarksProgress"></mat-progress-bar>
+                    </div>
+                    <div class="ana-data">
+                      <div class="ana-right">total marks : {{totalMarks}}</div>
+                      <div class="ana-left">outouf marks : {{outOfMarks}}</div>
+                    </div>
+                  </mat-card>
+                  <mat-card class="ana-each-analysis">
+                    <div class="ana-bar">
+                      <mat-progress-bar class="ana-bar-top" mode="determinate" [value]="positiveNegativeMarksProgress"></mat-progress-bar>
+                    </div>
+                    <div class="ana-data">
+                      <div class="ana-right">positive marks : {{positiveMarks}}</div>
+                      <div class="ana-left">negative marks : {{negativeMarks}}</div>
+                    </div>
+                  </mat-card>
+                  <mat-card class="ana-each-analysis">
+                      <div class="ana-bar">
+                        <mat-progress-bar class="bar-top" mode="determinate" [value]="percentileProgress"></mat-progress-bar>
+                      </div>
+                      <div class="ana-data">
+                        <div class="ana-right">obtained percentile : {{displayNumber(obtainedPercentile)}} </div>
+                        <div class="ana-left">out of percentile : 100 </div>
+                      </div>
+                    </mat-card>
+                  <mat-card class="ana-each-analysis rank ana-spend-time" >
+                    <div class="ana-bar">
+                      <mat-progress-bar  class="ana-bar-top" mode="determinate" [value]="spendTimeTotalTimeProgress"></mat-progress-bar>
+                    </div>
+                    <div class="ana-data ">
+                      <div class="ana-right">spend time : {{spendTime}}</div>
+                      <div class="ana-left">total time : {{totalTime}}</div>
+                    </div>
+                  </mat-card>
+                  <mat-card class="ana-each-analysis">
+                    <div class="ana-bar">
+                      <mat-progress-bar class="ana-bar-top" mode="determinate" [value]="correctWrongProgress"></mat-progress-bar>
+                    </div>
+                    <div class="ana-data">
+                      <div class="ana-right">correct : {{correctQuestion}}</div>
+                      <div class="ana-left">wrong : {{wrongQuestion}}</div>
+                    </div>
+                  </mat-card>
+                  <mat-divider></mat-divider>
+                  <mat-card class="ana-each-analysis">
+                    <div class="ana-bar">
+                      <mat-progress-bar class="ana-bar-top" mode="determinate" [value]="attemptedNotAttemptedProgrss"></mat-progress-bar>
+                    </div>
+                    <div class="ana-data">
+                      <div class="ana-right">attempted : {{attemptedQuestion}}</div>
+                      <div class="ana-left">not attempted :{{notAttemptedQuestion}}</div>
+                    </div>
+                  </mat-card>
+                  <mat-divider></mat-divider>
+                  <mat-card class="ana-each-analysis">
+                      <div class="ana-bar">
+                        <mat-progress-bar class="bar-top" mode="determinate" [value]="visitedNotVisitedProgress"></mat-progress-bar>
+                      </div>
+                      <div class="ana-data">
+                        <div class="ana-right">visited : {{visitedQuestion}}</div>
+                        <div class="ana-left">not visited : {{notVisitedQuestion}}</div>
+                      </div>
+                    </mat-card>
+                  <mat-divider></mat-divider>
+                </section>
+              </div>
+              <div class="ana-table-section  col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                  <table class="ana-data-table"  mat-table [dataSource]="dataSource">
+                      <!-- index Column -->
+                      <ng-container matColumnDef="index">
+                        <th class="ana-table-headers ana-capitalize" mat-header-cell *matHeaderCellDef> Q.No. </th>
+                        <td class="ana-capitalize" mat-cell *matCellDef="let question"> {{question.index}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="mark">
+                        <th  class="ana-table-headers ana-capitalize" mat-header-cell *matHeaderCellDef>Mark</th>
+                        <td  class="ana-capitalize" mat-cell *matCellDef="let question"> <span  [style.color] = "question.color"> {{question.obtainedQuestionMarks}} </span> </td>
+                      </ng-container>
+                      <!-- correctQuestion Column -->
+                      <ng-container matColumnDef="correctQuestion">
+                        <th class="ana-table-headers ana-capitalize" mat-header-cell *matHeaderCellDef> Right / Wrong </th>
+                        <td class="ana-capitalize" mat-cell *matCellDef="let question">
+                          <span *ngIf="question.questionStatus == 0">
+                            <i [style.color]="question.color" class="fa fa-check icon-font"></i>
+                          </span>
+                          <span *ngIf="question.questionStatus == 1">
+                            <i [style.color]="question.color" class="fa fa-close icon-font"></i>
+                          </span>
+                          <span [style.color] ="question.color" *ngIf="question.questionStatus == 2">
+                          </span>
+                        </td>
+                      </ng-container>
+                      <!-- timeTaken Column -->
+                      <ng-container matColumnDef="timeTaken">
+                        <th class="ana-table-headers ana-capitalize" mat-header-cell *matHeaderCellDef>Time Taken(sec)</th>
+                        <td class="ana-capitalize" mat-cell *matCellDef="let question"> {{question.timeTaken}} </td>
+                      </ng-container>
+
+                      <!-- noOfVisit Column -->
+                      <ng-container matColumnDef="noOfVisit">
+                        <th class="ana-table-headers ana-capitalize" mat-header-cell *matHeaderCellDef>Visit Count </th>
+                        <td class="ana-capitalize" mat-cell *matCellDef="let question"> {{question.noOfVisit}} </td>
+                      </ng-container>
+                       <!-- subjectName Column -->
+                       <ng-container matColumnDef="subjectName">
+                        <th  class="ana-table-headers ana-capitalize" mat-header-cell *matHeaderCellDef>Subject</th>
+                        <td  class="ana-capitalize" mat-cell *matCellDef="let question"> {{question.subjectName  | titlecase }} </td>
+                      </ng-container>
+                      <tr class="tr ana-bold" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr class="tr"  mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator #paginator
+                        [pageSizeOptions]="[5, 10,15, 20]"
+                        [pageSize]="10"
+                        showFirstLastButtons></mat-paginator>
+              </div>
+            </div>
+      </mat-card>
+      <!-- <app-footer [footerData]="footerData"></app-footer>  -->
+    </div>

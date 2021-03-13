@@ -1,0 +1,55 @@
+.main {
+    height: 100% !important;
+    width: 100% !important;
+    position: relative;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.button-section {
+    margin-top: 30px !important;
+    text-align: center;
+}
+.button-save {
+    background: white;
+    color: rgb(77, 77, 230);
+    border: 2px solid rgb(77, 77, 230);
+}
+.button-close {
+    background: white;
+    color: rgb(68, 148, 68);
+    border: 2px solid rgb(68, 148, 68);
+}
+.mat-dialog-container {
+    padding: 0px !important;
+}
+.close {
+    position: absolute;
+    top: 0px !important;
+    right: 0px !important;
+    height: 15px;
+    width: 15px;
+    border: 1px solid blue;
+    border-radius: 50%;
+    cursor: pointer;
+    color: blue; 
+}
+.close:hover {
+    color: rgb(26, 29, 219);
+}
+.close-icon {
+    height: 5px !important;
+    width: 5px !important;
+    margin: 1px !important;
+    font-size: 0.5em;
+    position: absolute;
+}
+.example-full-width {
+    width: 100% !important;
+}
+.border {
+    border: 1px solid red;
+}
+mat-card {
+    border: 1px solid rgb(206, 201, 201);
+    padding: 5px !important;
+ }

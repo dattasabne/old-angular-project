@@ -1,0 +1,230 @@
+<div class="search-assi-main-div">
+    <app-exam-start (close)="examStartForm.isLoad = false" *ngIf="examStartForm.isLoad"></app-exam-start>
+    <ball-loader *ngIf="isLoaded"></ball-loader>
+    <app-navbar [navType]="'dashboard'"  [logo]="logoImage" [homeName]="'Dashboard'" [homeCallBack]="goToHome" [xsHideToggle]="true" [isClassName]="false" [className]="className" (clickOnHomeButton)="close()"></app-navbar>
+  <div class="row search-assi-no-margin search-assi-main-content-div">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 search-assi-search-section">
+        <mat-card class="search-assi-center search-assi-analysis-section ">
+            <div>
+               Assignment Section
+            </div>
+        </mat-card>
+        <mat-card class="search-assi-no-margin search-assi-no-padding">
+            <mat-tab-group [selectedIndex]="1" [dynamicHeight]="true">
+              <mat-tab label="DateWise Search">
+                <div class="search-assi-each-controls">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field  class="input-height full-width">
+                        <mat-label>Exam Status</mat-label>
+                        <mat-select  [formControl]="dateWiseStatusControl">
+                          <mat-option
+                            *ngFor="
+                              let status of examStatus
+                            "
+                            [value]="status"
+                          >
+                            {{ status | titlecase  }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Exam Pattern</mat-label>
+                        <mat-select [formControl]="dateWisePatternControl">
+                          <mat-option
+                            *ngFor="
+                              let pattern of examPattern
+                            "
+                            [value]="pattern"
+                          >
+                            {{ pattern.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="search-assi-each-controls">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Subject</mat-label>
+                        <mat-select [formControl]="dateWiseSubjectControl">
+                          <mat-option
+                            *ngFor="
+                              let subject of allSubjects
+                            "
+                            [value]="subject"
+                          >
+                            {{ subject | titlecase   }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Exam Week</mat-label>
+                        <mat-select [formControl]="dateWiseWeekControl">
+                          <mat-option
+                            *ngFor="
+                              let week of allWeekDates
+                            "
+                            [value]="week"
+                          >
+                          {{ week.startDate|userDatePipe }} - {{week.endDate|userDatePipe}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="search-assi-each-controls">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Day</mat-label>
+                        <mat-select [formControl]="dateWiseDayControl">
+                          <mat-option
+                            *ngFor="
+                              let day of []|dateRangePipe:dateWiseWeekControl.value:dateWiseDayControl
+                            "
+                            [value]="day"
+                          >
+                          {{ day |userDatePipe  }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-6 search-assi-center search-assi-search-button-container">
+                      <button  class="search-assi-date-search-button" (click)="dateWiseSearch()" mat-raised-button>search</button>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="ChapterWise Search">
+                <div class="search-assi-each-controls">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field  class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Exam Status</mat-label>
+                        <mat-select [formControl]="chapterWiseStatusControl">
+                          <mat-option
+                            *ngFor="
+                              let status of examStatus
+                            "
+                            [value]="status"
+                          >
+                            {{ status | titlecase  }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field  class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Exam Pattern</mat-label>
+                        <mat-select [formControl]="chapterWisePatternControl">
+                          <mat-option
+                            *ngFor="
+                              let pattern of examPattern
+                            "
+                            [value]="pattern"
+                          >
+                            {{ pattern.name  }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="each-controls">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field  class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Subject</mat-label>
+                        <mat-select [formControl]="chapterWiseSubjectControl">
+                          <mat-option
+                            *ngFor="
+                              let subject of allSubjects
+                            "
+                            [value]="subject"
+                          >
+                            {{ subject | titlecase  }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <mat-form-field class="search-assi-input-height search-assi-full-width">
+                        <mat-label>Chapter Name</mat-label>
+                        <mat-select [formControl]="chapterWiseChapterControl">
+                          <mat-option
+                            *ngFor="
+                              let chapter of allChapters
+                            "
+                            [value]="chapter"
+                          >
+                            {{ chapter | titlecase  }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="search-assi-each-controls">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 col-xl-12 search-assi-center search-assi-search-button-container">
+                      <button class="search-assi-chapterwise-search-button" (click)="chapterWiseSearch()"  mat-raised-button>search</button>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </mat-card>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <div class="search-assi-result-panel">
+          <mat-card
+              (click)=" testProperLoaded(test)"
+              class="search-assi-serach-result"
+              *ngFor="let test of displayTest"
+            >
+              <div class="search-assi-header">
+                <!-- <div class="testType">{{ test.testType }}</div> -->
+                <div class="search-assi-time">
+                  <div class="search-assi-justify-left">{{test.testType}}</div>
+                  <div class="search-assi-line"></div>
+                  <div class="search-assi-justify-left">id : {{ test.allBranchId }}</div>
+                </div>
+                <div class="search-assi-time">
+                  <div class="search-assi-start-time">{{test.startDate}}</div>
+                  <div class="search-assi-line"></div>
+                  <div class="search-assi-start-time">{{test.startTime}}</div>
+                </div>
+              </div>
+              <div class="search-assi-body search-assi-center" matTooltip="{{test.testDescription}}">
+                <div class="search-assi-test-details">
+                  <div class="search-assi-subject">{{ test.subjectName }}</div>
+                  <div class="search-assi-gap"></div>
+                  <div class="search-assi-center">
+                    <div class="search-assi-duration search-assi-center">
+                      {{ test.duration}}
+                    </div>
+                    <div style="margin-left:5px;">min</div>
+                  </div>
+                </div>
+              </div>
+              <div class="search-assi-footer">
+                <div>
+                  <button class="search-assi-start-exam-button "  type="button" mat-raised-button>start</button>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+

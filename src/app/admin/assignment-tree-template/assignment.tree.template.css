@@ -1,0 +1,76 @@
+.each-branch{
+  height: auto;
+  border-bottom: 1px solid lightgray;
+  margin: 2px 0px;
+  cursor: pointer;
+}
+.branch-head{
+  height: 40px;
+}
+.sub-branch-body{
+  box-sizing: border-box !important;
+}
+.active-branch{
+  /* height: 250px; */
+  height: 100% !important;
+  width: 100%;
+  border: 1px solid lightgray;
+  overflow: auto;
+}
+.instruction{
+  margin-top:8px !important;
+  text-transform: capitalize;
+}
+.inactive-branch{
+  height: 0px;
+  width: 100%;
+  border:none !important;
+  overflow: hidden;
+}
+.common-padding{
+  padding: 7px !important;
+}
+.data-container{
+  height: auto !important;
+  width: 100%;
+}
+.row-container{
+  padding: 4px 8px;
+  height: 100%;
+}
+.fieldset-control{
+  border: 1px solid lightgray;
+  width: 100%;
+  height: auto;
+}
+.fieldset-control legend{
+  border: 1px solid black;
+  margin-left: 15px;
+  font-size: 0.8em;
+  padding: 0px 7px;
+  color: #fff;
+  background: #00688B;
+  width: auto;
+}
+.common-less-bottom-margin{
+  margin-bottom: -20px !important;
+}
+.date-picker-input{
+  width:88% !important;
+}
+.line{
+  border: 1px solid lightgray !important;
+  margin: 2px 0px;
+  width: 100%;
+}
+.branch-title{
+  height: 100%;
+  width: 100%;
+  font-size: 0.9em;
+  text-transform: capitalize;
+  margin:0px 4px;
+}
+.error-message{
+  font-size: 0.7em !important;
+}
+

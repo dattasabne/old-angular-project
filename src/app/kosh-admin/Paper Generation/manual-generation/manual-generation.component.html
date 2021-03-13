@@ -1,0 +1,86 @@
+<div class="main-div">
+  <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start">
+    <div fxFlex fxLayout="row" fxLayoutAlign="center start" fxflex="50px" class="generation-header">
+      <mat-icon class="generation-icon" fxFlex="20px">trending_up</mat-icon>
+      <div fxFlex="300px">Manual Generation</div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign.gt-xs="start center">
+      <mat-card fxLayout="row" fxLayout.xs="column" fxLayoutAlign.gt-xs="start center" fxFlex.gt-xs="500px" fxFlex.xs="100%" fxFlex.md="50%">
+        <div fxFlex.gt-xs="200px">
+          <mat-label>Pattern Name</mat-label>
+        </div>
+        <div fxFlex.gt-xs="250px">
+          <mat-form-field class="input-text full-width">
+            <mat-label>Select Exam Pattern</mat-label>
+            <mat-select [formControl]="patternControl">
+              <mat-option value="JEE">JEE</mat-option>
+              <mat-option value="NEET">NEET</mat-option>
+              <mat-option value="MH-CET">MHTCET</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card>
+      <mat-card fxLayout="row" fxLayout.xs="column" fxLayoutAlign.gt-xs="start center"  fxFlex.gt-xs="500px" fxFlex.xs="100%" fxFlex.md="50%">
+        <div fxFlex.gt-xs="200px">
+          <mat-label>Type</mat-label>
+        </div>
+        <div fxFlex.gt-xs="250px">
+          <mat-form-field class="input-text full-width">
+            <mat-label>Select Type of Exam</mat-label>
+            <mat-select [formControl]="examTypeControl">
+              <mat-option value="JEE">Chapterwise</mat-option>
+              <mat-option value="NEET">Subjectwise</mat-option>
+              <mat-option value="MH-CET">Final Test</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutGap="20px">
+      <div class="heading" fxFlex>Import From Notepad</div>
+      <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayoutGap.xs="20px" fxLayoutAlign.xs="center center">
+        <div class="button-section" fxFlex.gt-xs="200px" fxFlex.xs="100px">
+          <button (click)="enterQuestions()" class="generate-button" mat-raised-button>Create</button>
+        </div>
+        <div class="button-section" fxFlex.gt-xs="200px" fxFlex.xs="100px">
+          <button (click)="enterQuestions()" class="edit-button" mat-raised-button>Edit</button>
+        </div>
+      </div>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutGap="20px">
+      <div class="heading" fxFlex>Selected Questions</div>
+      <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayoutGap.xs="5px">
+        <mat-card *ngIf="isDialogOpen" class="record-container">
+          <div class="full">
+            <div fxFlex fxLayout="row" class="record">
+              <div fxFlex.xs="60px"  class="field header">{{header.SrNo}}</div>
+              <div fxFlex.xs="60px"  class="field header">{{header.pattern}}</div>
+              <div fxFlex.xs="60px"  class="field header">{{header.testId}}</div>
+              <div fxFlex.xs="100px" class="field header">{{header.chapterName}}</div>
+              <div fxFlex.xs="100px"  class="field header">{{header.chapterId}}</div>
+              <div fxFlex.xs="100px"  class="field header">{{header.questions}}</div>
+              <div fxFlex.xs="100px"  class="field header">{{header.reapeted}}</div>
+              <div fxFlex.xs="100px"  class="field header">{{header.notAvailable}}</div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+          <div class="full">
+            <div fxFlex fxLayout="row" class="record">
+              <div fxFlex.xs="60px" class="field header">{{ManualGenerateData.SrNo}}</div>
+              <div fxFlex.xs="60px" class="field header">{{ManualGenerateData.pattern}}</div>
+              <div fxFlex.xs="60px" class="field header">{{ManualGenerateData.testId}}</div>
+              <div fxFlex.xs="100px" class="field header">{{ManualGenerateData.chapterName}}</div>
+              <div fxFlex.xs="100px" class="field header">{{ManualGenerateData.chapterName}}</div>
+              <div fxFlex.xs="100px" class="field header">{{ManualGenerateData.chapterId}}</div>
+              <div fxFlex.xs="100px" class="field header">{{ManualGenerateData.questions}}</div>
+              <div fxFlex.xs="100px" class="field header">{{ManualGenerateData.reapeted}}</div>
+              <div fxFlex.xs="100px" class="field header">{{ManualGenerateData.notAvailable}}</div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+

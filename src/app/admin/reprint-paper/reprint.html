@@ -1,0 +1,8 @@
+<div  class="node" *ngFor="let node of data1">
+   <div (click)="clickOnElement(node)">{{node.name}}</div>
+    <div [style.height]="node.height" [style.overflow]="node.overflow">
+        <recursive  #recursion  [data]="node"></recursive> 
+    </div>
+</div>
+
+

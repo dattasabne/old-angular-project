@@ -1,0 +1,54 @@
+<div class="main">
+  <div class="main-container" fxLayout="column" fxflex fxLayoutGap="15px" fxLayoutAlign="start">
+    <div fxFlex fxLayout="row" fxLayoutAlign="center start" fxflex="50px" class="generation-header">
+      <mat-icon class="generation-icon" fxFlex="20px">cloud_upload</mat-icon>
+      <div fxFlex="300px">Upload Questions</div>
+    </div>
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="20px">
+      <mat-card fxFlex fxFlex.gt-xs="450px" class="select-option">
+        <mat-form-field class="input-text full-width">
+          <mat-label>Select Exam Pattern</mat-label>
+          <mat-select [formControl]="patternControl">
+            <mat-option *ngFor="let pattern of patterns" [value]="pattern">{{pattern.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-text full-width">
+          <mat-label>Select Subjects</mat-label>
+          <mat-select [formControl]="subjectControl">
+            <mat-option *ngFor="let sub of allSubjects" [value]="sub">{{sub.subjectName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-text full-width">
+          <mat-label>Select Standard</mat-label>
+          <mat-select [formControl]="standardControl">
+            <mat-option *ngFor="let standard of standards" [value]="standard">{{standard}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-text full-width">
+          <mat-label>Chapters</mat-label>
+          <mat-select [formControl]="chapterControl">
+            <mat-option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+      <mat-card fxFlex class="record-container">
+        <div class="full">
+          <div fxLayout="row"  fxLayoutGap.xs="10px" class="record">
+            <div fxFlex  class="header">{{allHeaders.questionNo}}</div>
+            <div fxFlex  class="header">{{allHeaders.dateTime}}</div>
+            <div fxFlex  class="header">{{allHeaders.user}}</div>
+            <div fxFlex  class="header">{{allHeaders.examType}}</div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-card>
+    </div>
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-card  fxFlex><mat-checkbox  color="primary" type="checkbox">Question Level</mat-checkbox></mat-card>
+      <mat-card  fxFlex><mat-checkbox  color="primary" type="checkbox">Previous Question</mat-checkbox></mat-card>
+      <mat-card  fxFlex><mat-checkbox  color="primary" type="checkbox">Master Copy </mat-checkbox></mat-card>
+      <mat-card  fxFlex><mat-checkbox  color="primary" type="checkbox">Add Watermark</mat-checkbox></mat-card>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,116 @@
+.main-div{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background: #D1D1D1;
+}
+.test-list{
+    height: 50px !important;
+    overflow: auto !important;
+}
+.main-container {
+    padding: 10px !important;
+    height: 100% !important;
+    overflow: auto !important;
+}
+.border{
+  border: 1px solid red !important;
+}
+.control-padding{
+  padding: 8px !important;
+}
+.expansion-body{
+  border: 1px solid lightgray !important;
+  width: 100%;
+  background: lightgray;
+}
+.search-common-padding{
+  padding:4px 7px !important;
+}
+/* .test-row > div{
+
+} */
+.search-mat-expansion-panel:nth-child(even){
+  background: #2F4F4F !important;
+}
+
+.search-mat-expansion-panel:nth-child(odd){
+  background: #00BFFF !important;
+}
+.test-row > div{
+  color: #fff;
+}
+/* .test-row > div:last-child{
+  background: red !important;
+  color: #fff;
+} */
+@media only screen and (max-width:900px) and (min-width:300px){
+    .seratch-test-select-option{
+        width: 100% !important;
+    }
+}
+
+*{
+  box-sizing: border-box !important;
+}
+.record-container{
+    overflow: auto;
+    width:100%;
+    height: 100% !important;
+    background: rgb(254, 255, 255);
+    box-sizing: border-box;
+}
+.full{
+    height: 100% !important;
+    width:100% !important;
+}
+mat-divider {
+    margin-top:20px !important;
+}
+.search-button {
+    display: flex;
+    align-items: center;
+    justify-content: centers;
+}
+.delete-records {
+    width: 200px !important;
+    box-sizing: border-box;
+    background: white;
+    color: rgb(56, 126, 231);
+    border: 1px solid rgb(56, 126, 231);
+}
+.record{
+    height: 48px;
+    width:100%;
+    display: flex;
+    margin:4px 0px;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px !important;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.record > .field:not(:first-child){
+    width:300px;
+}
+.record > .field:last-child{
+    width: 50px;
+}
+.record > .field:first-child{
+    width:100px;
+}
+.record:hover{
+    background: rgb(212, 206, 206);
+}
+.record > .field{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: black;
+}
+.header {
+    color: black;
+    font-size: 1.0em;
+}

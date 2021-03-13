@@ -1,0 +1,162 @@
+<section fxLayout="column" fxLayout.gt-xs = "row"  class="outer-main-section">
+  <ball-loader *ngIf="isLoaded"></ball-loader>
+  <section class="section-format search-section" fxFlex.xs = "1 0 auto" fxFlex.sm = "1 0 auto" fxFlex = "25" fxLayout="column">
+    <mat-card  fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="center center" class="own-selection-label">Academic Selection</div>
+      <section fxLayout="column" class="own-control-section">
+        <div class="own-control">
+          <mat-form-field style="width: 100%;height: 50px !important;">
+              <mat-label>Academic Year</mat-label>
+              <mat-select class="capital" [formControl]="academicYearControl">
+                <mat-option class="capital" *ngFor="let academcYear of academicYearList" [value]="academcYear">
+                  {{academcYear}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="own-control">
+              <mat-form-field style="width: 100%;height: 50px !important;">
+                  <mat-label>Pattern Name</mat-label>
+                  <mat-select  class="capital"  [formControl]="patternControl">
+                    <mat-option class="capital"  *ngFor="let pattern of patterList" [value]="pattern">
+                      {{pattern}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </div>
+          <div class="own-control">
+              <mat-form-field style="width: 100%;height: 50px !important;">
+                  <mat-label>Class</mat-label>
+                  <mat-select [formControl]="classControl">
+                    <mat-option *ngFor="let $class of classList" [value]="$class">
+                      {{$class}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </div>
+          <div class="own-control">
+              <mat-form-field style="width: 100%;height: 50px !important;">
+                  <mat-label>Test Type</mat-label>
+                  <mat-select class="capital" [formControl]="testTypeControl">
+                    <mat-option class="capital" *ngFor="let testType of testTypeList" [value]="testType">
+                      {{testType}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </div>
+          <div class="own-control">
+              <mat-form-field style="width: 100%;height: 50px !important;">
+                  <mat-label>Subjects</mat-label>
+                  <mat-select  class="capital" [formControl]="subjectControl">
+                    <mat-option  class="capital" *ngFor="let subject of subjectList" [value]="subject">
+                      {{subject}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </div>
+        <div class="download-options" fxLayoutGap="3px" fxLayout="column">
+          <div fxLayout="column">
+            <div fxFlex class="paper-width paper-options">
+              <span class="compulsory">*</span>
+              Question Paper / Solution File Width Must Be 3.11"
+              <small>(inch)</small>
+            </div>
+            <div (click)="downloadQuestionPaperSolutionDocx()" fxFlex class="download-pattern download-link">[Download Question Paper / Solution Word Template] </div>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center start" class="download-excel ">
+            <div>Upload Answersheet Excel File</div>
+            <div class="simple-line"></div>
+            <div class="download-link" (click)="downloadExcelFormat()">[Downlad Answerkey Template]</div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" class="own-xml-uplod">
+            <div class="xl-drag-button" fxLayout fxLayoutAlign="center center">  click or drag here to upload answer key excel file</div>
+            <input (change)="openExcelFile($event)" #reviewFile type="file" class="reviewFile own-drag-file" >
+          </div>
+        </div>
+      </section>
+    </mat-card>
+  </section>
+  <section fxLayout="column" class="data-section" fxFlex.xs = "1 0 auto" fxFlex.sm = "1 0 auto" fxFlex = "75">
+    <section fxFlex = "1 0 auto" class="section-format pdf-section"   fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="4px">
+      <mat-card  class="own-no-padding own-question-section" fxFlex.xs ="1 0 auto" fxFlex.sm="1 0 auto"  fxFlex.gt-xs="50">
+        <ball-loader *ngIf="isLoadedQuestionPaper"></ball-loader>
+        <div fxLayout="row" fxLayoutAlign="center center" class="own-selection-label">Question Paper</div>
+        <div class="own-corner-upload-button question-header">
+           <button class="button-uplod" mat-raised-button>upload question file </button>
+           <input class="file" type="file" (change)="openFile($event,'question')" />
+         </div>
+         <section  fxLayout="row" fxLayoutAlign="flex-start" class="question-body">
+           <div fxFlex class="pdf-container">
+               <div *ngIf="!showQuestionPdf" fxLayout="row" fxLayoutAlign="center center" class="upload-messanger">
+                     <div class="own-drag-button" fxLayout fxLayoutAlign="center center">  click or drag here to upload question paper PDF File</div>
+                     <input (change)="openFile($event,'question')" #reviewFile type="file" class="reviewFile own-drag-file" >
+               </div>
+               <div class="question-pdf-wraper">
+                  <pdf-viewer
+                    class="question-pdf-viewer"
+                    [src]="questionPdfBase64"
+                    [render-text]="true"
+                    style="display: block;"
+                    [show-all]="true"
+                    (on-progress)="questionPaperPdfProgress($event)"
+                    (error)="questionPdfError($event)"
+                    (after-load-complete)="questionPaperPdfStop($event)"
+                    ></pdf-viewer>
+               </div>
+           </div>
+         </section>
+      </mat-card>
+
+
+      <mat-card fxFlex.xs ="1 0 auto" fxFlex.sm="1 0 auto" class="own-no-padding own-review-section review-header"  fxFlex.gt-xs="50">
+         <ball-loader *ngIf="isLoadedReview"></ball-loader>
+         <div fxLayout="row" fxLayoutAlign="center center" class="own-selection-label">Solution</div>
+         <div class="own-corner-upload-button ">
+             <button class="button-uplod" mat-raised-button>upload Solution file </button>
+            <input class="file" type="file" (change)="openFile($event,'review')" />
+         </div>
+         <section  fxLayout="row" fxLayoutAlign="flex-start" class=" pdf-viewer review-body">
+             <div fxFlex class="pdf-container">
+                 <div *ngIf="!showPdf" fxLayout="row" fxLayoutAlign="center center" class="upload-messanger">
+                       <div class="own-drag-button" fxLayout fxLayoutAlign="center center">    click or drag here to upload solution PDF file </div>
+                       <input (change)="openFile($event,'review')" #reviewFile type="file" class="reviewFile own-drag-file" >
+                 </div>
+                 <div class="review-pdf-wraper">
+                  <pdf-viewer
+                      [src]="reviewPdfBase64"
+                      [render-text]="true"
+                      style="display: block;"
+                      [show-all]="true"
+                      (on-progress)="reviewPdfProgress($event)"
+                      (error)="reviewPdfError($event)"
+                      (after-load-complete)="reviewPdfStop($event)"
+                    ></pdf-viewer>
+                  </div>
+             </div>
+         </section>
+      </mat-card>
+    </section>
+    <section  fxLayout="column"  class="own-excel-viewer excel-section">
+      <table fxLayout="column">
+        <thead fxLayout="column" class ="own-excel-thead">
+          <tr  fxLayout="row">
+              <th *ngFor="let head of excelHeader" class="own-excel-head" fxFlex>{{head}}</th>
+          </tr>
+        </thead>
+        <tbody class="own-excel-tbody"  fxLayout="column">
+          <tr fxLayout="row" *ngFor="let row of this.allQuestions">
+              <td [matTooltip]="cell.error" [style.background]="cell.background" class="own-excel-td" fxFlex *ngFor="let cell of row; let i = index ">
+                <span *ngIf="i != 2">{{cell.value}}</span>
+                <span *ngIf="i == 2">{{ cell.value|questionType}}</span>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="bottom-sheet" fxLayout="row" fxLayoutAlign="center center">
+      <div class="own-submit-section" fxLayout="row" fxLayoutAlign="center center">
+          <button (click)="uploadTest()" class="upload-test-button" mat-raised-button>Upload</button>
+      </div>
+    </section>
+  </section>
+</section>

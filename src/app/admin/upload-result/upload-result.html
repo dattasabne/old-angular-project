@@ -1,0 +1,28 @@
+
+<div fxLayoutGap.gt-xs="5px" fxLayout.gt-xs="row"  fxLayout="column"  class="upload-main-div">
+    
+    <mat-card fxFlex.gt-xs="30"  fxFlex="0 1 auto" fxLayout="column" class="upload-border upload-side-panel">
+        <app-loader *ngIf="isLoaded"></app-loader>
+        <div  fxLayout="column" class="upload-sidebar-container2">
+            <div  fxLayout="row" fxLayoutAlign="center center" class="upload-upload-file-label">Select Encrypted Result File</div>
+            <div  fxLayout="row" class="upload-controls">
+                <div fxFlex="55" fxLayout="column" fxLayoutAlign="center center">
+                    <input style="width: 100%;" type="file">
+                </div>
+                <div fxFlex="45"  fxLayout="column" >
+                    <button (click)="uploadFile()" class="upload-display-result-button" mat-raised-button >display result</button>
+                </div>
+            </div>
+            <div class="upload-line"></div>
+            <div style="padding: 8px 4px;" fxLayout="row" fxLayoutAlign="center center">
+                <button (click)="uploadResultToServer()" style="background: green;color:white;width: 100%;" mat-raised-button>Upload</button>
+            </div>
+        </div>
+    </mat-card>
+    <mat-card  style="padding: 0px !important;" fxFlex.gt-xs="69" fxFlex="1 1 auto"  fxLayout>
+         <!-- display result here   -->
+        <div  fxLayout="column" class="upload-sidebar-container">
+            <app-result (onDisplayFile)="onDisplayFile($event)" *ngIf="isResult" [examResult]="examResult"></app-result>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,98 @@
+
+ <section fxLayout="column" fxLayoutGap ="20px">
+  <div fxLayout ="row" class = "desk-random-selection-container" fxLayoutGap = "10px">
+     <mat-card fxLayout="column" fxFlex class ="background-lightgray no-padding radius-all">
+       <div  fxFlex = "60" class ="center">
+         <div class = "center donut-chart">
+           <!-- <canvas baseChart
+             [data]="doughnutChartData"
+             [labels]="doughnutChartLabels"
+             [chartType]="doughnutChartType">
+           </canvas> -->
+         </div>
+       </div>
+       <div fxFlex = "40" class="common-padding repoert-indicators">
+         <div style="flex:0 1 40%" fxLayout ="column">
+           <div class="capitalize easy-colo">Easy</div>
+           <div class="easy-button center color-white">33%</div>
+         </div>
+         <div style="flex:0 1 40%" fxLayout ="column">
+           <div class="capitalize moderate-color">moderate</div>
+           <div class="moderate-button center color-white">25%</div>
+         </div>
+         <div style="flex:0 1 40%" fxLayout ="column">
+           <div class="capitalize difficult-color">Difficult</div>
+           <div class="difficult-button center color-white">40%</div>
+         </div>
+       </div>
+     </mat-card>
+
+     <mat-card fxLayout="column" fxFlex class ="background-lightgray no-padding radius-all">
+       <div  fxFlex = "60" class = "center" >
+         <div class = "center donut-chart">
+           <!-- <canvas baseChart
+             [data]="doughnutChartData"
+             [labels]="doughnutChartLabels"
+             [chartType]="doughnutChartType">
+           </canvas> -->
+         </div>
+       </div>
+       <div fxFlex = "40" class="common-padding repoert-indicators">
+         <div style="flex:0 1 40%" fxLayout ="column">
+           <div class="capitalize easy-color">skill</div>
+           <div class="easy-button center color-white">30%</div>
+         </div>
+         <div style="flex:0 1 40%" fxLayout ="column">
+           <div class="capitalize moderate-color">understanding</div>
+           <div class="moderate-button center color-white">10%</div>
+         </div>
+         <div style="flex:0 1 40%" fxLayout ="column">
+           <div class="capitalize difficult-color">knowledge</div>
+           <div class="difficult-button center color-white">20%</div>
+         </div>
+         <div style="flex:0 1 40%" fxLayout ="column">
+           <div class="capitalize application-color">Application</div>
+           <div class="application-button center color-white">40%</div>
+         </div>
+       </div>
+     </mat-card>
+     <mat-card fxLayout ="column" class ="no-padding radius-all" fxFlex>
+       <div  fxFlex = "17" class=" desk-selection-priority-header center font-1-5-em capitalize">
+         selection priority
+       </div>
+      <div fxFlex ="83"  class="common-padding radius-right-left">
+         <div class="padding-10-percent" fxLayout="column"  >
+           <mat-radio-group fxLayout="column" fxLayoutGap ="10px" aria-label="Select an option">
+             <mat-radio-button class ="capitalize font-1-2-em" value="1">all questions</mat-radio-button>
+             <mat-radio-button class ="capitalize font-1-2-em" value="2">level</mat-radio-button>
+             <mat-radio-button class ="font-1-2-em" value="2">SUKA Type</mat-radio-button>
+           </mat-radio-group>
+         </div>
+       </div>
+     </mat-card>
+     <mat-card fxLayout ="column" class ="no-padding radius-all" fxFlex>
+       <div  fxFlex = "17" class="desk-selection-priority-header center font-1-5-em capitalize">allow repeatation</div>
+       <div fxFlex ="83"  class="common-padding radius-right-left">
+         <div class="padding-10-percent" fxLayout="column">
+           <mat-radio-group fxLayout="column" fxLayoutGap ="10px" aria-label="Select an option">
+             <mat-radio-button class ="capitalize font-1-2-em" value="1">all types</mat-radio-button>
+             <mat-radio-button class ="capitalize font-1-2-em" value="2">chapterwise</mat-radio-button>
+             <mat-radio-button class ="capitalize font-1-2-em" value="3">subjectwise</mat-radio-button>
+             <mat-radio-button class ="capitalize font-1-2-em" value="4">full syllabus wise</mat-radio-button>
+           </mat-radio-group>
+         </div>
+       </div>
+     </mat-card>
+  </div>
+  <section class="margin-top-20px" fxLayout="column" fxLayoutGap = "20px" fxFlex>
+   <!-- <div fxLayout="row" fxLayoutAlign="start center" class="common-padding desk-summary-header capitalize">type required no. of questions : </div> -->
+   <div style="position: relative;height: 45px; width: 600px !important;">
+     <div fxLayout="row" style="z-index: 1;"class="desk-summary-header"></div>
+     <div fxLayout = "row" fxLayoutAlign = "start center" clss = "border" style="position: absolute;top:0;left: 0;z-index: 1;width: 100%;">
+       <div class = "small-summary-label-side-line"></div>
+       <div class="summary-sub-block" fxLayout="row" fxLayoutAlign = "start center">Type Required No. Of Questions :</div>
+     </div>
+   </div>
+   <!-- <question-paper-table [data] ="allSubjects"></question-paper-table> -->
+ </section>
+</section>

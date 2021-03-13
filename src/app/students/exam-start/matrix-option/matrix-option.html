@@ -1,0 +1,23 @@
+<div fxLayout="column" style="height: 100%;width:100%;">
+    <div  fxLayout="row">
+        <div class="matrix-option">&nbsp;&nbsp; </div>
+        <div  fxLayout="row" *ngFor="let c of matrix.colums;let i = index">
+            <div class="matrix-option">{{c}}</div>
+        </div>
+    </div>
+    <!-- <div fxLayout="column">
+        <div  fxLayout="row" *ngFor="let row of matrix.matrix;let i = index">
+            <div class="matrix-option">{{row[i].row}}</div>
+            <div  fxLayout="row" *ngFor="let col of row;let j = index">
+                <div class="matrix-option">
+                    <mat-checkbox [checked]="col.isChecked" (change)="matrixCheckBox($event,col)"  color="primary" [value]="col.value"></mat-checkbox>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div>
+        <input type="button" value="next" (click)="next()" />
+        <input type="button" value="back" (click)="back()" />
+    </div>
+</div>
+

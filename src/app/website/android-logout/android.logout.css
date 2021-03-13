@@ -1,0 +1,10 @@
+.logout-message{
+    font-size: 1.5em;
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: lightgray;
+    height: 100%;
+    width: 100%;
+}

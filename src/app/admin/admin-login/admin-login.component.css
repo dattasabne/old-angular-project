@@ -1,0 +1,149 @@
+.bg {
+    height: 100%;
+    width: 100%;
+    background-image: url(../../../assets/bg4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .login-panel {
+    position: absolute;
+    top: calc(10%);
+    right: calc(5%);
+    height: 290px;
+    width: 600px;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+  
+  .patti {
+    height: 150px;
+    width: 100%;
+    background: skyblue;
+    border: 2px solid gray inset;
+    box-sizing: border-box;
+    position: absolute;
+    top: calc(20%);
+    left: cals(0%);
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    z-index: 1;
+  }
+  .border {
+    border: 2px solid red;
+  }
+  .patti div {
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    animation: blink 4s linear infinite;
+  }
+  .panel {
+    height: 290px !important;
+    width: 600px !important;
+    position: relative;
+  }
+  /* * {
+    border: 2px solid red;
+  } */
+  .max-width {
+    width: 100% !important;
+  }
+  .admin img {
+    height: 100%;
+    width: 80%;
+  }
+  .middle {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .forgot-password {
+    float: right;
+    cursor: pointer;
+    padding: 3px;
+  }
+  .gutter {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  .sign-in {
+    float: right;
+    width: 100%;
+  }
+  .error-message {
+    color: red;
+    text-align: center;
+  }
+  .line {
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+    position: relative !important;
+  }
+  @keyframes blink {
+    0% {
+      color: purple;
+    }
+    49% {
+      color: red;
+    }
+    79% {
+      color: green;
+    }
+    100% {
+      color: white;
+    }
+  }
+  .top-margin-30px {
+    margin-top: 30px;
+  }
+  @media only screen and (max-width: 900px) {
+    .login-panel,
+    .panel {
+      width: 100% !important;
+      left: 0;
+      right: 0;
+      height: 100% !important;
+    }
+    .admin img {
+      height: 70%;
+      width: 70%;
+      margin-left: calc(20%);
+    }
+    .patti {
+      display: none;
+    }
+  }
+  @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+    .patti div {
+      font-size: 1em;
+    }
+    .panel {
+      height: 290px !important;
+      width: 600px !important;
+      position: relative;
+    }
+    .patti {
+      height: 100px;
+    }
+    .login-panel {
+      top: calc(8%);
+    }
+  }
+  @media screen and (min-device-width: 1600px) {
+    .patti div {
+      font-size: 2em;
+    }
+    .login-panel {
+      top: calc(12%);
+    }
+    .panel {
+      height: 300px !important;
+      width: 600px !important;
+      position: relative;
+    }
+  }
+  

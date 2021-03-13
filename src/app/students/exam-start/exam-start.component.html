@@ -1,0 +1,198 @@
+<div class="exam-full exam-main-div" *ngIf="displayTestPage">
+    <ball-loader *ngIf="isLoaded"></ball-loader>
+    <app-result [result_type]="resultType" (close)="close()"   (click_on_home_button)="isTimeUp=false"  [questionStates]="examStates" [examResult]="examResult"  *ngIf="isTimeUp" ></app-result>
+    <div class="exam-component-section exam-no-gutter">
+        <app-exam-navbar (OnInit)="examNavbarInit($event)" [subject]="subjectName" #examNavBar (tictic)="tictic($event)" (timeUp)="timeUp()" [classDetails]="classDetails"  [questionData]="questionData"   (clickOnNavbar)="togglePallete()"></app-exam-navbar>
+        <div class="row exam-exam-section">
+            <div   class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 question-paper-container no-gutter">
+                <div #parent class="exam-pdf-section">
+                      <!-- <ngx-extended-pdf-viewer   *ngIf="!isQuestionPaper"
+                        [src]="testPdfUrl"
+                        useBrowserLocale="true"
+                        height="100%"
+                        [showSidebarButton] ="false"
+                        [(page)] ="pageNo"
+                        [showToolbar]="false"
+                        [backgroundColor]="'white'"
+                        [showBorders] ="false"
+                        pageViewMode = "single"
+                        [ignoreKeyboard]="true"
+                        (pdfLoaded) = "PdfLoad_SuccessHandler($event)"
+                        (pdfLoadingFailed) = "PdfLoad_FailedHandler($event)">
+                      </ngx-extended-pdf-viewer>
+                      <ngx-extended-pdf-viewer *ngIf="isQuestionPaper"
+                        [src]="testPdfUrl"
+                        useBrowserLocale="true"
+                        height="100%"
+                        [showSidebarButton] ="false"
+                        [(page)] ="pageNo"
+                        [showToolbar]="false"
+                        [backgroundColor]="'white'"
+                        [showBorders] ="false"
+                        pageViewMode = "multiple">
+                      </ngx-extended-pdf-viewer> -->
+                  <!-- <pdf-viewer *ngIf="!isQuestionPaper"   style=" width: 100%; margin-left:-20px !important;"
+                        [src]="testPdfUrl"
+                        [render-text]="true"
+                        style="display: block;"
+                        [page]="pageNo"
+                        [show-all]="false"
+                        [zoom]="zoomLevel"
+                        [original-size]="true"
+                        (error)="PdfLoad_FailedHandler($event)"
+                        (after-load-complete)="PdfLoad_SuccessHandler($event)"
+                ></pdf-viewer>
+                 <pdf-viewer *ngIf="isQuestionPaper" style=" margin-left:-20px !important; height: 100%;"
+                    [src]="testPdfUrl"
+                    [render-text]="true"
+                    style="display: block;"
+                    [show-all]="true"
+                    [fit-to-page]="true"
+                    [zoom]="zoomLevel"
+                    [original-size]="false"
+                    [autoresize]="true"
+                    (error)="PdfLoad_FailedHandler($event)"
+                    (after-load-complete)="PdfLoad_SuccessHandler($event)"
+            ></pdf-viewer> -->
+                  <app-custom-pdfviewer [parentNode] = "parent" [src] ="testPdfUrl"
+                  [pageNo] ="pageNo"
+                  (pdfLoaded) ="PdfLoad_SuccessHandler($event)"
+                  (error) ="PdfLoad_FailedHandler($event)"
+                  (onLoad) ="isLoaded = $event"
+                  ></app-custom-pdfviewer>
+        </div>
+          <mat-divider></mat-divider>
+            <div  class="exam-action-section">
+                <mat-card *ngIf="displayAnswerPallete" class="exam-question-answer-option">
+                    <div  class="exam-options" >
+                        <mat-radio-group   *ngIf="currentQuestion.questionType == 1 || currentQuestion.questionType == 4 || currentQuestion.questionType == 3 || currentQuestion.questionType == 5 " style="overflow: auto !important;display: flex; flex-direction: row; align-items: center;justify-content: center;"  [(ngModel)]="currentQuestion.singleAnswer"  aria-label="Select an option">
+                            <span style="height: 100%; display: inline-block;" *ngFor="let option of allOptions">
+                                <div style=" height: 50px;  display: flex !important; align-items: center !important;justify-content: center !important">
+                                   <span style="display: inline-block;margin-top: -8px;"> {{option.name}}</span><mat-radio-button  class="exam-qoption" [value]="option.name"></mat-radio-button>
+                                </div>
+                            </span>
+                        </mat-radio-group>
+                        <div *ngIf="currentQuestion.questionType==2">
+                            <mat-checkbox [checked]="option.selected" (change)="multipleOptionChecked($event,option)" style="padding: 0px 8px;" color="primary" [value]="option.name" *ngFor="let option of allOptions" class="example-margin">{{option.name}}</mat-checkbox>
+                        </div>
+                        <!-- <mat-card class="bottomsheet" [style.height]="matrixOptionPanel.height" *ngIf="currentQuestion.questionType == 4">
+                            <div class="matrix-content" fxLayout="column">
+                                <div fxLayout="row"  class="maximize-icon" (click)="matrixIcon()">
+                                    <div fxFlex style="background: #27408b;color: white; font-weight: bold; text-align:  center;" >Matrix Match Options</div>
+                                    <mat-icon  *ngIf="matrixOptionPanel.show" style="font-size: 32px;">keyboard_arrow_down</mat-icon>
+                                    <mat-icon *ngIf="!matrixOptionPanel.show" style="font-size: 32px;">keyboard_arrow_up</mat-icon>
+                                </div>
+                                <div fxLayout="column" style="height: 100%;width:100%;">
+                                    <div  fxLayout="row">
+                                        <div class="matrix-option">&nbsp;&nbsp; </div>
+                                        <div  fxLayout="row" *ngFor="let c of matrix.columns;let i = index">
+                                            <div class="matrix-option">{{c}}</div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="column">
+                                        <div  fxLayout="row" *ngFor="let row of matrix.matrix;let i = index">
+                                            <div class="matrix-option">{{row[i].row}}</div>
+                                            <div  fxLayout="row" *ngFor="let col of row;let j = index">
+                                                <div class="matrix-option">
+                                                    <mat-checkbox [checked]="col.isChecked" (change)="matrixCheckBox($event,col)"  color="primary" [value]="col.value"></mat-checkbox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </mat-card> -->
+                        <div fxLayout="column"  fxLayoutAlign="center center"  *ngIf="currentQuestion.questionType == 6">
+                            <label style="color: green; font-size: 0.8em;" for="">Numerical Answer</label>
+                            <input style="margin-top: -7px !important;" (keypress)="integerQuestionInputKeypress($event)" class="integer-ans" type="text" [(ngModel)]="currentQuestion.singleAnswer" />
+                            <!-- <div fxLayout="row" fxLayoutAlign="center center">
+                                <input class="integer-ans" type="text" [(ngModel)]="currentQuestion.singleAnswer" />
+                            </div> -->
+                            <!-- <mat-radio-group fxLayout="row" fxLayoutAlign="center center" fxLayout="row wrap"  style="padding: 0px !important; width: 100% !important;" [(ngModel)]="currentQuestion.singleAnswer"  aria-label="integer type questions">
+                                <span style="height: 100%; display: inline-block;" *ngFor="let option of [0,1,2,3,4,5,6,7,8,9]">
+                                    <div style="height: auto; display: flex !important; align-items: center !important;justify-content: center !important">
+                                        <span style="display: inline-block;margin-top: -8px;"> {{option}}</span><mat-radio-button  class="exam-qoption" [value]="option"></mat-radio-button>
+                                    </div>
+                                </span>
+                            </mat-radio-group> -->
+                        </div>
+                    <!-- <div *ngIf="currentQuestion.questionType==6">
+                        <mat-radio-group  style="align-content: flex-start !important; flex-wrap: wrap; width: 100% !important; border: 2px solid red;   display: flex; flex-direction: row;  align-items: center;justify-content: center;"  [(ngModel)]="currentQuestion.singleAnswer"  aria-label="integer type questions">
+                            <span style="height: 100%; display: inline-block;" *ngFor="let option of [0,1,2,3,4,5,6,7,8,9]">
+                                <div style="height: 50px; display: flex !important; align-items: center !important;justify-content: center !important">
+                                    <span style="display: inline-block;margin-top: -8px;"> {{option}}</span><mat-radio-button  class="exam-qoption" [value]="option"></mat-radio-button>
+                                </div>
+                            </span>
+                        </mat-radio-group>
+                    </div> -->
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div fxShow.xs fxShow.sm fxShow.md fxShow.lg fxShow.xl fxShow class="exam-actions">
+                        <button  (click)="clearResponse()" mat-raised-button class="exam-clear-response">clear response</button>
+                        <button (click)="clickOnMarkAndReview()" mat-raised-button class="exam-mark-review">mark for review</button>
+                        <button (click)="clickOnSaveAndNext()" mat-raised-button class="exam-save-and-next">save & next</button>
+                    </div>
+                </mat-card>
+             </div>
+            </div>
+
+
+
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 exam-no-gutter exam-pallete">
+                <div class="exam-pallete-question">
+                    <div class="row exam-subjects">
+                        <div *ngFor="let sub of allSubjects" class="exam-sub-option col-3 exam-no-gutter exam-horizontal">
+                            <button [style.background]="sub.background" (click)="onSubjectClick(sub)" mat-raised-button class="exam-subjects-buttons exam-full-width">{{sub.name}}</button>
+                        </div>
+                    </div>
+                    <div class="exam-pallete-note">
+                      <span>{{ assignmentType }} ID : {{allBranchId}} <span style="margin-left: 20px;text-transform: uppercase;"> {{ patternName }}</span> </span>
+                      <span>{{subjectName}}  question  pallete</span>
+
+                    </div>
+                    <div class="exam-button-pallete">
+                        <button [style.color]="question.color"  [style.border]="question.border" [style.background]="question.background" (click)="onlyClickOnButton(question)" *ngFor="let question of allQuestions; let ind = index" mat-raised-button class="exam-pallete-small-buttons">
+                            <span>{{question.nSquence}}</span>
+                            <mat-icon *ngIf="question.isMarked" style="color:white;">check</mat-icon>
+                        </button>
+                    </div>
+                     <mat-divider></mat-divider>
+                <div class="exam-action-section">
+                    <mat-card class="exam-pallete-bottom-container">
+                        <div class="exam-color-marker">
+                            <div class="exam-marker-container">
+                                <mat-card class="exam-marker exam-answered"></mat-card>
+                                <span>answerd</span>
+                            </div>
+
+                            <div class="exam-marker-container">
+                                <mat-card class="exam-marker exam-not-answered"></mat-card>
+                                <span>not answerd</span>
+                            </div>
+                            <div class="exam-marker-container">
+                                <mat-card class="exam-marker exam-marked exam-horizontal" >
+                                    <!-- <mat-icon style="color:white;" svgIcon="check"></mat-icon> -->
+                                </mat-card>
+                                <span>marked</span>
+                            </div>
+                            <div class="exam-marker-container">
+                                <mat-card class="exam-marker exam-not-visited"></mat-card>
+                                <span>not visited</span>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div  class="exam-pallete-options">
+                          <button [disabled] = "disableSubmitButton" (click)="submitTest()"mat-raised-button class="exam-submit-button">submit</button>
+                          <button (click)="displayQuestionPaper()" mat-raised-button class="exam-question-paper">{{displayQuestionPaperText}}</button>
+                        </div>
+                    </mat-card>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- <app-footer [footerData]="footerData"></app-footer>  -->
+    </div>
+</div>
+
+
+

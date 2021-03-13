@@ -1,0 +1,14 @@
+<div #mainDiv class="main-container">
+  <table #table class="custom-table">
+    <thead>
+      <tr>
+        <th *ngFor="let head of header">{{head}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td *ngFor="let column of row">{{column}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

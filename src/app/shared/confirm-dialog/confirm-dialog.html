@@ -1,0 +1,31 @@
+<div class="cdialog-main-dialog">
+  <div class="row cdialog-message-container">
+    <div class="col-12">
+      <div class="cdialog-message">
+        {{ data.message }}
+      </div>
+    </div>
+  </div>
+  <div class="cdialog-bottom-sheet">
+    <div class="row">
+      <div class="col-6 paddin-l-r-5px">
+        <button
+          mat-raised-button
+          class="dialog-button background-skyblue dialog-button full-width"
+          (click)="noCallBack()"
+        >
+          No
+        </button>
+      </div>
+      <div class="col-6 paddin-l-r-5px">
+        <button
+          mat-raised-button
+          class="dialog-button background-green dialog-button full-width"
+          (click)="yesCallBack()"
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

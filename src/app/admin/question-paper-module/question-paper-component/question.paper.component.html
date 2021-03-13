@@ -1,0 +1,473 @@
+<!-- desktop ui start from here -->
+
+ <section (dragover) = "fileService.onDragOver_Handler($event)" (drop) = "fileService.defaulFileDrop($event)" *ngIf = "!isMobileDevice" class="desk-main-container " fxLayout="column">
+  <mat-card fxLayout="row" fxLayoutAlign= "center center" class="header-section question-paper-banner-baground-image-svg">
+      <div fxLayout = "column">
+        <div class="question-paper-banner-heading">Create Question Paper</div>
+        <div fxLayout = "row">
+          <div class= "top-banner-doted-line"></div>
+          <div class="small-dots"></div>
+          <div class="small-dots"></div>
+        </div>
+      </div>
+
+  </mat-card>
+  <section class="desk-body" fxLayoutGap ="15px" fxLayout="row">
+    <mat-card class="desk-search-criteria" fxFlex = "25">
+      <ball-loader *ngIf = "isLoader"></ball-loader>
+      <app-common-search-criteria
+        (academicYearChange) = "academicYear_changeSelect($event)"
+        (patternChange)      = "pattern_changeSelect($event)"
+        (classNameChange)    = "className_changeSelect($event)"
+        (testTypeChange)     = "testType_changeSelect($event)"
+        (subjectsChange)     = "subject_changeSelect($event)"
+        [academicYearData]   = "academicYearData"
+        [patternData]        = "patternData"
+        [classData]          = "classNameData"
+        [testTypeData]       = "testTypeData"
+        [subjectData]        = "subjectData">
+      </app-common-search-criteria>
+
+    </mat-card>
+    <mat-card class="desk-search-data" style="overflow: auto;" fxFlex = "75" fxLayout="column" fxLayoutGap="5px">
+      <mat-accordion>
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Own Question Paper Upload
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div  fxLayout="column"  fxLayoutGap="5px">
+            <section fxLayout = "row" fxFlex="1 0 80px" class = "desk-upload-labeling ">
+              <div  fxFlex  fxLayout="row" fxLayoutAlign = "start center">
+                <span style="font-size: 3em;" class="material-icons question-paper-theme-color">text_snippet</span>
+                <span style = "font-size: 1.5em;" fxFlex class="question-paper-theme-color capitalize"> {{paperModel.fileName }} :  </span>
+              </div>
+              <div   fxLayout="row" fxLayoutAlign="end center"fxFlex>
+                <div class="cursor-pointer download-template question-paper-theam" fxLayout="row" fxLayoutAlign="center center" fxFlex = "50">
+                    <div class="question-paper-download-svg-image download-arrow"></div>
+                    <span class = "color-white" style = "font-size: 1.5em;">
+                      download Template
+                    </span>
+                </div>
+              </div>
+            </section>
+            <section  fxFlex="1 0 300px" fxLayout = "row" fxLayoutAlign="center center" class = "desk-upload-filing">
+              <input *ngIf = "paperModel.removeAndAddInputFile" (change) = "onFileChange_Handler($event)" type="file" style="display:none" id="desk-docx-file">
+              <label (drop) = "onDropFile_Handler($event)" (dragover) = "fileService.onDragOver_Handler($event)"  for="desk-docx-file" class ="cursor-pointer desk-file-upload-drag dotted-border" fxLayout="column" >
+                <div fxFlex   fxLayout="row" fxLayoutAlign="center flex-end">
+                  <div class = "desk-word-file-icon"></div>
+                </div>
+                <div fxFlex fxLayout="row" fxLayoutAlign="center center" class = "desk-upload-file-label question-paper-theme-color">
+                  {{paperModel.fileMessage}}
+                </div>
+              </label>
+            </section>
+            <section  fxLayout="row" gdAreas  fxLayoutGap="8px" fxFlex="200px" class = "desk-upload-resulting  overflow-auto">
+              <div fxLayout="column" *ngFor = "let file of paperModel.uploadedFiles" fxFlex="200px"  class="desk-upload-box cursor-pointer">
+                  <div  fxLayout="row" fxLayoutAlign="end center" style="position: relative;" class="desk-box-header" fxFlex="30">
+                    <span (click) = "removeFile(file)" class="desk-close-icon material-icons">close</span>
+                  </div>
+                  <div fxLayout="column" class="desk-box-body" fxFlex="70">
+                    <div fxLayout="row" fxLayoutAlign="center center" fxFlex>
+                      <div class="question-paper-doc-svg-image small-icon-box"></div>
+                      <!-- <span style="font-size: 40px;" class="material-icons">text_snippet</span> -->
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center center" fxFlex class="color-white">file.name</div>
+                  </div>
+              </div>
+            </section>
+            <section fxLayout="column" fxLayoutGap = "20px" fxFlex class = "desk-upload-resulting">
+              <!-- <div fxLayout="row" fxLayoutAlign="start center" class="common-padding desk-summary-header capitalize">Summary Of uploaded questions : </div> -->
+              <div style="position: relative;height: 45px; width: 600px !important;">
+                <div fxLayout="row" style="z-index: 1;"class="desk-summary-header"></div>
+                <div fxLayout = "row" fxLayoutAlign = "start center" clss = "border" style="position: absolute;top:0;left: 0;z-index: 1;width: 100%;">
+                  <div class = "small-summary-label-side-line"></div>
+                  <div class="summary-sub-block" fxLayout="row" fxLayoutAlign = "start center">Summary Of Uploaded Questions :</div>
+                </div>
+              </div>
+              <question-paper-table [data] ="allSubjects"></question-paper-table>
+            </section>
+          </div>
+        </mat-expansion-panel>
+        <!-- end expansion panel 1 -->
+        <!-- begin expansion panel 2 -->
+         <mat-expansion-panel>
+          <mat-expansion-panel-header class="accordance-color-white">
+            <mat-panel-title>
+              Mannual Question Selection
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section fxLayout="column"  fxLayoutGap="5px">
+              <div fxLayout ="column" class="desk-own-uploader-parts common-padding common-radius">
+                <div fxFlex class="common-padding" style="position: relative;">
+                  <div style="position: relative;" class="text-box-ids-container desk-control-layout common-control-radius">
+                    <div fxLayout ="column"   class="text-box-ids">
+                        <div  *ngFor = "let subId of paperModel.selectedPaperIds"  style="margin: 5px;"  fxLayout = "column">
+                          <div *ngIf = "subId.index != -1" class="subject-id-container" [ngClass]="subId.cssClassName">
+                            <div (click) = "closeSelectedId(subId)" class = "close-sub" fxLayout ="row" fxLayoutAlign = "flex-end center">
+                              <span class="material-icons">close</span>
+                            </div>
+                            <div  class = "subject-id-content">{{subId.valueString}}</div>
+                            <input placeholder="type question number separated by comma (,)" type = "text" appFocus class="full-width" />
+                          </div>
+                          <div *ngIf = "subId.index == -1" class="default-subjet-id-select center">
+                            <div  class = "subject-id-content">{{subId.valueString}}</div>
+                          </div>
+                        </div>
+                    </div>
+                    <div [ngStyle] = "{'left':autoContainer.Left}" *ngIf= "autoContainer.IsAutoComplate" class="chapter-id-autocomplete-container full-width">
+                      <mat-form-field class="chapter-id-auto-complete background-white full">
+                        <input  appFocus
+                          type="text"
+                          placeholder="Type @ to select chapter"
+                          aria-label="Number"
+                          matInput
+                          [formControl]="subjectIdControl"
+                          [matAutocomplete]="auto">
+                        <mat-autocomplete  (optionSelected) = "SubjectIds_ChangeHandler($event)" autoActiveFirstOption #auto="matAutocomplete">
+                          <mat-option *ngFor="let option of subjectIdFileterData | async" [value]="option.index">
+                            {{option.valueString}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </div>
+                    <!-- <input (keyup)="SubjectId_KeyUpEvent($event)" [(ngModel)] ="paperModel.subjectId" (keypress) = "subjectName_KeyUpHandler($event)"  type="text" class="common-topic-font full input-box common-control-radius common-padding"> -->
+                  </div>
+                </div>
+              </div>
+              <div fxLayout = "row wrap" fxLayoutGap = "7px"  style ="align-content: flex-start;overflow:auto;"  class="capitalize">
+                <div class="subject-button"  matRipple fxLayout = "row" fxLayoutAlign = "center center" [ngClass] = "subId.cssClassName"  *ngFor = "let subId of paperModel.tabSubjectIds">{{(subId.chapterName +'  ' + subId.subjectId)}}</div>
+              </div>
+              <div class="pdf-section">
+                  render pdf file here
+              </div>
+
+
+
+
+              <section class="margin-top-20px" fxLayout="column" fxLayoutGap = "20px" fxFlex>
+                <div style="position: relative;height: 45px; width: 600px !important;">
+                  <div fxLayout="row" style="z-index: 1;"class="desk-summary-header"></div>
+                  <div fxLayout = "row" fxLayoutAlign = "start center" clss = "border" style="position: absolute;top:0;left: 0;z-index: 1;width: 100%;">
+                    <div class = "small-summary-label-side-line"></div>
+                    <div class="summary-sub-block" fxLayout="row" fxLayoutAlign = "start center">Summary Of Mannually Selected Questions :</div>
+                  </div>
+                </div>
+                <question-paper-table [data] ="allSubjects"></question-paper-table>
+              </section>
+          </section>
+        </mat-expansion-panel>
+        <!-- end expansion-panel 2 -->
+        <!-- begin expansion panel 3 -->
+         <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Automated Random Selection
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-automated-random-selection></app-automated-random-selection>
+        </mat-expansion-panel>
+        <!-- end expansion-panel 3 -->
+        <!-- begin expansion panel 4 -->
+         <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              All methods summary of selected questions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <app-all-method-summary></app-all-method-summary>
+          </mat-expansion-panel>
+        <!-- end expansion-panel 4 -->
+       </mat-accordion>
+    </mat-card>
+  </section>
+  <mat-card class="desk-footer question-paper-theam">footer</mat-card>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- mobile ui start -->
+<section *ngIf ="isMobileDevice" class = "mobile-container common-padding">
+  <div fxLayout ="column" class = " mobile-header quetion-paper-banner-blue ">
+    <div fxFlex ="50" class = "mobile-header-name" fxLayout="row" >
+        <div fxFlex = "20" ></div>
+        <div fxLayout="column" fxFlex = "80">
+            <div  fxFlex class = "center color-white">Create Question Paper</div>
+        </div>
+    </div>
+    <div fxFlex="50" style="display:flex; align-items: center;" class = " color-white mobile-header-sub-name capitalize mobile-view-font-size">
+      / paper Generation / Create question paper
+    </div>
+  </div>
+  <div class = "common-line-gap"></div>
+  <div class = "mobile-control-container column">
+   <div class = "common-line-gap"></div>
+    <section class ="mobile-expansion-tabs">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Search Academic Criteria
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-common-search-criteria></app-common-search-criteria>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Own Question Paper Upload
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section fxLayout ="column" class = "mobile-expansion-container">
+              <div fxLayout = "row" style="height:40px">
+                <div fxFlex ="50" class=" capitalize mobile-header-sub-name capitalize mobile-view-font-size">upload docx file :</div>
+                <div  fxFlex ="50">
+                  <div style="height: 100%;border-radius: 10px;background:skyblue;" class="center capitalize mobile-header-sub-name capitalize mobile-view-font-size">
+                    download template
+                  </div>
+                </div>
+              </div>
+              <div class = "common-line-gap"></div>
+              <div fxLayout ="column" style="height:150px;" class="border-dotted border-radius-10px">
+                <div fxFlex ="60"  class ="center">file icon here</div>
+                <div fxFlex ="40" style="text-align: center;"  class ="padding-4px  capitalize ">
+                    Click here or drag here to upload questions docx file.
+                </div>
+              </div>
+              <div class = "common-line-gap"></div>
+              <div style="height:auto" class="mobile-uploaded-files-container">
+                <div class = "uploaded-file center">
+                  <div  class = "upload-file-label" >
+                    <div class = "mobile-view-font-size">icon</div>
+                    <div class = "mobile-small-font color-white">physics questions docx</div>
+                  </div>
+                  <span class="material-icons mobile-close-icon">
+                    close
+                  </span>
+                </div>
+                <div class = "uploaded-file center">
+                  <div  class = "upload-file-label" >
+                    <div class = "mobile-view-font-size">icon</div>
+                    <div class = "mobile-small-font color-white">physics questions docx</div>
+                  </div>
+                  <span class="material-icons mobile-close-icon">
+                    close
+                  </span>
+                </div>
+                <div class = "uploaded-file center">
+                  <div  class = "upload-file-label" >
+                    <div class = "mobile-view-font-size">icon</div>
+                    <div class = "mobile-small-font color-white">physics questions docx</div>
+                  </div>
+                  <span class="material-icons mobile-close-icon">
+                    close
+                  </span>
+                </div>
+                <div class = "uploaded-file center">
+                  <div  class = "upload-file-label" >
+                    <div class = "mobile-view-font-size">icon</div>
+                    <div class = "mobile-small-font color-white">physics questions docx</div>
+                  </div>
+                  <span class="material-icons mobile-close-icon">
+                    close
+                  </span>
+                </div>
+                <div class = "uploaded-file center">
+                  <div  class = "upload-file-label" >
+                    <div class = "mobile-view-font-size">icon</div>
+                    <div class = "mobile-small-font color-white ">physics questions docx</div>
+                  </div>
+                  <span class="material-icons mobile-close-icon">
+                    close
+                  </span>
+                </div>
+                <div class = "uploaded-file center">
+                  <div  class = "upload-file-label" >
+                    <div class = "mobile-view-font-size">icon</div>
+                    <div class = "mobile-small-font color-white">physics questions docx</div>
+                  </div>
+                  <span class="material-icons mobile-close-icon">
+                    close
+                  </span>
+                </div>
+              </div>
+          </section>
+          <section class = "margin-top-5px">
+            <div fxLayout="row" fxLayoutAlign="start center" class="common-padding mobile-desk-summary-header capitalize">Summary Of uploaded questions : </div>
+          </section>
+          <question-paper-table [data] ="allSubjects"></question-paper-table>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Upload Question Paper
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section fxLayout = "column" class = "mobile-expansion-container common-padding background-gray">
+            <input type="text" class= "height-33px border-radius-5px">
+            <div class = "linegap-10px"></div>
+            <input placeholder="Type @ to select Subject and Chapter" type="text" class = "height-33px full-width  border-radius-5px">
+            <div class = "linegap-5px"></div>
+            <section fxLayout="column" fxLayoutGap ="5px" class = "boder-radius-10px common-padding background-white">
+              <div  class = "full-width background-skyblue border-radius-5px height-33px center">dhhrtuyhrt</div>
+              <div  class = "full-width background-skyblue border-radius-5px height-33px center">dhhrtuyhrt</div>
+              <div  class = "full-width background-skyblue border-radius-5px height-33px center">dhhrtuyhrt</div>
+              <div  class = "full-width background-skyblue border-radius-5px height-33px center">dhhrtuyhrt</div>
+              <div  class = "full-width background-skyblue border-radius-5px height-33px center">dhhrtuyhrt</div>
+            </section>
+          </section>
+          <div class ="linegap-10px"></div>
+          <section fxLayout = "column" class="mobile-tab-container" fxLayoutGap = "3px">
+            <mat-tab-group class ="full-width full-height">
+              <mat-tab label="physics : Electrostatics PP2"  class ="center full-height full-width"> pdf here 1</mat-tab>
+              <mat-tab label="physics : Electrostatics PP2"  class ="center full-height full-width">  pdf here 2</mat-tab>
+              <mat-tab label="physics : Electrostatics PP2"  class ="center full-height full-width"> pdf here 3</mat-tab>
+            </mat-tab-group>
+          </section>
+          <section class ="linegap-10px">
+            <div fxLayout="row" fxLayoutAlign="start center" class="common-padding mobile-desk-summary-header capitalize">Summary Of uploaded questions : </div>
+          </section>
+          <question-paper-table [data] ="allSubjects"></question-paper-table>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="capitalize">
+              Automated Random selection
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <section fxLayout = "column" fxLayoutGap ="7px" class = "common-padding mobile-expansion-container-analysis">
+            <div fxLayout="row" fxFlex = "50" class = " background-hard-gray border-radius-10px">
+              <div fxFlex = "60" class = "center">
+                <div class = "center donut-chart">
+                  <!-- <canvas baseChart
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType">
+                  </canvas> -->
+                </div>
+              </div>
+              <div fxLayout ="column" fxLayoutGap = "4px" fxLayoutAlign = "center center"  fxFlex = "40" class = "common-padding">
+                <div fxFlex="25" fxLayout="column" class ="full-width">
+                  <div fxFlex ="40" class="mobile-small-font color-white" fxLayout ="row" fxLayoutAlign ="start flex-end" >Easy</div>
+                  <div fxFlex= "60" class = "background-skyblue border-radius-5px center color-white">33%</div>
+                </div>
+                <div fxFlex="25" fxLayout="column" class ="full-width">
+                  <div fxFlex ="40" class="mobile-small-font color-white" fxLayout ="row" fxLayoutAlign ="start flex-end">Moderate</div>
+                  <div fxFlex= "60" class = "background-yellow border-radius-5px center color-white">33%</div>
+                </div>
+                <div fxFlex="25" fxLayout="column" class ="full-width">
+                  <div fxFlex ="40" class="mobile-small-font color-white" fxLayout ="row" fxLayoutAlign ="start flex-end">Difficult</div>
+                  <div fxFlex= "60" class = "background-dark-orange border-radius-5px center color-white">33%</div>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxFlex = "50" class = " background-hard-gray border-radius-10px">
+              <div fxFlex = "60" class = "center">
+                <div class = "center donut-chart">
+                  <!-- <canvas baseChart
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType">
+                  </canvas> -->
+                </div>
+              </div>
+              <div fxLayout ="column" fxLayoutGap = "4px" fxLayoutAlign = "center center"  fxFlex = "40" class = "common-padding">
+                <div fxFlex="25" fxLayout="column" class ="full-width">
+                  <div fxFlex ="40" class="mobile-small-font" fxLayout ="row" fxLayoutAlign ="start flex-end" >Skill</div>
+                  <div fxFlex= "60" class = "background-skyblue border-radius-5px center color-white">33%</div>
+                </div>
+                <div fxFlex="25" fxLayout="column" class ="full-width">
+                  <div fxFlex ="40" class="mobile-small-font" fxLayout ="row" fxLayoutAlign ="start flex-end">Understanding</div>
+                  <div fxFlex= "60" class = "background-yellow border-radius-5px center color-white">33%</div>
+                </div>
+                <div fxFlex="25" fxLayout="column" class ="full-width">
+                  <div fxFlex ="40" class="mobile-small-font" fxLayout ="row" fxLayoutAlign ="start flex-end">Application</div>
+                  <div fxFlex= "60" class = "background-dark-green border-radius-5px center color-white">33%</div>
+                </div>
+                <div fxFlex="25" fxLayout="column" class ="full-width">
+                  <div fxFlex ="40" class="mobile-small-font" fxLayout ="row" fxLayoutAlign ="start flex-end">Knowledge</div>
+                  <div fxFlex= "60" class = "background-dark-orange border-radius-5px center color-white">33%</div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section fxLayout = "column" fxLayoutGap = "7px" class = "selection-priority common-padding">
+              <div fxLayout ="column" fxFlex = "50" >
+                <div fxFlex ="20" style="border-radius: 8px 8px 0px  0px ;"class ="background-hard-gray capitalize center">
+                  selection priority
+                </div>
+                <div fxFlex ="80" style="border-radius:  0px  0px 8px 8px;" class ="background-lightgray">
+                  <div class = "mobile-selection-priority">
+                    <mat-radio-group fxLayout="column" aria-label="Select an option">
+                      <mat-radio-button value="1" color ="primary" class = "capitalize">All questions</mat-radio-button>
+                      <mat-radio-button value="2" color ="primary" class = "capitalize">level</mat-radio-button>
+                      <mat-radio-button value="3" color ="primary">SUKA Type</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout ="column" fxFlex = "50" >
+                <div fxFlex ="20" style="border-radius: 8px 8px 0px  0px ;"class ="background-hard-gray capitalize center">
+                  allow repeatation
+                </div>
+                <div fxFlex ="80" style="border-radius:  0px  0px 8px 8px;" class ="background-lightgray">
+                  <div class = "mobile-selection-priority">
+                    <mat-radio-group fxLayout="column" aria-label="Select an option">
+                      <mat-radio-button value="1" color ="primary" class = "capitalize">All types</mat-radio-button>
+                      <mat-radio-button value="2" color ="primary" class = "capitalize">chapterwise</mat-radio-button>
+                      <mat-radio-button value="3" color ="primary">subjectwise</mat-radio-button>
+                      <mat-radio-button value="4" color ="primary">full syllabus wise</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </div>
+          </section>
+          <section class ="linegap-10px">
+            <!-- <div fxLayout="row" fxLayoutAlign="start center" class="common-padding mobile-desk-summary-header capitalize">Summary Of uploaded questions : </div> -->
+            <div fxLayout="row" class="desk-summary-header capitalize">
+              <div class = "small-summary-label-side-line"></div>
+              <div class="summary-sub-block" fxLayout="row" fxLayoutAlign = "start center">Summary Of uploaded questions :</div>
+            </div>
+          </section>
+          <question-paper-table [data] ="allSubjects"></question-paper-table>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class = "capitalize">
+             all method summery of selected questions
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section>
+            <question-paper-table [data] ="allSubjects"></question-paper-table>
+            <div class ="linegap-15px">er4et</div>
+            <div style="padding:4px;" fxLayout ="row" fxLayoutGap ="8px" fxLayoutAlign ="center center">
+              <button class="save-button color-white" fxFlex mat-button>
+                <span  class="material-icons">save</span>
+                save
+              </button>
+              <button class="reset-button color-white" fxFlex mat-button color="primary">
+                <span class="material-icons">settings_backup_restore</span>
+                reset</button>
+              <button class="close-button color-white" fxFlex mat-button color="accent">
+                <span class="material-icons">close</span>
+                close
+              </button>
+            </div>
+          </section>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </section>
+  </div>
+</section>
+<!-- mobile ui end -->
+

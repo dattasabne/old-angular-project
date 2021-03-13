@@ -1,0 +1,102 @@
+.main-div{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    padding: 20px !important;
+}
+.generation-header {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    padding-top: 10px !important;
+    box-sizing: border-box;
+    font-size: 1.6em;
+    color: rgb(38, 97, 233);
+}
+.generation-icon {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: rgb(38, 97, 233);  
+}
+mat-card {
+    border: 1px solid rgb(206, 201, 201);
+    padding: 5px !important;
+ }
+.generate-button {
+    background: white;
+    width: 100%;
+    border: 2px solid rgb(63, 156, 63);
+    color: rgb(63, 156, 63);
+}
+.edit-button {
+    color: rgb(9, 96, 209);
+    width: 100%;
+    background:white;
+    border: 2px solid rgb(9, 96, 209);
+}
+.record-container{
+    height: 48%;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    background: rgb(69, 77, 85);
+    color: white;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+.record{
+    height: 50px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    margin:4px 0px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.record:hover{
+    background: rgb(102, 100, 100);
+}
+.record > .field{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+}
+.full{
+    height: 100% !important;
+    width:100% !important;
+}
+.record > .field:first-child{
+    width:100px;
+}
+.record > .field:last-child{
+    width: 50px;
+}
+.record > .field:not(:first-child){
+    width:300px;
+}
+.heading {
+    font-size: 1.4em !important;
+    color: rgb(245, 80, 30);
+}
+.header {
+    color: white;
+    font-size: 1.0em;
+}
+.header:hover {
+    color: black;
+}
+.example-full-width {
+    width: 100% !important;
+}
+.mat-dialog-container {
+    padding: 0px !important;
+}
+/* @media(max-width:900px) {
+    .generate-button {
+        padding: 5px !important;
+    }
+} */

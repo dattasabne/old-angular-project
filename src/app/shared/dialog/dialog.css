@@ -1,0 +1,30 @@
+.app-dialog {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.dialog-content {
+  margin-top: 30px;
+  word-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-size: 1em;
+  font-weight: bold;
+  color: red;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.ok-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: skyblue;
+  left: 0;
+  outline: none;
+  border: none;
+}

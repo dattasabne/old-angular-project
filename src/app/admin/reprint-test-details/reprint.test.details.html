@@ -1,0 +1,194 @@
+<div class="reprint-main-div border" fxLayout="column">
+   
+    <div (click)="close()" class="close center ">
+        <mat-icon class="close-icon close-button center">close</mat-icon>
+    </div>
+    <ball-loader *ngIf="isLoaded"></ball-loader>
+    <div class="assignment-info border" fxLayout="column" fxFlex="20">
+       
+        <mat-card class="no-round"   class="label" fxLayout fxLayoutAlign="center center">
+            <i class="material-icons">
+                list_alt
+            </i>
+            Assignment Information</mat-card>
+        <div class="body" fxLayoutGap="4px" fxFlex fxLayout="row">
+           
+            <div class="border" fxFlex="20" fxLayout fxLayoutAlign="center center">
+                <mat-card class="circle" fxLayout="row" fxLayoutAlign="center center">
+                   <div fxFlex="20" class="side-tag" ></div>
+                   <div fxFlex="80" fxLayout="row" fxLayoutAlign="center center">ID-{{testData.testId}}</div> 
+                </mat-card>
+            </div>
+            <div class="border" fxFlex="20">
+                <div class="border" fxFlex fxLayout fxLayoutAlign="center center">
+                    <mat-card class="circle" fxLayout fxLayoutAlign="center center">
+                        <div fxFlex="20" class="side-tag" ></div>
+                        <div fxFlex="80" fxLayout="row" fxLayoutAlign="center center">{{testData.pattern}}</div> 
+                        
+                    </mat-card>
+                </div>
+            </div>
+            <div class="border" fxFlex="20">
+                <div class="border" fxFlex fxLayout fxLayoutAlign="center center">
+                    <mat-card class="circle" fxLayout fxLayoutAlign="center center">
+                        <div fxFlex="20" class="side-tag" ></div>
+                        <div fxFlex="80" fxLayout="row" fxLayoutAlign="center center">{{testData.subject}}</div> 
+                    </mat-card>
+                </div>    
+            </div>
+            <div class="border" fxFlex="20">
+                <div class="border" fxFlex fxLayout fxLayoutAlign="center center">
+                    <mat-card class="circle" fxLayout fxLayoutAlign="center center">
+                        <div fxFlex="20" class="side-tag" ></div>
+                        <div fxFlex="80" fxLayout="row" fxLayoutAlign="center center">{{testData.testType}}</div> 
+                       
+                    </mat-card>
+                </div>    
+            </div>
+            <div class="border" fxFlex="20">
+                <div class="border" fxFlex fxLayout fxLayoutAlign="center center">
+                    <mat-card class="circle" fxLayout fxLayoutAlign="center center">
+                        <div fxFlex="20" class="side-tag" ></div>
+                        <div fxFlex="80" fxLayout="row" fxLayoutAlign="center center">{{testData.testCreatedDate|date:"dd-MM-yyyy"}}</div> 
+                        
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="printing-questionpaper border" fxLayout="column" fxFlex="50">
+        <mat-card class="no-round"   class="label" fxLayout fxLayoutAlign="center center">
+            <i class="material-icons">
+                photo_library
+            </i>
+            Printing Of Question Paper / Assignment</mat-card>
+        <mat-card class="body"  >
+            <table mat-table  [dataSource]="printQdataSource">
+
+                <!-- Position Column -->
+                <ng-container  matColumnDef="setName">
+                  <th  class="border set-column" mat-header-cell *matHeaderCellDef> Set </th>
+                  <td  class="border set-column" mat-cell *matCellDef="let element"> {{element.setName}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="questionPaper">
+                  <th  class="border" mat-header-cell *matHeaderCellDef> Question Paper </th>
+                  <td  class="border" mat-cell *matCellDef="let element"> 
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                          <div class="file-icon word-icon"></div>
+                          <div class="file-message" fxFlex [ngClass]="(element.questionPaper.wordFileAvailable )?'file-exist-message':'file-not-exist-message'">{{element.questionPaper.wordCreatedOn}}</div>
+                          <div fxFlex>
+                              <button *ngIf="element.questionPaper.wordFileAvailable"  class="create" mat-flat-button>Re-create</button>
+                              <button (click)="createQuestionPaperDocx(element)" *ngIf="!element.questionPaper.wordFileAvailable" class="reprint-button" mat-flat-button>create</button>
+                          </div>
+                      </div>
+                      <div class="line"></div>
+                      <div fxLayout="row">
+                            <div class="file-icon pdf-icon"></div>
+                            <div class="file-message" fxFlex [ngClass]="(element.questionPaper.pdfFileAvailable)?'file-exist-message' :'file-not-exist-message'">{{element.questionPaper.pdfCreatedOn}}</div>
+                            <div fxFlex>
+                                <button class="create" *ngIf="element.questionPaper.pdfFileAvailable"   mat-flat-button>Re-create</button>
+                                <button (click)="createQuestionPaperPdf(element)" class="reprint-button" *ngIf="!element.questionPaper.pdfFileAvailable"  mat-flat-button>create</button>
+                            </div>
+                      </div>
+                </td>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="teachersCopy">
+                  <th  class="border" mat-header-cell *matHeaderCellDef> Teachers Copy </th>
+                  <td  class="border" mat-cell *matCellDef="let element"> 
+                    <div  fxLayout="row" fxLayoutAlign="start center">
+                        <div  class="file-icon word-icon"></div>
+                        <div class="file-message" [ngClass]="(element.teachersCopy.wordFileAvailable)?'file-exist-message':'file-not-exist-message'" fxFlex>{{element.teachersCopy.wordCreatedOn}}</div>
+                        <div fxFlex>
+                            <button *ngIf="element.teachersCopy.wordFileAvailable" class="create" mat-flat-button>Re-create</button>
+                            <button (click)="createTeacherCopyDocx(element)" *ngIf="!element.teachersCopy.wordFileAvailable" class="reprint-button" mat-flat-button>create</button>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                          <div  class="file-icon pdf-icon"></div>
+                          <div class="file-message" fxFlex [ngClass]="(element.teachersCopy.pdfFileAvailable)?'file-exist-message':'file-not-exist-message'">{{element.teachersCopy.pdfCreatedOn}}</div>
+                          <div fxFlex >
+                              <button class="create" *ngIf="element.teachersCopy.pdfFileAvailable"   mat-flat-button>Re-create</button>
+                              <button (click)="createTeacherCopyPdf(element)" class="reprint-button" *ngIf="!element.teachersCopy.pdfFileAvailable"  mat-flat-button>create</button>
+                          </div>
+                    </div>
+                </td>
+                </ng-container>
+                <tr  mat-header-row *matHeaderRowDef="questionTableColumn"></tr>
+                <tr  class="questionPaperRecord" mat-row *matRowDef="let row; columns: questionTableColumn;"></tr>
+              </table>
+            </mat-card>
+    </div >
+    <mat-card class="no-round"  class="label" fxLayout fxLayoutAlign="center center">
+        <i class="material-icons">
+            photo_library
+        </i>
+        <!-- Printing Of Own Upload / Assignment -->
+        Online Test Assignmnet
+    </mat-card>
+    
+    <mat-card fxLayout="column" class="solution-paper border" fxFlex>
+        <table mat-table [dataSource]="solutionTableDataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="preparation">
+              <th style="width:5%"   class="border"  mat-header-cell *matHeaderCellDef> Preparation </th>
+              <td style="width:5%"  class="border"  mat-cell *matCellDef="let element"> {{element.preparation}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="questionPaper">
+              <th  style="width:35%" class="border"  mat-header-cell *matHeaderCellDef> Question Paper </th>
+              <td  style="width:35%" class="border"  mat-cell *matCellDef="let element">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div class="file-icon pdf-icon"></div>
+                    <div fxFlex *ngIf="!element.questionPaper.pdfFileExist">pdf does not exist</div>
+                    <div fxFlex *ngIf="element.questionPaper.pdfFileExist">{{element.questionPaper.fileName}}</div>
+                </div>
+            </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="solutionPaper">
+              <th  style="width:35%" class="border"  mat-header-cell *matHeaderCellDef> Solution </th>
+              <td  style="width:35%" class="border"  mat-cell *matCellDef="let element">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div class="file-icon pdf-icon"></div>
+                    <div fxFlex *ngIf="!element.solutionPaper.pdfFileExist">pdf does not exist</div>
+                    <div fxFlex *ngIf="element.solutionPaper.pdfFileExist">{{element.solutionPaper.fileName}}</div>
+                </div>
+            </td>
+            </ng-container>
+            <ng-container matColumnDef="assignmnetId">
+                <th style="width:10%;" class="border"  mat-header-cell *matHeaderCellDef> Action </th>
+                <td style="width:10%;" class="border"  mat-cell *matCellDef =" let element ">
+                    <div style="height: 100% !important;width:100% !important;" fxLayout="row" fxLayoutAlign="center center">
+                        <button  *ngIf="element.solutionPaper.pdfFileExist" class="create" mat-flat-button>Re-create</button>
+                        <button (click)="createSolutionFile(element)"  *ngIf="!element.solutionPaper.pdfFileExist" class="reprint-button" mat-flat-button>create</button>
+                    </div>
+                  
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="assignmnetDate">
+                <th  style="padding: 0px !important; width:10%;text-align: left !important;" class="border"  mat-header-cell *matHeaderCellDef>
+                    <div class="small-message" >Online Id :{{assignmentId}}</div>
+                    <div class="line"></div>
+                    <div class="small-message">Date : {{assignmentDate}}</div>
+                </th>
+                <td  style="width:10%;padding: 4px;" class="border"  mat-cell *matCellDef="let element">
+                   
+                    <div  fxLayout="column">
+                       <div fxLayout="row" fxLayoutAlign="center center">
+                            <button  *ngIf="element.solutionPaper.pdfFileExist ||element.questionPaper.pdfFileExist " class="create" mat-flat-button>Assign</button>
+                        </div>
+                    </div>
+              </td>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="solutionTableColumn"></tr>
+            <tr mat-row *matRowDef="let row; columns: solutionTableColumn;"></tr>
+          </table>
+        </mat-card>
+</div>

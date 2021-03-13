@@ -1,0 +1,136 @@
+<div class="main-container">
+  <div (click)="close()" class="close"><mat-icon class="close-icon">close</mat-icon></div>
+  <div fxLayout="column" fxflex fxLayoutGap="15px" fxLayoutAlign="start">
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="header" fxFlex="50px">
+        <div class="header" fxFlex.gt-xs="100%">
+          <span class="header-name">Kosh Edutech Pvt Ltd</span>
+        </div>
+      </div>
+      <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.md="column" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutAlign="start start" fxLayoutAlign.xs="start center">
+        <mat-card fxLayout.gt-md="column" fxLayoutGap.xs="0px" fxLayout.xs="column" fxLayoutGap="5px" fxLayoutAlign.xs="center center" fxLayoutGap.lt-md="15px" fxFlex.lt-md="100px" fxLayoutGap.md="15px" fxFlex.md="100px" fxFlex.gt-xs="300px">
+          <div class="docs-format" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center" fxFlex>
+            <mat-radio-button color="primary" value="pdfFormat">PDF Format</mat-radio-button>
+            <mat-radio-button color="primary" value="pdfFormat">Docx Format</mat-radio-button>
+          </div>
+          <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center" fxFlex>
+            <mat-label>Question Paper Font</mat-label> 
+            <mat-form-field class="question-paper-font">
+              <input matInput placeholder="20">
+            </mat-form-field>
+          </div>
+        </mat-card>
+        <mat-card class="question-paper-headers" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start start" fxLayout.md="column">
+          <div fxFlex="40px">
+            <p class="question-paper-heading">Heading of Question Paper</p>
+          </div>
+          <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxFlex>
+            <mat-label fxFlex>Classes Name:</mat-label>
+            <p fxFlex>Kosh Edutech Pvt Ltd Pune</p>
+          </div> -->
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlign.xs="start start" fxLayoutGap="15px" fxLayoutGap.xs="3px" fxFlex.gt-xs="450px" fxFlex.lt-md="50px">
+              <mat-label fxHide.xs fxFlex.gt-xs="120px" fxFlex.md="90px">Class Name:</mat-label>
+              <mat-form-field fxFlex.gt-xs="310px" fxFlex.md="250px" fxFlex.xs="40px" class="example-full-width full-width">
+                <input matInput placeholder="Class Name">
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlign.xs="start start" fxLayoutGap="15px" fxLayoutGap.xs="3px" fxFlex.gt-xs="450px" fxFlex.lt-md="50px">
+              <mat-label fxHide.xs fxFlex.gt-xs="120px" fxFlex.md="90px">Watermark:</mat-label>
+              <mat-form-field fxFlex.gt-xs="310px" fxFlex.md="250px" fxFlex.xs="40px" class="example-full-width full-width">
+                <input matInput placeholder="Digital Watermark">
+              </mat-form-field>
+            </div>
+          </div> 
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutAlign="start center" fxFlex>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlign.xs="start start" fxLayoutGap="15px" fxLayoutGap.xs="3px" fxFlex.gt-xs="450px" fxFlex.lt-md="50px">
+              <mat-label fxHide.xs fxFlex.gt-xs="120px" fxFlex.md="90px">Test Heading:</mat-label>
+              <mat-form-field fxFlex.gt-xs="310px" fxFlex.md="250px" fxFlex.xs="40px" class="example-full-width full-width">
+                <input matInput placeholder="Test Heading">
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlign.xs="start start" fxLayoutGap="15px" fxLayoutGap.xs="3px" fxFlex.gt-xs="450px" fxFlex.lt-md="50px">
+              <mat-label fxHide.xs fxFlex.gt-xs="120px" fxFlex.md="90px" fxFlex>Professor's Name:</mat-label>
+              <mat-form-field fxFlex.gt-xs="310px" fxFlex.md="250px" fxFlex.xs="40px" class="example-full-width full-width">
+                <input matInput placeholder="Professor's Name">
+              </mat-form-field>
+            </div>
+          </div> 
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="start center" fxFlex>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlign.xs="start start" fxLayoutGap="15px" fxLayoutGap.xs="3px" fxFlex.gt-xs="450px" fxFlex.lt-md="50px">
+              <mat-label fxHide.xs fxFlex.gt-xs="120px" fxFlex.md="90px">Address 1:</mat-label>
+              <mat-form-field fxFlex.gt-xs="310px" fxFlex.md="250px" fxFlex.xs="40px" class="example-full-width full-width">
+                <textarea matInput placeholder="Address 1"></textarea>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlign.xs="center center" fxLayoutGap="15px" fxLayoutGap.xs="3px" fxFlex.gt-xs="450px" fxFlex.lt-md="50px">
+              <mat-label fxHide.xs fxFlex.gt-xs="120px" fxFlex.md="90px">Address 2:</mat-label>
+              <mat-form-field fxFlex.gt-xs="310px" fxFlex.md="250px" fxFlex.xs="40px" class="example-full-width full-width">
+                <textarea matInput placeholder="Address 2"></textarea>
+              </mat-form-field>
+            </div>
+          </div> 
+        </mat-card>   
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap.md="10px" fxLayoutGap.lt-md="10px" fxLayout.md="column" fxLayout.lt-md="column" fxLayoutAlign="start">
+        <div fxLayout="column" fxFlex.gt-xs="600px">
+          <p class="question-paper-heading">Select Format</p>
+          <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="start" fxLayoutAlign.xs="center">
+            <mat-card class="single-column-section" fxLayout="column" fxLayoutGap="10px" fxFlex.md="300px" fxFlex.lt-md="300px" fxFlex.gt-xs="250px">
+              <div class="single-col" fxFlex>
+                Single Column
+              </div>
+              <mat-radio-button color="primary" fxFlex value="Auto">Auto Setting</mat-radio-button>
+              <mat-checkbox color="primary" fxFlex>Solutions single line</mat-checkbox>
+              <mat-radio-button color="primary" fxFlex value="1">One Option in one line</mat-radio-button>
+              <mat-radio-button color="primary" fxFlex value="2">Two Options in one line</mat-radio-button>
+              <mat-radio-button color="primary" fxFlex value="4">Four Options in one line</mat-radio-button>
+            </mat-card>
+            <mat-card class="double-column-section" fxLayout="column" fxLayoutGap="10px" fxFlex.md="300px" fxFlex.lt-md="300px" fxFlex.gt-xs="250px">
+              <div class="single-col" fxFlex>
+                Double Column
+              </div>
+              <mat-radio-button color="primary" fxFlex value="Auto">Auto Setting</mat-radio-button>
+              <mat-radio-button color="primary" fxFlex value="1">One Option in one line</mat-radio-button>
+              <mat-radio-button color="primary" fxFlex value="2">Two Options in one line</mat-radio-button>
+              <mat-radio-button color="primary" fxFlex value="4">Four Options in one line</mat-radio-button>
+            </mat-card>
+          </div> 
+        </div>
+        <div fxFlex fxLayout="column">
+          <p fxFlex class="question-paper-heading">Common Select Format (Single Column/Double Column)</p>
+          <mat-card fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="start">
+            <div class="single-column-section" fxLayout="column" fxLayoutGap="10px" fxFlex>
+              <mat-checkbox color="primary" fxFlex value="Auto">Print Professor's Name</mat-checkbox>
+              <mat-checkbox color="primary" fxFlex>Print Test Heading</mat-checkbox>
+              <mat-checkbox color="primary" fxFlex>Print exam year after question</mat-checkbox>
+              <mat-checkbox color="primary" fxFlex>Add space after each question</mat-checkbox>
+              <mat-checkbox color="primary" fxFlex>Watermark-Semitransferent</mat-checkbox>
+              <mat-checkbox color="primary" fxFlex>Print option as 1,2,3,4</mat-checkbox>
+            </div>
+            <div class="double-column-section" fxLayout="column" fxLayoutGap="10px" fxFlex>
+              <mat-checkbox color="primary" fxFlex>Print questions with only 4 options</mat-checkbox>
+              <div fxFlex fxLayout="row" fxLayout.xs="column">
+                <mat-checkbox class="print-date" fxFlex="200px" color="primary" fxFlex>Print Date</mat-checkbox>
+                <mat-form-field>
+                  <input fxFlex.gt-xs="200px" matInput [matDatepicker]="picker1" placeholder="Print date">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <mat-checkbox color="primary" fxFlex>Print Classes Logo</mat-checkbox>
+              <mat-radio-button color="primary" fxFlex value="2">Alignment left</mat-radio-button>
+              <mat-radio-button color="primary" fxFlex value="4">Alignment right</mat-radio-button>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    <div class="button-section" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" fxflex="100px">
+      <div fxflex.gt-xs="120px">
+        <button  (click)="printPreview()" class="update-button" mat-raised-button>Print Preview</button>
+      </div>
+      <div fxflex.gt-xs="100px">
+        <button (click)="cancel()" class="delete-button" mat-raised-button>Close</button>
+      </div>
+    </div>
+  </div>
+</div>  

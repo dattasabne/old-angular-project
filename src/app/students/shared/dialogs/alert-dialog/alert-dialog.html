@@ -1,0 +1,22 @@
+<div class="main-dialog">
+  <div class="row message-container">
+    <div class="col-12">
+      <div style="text-transform: capitalize !important;" class="alert-message">
+        {{ data.message }}
+      </div>
+    </div>
+  </div>
+  <div class="bottom-sheet">
+    <div class="row full-height">
+      <div class="col-12  button-container full-height">
+        <button
+          mat-raised-button
+          class="dialog-button background-skyblue dialog-button"
+          (click)="ok()"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.resource-not-found{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  font-size: 2em;
+  color: green;
+  text-transform: capitalize;
+}

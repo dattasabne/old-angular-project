@@ -1,0 +1,36 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col-12">
+      <div class="header">
+        Please Check And Confirm Message.
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="messages">
+        <mat-list>
+          <mat-list-item *ngFor="let message of allMessages; let i = index">
+            {{ i + 1 }}] {{ message.messages }}
+            <div class="status" *ngIf="!isValidFirbaseRecord(message)">
+              Firbase Registration Key Not Available.
+            </div>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+  <div class="row bottom-buttons">
+    <div class="col-6 padding-right">
+      <button (click)="allRight()" class="confirm-button" mat-raised-button>
+        Yes! All Right
+      </button>
+    </div>
+    <div class="col-6 padding-left">
+      <button (click)="cancel()" class="cancel-button" mat-raised-button>
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

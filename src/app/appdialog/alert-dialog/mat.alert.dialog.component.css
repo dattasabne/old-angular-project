@@ -1,0 +1,22 @@
+.app-dialog-body{
+  overflow:auto !important;
+  padding:8px 3px !important;
+}
+.app-dialog-header{
+  position: relative;
+  height:15% !important;
+  background: #00688B;
+  color: white;
+  padding: 0px 10px !important;
+  font-size: 1.3em;
+}
+.border{
+  border:2px solid red !important;
+}
+.alert-dialog{
+  height: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  position:relative !important;
+}
+

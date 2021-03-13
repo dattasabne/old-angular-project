@@ -1,0 +1,78 @@
+<div class="main-div">
+  <ball-loader *ngIf="isLoaded"></ball-loader>
+  <app-exam-start  (close)="examLoader.isLoad = false" *ngIf="examLoader.isLoad"></app-exam-start>
+  <app-dashboard (close)="closeDashobard()" *ngIf="dashBoardClass.isLoad" [classDetails]="dashBoardClass.classDetails"></app-dashboard>
+  <app-navbar [navType]="'main-page'" [className]="className" [homeName]="'Home'" [logo]="logoImage" [xsHideToggle]="hidetoggleButton"  #navbar  [isClassName]="false"></app-navbar>
+  <div class="body">
+    <!-- showcase start -->
+    <mat-card fxLayout="row" fxLayoutAlign="center center" class="showcase">
+      <div class="banner-message">
+        <div class="message message-big">{{showcaseName}}</div>
+      </div>
+    </mat-card>
+    <div  class="student-content-container" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="center center" style="position: relative;">
+        <div fxLayout="column" style="position: relative; height: 100%;"   fxLayoutGap="25px" fxFlex.gt-xs="25" fxFlex="100" >
+          <mat-card *ngIf="clasessList.length > 0"  fxLayout="column" fxLayoutGap="20px" >
+            <div class="kosh-header">
+              <strong>My Institutes and Courses</strong>
+            </div>
+            <div  *ngFor="let $class of clasessList;let i = index" fxLayout="column">
+              <mat-card    fxLayout="column"  class="institute_item">
+                <section fxLayout="row" fxLayoutAlign="center center"  fxFlex="75">
+                  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="$class.bannerImage != null" class="image-container">
+                    <img [src]="saniTizeImageUrl($class.bannerImage)" alt="">
+                  </div>
+                  <div class="othet-institute-label" *ngIf="$class.bannerImage == null" fxLayout="row" fxLayoutAlign="center center">
+                    {{$class.className}}
+                  </div>
+                </section>
+                <div class="line"></div>
+                <section (click)="clickOnClass($class)" fxLayout="row" fxLayoutAlign="center center" class="institute-item-footer" fxFlex="15">
+                  <!-- {{$class.className}} -->
+                  <div fxFlex fxLayout = "row" fxLayoutAlign="center center">{{$class.batch}}</div>
+                  <div fxFlex fxLayout = "row" fxLayoutAlign="center center">{{$class.course}}</div>
+                </section>
+              </mat-card>
+
+          </div>
+          </mat-card>
+          <mat-card  *ngIf="koshClasses.length > 0" fxLayout="column" >
+          <div  *ngFor="let $class of koshClasses;let i = index" fxLayout="column">
+            <div class="kosh-header">
+                <strong>KOSH EDUTECH Courses</strong>
+            </div>
+            <mat-card   fxLayout="column"  class="institute_item">
+              <section   fxFlex="75">
+                <div fxLayout="row" fxLayoutAlign="center center" *ngIf="$class.bannerImage != null" class="image-container">
+                    <img [src]="saniTizeImageUrl($class.bannerImage)" alt="">
+                </div>
+                <div class="kosh-label" *ngIf="$class.bannerImage == null" fxLayout="row" fxLayoutAlign="center center">
+                  {{$class.className}}
+                </div>
+              </section>
+              <div class="line"></div>
+              <section (click)="clickOnClass($class)" class="kosh-label" fxLayout="row" fxLayoutAlign="center center" fxFlex="15">
+                <div fxFlex fxLayout = "row" fxLayoutAlign="center center">
+                  {{$class.batch}}
+                </div>
+                <div fxFlex fxLayout = "row" fxLayoutAlign="center center">
+                  {{$class.course}}
+                </div>
+                <!-- {{$class.className}} -->
+              </section>
+            </mat-card>
+        </div>
+          </mat-card>
+        </div>
+      </div>
+      <mat-card *ngIf="showPoweredBy" fxLayout="row" fxLayoutAlign="end center" class="homepage-footer">
+        <div class="powered-by">
+          <img [src]="powerdByLogo" alt="">
+        </div>
+      </mat-card>
+    </div>
+
+
+  </div>
+</div>

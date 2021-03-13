@@ -1,0 +1,217 @@
+.main {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: #d1d1d1;
+    box-sizing: border-box;
+}
+.example-full-width {
+    width: 100%;
+  }
+/* mat-form-field {
+    height: 100px !important;
+} */
+.link-tab {
+    height: 100% !important;
+    width: 100%;
+    padding-left: 15% !important;
+    padding-right: 15% !important;
+    box-sizing: border-box;
+}
+.heading {
+    height: 50px !important;
+    width: 100% !important;
+    background-image: linear-gradient(-90deg, rgb(97, 124, 74), rgb(81, 101, 155));
+    text-align: center;
+    font-size: 1.4em;
+    padding: 8px 0px;
+    color: white;
+}
+.link-panel {
+    position: relative;
+    height: 540px !important;
+    /* background-image: linear-gradient(to right,rgb(200, 205, 230),rgb(203, 220, 241)); */
+}
+.delete-img-button > button {
+    background: skyblue !important;
+    width: 100px !important;
+    text-align: center;
+}
+.save-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.save-button > button {
+    position: absolute;
+    width: 40% !important;
+    bottom: 10%;
+    background: skyblue;
+}
+.upload-button {
+    position: relative; 
+    width: 250px !important;
+    margin-top: 13% !important;
+    box-sizing: border-box;
+}
+.overlay-button {
+    position: absolute;
+    height: 38px !important;
+    /* width:200px !important; */
+    width: 250px;
+    background: skyblue;
+    padding-top: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 5px;
+}
+.input-file {
+   position: absolute; 
+   z-index: 1;
+   opacity: 0; 
+   width: 250px !important;
+   height: 38px !important;
+}
+/* .upload-section {
+    display: flex;
+    direction: row;
+} */
+/* .upload-img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+} */
+/* .image-upload {
+   position: absolute;
+   margin-top: 20%;
+   margin-left: 10% !important;
+   text-align: center;
+   height: 150px;
+   width: 230px;
+} */
+/* .mat-tab-labels {
+    background: skyblue !important;
+} */
+.image {
+    border-radius: 5px !important;
+    border: 1px solid gray;
+}
+.class-link {
+    margin-top: 15px !important;
+}
+/* .img {
+    height: 200px;
+    width: 200px;
+} */
+/* .image-upload {
+    position: relative; 
+    width: 400px;
+    height: 300px;
+    margin-top: 30px;
+    border: 1px solid red;
+    padding: 0px !important;
+} */
+/* .img {
+    position: absolute;
+    height: 100px;
+    width: 200px;
+} */
+.example-form {
+    min-width: 150px;
+    max-width: 465px;
+    width: 100%;
+  }
+
+  .row {
+    padding: 0px;
+    margin: 0px;
+  }
+  .padding-zero {
+    padding: 0px !important;
+    margin: 0px !important;  
+  }
+  .image-container {
+    position: absolute; 
+    display: flex;
+    overflow: auto;
+    flex-wrap: wrap; 
+    padding: 10px !important;
+    margin-top: 10px !important;
+    /* border: 1px solid red !important; */
+}
+.image-container > div {
+    text-align: center !important;
+    margin: 10px !important;
+}
+.select-box {
+    position: absolute;
+    top: 2px;
+    right: -4px;
+    height: 20px;
+    width: 20px;
+}
+ .single-image {
+  position: relative !important;  
+ }
+ .single-image-container {
+    height: 120px !important;
+    width:  110px !important;
+    padding-top: 8px !important;
+    margin-bottom: 5px !important;
+    border: 2px solid green;
+    border-radius: 10px;
+ }
+ .select-images {
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 6px !important;
+    justify-content: space-between;
+    background: rgb(219, 221, 228);
+ }
+ .select-all{
+    margin-top: 10px !important; 
+ }
+ .delete-panel {
+     height: 100% !important;
+ }
+ /* [aria-label=primary] {
+    background-color: red;
+  } */
+  mat-button-toggle {
+      display: none;
+  }
+  mat-card {
+    border: 1px solid rgb(206, 201, 201);
+}
+  @media only screen and (max-width:900px) {
+    .link-tab {
+        height: 100%;
+        width: 100%;
+        padding: 0px !important;
+        box-sizing: border-box;
+    }
+    /* .image-upload {
+        position: absolute;
+        margin-left: 15%;
+        margin-top: 20%;
+        height: 150px;
+        width: 230px;
+     } */
+     /* .image-upload {
+        position: absolute;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 20%;
+     } */
+     
+     .img {
+         height: 150px;
+         width: 230px;
+     }
+     .save-button > button {
+         width: 90% !important;
+     }
+  }

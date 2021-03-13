@@ -1,0 +1,22 @@
+<div class="alert-main-dialog">
+  <div class="row alert-message-container">
+    <div class="col-12">
+      <div class="alert-message">
+        {{ data.message }}
+      </div>
+    </div>
+  </div>
+  <div class="alert-bottom-sheet">
+    <div class="row">
+      <div class="col-12 paddin-l-r-5px">
+        <button
+          mat-raised-button
+          class="dialog-button background-skyblue dialog-button full-width"
+          (click)="ok()"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

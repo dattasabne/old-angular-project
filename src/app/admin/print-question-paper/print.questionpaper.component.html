@@ -1,0 +1,420 @@
+<div fxLayout="column" fxLayoutGap.gt-xs="2px" class="print-question-root-container">
+    <mat-card fxLayout="row" fxLayoutAlign.gt-xs="center center"  fxFlex="10" class="question-format">
+        <div (click)="close()" class="close center">
+            <i class="fa fa-close"></i>
+        </div>
+        <div fxLayout.gt-xs="row" fxLayout="column"    fxLayoutGap.gt-xs="50px" fxLayoutAlign="center start"  fxLayoutAlign.gt-xs="center center" >
+
+            <mat-radio-group  fxLayoutAlign="center center"  fxLayout="row" fxLayoutGap="4px" fxLayoutGap.gt-xs="50px" aria-label="Select an option">
+                <div fxLayout="row" fxLayoutGap="4px" fxLayoutAlign="center center" >
+                    <div class="format-icons pdf-icon"></div>
+                    <mat-radio-button [checked]="testModel.pdfFormat" (change)="pdfRadioChange($event)" fxLayout="row"  value="1">
+                        PDF Format
+                    </mat-radio-button>
+                </div>
+                <div fxLayout="row" fxLayoutGap="4px" fxLayoutAlign="center center" >
+                    <div class="docx-icon format-icons"></div>
+                    <mat-radio-button [checked]="testModel.docxFormat" (change)="docxRadioChange($event)" fxLayout="row"  value="2">
+                        Docx Format
+                    </mat-radio-button>
+                </div>
+
+
+
+            </mat-radio-group>
+            <div>
+
+                <input [(ngModel)]="testModel.testIdForPrinting" placeholder="Test Id for printing" type="text">
+            </div>
+        </div>
+    </mat-card>
+    <!-- <mat-card  style="overflow: auto !important" fxFlex="25" class="no-padding question-heading">
+        <fieldset class=" heading-area">
+            <legend>Heading Of Question Paper</legend>
+            <div  fxLayoutGap="5px" fxLayout="row" fxLayoutAlign.gt-xs="center center">
+                <div fxFlex.gt-xs="35" fxFlex="50"  fxLayout="column" class="heading-body">
+                    <mat-form-field class="" >
+                        <mat-label >Class Name</mat-label>
+                        <input matInput >
+                    </mat-form-field>
+                    <div fxLayout="column">
+                        <mat-radio-group fxLayout="row" fxLayoutGap="10px" aria-label="watermark">
+                            <mat-radio-button color="primary" (change)="isTexWaterMark = true" value="1">Text Watermark</mat-radio-button>
+                            <mat-radio-button color="primary" (change)="isTexWaterMark = false" value="2">Picture Watermark</mat-radio-button>
+                        </mat-radio-group>
+                        <mat-form-field *ngIf="isTexWaterMark" class="" >
+                            <mat-label>Watermark</mat-label>
+                            <input matInput >
+                        </mat-form-field>
+                        <div *ngIf="!isTexWaterMark" fxLayout="row" class="picture-watermark">
+                            <div class="watermark-photo">
+                               <img>
+                            </div>
+
+
+                            <div><input type="file"></div>
+                        </div>
+                    </div>
+
+
+                    <mat-form-field class="">
+                        <mat-label >Test Heading</mat-label>
+                        <input matInput >
+                    </mat-form-field>
+
+                </div>
+                <div fxFlex.gt-xs="35" fxFlex="50" fxLayout="column">
+                    <mat-form-field class="" >
+                        <mat-label>Professors's Name</mat-label>
+                        <input matInput >
+                    </mat-form-field>
+                    <mat-form-field class="" >
+                        <mat-label>Address1</mat-label>
+                        <input matInput >
+                    </mat-form-field>
+                    <mat-form-field style="visibility: hidden;" class="" >
+                        <mat-label>Address1</mat-label>
+                        <input matInput >
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </fieldset>
+    </mat-card> -->
+    <mat-card  fxFlex="80" fxLayoutGap="3px" fxLayout.gt-xs="row" fxLayout="column"  class="question-options">
+        <ball-loader *ngIf="isLoaded"></ball-loader>
+        <fieldset   fxFlex.gt-xs="30" class="border">
+            <legend class="legend-label">Heading Of Question Paper</legend>
+            <div  fxLayout="column" class="top-margin" >
+            <mat-card style="margin: 7px 0px;">
+                <div fxLayout.md="column"  fxLayoutAlign.md="center start" fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                    <div fxFlex.gt-xs="40">
+                        Institute Name
+                    </div>
+                    <div fxFlex.gt-xs="60">
+                        <input  [(ngModel)]="testModel.instituteName"  type="text">
+                    </div>
+                </div>
+                <div fxLayout.md="column"  fxLayoutAlign.md="center start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center" fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                    <div fxFlex.gt-xs="40" fxLayout="column" fxLayoutAlign="center start ">
+                        <mat-checkbox [checked]="testModel.printProfessorName" (change)="professorNameCheckBox($event)" fxLayout="column">
+                            Print Professor Name /
+                        </mat-checkbox>
+                        <div style="margin-left: 25px;">Institute Slogan</div>
+                    </div>
+                    <div fxFlex.gt-xs="60" fxLayout="row" fxLayoutAlign="center center">
+                        <input [(ngModel)]="testModel.professorName" type="text">
+                    </div>
+                </div>
+                <div  fxLayout.gt-lg="row" fxLayoutAlign.md="center start"  fxLayoutAlign.gt-lg="center center" fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                    <div fxFlex.gt-xs="40" fxLayout="column" fxLayoutAlign="center start ">
+                        <mat-checkbox [checked]="testModel.printTestHeading" (change)="printTestHeadingCheckBox($event)"  fxLayout="column">
+                            Print Test Heading
+                        </mat-checkbox>
+                    </div>
+                    <div fxFlex.gt-xs="60" fxLayout="row" fxLayoutAlign="center center">
+                        <input [(ngModel)]="testModel.testHeading" type="text">
+                    </div>
+                </div>
+                <div fxLayout.gt-lg="row" fxLayout.md="column"  fxLayoutAlign.gt-lg="center start"  fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                    <div fxFlex.gt-lg="40" fxLayout="column" fxLayoutAlign="center start ">
+                        <mat-checkbox [checked]="testModel.printAddress" (change)="printAddress1CheckBox($event)"  fxLayout="column">
+                            Print Address 1
+                        </mat-checkbox>
+                    </div>
+                    <div fxFlex.gt-lg="60" fxFlex>
+                        <input  [(ngModel)]="testModel.address1" type="text">
+                    </div>
+                </div>
+                <div fxLayout.gt-lg="row"   fxLayoutAlign.gt-lg="center center" fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                    <div fxFlex.gt-lg="40" fxLayout="column" fxLayoutAlign="center start ">
+                        <div   fxLayout="column" style="margin-left:25px">
+                            Print Address 2
+                        </div>
+                    </div>
+                    <div fxFlex.gt-lg="60">
+                        <input [(ngModel)]="testModel.address2"  type="text">
+                    </div>
+                </div>
+                <div fxLayout.md="column"  fxLayoutAlign.md="center start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center" fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                    <div fxFlex.gt-xs="40" fxLayout="column" fxLayoutAlign="center start ">
+                        <mat-checkbox [checked]="testModel.printDate"  (change)="printDateCheckBox($event)"  fxLayout="column">
+                            Print Date
+                        </mat-checkbox>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center " fxFlex.gt-xs="60">
+                        <input [(ngModel)]= "testModel.date" style="height: 20px;" type="text"   [matDatepicker]="myDatepicker">
+                        <mat-datepicker-toggle  [for]="myDatepicker"></mat-datepicker-toggle>
+                        <mat-datepicker  #myDatepicker></mat-datepicker>
+                    </div>
+                </div>
+
+
+                <!-- <div fxLayout.gt-xs="row" class="print-form-controls">
+                    <mat-checkbox fxFlex>Print Date</mat-checkbox>
+                    <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+                        <input style="height: 20px;" type="text" [matDatepicker]="myDatepicker">
+                        <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #myDatepicker></mat-datepicker>
+                    </div>
+                </div> -->
+
+            </mat-card>
+            <mat-card>
+                <div fxLayout="row" class="print-form-controls">
+                    <mat-checkbox [checked]="testModel.printClassLogo"  (change)="printClassLogoCheckBox($event)" fxLayout="column">
+                        Print Class Logo
+                    </mat-checkbox>
+                </div>
+                <!-- <div fxLayout="column" class="print-form-controls">
+                    <mat-radio-group fxLayout.gt-xs="row" fxLayout="column"  aria-label="watermark-option">
+                        <mat-radio-button [checked]="isTexWaterMark" (change)="isTexWaterMark = true" fxFlex value="text">Text Watermark</mat-radio-button>
+                        <mat-radio-button (change)="isTexWaterMark = false" fxFlex value="picture">Picture Watermark</mat-radio-button>
+                    </mat-radio-group>
+                </div> -->
+
+                <!-- <div fxLayout.gt-xs="row" fxLayout="column">
+                    <mat-checkbox (change)="isLogoChecked($event)" fxFlex>Print Class Logo</mat-checkbox>
+                    <div *ngIf="isClassLogoSelected" fxFlex fxLayout.gt-xs="row" fxLayout="column"  fxLayoutGap="5px" class="logo-pic">
+                        <div fxFlex.gt-xs="50"  class="watermark-photo">
+                            <img [src]="classLogoBase64" alt="">
+                        </div>
+                        <div  class=" watermark-pic-container" fxLayout="row" fxLayoutAlign.gt-xs="center center"  fxFlex.gt-xs="50">
+                            <input (change)="uploadClassLogo($event.target)" class="cursor-poiner upload-file upload-button" type="file">
+                            <div fxLayout="row" fxLayoutAlign="center center" class="cursor-poiner upload-button">Upload Logo</div>
+                        </div>
+                    </div>
+                </div> -->
+                <div  *ngIf="testModel.printClassLogo"  fxLayout="column" >
+                    <div fxLayout.gt-xs="row"  fxLayoutAlign="center center" class="print-form-controls">
+                        <mat-radio-group fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap.gt-xs="15px" aria-label="alignment option group">
+                            <mat-radio-button [checked]="testModel.alignmentLeft"  (change)="alignLeftRadioChange($event)"  value="1">Alignmnet Left</mat-radio-button>
+                            <mat-radio-button [checked]="testModel.alignmentRight" (change)="alignRightRadioChange($event)" value="2">Alignmnet Right</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <!-- <div fxLayout.gt-xs="row" fxLayoutGap="5px" class="watermark-pic" >
+                        <div fxFlex.gt-xs="40" class="watermark-photo">
+                            <img (click)="clickOnImage(waterMarkImageBase64)" [src]="waterMarkImageBase64" alt="">
+                        </div>
+                        <div  class="watermark-pic-container" fxLayout="row" fxLayoutAlign.gt-xs="center center" fxFlex.gt-xs="60">
+                            <input (change)="uploadWatermarkImage($event.target)" class="upload-file upload-button" type="file">
+                            <div fxLayout="row" fxLayoutAlign="center center" class="upload-button">upload photo </div>
+                        </div>
+                    </div> -->
+
+                    <div fxLayout.gt-xs="row" fxLayoutGap="5px" class="print-form-controls">
+                        <div fxLayout="column"   fxFlex.gt-xs="40">
+                            <div  class="image-frame">
+                                <img class="image-tag" (click)="clickOnImage(waterMarkImageBase64)" [src]="classLogoBase64" alt="">
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="center center">124 * 96 pixel</div>
+                        </div>
+                        <div  class="watermark-pic-container" fxLayout="row" fxLayoutAlign.gt-xs="center center" fxFlex.gt-xs="60">
+                            <input (change)="uploadClassLogo($event.target)" class="upload-file upload-button" type="file">
+                            <div fxLayout="row" fxLayoutAlign="center center" class="upload-button">upload photo </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div  *ngIf="!isTexWaterMark"  fxLayout="column" >
+                    <div fxLayout.gt-xs="row"  fxLayoutAlign="center center" class="print-form-controls">
+                        <mat-radio-group fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap.gt-xs="15px" aria-label="alignment option group">
+                            <mat-radio-button value="1">Alignmnet Left</mat-radio-button>
+                            <mat-radio-button value="2">Alignmnet Right</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div fxLayout.gt-xs="row" fxLayoutGap="5px" class="watermark-pic" >
+                        <div fxFlex.gt-xs="40" class="watermark-photo">
+                            <img (click)="clickOnImage(waterMarkImageBase64)" [src]="waterMarkImageBase64" alt="">
+                        </div>
+                        <div  class="watermark-pic-container" fxLayout="row" fxLayoutAlign.gt-xs="center center" fxFlex.gt-xs="60">
+                            <input (change)="uploadWatermarkImage($event.target)" class="upload-file upload-button" type="file">
+                            <div fxLayout="row" fxLayoutAlign="center center" class="upload-button">upload photo </div>
+                        </div>
+                    </div>
+
+                </div> -->
+            </mat-card>
+        </div>
+        </fieldset>
+        <fieldset  fxFlex.gt-xs="40" class="border">
+            <legend class="legend-label">question paper setting</legend>
+            <div fxLayout="column" fxLayoutGap="7px" style="margin-top:15px;">
+                <mat-card fxLayout="column">
+                    <div fxLayout.gt-xs="row" class="print-form-controls" fxLayout="column">
+                        <span fxFlex="50">Start Number</span>
+                        <input [(ngModel)]="testModel.startNumber" value="" fxFlex="50" type="text">
+                    </div>
+                    <div fxLayout="column" class="print-form-controls">
+                        <mat-checkbox [checked]="testModel.printOptionAs" (change)="printOptionAsCheckBoxChange($event)" fxFlex >Print Options As - 1,2,3,4,5</mat-checkbox>
+                        <mat-checkbox [checked]="testModel.printQuestionWithFourOption" (change)="printQuestionWithOnlyFourOptionCheckBoxChange($event)" fxFlex>Print Question With Only 4 Option</mat-checkbox>
+                        <mat-checkbox [checked]="testModel.printExamYearAfterQuestion" (change)="printExamYearAfterQuestionCheckBoxChange($event)" fxFlex>Print Exam Year After Question</mat-checkbox>
+                        <mat-checkbox [checked]="testModel.addOneSpaceAfterEachQuestion" (change)="addOneSpaceAfterEachQuestionCheckBoxChange($event)" fxFlex>Add One Space After Each Question</mat-checkbox>
+                        <mat-checkbox [checked]="testModel.matrixNewPattern" (change)="matrixNewPatternCheckBoxChange($event)" fxFlex>Matrix New Pattern</mat-checkbox>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <div class="print-form-controls">
+                        <div>Watermark</div>
+                        <div fxLayout="column" class="print-form-controls">
+                            <mat-radio-group  fxLayout="column"  aria-label="watermark-option">
+                                <div fxLayout.gt-xs="row" fxLayout="column" fxLayoutAlign.gt-xs="center center">
+                                    <div fxFlex> <mat-radio-button [checked]="testModel.textWaterMark"  (change)=" waterMarkTextRadioChange($event)" fxFlex value="text">Text Watermark</mat-radio-button></div>
+                                    <div fxFlex> <input [(ngModel)]="testModel.watermarkText" type="text"></div>
+                                </div>
+                                <div>
+                                    <mat-radio-button [checked]="testModel.pictureWatermark" (change)="pictureWaterMarkTextRadioChange($event)" fxFlex value="picture">Picture Watermark</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+                        </div>
+                        <!-- <div *ngIf="isTexWaterMark" fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                            <div fxFlex.gt-xs="40">
+                              Text Watermark
+                            </div>
+                            <div fxFlex.gt-xs="60">
+                                <input  type="text">
+                            </div>
+                        </div> -->
+                        <div  *ngIf="!isTexWaterMark"  fxLayout="column" >
+                            <!-- <div fxLayout.gt-xs="row"  fxLayoutAlign="center center" class="print-form-controls">
+                                <mat-radio-group fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap.gt-xs="15px" aria-label="alignment option group">
+                                    <mat-radio-button value="1">Alignmnet Left</mat-radio-button>
+                                    <mat-radio-button value="2">Alignmnet Right</mat-radio-button>
+                                </mat-radio-group>
+                            </div> -->
+                            <div fxLayout.gt-xs="row" fxLayoutGap.gt-xs="5px" fxLayoutGap="8px" class="print-form-controls">
+                                <div fxLayout="column"   fxFlex.gt-xs="40">
+                                    <div class="image-frame"  >
+                                        <img class="image-tag"  (click)="clickOnImage(waterMarkImageBase64)" [src]="waterMarkImageBase64" alt="">
+                                    </div>
+                                </div>
+                                <div  class="watermark-pic-container" fxLayout="row" fxLayoutAlign.gt-xs="center center" fxFlex.gt-xs="60">
+                                    <input (change)="uploadWatermarkImage($event.target)" class="upload-file upload-button" type="file">
+                                    <div fxLayout="row" fxLayoutAlign="center center" class="upload-button">upload photo </div>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="center center" class="print-form-controls">
+                                <mat-checkbox [checked]="testModel.watermarkSemiTransparent" (change)="waterMarkSemiTransparentCheckBoxChnage($event)" fxFlex>Watermark Semi Transparant</mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </fieldset>
+        <fieldset  fxFlex.gt-xs="40" class="border">
+            <legend class="legend-label">Question Paper Format</legend>
+            <div fxLayout="column" style="margin-top:15px;">
+                <mat-card>
+                    <div fxLayout="column">
+                        <mat-radio-group fxLayout="column" aria-label="Select an option">
+                            <fieldset class="frame border">
+                                <legend class="legend-label-color">double column</legend>
+                                <div fxLayout="column" fxLayoutGap="2px" class="checkbox-options">
+                                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3px">
+                                        <div class="option-icons">
+
+                                        </div>
+                                        <mat-radio-button [checked]="testModel.doubleColumn.autoSetting" (change)="doubleColumAutoSettingRadioChange($event)" fxFlex value="1">Auto Setting</mat-radio-button>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3px">
+                                        <div class="option-icons" fxLayout="row" fxLayoutAlign="center center">
+                                            <i  class="icon-size fa fa-align-justify" aria-hidden="true"></i>
+                                        </div>
+                                        <mat-radio-button [checked]="testModel.doubleColumn.oneOptionInOneLine" (change)="doubleColumOneOptionInOneLineRadioChange($event)" fxFlex value="2">One Option In One line</mat-radio-button>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3px">
+                                        <div class="option-icons" fxLayout="row" fxLayoutAlign="center center">
+                                            <i class="icon-size fa fa-th-list" aria-hidden="true"></i>
+                                        </div>
+                                        <mat-radio-button [checked]="testModel.doubleColumn.twoOptionInOneLine" (change)="doubleColumTowOptionInOneLineRadioChange($event)" fxFlex value="3">two option in one line</mat-radio-button>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3px">
+                                        <div class="option-icons"></div>
+                                        <mat-radio-button [checked]="testModel.doubleColumn.fourOptionInOneLine" (change)="doubleColumFourOptionInOneLineRadioChange($event)" fxFlex value="4">four option in one line</mat-radio-button>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                            <fieldset class="frame border">
+                                <legend class="legend-label-color">single column</legend>
+                                <div fxLayout="column" fxLayoutGap="2px" class="checkbox-options">
+                                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3px">
+                                        <div class="option-icons"></div>
+                                        <mat-radio-button (change)="singleColumAutoSettingRadioChange($event)" [checked]="testModel.singleColum.autoSetting" fxFlex value="5">Auto Setting</mat-radio-button>
+                                    </div>
+                                   <div fxLayout="row" fxLayoutGap="3px">
+                                        <div class="option-icons"></div>
+                                        <div><mat-radio-button  (change)="singleColumOneOptionInOneLineRadioChange($event)" [checked] = "testModel.singleColum.oneOptionInOneLine" value="6">One Option In One line</mat-radio-button></div>
+                                    </div>
+                                   <div fxLayout="row"  fxLayoutGap="3px">
+                                        <div class="option-icons"></div>
+                                        <mat-radio-button (change)="singleColumTowOptionInOneLineRadioChange($event)"  [checked]="testModel.singleColum.twoOptionInOneLine"   value="7">two option in one line</mat-radio-button>
+                                    </div>
+                                    <div fxLayout="row"  fxLayoutGap="3px">
+                                        <div class="option-icons"></div>
+                                        <mat-radio-button (change)="singleColumFourOptionInOneLineRadioChange($event)" [checked]="testModel.singleColum.fourOptionInOneLine" value="8">four option in one line</mat-radio-button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="box">
+                                <mat-checkbox (change)="printSolutionInOneColumn($event)" [checked]="printSolutionInOneColumn" fxFlex>Print Solutions in one column</mat-checkbox>
+                            </div>
+                           </mat-radio-group>
+                    </div>
+                    <!-- <div  fxLayout="column" fxLayoutGap="2px" class="print-form-controls">
+                        <div fxFlex.gt-xs="100" style="padding: 5px;">
+                            <mat-radio-group fxLayout="column" aria-label="Select an option">
+                                <div fxLayout.gt-xs="row" fxLayout="column">
+                                    <mat-radio-button fxFlex value="1">Auto Setting</mat-radio-button>
+                                    <mat-checkbox fxFlex>Solutions Single Line</mat-checkbox>
+                                </div>
+                                <mat-radio-button value="2">One Option In One line</mat-radio-button>
+                                <mat-radio-button value="3">two option in one line</mat-radio-button>
+                                <mat-radio-button value="4">four option in one line</mat-radio-button>
+                              </mat-radio-group>
+                        </div>
+                        <div class="line"></div>
+                        <div fxFlex.gt-xs="100" fxLayout="column" style="padding: 5px;">
+                            <div fxLayout.gt-xs="row"  >
+                                <mat-checkbox fxFlex>Print Date</mat-checkbox>
+                                <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+                                    <input style="height: 20px;" type="text" [matDatepicker]="myDatepicker">
+                                    <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #myDatepicker></mat-datepicker>
+                                </div>
+                            </div>
+                            <div fxLayout.gt-xs="row" fxLayout="column">
+                                <mat-checkbox (change)="isLogoChecked($event)" fxFlex>Print Class Logo</mat-checkbox>
+                                <div *ngIf="isClassLogoSelected" fxFlex fxLayout.gt-xs="row" fxLayout="column"  fxLayoutGap="5px" class="logo-pic">
+                                    <div fxFlex.gt-xs="50"  class="watermark-photo">
+                                        <img [src]="classLogoBase64" alt="">
+                                    </div>
+                                    <div  class=" watermark-pic-container" fxLayout="row" fxLayoutAlign.gt-xs="center center"  fxFlex.gt-xs="50">
+                                        <input (change)="uploadClassLogo($event.target)" class="cursor-poiner upload-file upload-button" type="file">
+                                        <div fxLayout="row" fxLayoutAlign="center center" class="cursor-poiner upload-button">Upload Logo</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <mat-checkbox fxFlex>Alignmnet Left</mat-checkbox>
+                            <mat-checkbox fxFlex>Alignment Right</mat-checkbox>
+
+                        </div>
+                    </div>  -->
+
+                </mat-card>
+
+            </div>
+        </fieldset>
+    </mat-card>
+    <mat-card fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center" fxLayout="column"  fxFlex.gt-xs="10" class="question-actions">
+        <!-- <div fxFlex fxLayout.gt-xs="row" fxLayout="column" fxLayoutAlign.gt-xs="start center">
+            <mat-checkbox fxFlex>For Horizontal Assignment</mat-checkbox>
+            <mat-checkbox fxFlex>Review Continue Pages</mat-checkbox>
+        </div> -->
+        <div fxFlex fxFlex.gt-xs="50" fxLayoutAlign.gt-xs="center center" fxFlex="100" fxLayout.gt-xs="row" fxLayout="column" fxLayoutGap="3px">
+           <button (click)="createFile()"  class="action-button upload-assignment-button" fxFlex.gt-xs="33" fxFlex="40"  mat-raised-button >Create & Upload Online Exam File</button>
+           <button class="action-button print-preview-button" fxFlex.gt-xs="33" fxFlex="30"  mat-raised-button>Create & open printing file</button>
+           <button (click)="close()" class="action-button close-button" fxFlex.gt-xs="33" fxFlex="30"  mat-raised-button>Close</button>
+        </div>
+    </mat-card>
+</div>
