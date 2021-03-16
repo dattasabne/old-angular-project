@@ -1,9 +1,9 @@
 
 export class AppConstant {
   //--------------------------------{ Production Server }--------------------------------------------
-  // public static readonly IGOTRANK_URL = "http://koshedutech.com/igotrank";  // cloud server machine
-  // public static readonly SERVER_HOST  = "http://52.172.209.201:8080";
-  // public static readonly PHP_HOST     = "http://koshedutech.com";
+  public static readonly IGOTRANK_URL = "http://koshedutech.com/igotrank";  // cloud server machine
+  public static readonly SERVER_HOST  = "http://52.172.209.201:8080";
+  public static readonly PHP_HOST     = "http://koshedutech.com";
 
   //-------------------------------------------------------------------------------------
   //-------------------------------{ Development Server }--------------------------------
@@ -12,9 +12,9 @@ export class AppConstant {
   // public static readonly PHP_HOST:string     = "http://localhost/online";
   //------------------------------- { Local Development Server } -----------------------------------
 
-  public static readonly SERVER_HOST:string  = "http://localhost:8080";
-  public static readonly IGOTRANK_URL:string = "http://localhost/online/igotrank"; //client deployment machine
-  public static readonly PHP_HOST:string     = "http://localhost/online";
+  // public static readonly SERVER_HOST:string  = "http://localhost:8080";
+  // public static readonly IGOTRANK_URL:string = "http://localhost/online/igotrank"; //client deployment machine
+  // public static readonly PHP_HOST:string     = "http://localhost/online";
 
   //--------------------------------------------------------------------------------------------
   public static instituteLogo :string= "";

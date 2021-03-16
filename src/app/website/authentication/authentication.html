@@ -1,6 +1,6 @@
 <ball-loader *ngIf="pageLoader"></ball-loader>
 <section fxLayout="row" fxLayoutAlign="center center"  class="root-athentication">
     <div fxFlex.gt-xs="25" fxFlex="100"  class="login-container">
-      <login [logo] = "instituteData.loginPageImage" (studentLoginSuccess)="studentLoginSuccess($event)" (instituteLoginSuccess)="institueLoginSuccess($event)" ></login>
+      <login [classLink] = "classLink" [displayLink] = "displayStudentRegistrationLink" [logo] = "instituteData.loginPageImage" (studentLoginSuccess)="studentLoginSuccess($event)" (instituteLoginSuccess)="institueLoginSuccess($event)" ></login>
     </div>
 </section>

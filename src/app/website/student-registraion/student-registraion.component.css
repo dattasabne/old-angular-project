@@ -1,0 +1,26 @@
+.app-registration-root{
+  height: 100% !important;
+  width: 100% !important;
+  border: 2px solid red !important;
+  position: relative;
+}
+.app-registration-container{
+  position: relative;
+  top: 16px;
+}
+.app-gender{
+  margin-right: 8px;
+}
+.app-form-label{
+  border-radius: 10px 10px 0px 0px;
+  height: 50px;
+  background-color: skyblue;
+  margin: 8px 0px ;
+  padding: 0px 8px !important;
+  color: white;
+  font-size: 1.2em;
+
+}
+.border{
+  border: 2px solid red !important;
+}

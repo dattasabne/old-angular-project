@@ -37,6 +37,17 @@ export class InstituteLogin implements OnInit , AfterViewInit{
       this.userNameFormControl.setValue(rememberMeData,{onlySelf:true});
     }
   }
+  public classLink:string = null;
+  @Input("classLink")
+  public set classLinkSetter(classLink:string){
+    this.classLink = "/std-registration/"+ classLink;
+
+  }
+  public displayStudentRegistrationLink:boolean = false;
+  @Input("displayLink")
+  public set displayLink(isLinkDisplay: boolean){
+    this.displayStudentRegistrationLink = isLinkDisplay;
+  }
   @Input("logo")
   public set logo(logoData:string){
     // this.logoData = this.sanitizer.bypassSecurityTrustUrl(logoData);

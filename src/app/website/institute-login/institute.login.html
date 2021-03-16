@@ -66,9 +66,11 @@
               <button (click)="login()" style="width: 100%;margin-top: 10%;line-height: 50px;" mat-raised-button color="primary">Login</button>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="end center">
+          <div fxLayout="row" fxLayoutAlign="space-between">
             <div class="forgot-password light-label">Forgot Password</div>
+            <div *ngIf = "displayStudentRegistrationLink" [routerLink] = "classLink" class="forgot-password light-label">Student Registration</div>
           </div>
+
       </div>
 
 

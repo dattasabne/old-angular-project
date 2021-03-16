@@ -8,4 +8,5 @@ export interface InstituteRefferenceModel{
 	image2:string;
 	instituteSlogan:string;
 	instituteLink:string;
+  allowStudentRegistration:boolean;
 }

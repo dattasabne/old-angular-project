@@ -1,3 +1,4 @@
+import { StudentRegistraionComponent } from './student-registraion/student-registraion.component';
 import { MaterialModule } from 'src/app/material-module';
 
 import { NgModule } from "@angular/core";
@@ -40,7 +41,10 @@ const route:Routes = [
     path:'question-paper',
     loadChildren: ()=>import("../admin/question-paper-module/question.paper.module").then(m=>m.QuestionPaperModule)
   },
-  
+  {
+    path:'std-registration/:link',
+    component:StudentRegistraionComponent
+  },
   {
     path:'not-found',
     component:PageNotFound
@@ -72,7 +76,8 @@ const route:Routes = [
       InstituteLogin,
       Authentication,
       WebsiteLoginComponent,
-      PageNotFound
+      PageNotFound,
+      StudentRegistraionComponent
 
     ],
     imports:[

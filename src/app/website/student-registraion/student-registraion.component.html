@@ -1,0 +1,99 @@
+<section fxLayout = "center" fxLayoutAlign = "center flex-start" class="app-registration-root border">
+  <mat-card  fxLayout = "column"  class="app-registration-container common-padding" fxFlex.xs = "100" fxFlex = "35">
+      <ball-loader *ngIf="isLoader"></ball-loader>
+      <div fxLayout="row" fxLayoutAlign ="flex-start center" class="app-form-label capitalize">
+        student registration
+      </div>
+      <div class="app-each-record">
+        <mat-form-field class="full-width " >
+          <mat-label>Student Name</mat-label>
+          <input [formControl] = "studentNameControl" type="text" matInput
+                 placeholder="ex.dattatray sabne">
+        <mat-error *ngIf="studentNameControl.hasError('required')">
+         Please enter student name
+        </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-each-record">
+        <mat-form-field class="full-width " >
+          <mat-label>Mobile No.</mat-label>
+          <input [formControl]="mobileNoControl" type="text" matInput
+                 placeholder="this no will be used as your username">
+          <mat-error *ngIf="mobileNoControl.hasError('required')">
+            Please enter mobile no
+          </mat-error>
+          <mat-error *ngIf="!mobileNoControl.hasError('required') &&  mobileNoControl.hasError('pattern')">
+            Please enter valid mobile no
+          </mat-error>
+
+        </mat-form-field>
+      </div>
+      <div class="app-each-record">
+        <mat-form-field class="full-width " >
+          <mat-label>password</mat-label>
+          <input [formControl] ="passwordControl" type="password" matInput>
+          <mat-error *ngIf="passwordControl.hasError('required')">
+            Please enter password
+          </mat-error>
+
+        </mat-form-field>
+      </div>
+      <div class="app-each-record">
+        <mat-form-field class="full-width " >
+          <mat-label>confirm password</mat-label>
+          <input [formControl]= "confirmPasswordControl" type="password" matInput
+                 placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="confirmPasswordControl.hasError('required')">
+            Please enter confirm password
+          </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="!confirmPasswordControl.hasError('required') && notMatchConfirmPassword">
+          password and confirm password should be same
+        </mat-error>
+      </div>
+      <div class="app-each-record" fxLayout="row">
+        <div class="app-gender">Gender </div>
+
+          <mat-radio-group [formControl]="gendorControl" aria-label="Select an option">
+            <mat-radio-button class="app-gender" [value]="'male'">Male</mat-radio-button>
+            <mat-radio-button class="app-gender" [value]="'female'">Female</mat-radio-button>
+          </mat-radio-group>
+      </div>
+      <mat-error *ngIf="gendorControl.hasError('required') && gendorControl.dirty">
+        please select gendor
+      </mat-error>
+      <div class="app-each-record">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>select batch</mat-label>
+          <mat-select [formControl] = "bacthControl">
+            <mat-option *ngFor = "let batch of batches" [value]="batch">{{batch.course}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="bacthControl.hasError('required')">
+            Please select batch
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-each-record">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>select cource </mat-label>
+          <mat-select [formControl] ="courseControl" multiple>
+            <mat-option *ngFor = "let course of courses" [value]="course">{{course}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="courseControl.hasError('required')">
+            Please select al least one course
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+
+
+      <div class="app-each-record" fxLayout = "row" fxLayoutAlign = "space-between">
+        <button (click) = "register()" mat-raised-button color="primary" class="capitalize">register</button>
+        <a mat-button [routerLink]="loginPageLink" class="capitalize">login</a>
+      </div>
+
+
+  </mat-card>
+
+</section>

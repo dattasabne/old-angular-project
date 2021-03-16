@@ -11,7 +11,28 @@ export class RequestParam {
   private patternAssessmentId: number | null | undefined;
   private link: string | null | undefined;
   private koshAuthenticationId: number | null | undefined;
+  private uniqueClassName:string = '';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  public get $uniqueClassName():string{
+    return this.uniqueClassName;
+  }
+  public set $uniqueClassName(uniqueClassName:string){
+    this.uniqueClassName = uniqueClassName;
+  }
   public constructor() { }
 
 

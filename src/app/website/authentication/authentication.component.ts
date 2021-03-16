@@ -19,6 +19,8 @@ import { ClassDetailModal } from "src/app/shared/model/class-detail-model";
   styleUrls:['./authentication.css']
 })
 export class Authentication implements OnInit {
+  public enalbleStudentRegistrationClasses:string[] = ['vishwaniketan'];
+  public displayStudentRegistrationLink:boolean = false;
   public pageLoader:boolean = false;
   public instituteData:InstituteRefferenceModel = <InstituteRefferenceModel>{};
   public constructor(
@@ -31,6 +33,7 @@ export class Authentication implements OnInit {
     private http:LoginService,
     private loginService:LoginService,
     private adminLoginData:AdminLoginService){}
+    public classLink:string = null;
     ngOnInit(){
       this.loginService.sendLocalStorageResultToServer();
       let instituteLink:string = null ;
@@ -38,6 +41,8 @@ export class Authentication implements OnInit {
           instituteLink = param.get("link");
       });
       if(instituteLink != null){
+        this.classLink = instituteLink;
+        this.displayStudentRegistrationLink = (this.enalbleStudentRegistrationClasses.indexOf(instituteLink.trim()) !== -1);
         this.sharedLogin.appType = AppConstant.LOGIN_TYPE_BYLINK;
         this.sharedLogin.instituteLink = instituteLink;
         this.loadInstituteDataByLink(instituteLink);
@@ -50,6 +55,8 @@ export class Authentication implements OnInit {
     public studentLoginSuccess(response:LoginResponseModel):void{
       this.setData(response);
     }
+
+
     public institueLoginSuccess(response:LoginResponseModel):void{
       this.sharedLogin.loginType = AppConstant.LOGIN_TYPE_INSTITUTE;
       let classProfile = <ClassProfile> response.data;
@@ -84,6 +91,7 @@ export class Authentication implements OnInit {
       if(this.sharedLogin.logo_image){
         AppConstant.KoshBrandingLogo = this.sharedLogin.logo_image;
       }
+      this.displayStudentRegistrationLink = this.instituteData.allowStudentRegistration;
       // if(!this.instituteData.loginPageImage){P
       //   this.router.navigate(["/not-found"]);
       // }
