@@ -126,7 +126,6 @@ export class StudentRegistraionComponent implements OnInit {
   }
   public registrationSuccessHandler(response: HttpResponse<ResponseModel>): void{
     this.isLoader = false;
-    console.log(response);
-    this.dialog.showAlert("you are successfully registered",small_dialog);
+    this.dialog.showAlert(response.body.message,small_dialog);
   }
 }

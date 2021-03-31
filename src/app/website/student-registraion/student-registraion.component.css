@@ -1,7 +1,6 @@
 .app-registration-root{
   height: 100% !important;
   width: 100% !important;
-  border: 2px solid red !important;
   position: relative;
 }
 .app-registration-container{
