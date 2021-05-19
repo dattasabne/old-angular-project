@@ -58,8 +58,8 @@ export class InstituteLogin implements OnInit , AfterViewInit{
   @Output("instituteLoginSuccess")
   public institute:EventEmitter<LoginResponseModel> = new EventEmitter<LoginResponseModel>();
   public whoIsuser(username:string):LoginType{
-     let user:RegExp = /^[7-9][0-9]{9}$/;
-     let wrongUser:RegExp = /^[7-9][0-9]{9,}$/;
+     let user:RegExp = /^[0-9][0-9]{9}$/;
+     let wrongUser:RegExp = /^[0-9][0-9]{9,}$/;
      if(user.test(username) || wrongUser.test(username)){
        return LoginType.STUDENTS;
      }
