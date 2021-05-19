@@ -31,7 +31,6 @@ import { CommonSearchCriteriaModule } from './website/common-search-criteria/com
     DialogModule,
     FlexLayoutModule,
     HttpClientModule,
-    FormsModule,
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forRoot([

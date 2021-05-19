@@ -792,6 +792,7 @@ export class ExamStartComponent implements OnInit, AfterViewInit, OnDestroy {
   public allOptions: Array<SingleOption> = new Array<SingleOption>();
   /*------------------ this is exam entry point to start examination -------*/
   public startTest(): void {
+
     this.currentExam = this.examData;
     if(this.currentExam.testStaus == TestStatus.pending){
       this.totalExamSeconds = Number(this.currentExam.remainingTime);

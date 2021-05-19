@@ -460,16 +460,11 @@ export class WebsiteLoginComponent implements OnInit , AfterViewInit{
           }
     }
     private checkWhoIsUser():LoginType{
-        let institutePattern = /^[a-z][ \.a-z0-9_-]*@*[ \.a-z0-9-_]*$/;
         let studentPattern   = /^[0-9]{10}$/;
-        if(institutePattern.test(this.userNameControl.value)){
-
-            return LoginType.INSTITUTE;
-        }else if(studentPattern.test(this.userNameControl.value)){
-
+        if(studentPattern.test(this.userNameControl.value)){
             return LoginType.STUDENTS;
         }
-        return LoginType.NONE;
+        return LoginType.INSTITUTE;
     }
 
 }
