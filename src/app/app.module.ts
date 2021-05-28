@@ -1,3 +1,4 @@
+import { AppRouterModule } from './approuter.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -23,6 +24,7 @@ import { CommonSearchCriteriaModule } from './website/common-search-criteria/com
 @NgModule({
   declarations: [AppComponent ,PolicyComponent ],
   imports: [
+    WebSiteModule,
     BrowserAnimationsModule,
     BrowserModule,
     MaterialModule,
@@ -30,7 +32,6 @@ import { CommonSearchCriteriaModule } from './website/common-search-criteria/com
     ReprintEntryComponentModule,
     DialogModule,
     FlexLayoutModule,
-    HttpClientModule,
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
@@ -74,7 +75,7 @@ import { CommonSearchCriteriaModule } from './website/common-search-criteria/com
       //   component:AdminLogin2
       // }
     ]),
-    WebSiteModule,
+
     QuestionPaperModule, // dynamic loading module
     CommonSearchCriteriaModule ,// dynamic loading module
 

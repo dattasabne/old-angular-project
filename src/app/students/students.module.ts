@@ -62,7 +62,6 @@ const route: Routes = [
     MaterialModule,
     HttpClientModule,
     LibraryModule,
-    HttpClientModule,
     PipeModule,
     LoaderModule,
     FormsModule,

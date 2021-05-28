@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { StudentRegistraionComponent } from './student-registraion/student-registraion.component';
 import { MaterialModule } from 'src/app/material-module';
 
@@ -83,7 +84,8 @@ const route:Routes = [
     imports:[
       RouterModule.forChild(route) ,
       MaterialModule,
-      SharedModule
+      SharedModule,
+      HttpClientModule
     ],
     exports:[
       InstituteLogin

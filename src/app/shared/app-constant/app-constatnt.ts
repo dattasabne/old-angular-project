@@ -2,7 +2,7 @@
 export class AppConstant {
   //--------------------------------{ Production Server }--------------------------------------------
   public static readonly IGOTRANK_URL = "http://koshedutech.com/igotrank";  // cloud server machine
-  public static readonly SERVER_HOST  = "http://52.172.209.201:8080";
+  public static readonly SERVER_HOST  = "http://52.172.209.201:8081";
   public static readonly PHP_HOST     = "http://koshedutech.com";
 
   //-------------------------------------------------------------------------------------

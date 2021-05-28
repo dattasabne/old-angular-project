@@ -11,13 +11,13 @@ const route: Routes = [
   {path: '**' , component: PageNotFoundComponent }
 ];
 
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(route),
-    MaterialModule
-  ],
-  exports : [RouterModule]
-})
+// @NgModule({
+//   declarations: [],
+//   imports: [
+//     CommonModule,
+//     RouterModule.forRoot(route),
+//     MaterialModule,
+//   ],
+//   exports : [RouterModule]
+// })
 export class AppRouterModule { }
