@@ -13,6 +13,7 @@ import { Authentication } from './authentication/authentication.component';
 import { WebsiteLoginComponent } from './website-login/website.login.component';
 import { PageNotFound } from './page-not-found/page.not.found.component';
 import { WebSocketComponent } from './websocket/websocket.component';
+import { PageNotFoundComponent } from '../pagenotfound/pagenotfound.component';
 const route:Routes = [
   {
       path:'an-logout',
@@ -78,7 +79,8 @@ const route:Routes = [
       Authentication,
       WebsiteLoginComponent,
       PageNotFound,
-      StudentRegistraionComponent
+      StudentRegistraionComponent,
+      PageNotFoundComponent
 
     ],
     imports:[

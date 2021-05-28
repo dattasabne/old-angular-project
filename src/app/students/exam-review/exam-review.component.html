@@ -69,31 +69,34 @@
             <div class="pdf-section" >
                 <div #parent   style="position: relative;" class="center pdf-container">
                   <!-- class="pdf-viewer" -->
-                <!-- <pdf-viewer  style="z-index: 200 !important;" *ngIf="isQuestionPaper" style="margin-left:-20px !important; height: 100%;"
+               <!-- <pdf-viewer  style="z-index: 200 !important;" *ngIf="isQuestionPaper" style="margin-left:-20px !important; height: 100%;"
                     [src]="reviewPdf"
                     [render-text]="true"
                     style="display: block;"
                     [page]="pageNo"
-                    [show-all]="false"
+                    [show-all]="true"
                     [zoom]="zoomLevel"
                     [original-size]="true"
                 ></pdf-viewer>
-                 <pdf-viewer *ngIf="!isQuestionPaper"   style="margin-left:-20px !important; height: 100%;"
+                  <pdf-viewer *ngIf="!isQuestionPaper"   style="margin-left:-20px !important; height: 100%;"
                     [src]="testPdf"
                     [render-text]="true"
                     style="display: block;"
                     [page]="pageNo"
-                    [show-all]="false"
+                    [show-all]="true"
                     [zoom]="zoomLevel"
                 ></pdf-viewer> -->
+
                 <app-custom-pdfviewer (onLoad) ="isLoaded = $event" [parentNode]="parent" [hide] ="!isQuestionPaper"  [src] ="reviewPdf"
                   [pageNo] ="pageNo"
                   (pdfLoaded) ="PdfLoad_SuccessHandler($event)"
                   (error) ="PdfLoad_FailedHandler($event)"
+                  
                 ></app-custom-pdfviewer>
 
                 <app-custom-pdfviewer (onLoad) ="isLoaded = $event" [parentNode]="parent" [hide] ="isQuestionPaper"  [src] ="testPdf"
                   [pageNo] ="pageNo"
+                 
                   (pdfLoaded) ="PdfLoad_SuccessHandler($event)"
                   (error) ="PdfLoad_FailedHandler($event)"
                 ></app-custom-pdfviewer>

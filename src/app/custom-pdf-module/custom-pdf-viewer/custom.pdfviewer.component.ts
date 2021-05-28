@@ -10,7 +10,7 @@ declare var pdfjsLib: any;
 export class CustomPdfViewer implements OnInit , AfterViewInit , OnDestroy{
   private canvas:HTMLCanvasElement = null;
   private filePath:string = '';
-  private pageNumber:number = 5;
+  private pageNumber:number = 1;
   private pdf:any = null;
   private zoom:number = 2;
   private canvasWidth:number = 0;
@@ -29,11 +29,8 @@ export class CustomPdfViewer implements OnInit , AfterViewInit , OnDestroy{
       this.canvas.style.visibility = (what)?'hidden':'visible';
     }
   }
-
   @Output("onLoad")
   public onLoad:EventEmitter<boolean> = new EventEmitter<boolean>();
-
-
   @Input('canvasWidth')
   public set CanvasWidth(canvasWidth:number){
     this.canvasWidth = canvasWidth;
@@ -46,7 +43,6 @@ export class CustomPdfViewer implements OnInit , AfterViewInit , OnDestroy{
     }
   }
   public parentNodeModel:HTMLElement = <HTMLElement>{};
-
   @Input("parentNode")
   public set parentNode(node:HTMLElement){
     this.parentNodeModel = node;
@@ -63,10 +59,8 @@ export class CustomPdfViewer implements OnInit , AfterViewInit , OnDestroy{
     mainContainer.classList.add('pdf-canvas');
     mainContainer.appendChild(this.canvas);
     this.parentNodeModel.appendChild(mainContainer);
-
   }
   ngOnInit(){
-
   }
   ngOnDestroy(){
     window.onresize =null;

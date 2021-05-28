@@ -228,8 +228,12 @@ export class ExamReviewComponent implements OnInit, AfterViewInit , OnDestroy {
   public reviewDataSuccess_Handler(response:HttpResponse<ResponseModel>):void{
       this.isLoaded = false;
       let responseModel:ResponseModel = response.body;
+
       if(responseModel.result){
         this.reviewResponse = responseModel.questionData;
+        
+        // console.log(this.reviewResponse);
+
         this.reviewData = responseModel.data;
         this.displayFirstRecordOfReview();
       }else{
@@ -392,7 +396,11 @@ export class ExamReviewComponent implements OnInit, AfterViewInit , OnDestroy {
     this.displayQuestionPaperText = "show review";
     this.isQuestionPaper = false;
     this.currentQuestion = question;
-    this.pageNo = question.nSquence;
+    this.pageNo = Number(question.nSquence);
+
+    
+
+
     this.clearAllRowsColor(this.currentSubjectQuestion);
     question.background = "skyblue";
     this.displayRightWrongSymbol();
@@ -480,6 +488,10 @@ export class ExamReviewComponent implements OnInit, AfterViewInit , OnDestroy {
         this.allBranchId = testData[0].allBranchId;
         this.patternName = testData[0].patternName;
         this.assignmentType = testData[0].assignmentType;
+        
+      
+
+
         if(testData.length == 1 || testData.length > 3 ){
           this.totalQuestion = JSON.parse(testData[0].questions).length;
         }else{
@@ -490,6 +502,9 @@ export class ExamReviewComponent implements OnInit, AfterViewInit , OnDestroy {
         }
         this.testPdf = this.reviewData.testPdf;
         this.reviewPdf = this.reviewData.reviewPdf;
+
+        
+
         this.allSolvedTest = this.reviewData.solvedTest;
         this.solvedDatesControl.setValue(this.allSolvedTest[0]);
         this.displayTestDataOnView(this.allSolvedTest[0]);

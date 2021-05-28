@@ -509,14 +509,16 @@
                                 </span>
                               </td>
                             <td colspan="2" style="padding-left:0px !important;padding-right:0px !important;"  *ngFor="let subject of tableHeader.subjects">
-                                <div style="margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{subject.name}}</div>
+                                <div style="text-transform: capitalize;margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{subject.name}}</div>
                                 <div class="row">
-                                  <div class="col-6 font-6px class-green" style="text-align:center;" >{{subject.correctQuestion}}</div>
-                                  <div class="col-6 font-6px class-red" style="text-align:center;" >{{subject.wrongQuestion}}</div>
+                                  <div class="col-4 font-6px class-green" style="text-align:center;" >{{subject.correctQuestion}}</div>
+                                  <div class="col-4 font-6px class-red" style="text-align:center;" >{{subject.wrongQuestion}}</div>
+                                  <div class="col-4 font-6px " style="color: black; text-align:center;" >{{subject.marks}}</div>
+
                                 </div>
                               </td>
                               <td colspan="3" style=" min-width:200px !important; padding-left:0px !important;padding-right:0px !important;">
-                                <div style="margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{ tableHeader.marks.name}}</div>
+                                <div style="text-transform: capitalize; margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{ tableHeader.marks.name}}</div>
                                 <div class="row">
                                   <div class="col-4 font-6px class-blue" style="text-align:center;" >{{tableHeader.groups.totalQuestion}}</div>
                                   <div class="col-4 font-6px class-green" style="text-align:center;" >{{tableHeader.groups.correctQuestion}}</div>
@@ -524,7 +526,7 @@
                                 </div>
                               </td>
                               <td colspan="3" style="width:200px !important;  padding-left:0px !important;padding-right:0px !important;">
-                                  <div style="margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{tableHeader.groups.name}}</div>
+                                  <div style="text-transform: capitalize; margin:0px !important; padding-bottom: 5px; border-bottom: 2px solid black;" >{{tableHeader.groups.name}}</div>
                                   <div class="row">
                                     <div class="col-6 font-6px class-green" style="text-align:center" >{{tableHeader.marks.correctQuestion}}</div>
                                     <div class="col-6 font-6px class-red" style="text-align:center" >{{tableHeader.marks.wrongQuestion}}</div>
@@ -590,8 +592,9 @@
                               <td>{{records.dateTime | dateTimePipe}}</td>
                               <td colspan="2" style="padding-left:0px !important;padding-right:0px !important;"  *ngFor="let subject of records.subjects">
                                   <div class="row">
-                                    <div class="col-6" style="text-align:center;" >{{subject.correctQuestion}}</div>
-                                    <div class="col-6" style="text-align:center;" >{{subject.wrongQuestion}}</div>
+                                    <div class="col-4" style="text-align:center;" >{{subject.correctQuestion}}</div>
+                                    <div class="col-4" style="text-align:center;" >{{subject.wrongQuestion}}</div>
+                                    <div class="col-4" style="color: black; text-align:center;" >{{ getSubjectTotalMarks(records.username, subject.name)}}</div>
                                   </div>
                                 </td>
                                 <td colspan="3" style="padding-left:0px !important;padding-right:0px !important;">

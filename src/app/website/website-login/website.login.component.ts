@@ -388,7 +388,7 @@ export class WebsiteLoginComponent implements OnInit , AfterViewInit{
             this.adminLoginDetails.adminLoginData = classDetails;
             window.onkeypress = null;
             this.router.navigate(["/admin-panel"]);
-            console.log(responseModel);
+           
         }else{
             this.dialog.showAlert(responseModel.message,small_dialog);
         }
@@ -441,7 +441,7 @@ export class WebsiteLoginComponent implements OnInit , AfterViewInit{
         this.studentData.IsLogin = true;
         window.onkeypress = null;
         this.router.navigate(["/student"]);
-        console.log(response);
+        
 
       }
       public displayError(): boolean {

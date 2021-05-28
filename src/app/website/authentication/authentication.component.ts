@@ -86,6 +86,9 @@ export class Authentication implements OnInit {
       this.pageLoader = false;
       let responseModel:ResponseModel = <ResponseModel> res.body;
       this.instituteData = <InstituteRefferenceModel> responseModel.data;
+      if(this.instituteData === null){
+        return;
+      }
       this.sharedLogin.bannerImage = this.instituteData.loginPageImage;
       this.sharedLogin.logo_image  =  this.instituteData.logoImage;
       if(this.sharedLogin.logo_image){

@@ -452,7 +452,21 @@ export class CommonAnalysisReportComponent implements OnInit {
     return uniqueRecord;
   }
 
+  public getSubjectTotalMarks(userName:string , subjectName:string):number{
+    let sum = 0;
+    const marksRecord = this.solvedAssignemntTotalRecords.filter(item => item.subName.trim().toUpperCase() === subjectName.trim().toUpperCase() && userName.trim().toUpperCase() === item.studentInfo.userName.trim().toUpperCase());
+    marksRecord.forEach(item => {
+      sum += Number(item.totalMarks);
+    });
+    return sum;
+  }
+
+
   private checkHowManysSubjectInTest(source): Array<any> {
+
+ 
+    console.log(source);
+
     let subjects = new Array<any>();
     source.forEach(item => {
       if (
@@ -466,7 +480,8 @@ export class CommonAnalysisReportComponent implements OnInit {
         subjects.push({
           name: item.subName,
           correctQuestion: "Correct Question",
-          wrongQuestion: "Wrong Question"
+          wrongQuestion: "Wrong Question",
+          marks:'Marks'
         });
       }
     });
@@ -667,6 +682,10 @@ export class CommonAnalysisReportComponent implements OnInit {
 
     return subjects;
   }
+  
+
+
+
   private perpareAssignmentForDisplay() {
     this.allRecords = new Array<any>();
     let allTestSubject = this.checkHowManysSubjectInTest(
@@ -710,6 +729,10 @@ export class CommonAnalysisReportComponent implements OnInit {
       time: "",
       forExcel: allTestSubject
     };
+
+    console.log(this.uniqueSolvedAssignmentRecords);
+
+
     this.uniqueSolvedAssignmentRecords.forEach((item, index) => {
       let getEachStudnetSubject = new Array<any>();
       getEachStudnetSubject = this.getTestSubject(
