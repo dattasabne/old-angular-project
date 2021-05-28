@@ -118,6 +118,7 @@ export class QuestionPaperComponent implements OnInit , AfterViewInit , OnDestro
     this.paperModel.uploadedFiles = newFiles;
     this.valiDateMannualQuestionSelection();
   }
+
   public onFileChange_Handler(ev:Event):void{
     let inputFile:HTMLInputElement = (<HTMLInputElement>ev.target);
     if(inputFile.files && inputFile.files.length >0){
@@ -175,9 +176,9 @@ export class QuestionPaperComponent implements OnInit , AfterViewInit , OnDestro
     for(let i = 0 ; i < this.paperModel.subjects.length;i++){
       let subject = this.paperModel.subjects[i];
       if(i == 0){
-        subjectString += `'${subject}'`
+        subjectString += `'${subject}'`;
       }else{
-        subjectString += `,'${subject}'`
+        subjectString += `,'${subject}'`;
       }
     }
     search.subjectName = subjectString;
@@ -390,7 +391,6 @@ public Window_KeypressEvent(ev:KeyboardEvent):void{
   let char:string = ev.key;
   if(ev.shiftKey && char == '@'){
     this.autoContainer.IsAutoComplate = true;
-
     ev.preventDefault();
   }
 }
