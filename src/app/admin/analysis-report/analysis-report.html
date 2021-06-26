@@ -167,13 +167,13 @@
                 <div class="margin-top-bottom-5px-r2px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
                     <button (click)="export_to_excel()" class="resposive-full-width full-width"  mat-raised-button mat-button>Export To Excel</button>
                 </div>
-                <div class="margin-top-bottom-5px-r2px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
+                <div [hidden] = "true" class="margin-top-bottom-5px-r2px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
                   <button (click)="sendFireBaseNotification()" class=" resposive-full-width full-width"  mat-raised-button mat-button>Send Notification</button>
                 </div>
-                <div class="margin-top-bottom-5px-r2px margin-top-bottom-5px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
+                <div [hidden] = "true" class="margin-top-bottom-5px-r2px margin-top-bottom-5px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
                   <button class="resposive-full-width full-width"  mat-raised-button mat-button>Send SMS</button>
                 </div>
-                <div class="margin-top-bottom-5px-r2px margin-top-bottom-5px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
+                <div [hidden] = "true" class="margin-top-bottom-5px-r2px margin-top-bottom-5px col-sm-3 col-xs-3 col-md-3 col-lg-3 col-xl-2 padding-l-r-5px">
                   <button class="resposive-full-width full-width"  mat-raised-button mat-button>Send Email</button>
                 </div>
             </div>
